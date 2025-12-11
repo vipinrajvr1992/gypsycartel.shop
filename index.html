@@ -3,203 +3,313 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Gypsy Cartel — Official Store</title>
-  <meta name="description" content="Gypsy Cartel — premium store for software, designs, 3D works and templates. MG Creations apps and tools." />
+  <title>Gypsy Optimizer — Gypsy Cartel</title>
+  <meta name="description" content="Make Your PC Faster in One Click — Gypsy Optimizer V3.1 PRO+ | Boost performance, clean junk, fix errors instantly." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --black:#000000;
-      --bg-dark:#0b0b0b;
-      --panel:#0f1720;
-      --muted:#9aa3ad;
+      --bg:#0b0b0c;            /* deep black */
+      --panel:#0f1213;         /* dark panel */
+      --muted:#9aa0a6;         /* grey text */
       --white:#ffffff;
-      --orange:#ff7a00;
-      --gold:#f7d600;
-      --glass: rgba(255,255,255,0.04);
+      --orange:#ff7a00;       /* brand orange */
+      --accent:#f7d600;       /* gold accent */
+      --glass: rgba(255,255,255,0.03);
       --radius:14px;
-      --accent-glow: 0 16px 60px rgba(255,122,0,0.12), inset 0 -6px 24px rgba(255,122,0,0.02);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--black) 0%, #070707 40%, #0b0b0b 100%);color:var(--white);}
-
-    /* energetic black + orange glow background */
-    .site-bg{
-      min-height:100vh;
-      display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-      background: radial-gradient(900px 400px at 85% 20%, rgba(255,122,0,0.06), transparent), radial-gradient(700px 300px at 10% 85%, rgba(255,122,0,0.03), transparent), linear-gradient(180deg,#080808,#0b0b0b);
+      --max-width:1200px;
     }
 
-    /* container */
-    .container{width:min(1200px,94%);margin:48px auto;display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:start}
-    @media (max-width:980px){.container{grid-template-columns:1fr;gap:20px;padding-bottom:64px}}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#0a0a0a);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;align-items:center;justify-content:center;
+    }
 
-    header{display:flex;align-items:center;gap:18px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo-hero{width:78px;height:78px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.03), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;box-shadow:var(--accent-glow)}
-    .logo-hero img{width:68%;height:auto;display:block}
+    .site{
+      width:100%;
+      max-width:var(--max-width);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:18px;
+      box-shadow:0 10px 40px rgba(2,6,10,0.7);
+      overflow:hidden;
+    }
 
-    .brand-text{line-height:1}
-    .brand-text h1{margin:0;font-size:22px;letter-spacing:0.6px}
-    .brand-text p{margin:0;color:var(--muted);font-size:13px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px 36px;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
 
-    nav .mg-small{position:absolute;right:32px;top:28px;opacity:0.95}
-    .mg-small img{width:64px;height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.6))}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo {
+      width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#101214, #1a1a1a);
+      display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -6px 30px rgba(0,0,0,0.6);
+    }
+    .logo svg{width:34px;height:34px;filter:drop-shadow(0 6px 10px rgba(255,122,0,0.08));}
 
-    /* hero */
-    .hero{padding:28px 28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow: 0 8px 40px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02)}
-    .title{font-size:40px;margin:8px 0 6px;font-weight:700}
-    .subtitle{color:var(--muted);margin:0 0 18px;font-size:15px}
+    .brand-title{font-weight:700;font-size:18px;letter-spacing:0.3px}
+    .brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
 
-    .cta-row{display:flex;gap:12px;align-items:center}
-    .btn{padding:12px 18px;border-radius:12px;cursor:pointer;border:0;font-weight:600;display:inline-flex;gap:10px;align-items:center}
-    .btn-primary{background:linear-gradient(180deg,var(--orange), #e56400);color:var(--white);box-shadow:0 12px 36px rgba(255,122,0,0.12);}
-    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white)}
-    .badge{background:linear-gradient(90deg,#1b1f26,#0e1116);padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-weight:600}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:500}
+    .btn-ghost{padding:8px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);}
 
-    /* right column product card */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.02);box-shadow:var(--accent-glow)}
-    .product-icon{width:100%;height:160px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(255,255,255,0.02));}
-    .product-icon img{max-width:86%;height:auto}
-    .product-title{font-size:20px;margin:14px 0 6px}
-    .product-meta{color:var(--muted);font-size:13px;margin-bottom:12px}
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:36px}
+    .hero-left{position:relative}
+    .hero-card{background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.02));border-radius:14px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.6);min-height:420px;display:flex;align-items:center;justify-content:center}
+    .hero-left img{max-width:100%;height:auto;border-radius:10px}
 
-    .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
-    .spec{font-size:13px;color:var(--muted)}
+    .hero-right{display:flex;flex-direction:column;justify-content:center;padding:6px 0}
+    .eyebrow{color:var(--orange);font-weight:700;font-size:13px;margin-bottom:14px}
+    h1{font-size:44px;line-height:1.02;margin:0 0 12px 0;font-weight:800}
+    p.lead{color:var(--muted);margin:0 0 22px}
 
-    .screenshot-row{display:flex;gap:10px;overflow:hidden;margin-top:12px}
-    .ss{height:88px;border-radius:8px;flex:0 0 120px;background:#0b0b0b;border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center}
-    .ss img{max-width:100%;height:100%;object-fit:cover;border-radius:8px}
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn-primary{background:linear-gradient(180deg,var(--orange),#ff6b00);color:var(--white);padding:12px 18px;border-radius:12px;border:none;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(255,122,0,0.12)}
+    .btn-ghost-outline{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:10px 14px;border-radius:12px;color:var(--white)}
 
-    /* features */
-    .features{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .features h3{margin:0 0 10px}
-    .feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .feature{display:flex;gap:10px;align-items:flex-start}
-    .dot{width:12px;height:12px;border-radius:4px;background:var(--orange);margin-top:6px}
-    .feature p{margin:0;color:var(--muted);font-size:14px}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted);}
 
-    /* footer */
-    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    /* FEATURES */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 36px}
+    .feature{padding:18px;border-radius:12px;background:rgba(255,255,255,0.02);min-height:90px}
+    .feature h4{margin:0 0 6px;font-size:14px}
+    .feature p{margin:0;color:var(--muted);font-size:13px}
 
-    /* small screens tweaks */
-    @media (max-width:520px){.title{font-size:28px}.product-icon{height:120px}}
+    /* GALLERY + AD */
+    .media{display:grid;grid-template-columns:2fr 1fr;gap:18px;padding:24px 36px 36px}
+    .gallery{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));padding:18px;border-radius:12px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .shot{background:#0a0a0a;border-radius:8px;min-height:100px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
 
-    /* subtle enter animation */
-    .fade-in{animation:fadeIn .9s ease both}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    .video-box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;display:flex;flex-direction:column;gap:12px}
+    .video-thumb{background:#000;height:220px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .video-thumb img{max-width:100%;height:auto;border-radius:8px}
+
+    .ad-card{background:linear-gradient(180deg,#111,#0b0b0b);padding:18px;border-radius:12px;color:var(--muted);display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+    .ad-cta{margin-top:auto}
+
+    /* ACTIVATION / PURCHASE */
+    .purchase{display:flex;gap:12px;align-items:center}
+    .price{font-weight:800;font-size:20px}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* DEV INFO & FOOTER */
+    .dev{padding:24px 36px;border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
+    .dev a{color:var(--orange);text-decoration:none;font-weight:700}
+
+    footer{padding:18px 36px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));color:var(--muted);font-size:13px}
+
+    /* RESPONSIVE */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .media{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+      h1{font-size:34px}
+    }
+
+    @media (max-width:560px){
+      .features{grid-template-columns:1fr}
+      header{padding:14px}
+      .hero{padding:18px}
+    }
+
+    /* subtle animations */
+    .fade-in{animation:fade .65s ease both}
+    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
   </style>
 </head>
 <body>
-  <div class="site-bg">
-    <div class="container">
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <!-- simple MG logo placeholder (replace with your svg/png) -->
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="12" fill="black" />
+            <path d="M22 76 L22 28 L44 28 L44 44 L66 44 L66 76 Z" fill="url(#g)" />
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="#ff7a00" />
+                <stop offset="1" stop-color="#ffb56b" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Gypsy Cartel</div>
+          <div class="brand-sub">MG Creations · Software & Design</div>
+        </div>
+      </div>
 
-      <main style="">
-        <nav style="position:relative">
-          <div class="brand fade-in">
-            <div class="logo-hero"><img src="assets/logo-gypsy.png" alt="Gypsy Cartel logo"></div>
-            <div class="brand-text">
-              <h1>Gypsy Cartel</h1>
-              <p>Official store for software, designs, 3D works and templates — MG Creations</p>
-            </div>
-          </div>
-          <div class="mg-small" style="position:absolute;right:0;top:-8px"><img src="assets/logo-mg.png" alt="MG Creations logo"></div>
-        </nav>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="#features">Features</a>
+        <a href="#gallery">Screenshots</a>
+        <a href="#dev">Developer</a>
+        <button class="btn-ghost">Contact</button>
+      </nav>
+    </header>
 
-        <section class="hero fade-in" style="margin-top:18px">
-          <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
-            <div style="flex:1;min-width:280px">
-              <div class="title">Gypsy Optimizer — PC Beast <span style="color:var(--orange)">V3.1 PRO+</span></div>
-              <p class="subtitle">One‑click Windows optimizer. Cleans junk, repairs system files, optimizes RAM & GPU, updates apps and exports full PDF logs. Designed by MG Creations.</p>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left fade-in">
+        <div class="hero-card">
+          <!-- Replace this with a real large screenshot or mockup of the app -->
+          <img src="/assets/hero-screenshot.png" alt="Gypsy Optimizer screenshot" onerror="this.style.opacity=.12;this.style.filter='blur(2px)';this.alt='Replace with hero image'"/>
+        </div>
+      </div>
 
-              <div class="cta-row">
-                <a class="btn btn-primary" href="/products/gypsy-optimizer/" title="Product Page">Download / Buy Now</a>
-                <a class="btn btn-outline" href="/products/gypsy-optimizer/">Product details</a>
-                <div class="badge">Windows 10 · 11 • Portable EXE</div>
-              </div>
+      <div class="hero-right fade-in">
+        <div class="eyebrow">GYPSY OPTIMIZER · V3.1 PRO+</div>
+        <h1>Make Your PC Faster in One Click</h1>
+        <p class="lead">Boost performance, clean junk, fix errors instantly. One‑click full system optimization for Windows 10 &amp; 11 — safe, fast, and user friendly.</p>
 
-              <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-                <div style="color:var(--muted);font-size:13px">Developer: <strong style="color:var(--white)">Mallu Gypsy</strong></div>
-                <div style="color:var(--muted);font-size:13px">Brand: <strong style="color:var(--orange)">MG Creations</strong></div>
-              </div>
-            </div>
+        <div class="actions">
+          <form action="/products/gypsy-optimizer/download-instructions" method="get" style="display:inline">
+            <button class="btn-primary">Download (Trial)</button>
+          </form>
 
-            <div style="width:360px;min-width:240px">
-              <div class="card fade-in">
-                <div class="product-icon"><img src="assets/app-icon.png" alt="Gypsy Optimizer icon" /></div>
-                <div class="product-title">GYPSY OPTIMIZER — PC BEAST V3.1 PRO+</div>
-                <div class="product-meta">Advanced Windows optimizer • Python + CustomTkinter • PDF export</div>
+          <a href="/buy" class="btn-ghost-outline">Buy Now</a>
 
-                <div class="specs">
-                  <div class="spec"><strong>Files</strong><br><span class="muted">EXE, ReadMe, Screenshots</span></div>
-                  <div class="spec"><strong>License</strong><br><span class="muted">Online activation (HWID)</span></div>
-                </div>
+          <div class="pill"> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right:6px"><circle cx="12" cy="12" r="10" stroke="white" stroke-opacity="0.12"/></svg> 1‑Click Optimizer</div>
+        </div>
 
-                <div class="screenshot-row">
-                  <div class="ss"><img src="assets/screenshots/ss1.png" alt="ss"></div>
-                  <div class="ss"><img src="assets/screenshots/ss2.png" alt="ss"></div>
-                  <div class="ss"><img src="assets/screenshots/ss3.png" alt="ss"></div>
-                </div>
+        <div style="height:12px"></div>
 
-                <div style="margin-top:14px;display:flex;gap:8px">
-                  <a class="btn btn-primary" href="/products/gypsy-optimizer/">Get it now</a>
-                  <a class="btn btn-outline" href="/activate/">Activate Key</a>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section style="margin-top:22px" class="features fade-in">
-          <h3>Key Features</h3>
-          <div class="feature-list">
-            <div class="feature"><div class="dot"></div><p><strong>Full system optimize</strong> — 15 automated tasks (one click).</p></div>
-            <div class="feature"><div class="dot"></div><p><strong>Live monitoring</strong> — CPU / RAM / Disk / Network live stats.</p></div>
-            <div class="feature"><div class="dot"></div><p><strong>Safe operations</strong> — Restore point & STOP button.</p></div>
-            <div class="feature"><div class="dot"></div><p><strong>GPU & RAM boost</strong> — shader & memory cleanup.</p></div>
-            <div class="feature"><div class="dot"></div><p><strong>Winget updates</strong> — auto-upgrade apps when available.</p></div>
-            <div class="feature"><div class="dot"></div><p><strong>PDF log export</strong> — full optimization report.</p></div>
-          </div>
-        </section>
-
-        <footer class="fade-in">© 2025 Gypsy Cartel — All Rights Reserved • Designed by MG Creations</footer>
-      </main>
-
-      <aside>
-        <div class="card fade-in">
-          <div style="display:flex;align-items:center;gap:12px">
-            <div style="width:68px;height:68px;border-radius:10px;background:linear-gradient(180deg,#111219,#0b0b0b);display:flex;align-items:center;justify-content:center"><img src="assets/logo-gypsy.png" style="width:56%;" alt="logo"></div>
-            <div>
-              <div style="font-weight:700">Gypsy Cartel — Store</div>
-              <div style="color:var(--muted);font-size:13px">MG Creations — Developer</div>
-            </div>
+        <div class="purchase">
+          <div>
+            <div class="price">₹499</div>
+            <div class="small">One license per device · Lifetime updates</div>
           </div>
 
-          <div style="margin-top:12px">
-            <div style="font-size:13px;color:var(--muted)">Follow on Instagram</div>
-            <a href="https://www.instagram.com/mallugypsy.creations" style="display:inline-block;margin-top:8px;text-decoration:none;color:var(--orange);font-weight:700">@mallugypsy.creations</a>
-          </div>
-
-          <div style="margin-top:14px">
-            <div style="font-size:13px;color:var(--muted)">Quick Links</div>
-            <ul style="padding-left:18px;margin:8px 0 0;color:var(--muted)">
-              <li><a href="/products/gypsy-optimizer/" style="color:var(--white);text-decoration:none">Product page</a></li>
-              <li><a href="/activate/" style="color:var(--white);text-decoration:none">Activation portal</a></li>
-              <li><a href="/PLAN.md" style="color:var(--white);text-decoration:none">Project PLAN</a></li>
-            </ul>
-          </div>
+          <div style="margin-left:12px;color:var(--muted);font-size:13px">Or choose subscription</div>
         </div>
 
         <div style="height:18px"></div>
+        <div class="small">After purchase you'll receive clear instructions to copy your HWID and activate on the Activation Portal.</div>
+      </div>
+    </section>
 
-        <div class="card fade-in">
-          <div style="font-weight:700;margin-bottom:8px">Why choose Gypsy?</div>
-          <p style="color:var(--muted);margin:0">Premium tools, transparent licensing, and an easy activation flow. We ship updates and help directly via our activation portal.</p>
+    <!-- Features grid -->
+    <section id="features" class="features">
+      <div class="feature fade-in">
+        <h4>Full System Optimize</h4>
+        <p>Runs all 15 tasks automatically: cleanup, repair, optimization and tuning.</p>
+      </div>
+
+      <div class="feature fade-in">
+        <h4>Live Monitor</h4>
+        <p>Real‑time CPU / RAM / Disk / Network monitoring with logs and PDF export.</p>
+      </div>
+
+      <div class="feature fade-in">
+        <h4>Safe Mode & Restore</h4>
+        <p>Create restore points before major changes. Stop operations safely anytime.</p>
+      </div>
+
+      <div class="feature fade-in">
+        <h4>GPU & RAM Tuning</h4>
+        <p>Refresh GPU shader cache, optimize RAM usage for gaming and heavy apps.</p>
+      </div>
+
+      <div class="feature fade-in">
+        <h4>Network & Internet Boost</h4>
+        <p>Reset network stack and tune TCP for better latency and download speeds.</p>
+      </div>
+
+      <div class="feature fade-in">
+        <h4>Winget App Updates</h4>
+        <p>Keep your apps updated automatically with Windows package manager integration.</p>
+      </div>
+    </section>
+
+    <!-- Media + Ad -->
+    <section class="media">
+      <div class="gallery">
+        <h3 style="margin:0 0 12px 0">Screenshots</h3>
+        <div class="gallery-grid">
+          <div class="shot">Screenshot 1<br><small class="small">replace /assets/shot1.png</small></div>
+          <div class="shot">Screenshot 2<br><small class="small">replace /assets/shot2.png</small></div>
+          <div class="shot">Screenshot 3<br><small class="small">replace /assets/shot3.png</small></div>
+          <div class="shot">Screenshot 4<br><small class="small">replace /assets/shot4.png</small></div>
+          <div class="shot">Screenshot 5<br><small class="small">replace /assets/shot5.png</small></div>
+          <div class="shot">Screenshot 6<br><small class="small">replace /assets/shot6.png</small></div>
         </div>
 
-      </aside>
+        <div style="height:12px"></div>
+        <div class="small">Tip: use 16:9 screenshots at 1200×675 for best appearance.</div>
+      </div>
 
+      <aside class="video-box">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <strong>Preview Video</strong>
+            <div class="small">Screen recording & ad video</div>
+          </div>
+          <div class="small">Duration: 0:30 - 0:60</div>
+        </div>
+
+        <div class="video-thumb">
+          <!-- Replace the src with your hosted mp4 poster or a thumbnail linking to /assets/preview.mp4 -->
+          <img src="/assets/video-thumb.jpg" alt="video ad thumbnail" onerror="this.style.opacity=.12;this.alt='replace with video thumbnail'">
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <a class="btn-primary" href="/assets/gypsy-optimizer-demo.mp4" target="_blank">Play Demo</a>
+          <a class="btn-ghost-outline" href="/assets/gypsy-optimizer-ad.mp4" target="_blank">Download Ad</a>
+        </div>
+
+        <div style="height:8px"></div>
+        <div class="small">Pro tip: upload your ad video to YouTube or Instagram Reels and link it here for better discoverability.</div>
+
+        <div class="ad-card" style="margin-top:12px">
+          <div style="font-weight:700;font-size:15px">Quick Promo Poster</div>
+          <div class="small">We will export a 1080×1920 portrait poster for Instagram Stories and a 1200×628 landscape for ads.</div>
+
+          <div class="ad-cta">
+            <a class="btn-ghost-outline" href="/assets/poster-landscape.png" target="_blank">Download Poster</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Activation explanation -->
+    <section style="padding:20px 36px;border-top:1px solid rgba(255,255,255,0.02)">
+      <h3 style="margin:0 0 10px">Activation & License</h3>
+      <p class="small" style="max-width:900px">After purchase you will receive a download link and instructions to copy your HWID. Visit <a href="/activate" style="color:var(--orange);text-decoration:none">/activate</a> and submit your HWID and purchase email. Our secure license server will generate a unique activation key and deliver it instantly via email. (Automated delivery using a private Python server.)</p>
+    </section>
+
+    <!-- Developer info -->
+    <div id="dev" class="dev">
+      <div>
+        <div style="font-weight:700">MG Creations — Mallu Gypsy</div>
+        <div class="small">Design, Development & Support — Vipinraj VR</div>
+      </div>
+      <div style="text-align:right">
+        <div class="small">Instagram: <a href="https://instagram.com/mallugypsy.creations" target="_blank" style="color:var(--orange)">@mallugypsy.creations</a></div>
+        <div style="height:6px"></div>
+        <a class="btn-ghost-outline" href="mailto:hello@gypsycartel.shop">Contact Developer</a>
+      </div>
     </div>
+
+    <footer>
+      © 2025 Gypsy Cartel · All rights reserved · <span style="color:var(--muted)">Privacy · Terms</span>
+    </footer>
   </div>
+
 </body>
 </html>
