@@ -3,142 +3,177 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Gypsy Optimizer PRO+ — Gypsy Cartel</title>
-
-  <!-- Preload critical logos -->
-  <link rel="preload" href="assets/logos/gypsy-cartel-logo.png" as="image">
-  <link rel="preload" href="assets/logos/mglogo.png" as="image">
-
-  <meta name="description" content="Gypsy Optimizer PRO+ — Make your PC faster in one click. Boost performance, clean junk, repair system and export PDFs." />
-  <link rel="stylesheet" href="style.css">
+  <title>Gypsy Cartel · Gypsy Optimizer PRO+</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Gypsy Optimizer PRO+ — Make your PC faster in one click. Clean, tune, repair and export PDF logs." />
 </head>
-<body class="theme-dark">
+<body class="dark">
   <header class="site-header">
-    <div class="wrap">
+    <div class="container header-inner">
       <a class="brand" href="/">
-        <img src="assets/logos/gypsy-cartel-logo.png" alt="Gypsy Cartel" class="brand-logo" width="80" height="80">
+        <img src="assets/logos/GYPSY CARTEL LOGO.png" alt="Gypsy Cartel logo" class="brand-logo" />
       </a>
-      <nav class="nav">
+
+      <nav class="main-nav">
         <a href="#features">Features</a>
         <a href="#screenshots">Screenshots</a>
         <a href="#demo">Demo</a>
-        <a href="#buy" class="btn-small">Buy Now</a>
+        <a class="btn-secondary" href="#buy">Buy Now</a>
       </nav>
     </div>
+
+    <!-- subtle carbon-fiber overlay (CSS pattern) -->
+    <div class="header-pattern" aria-hidden="true"></div>
   </header>
 
   <main>
-    <!-- HERO (Big Left Image + Right Text) -->
-    <section class="hero">
-      <div class="wrap hero-inner">
-        <div class="hero-left">
-          <!-- use picture for responsive images & lazy loading -->
-          <picture class="hero-image-figure">
-            <source srcset="assets/icons/gypsy-logo-for-app.png" type="image/png">
-            <img src="assets/icons/gypsy-logo-for-app.png" alt="Gypsy Optimizer" class="hero-image" loading="eager">
-          </picture>
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-left">
+        <div class="hero-graphic">
+          <img src="assets/icons/gypsy-logo-for-app.png" alt="Gypsy Optimizer icon" loading="lazy" />
         </div>
+      </div>
 
-        <div class="hero-right">
-          <h1 class="title">Gypsy Optimizer <span class="muted">PRO+</span></h1>
-          <p class="tagline"><strong class="accent">Make Your PC Faster in One Click</strong></p>
-          <p class="lead">
-            Boost performance, clean junk files, fix system errors and optimize Windows automatically.
-            Includes PDF logs, RAM/GPU tuning and one-click restore points.
-          </p>
+      <div class="hero-right">
+        <h1>Gypsy Optimizer <span class="muted">PRO+</span></h1>
+        <p class="tagline">Make Your PC Faster in One Click</p>
+        <p class="lead">Boost performance, clean junk files, fix system errors and optimize Windows automatically. Includes PDF logs, RAM/GPU tuning and one-click restore points.</p>
 
-          <div class="hero-ctas">
-            <a id="buy" class="btn-primary" href="#">Buy Now</a>
-            <a id="demo" class="btn-ghost" href="#screenshots">Watch Demo</a>
-          </div>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#buy">Buy Now</a>
+          <a class="btn-outline" href="#demo">Watch Demo</a>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES (brief) -->
-    <section id="features" class="wrap features">
-      <div class="feature-grid">
-        <div class="feature">
+    <!-- METALLIC DIVIDER -->
+    <div class="metal-divider"></div>
+
+    <!-- FEATURES -->
+    <section id="features" class="section container">
+      <div class="grid-3">
+        <article class="card">
           <h3>1-Click Optimize</h3>
-          <p>Run 15 automatic tasks: cleanup, repair, network tune and more.</p>
-        </div>
-        <div class="feature">
+          <p>Run 15 automatic tasks: cleanup, registry safe fixes, network tuning and more — automatically.</p>
+        </article>
+
+        <article class="card">
           <h3>Live Monitor</h3>
-          <p>Real-time CPU / RAM / Disk monitoring with PDF export.</p>
-        </div>
-        <div class="feature">
+          <p>Real-time CPU / RAM / Disk monitoring with logs and PDF export for audit or support.</p>
+        </article>
+
+        <article class="card">
           <h3>Safe Restore</h3>
-          <p>Automatic restore points before major changes — keep control.</p>
-        </div>
+          <p>Automatic restore points before major changes so you can reverse operations safely anytime.</p>
+        </article>
       </div>
     </section>
 
     <!-- SCREENSHOTS -->
-    <section id="screenshots" class="wrap screenshots-section">
+    <section id="screenshots" class="section container">
       <h2 class="section-title">Screenshots</h2>
 
       <div class="screenshots-grid">
-        <!-- Large main screenshot (Shot2) -->
-        <div class="screenshot-main">
-          <picture>
-            <source srcset="assets/screenshots/Shot2.png" type="image/png">
-            <img src="assets/screenshots/Shot2.png" alt="Gypsy Optimizer - main" loading="lazy" class="screenshot-img">
-          </picture>
-        </div>
+        <!-- Big primary screenshot -->
+        <figure class="screenshot big">
+          <img src="assets/screenshots/Shot2.png" alt="Gypsy Optimizer - main UI" loading="lazy" />
+          <figcaption>
+            <strong>Main UI — Dashboard</strong>
+            <p>Full system overview, real-time log viewer and one-click optimizations.</p>
+          </figcaption>
+        </figure>
 
-        <!-- Thumbnails row -->
-        <div class="screenshot-thumbs">
-          <div class="thumb">
-            <img src="assets/screenshots/Shot1.png" alt="Shot 1" loading="lazy">
-          </div>
-          <div class="thumb">
-            <img src="assets/screenshots/Shot3.png" alt="Shot 3" loading="lazy">
-          </div>
-          <div class="thumb">
-            <img src="assets/screenshots/Shot4.png" alt="Shot 4" loading="lazy">
-          </div>
-          <div class="thumb">
-            <img src="assets/screenshots/Shot5.png" alt="Shot 5" loading="lazy">
-          </div>
-        </div>
+        <!-- Smaller shots -->
+        <figure class="screenshot">
+          <img src="assets/screenshots/Shot1.png" alt="Gypsy Optimizer - status" loading="lazy" />
+          <figcaption>
+            <strong>Initial Scan</strong>
+            <p>Quick analysis shows junk found and recommended actions.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="screenshot">
+          <img src="assets/screenshots/Shot3.png" alt="Gypsy Optimizer - mobile preview" loading="lazy" />
+          <figcaption>
+            <strong>Compact Mode</strong>
+            <p>Minimal sidebar layout for quick actions and system stats.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="screenshot">
+          <img src="assets/screenshots/Shot4.png" alt="Gypsy Optimizer - logs" loading="lazy" />
+          <figcaption>
+            <strong>Advanced Log Viewer</strong>
+            <p>Detailed operation log with color-coded results and timestamps.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="screenshot">
+          <img src="assets/screenshots/Shot5.png" alt="Gypsy Optimizer - final report" loading="lazy" />
+          <figcaption>
+            <strong>Optimization Report</strong>
+            <p>PDF export-ready report summarizing actions and freed space.</p>
+          </figcaption>
+        </figure>
       </div>
 
-      <p class="hint">Tip: best appearance at 1200×675 (16:9). Images are lazy-loaded for faster page speed.</p>
+      <p class="screenshot-tip">Tip: best appearance at 1200×675 (16:9). Images are lazy-loaded to keep page speed fast.</p>
     </section>
 
-    <!-- SHORT FOOTER WITH CONTACT -->
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <div>
-          <img src="assets/logos/mglogo.png" alt="MG Creations" class="footer-logo" width="120">
-          <p class="muted">MG Creations — Mallu Gypsy • Vipinraj VR</p>
-        </div>
+    <div class="metal-divider thin"></div>
 
-        <div class="footer-links">
-          <a href="https://instagram.com/mallugypsy.creations" target="_blank" rel="noopener">Instagram</a>
-          <a href="/products/gypsy-optimizer">Product page</a>
-          <a href="#buy">Buy</a>
+    <!-- DEMO / AD VIDEO -->
+    <section id="demo" class="section container demo-section">
+      <div class="demo-left">
+        <h3>Preview Video</h3>
+        <div class="video-placeholder" role="img" aria-label="Video demo placeholder">
+          <button class="btn-play">Play Demo</button>
         </div>
+        <p class="muted">Duration: 0:30 - 0:60. Tip: upload your ad video to YouTube and link here for discoverability.</p>
       </div>
+
+      <div class="demo-right">
+        <h3>Quick Promo Poster</h3>
+        <p>Download a ready-made promo poster for Instagram Stories (1080×1920) and landscape ads (1200×628).</p>
+        <a class="btn-outline" href="#buy">Download Poster</a>
+      </div>
+    </section>
+
+    <!-- ACTIVATION -->
+    <section id="activate" class="section container activation">
+      <h3>Activation & License</h3>
+      <p>After purchase you'll receive download instructions with steps to copy your HWID. Visit <a href="/activate" class="orange-link">/activate</a> and submit your HWID + purchase email. Our secure license server will generate and deliver a unique activation key by email (automated delivery using a private Python server).</p>
+    </section>
+
+    <div class="metal-divider"></div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer container">
+      <div class="footer-left">
+        <img src="assets/logos/mglogo.png" alt="MG Creations" class="footer-logo" />
+        <p>MG Creations — design & support</p>
+        <p class="muted">Instagram: <a href="https://www.instagram.com/mallugypsy.creations" target="_blank" rel="noopener">@mallugypsy.creations</a></p>
+      </div>
+
+      <nav class="footer-nav">
+        <a href="#screenshots">Product page</a>
+        <a href="#buy">Buy</a>
+      </nav>
     </footer>
   </main>
 
-  <!-- Minimal JS to ensure consistent lazy-loading fallback (optional) -->
+  <!-- Scripts: small helpers -->
   <script>
-    // Simple check to ensure images are not blocking rendering.
-    // All heavy images use loading="lazy" and will only load when needed.
-    // No extra libraries to keep bundle small.
-    (function() {
-      if ('loading' in HTMLImageElement.prototype) {
-        // native lazy loading supported
-        return;
+    // simple accessibility: add focus outline when using keyboard
+    (function(){
+      function handleFirstTab(e) {
+        if (e.key === 'Tab') {
+          document.body.classList.add('show-focus');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
       }
-      // fallback: dynamically load a very small lazyloading script if needed
-      // (we keep minimal to avoid extra network cost).
-      var script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-      script.async = true;
-      document.body.appendChild(script);
+      window.addEventListener('keydown', handleFirstTab);
     })();
   </script>
 </body>
