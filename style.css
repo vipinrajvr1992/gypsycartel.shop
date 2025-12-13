@@ -5,16 +5,22 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* GLOBAL BACKGROUND */
 body {
-  background:
-    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-    url("assets/ads/ad-logs.webp");
-  background-size: cover;
-  background-attachment: fixed;
+  background: url("assets/ads/ad-logs.webp") repeat;
+  background-size: 600px;
   color: #fff;
 }
 
-/* ================= NAVBAR ================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: -1;
+}
+
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -22,22 +28,21 @@ body {
   padding: 20px 40px;
 }
 
-.navbar img {
+.nav-logo {
   height: 40px;
 }
 
 .navbar nav a {
-  margin-left: 30px;
-  text-decoration: none;
   color: #fff;
-  font-size: 15px;
+  text-decoration: none;
+  margin-left: 30px;
 }
 
 .navbar nav a:hover {
   color: #ff8c00;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero {
   height: 100vh;
   display: flex;
@@ -49,51 +54,43 @@ body {
   max-width: 420px;
 }
 
-/* ================= APPS ================= */
-.apps {
+/* SECTIONS */
+.section {
   padding: 100px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.center {
   text-align: center;
 }
 
-.apps h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
-}
-
-.app-box {
+/* APPS */
+.app-wrap {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 40px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.app-box img {
+.app-img {
   max-width: 420px;
 }
 
-.app-info {
+.app-text {
   max-width: 420px;
-  text-align: left;
 }
 
-.tagline {
+.orange {
   color: #ff8c00;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.desc {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 15px;
 }
 
 .downloads {
-  margin-bottom: 20px;
+  margin: 15px 0;
 }
 
-.btn-primary {
+/* BUTTON */
+.btn {
   padding: 12px 24px;
   background: #ff8c00;
   color: #000;
@@ -102,11 +99,11 @@ body {
   font-weight: bold;
 }
 
-/* ================= ADS ================= */
+/* ADS */
 .ads {
-  padding: 60px 20px;
   display: grid;
   gap: 30px;
+  padding: 60px 20px;
 }
 
 .ads img {
@@ -115,60 +112,20 @@ body {
   margin: auto;
 }
 
-/* ================= DESIGNS ================= */
-.designs {
-  padding: 100px 20px;
-  text-align: center;
-}
-
-.designs h2 {
-  font-size: 34px;
-  margin-bottom: 20px;
-}
-
-.designs p {
-  max-width: 700px;
-  margin: auto;
-  line-height: 1.6;
-}
-
-.note {
-  margin-top: 15px;
-  color: #ff8c00;
-}
-
-/* ================= ABOUT ================= */
-.about {
-  padding: 100px 20px;
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
-
-.about h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
+/* ABOUT */
 .about h3 {
   margin-top: 40px;
   color: #ff8c00;
-}
-
-.about p {
-  line-height: 1.7;
-  margin-top: 10px;
 }
 
 .vision {
   font-weight: bold;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 .footer {
-  padding: 60px 20px;
   text-align: center;
-  background: #000;
+  padding: 60px 20px;
 }
 
 .footer-logos {
@@ -182,11 +139,6 @@ body {
   height: 55px;
 }
 
-.highlight {
-  color: #ff8c00;
-}
-
 copyright {
-  margin-top: 10px;
   font-size: 13px;
 }
