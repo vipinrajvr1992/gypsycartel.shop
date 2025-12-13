@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gypsy Cartel | Apps, Design, & Fashion</title>
     <link rel="stylesheet" href="style.css">
-    </head>
+    <link rel="icon" type="image/webp" href="assets/logos/gypsy-cartel-icon.webp"> 
+</head>
 <body>
 
     <header class="main-header">
         <div class="logo">
-            <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Logo">
+            <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Logo" class="header-logo">
         </div>
         <nav class="main-nav">
             <ul>
@@ -23,8 +24,8 @@
         </nav>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-content">
+    <section class="hero-section full-screen-section dark-bg">
+        <div class="hero-content container">
             <h1 class="hero-title">Digital Power. Modern Design. Future Fashion.</h1>
             <p class="hero-subtitle">High-performance Windows apps, premium 3D design, and creative digital solutions by Mallu Gypsy.</p>
             <div class="hero-ctas">
@@ -35,17 +36,17 @@
         </div>
     </section>
 
-    <section class="about-section dark-bg">
+    <section class="about-section full-screen-section black-bg">
         <div class="container">
             <h2 class="section-title">About Gypsy Cartel</h2>
             <div class="about-grid">
                 <div class="about-text">
                     <p>Gypsy Cartel is a creative digital brand focused on building powerful Windows applications, modern design solutions, and premium digital products.</p>
-                    <p>Founded and developed by **Mallu Gypsy**, Gypsy Cartel combines performance, simplicity, and visual excellence to deliver tools that actually make a difference. From system optimization software to creative design assets, every product is crafted with real-world usability in mind.</p>
+                    <p>Founded and developed by **Mallu Gypsy**, Gypsy Cartel combines performance, simplicity, and visual excellence to deliver tools that actually make a difference. Every product is crafted with real-world usability in mind.</p>
                     <p>Our flagship application, **Gypsy Optimizer – PC Beast PRO+**, is designed to improve Windows performance with one-click optimization, system cleanup, and advanced maintenance features — trusted by hundreds of users.</p>
                 </div>
                 <div class="about-details">
-                    <h3>We Believe In:</h3>
+                    <h3>Our Vision & Beliefs</h3>
                     <ul class="check-list">
                         <li>Clean and efficient performance</li>
                         <li>Simple, user-friendly design</li>
@@ -58,13 +59,10 @@
         </div>
     </section>
 
-    <section id="apps" class="apps-section light-bg">
+    <section id="apps" class="apps-section full-screen-section dark-bg">
         <div class="container">
             <h2 class="section-title">Turbocharge Your PC: Windows Apps</h2>
             <div class="product-card">
-                <div class="product-image-area">
-                    <img src="assets/ads/ad-slow-pc.webp" alt="Gypsy Optimizer UI" class="product-app-ui">
-                </div>
                 <div class="product-info">
                     <h3>Gypsy Optimizer – PC Beast PRO+</h3>
                     <p>The ultimate one-click solution to unlock maximum performance from your Windows system. Built with **Python** and **CustomTkinter** for power and speed.</p>
@@ -76,11 +74,14 @@
                     </ul>
                     <a href="apps.html" class="cta-button primary-cta">Learn More & Download PC Beast PRO+</a>
                 </div>
+                <div class="product-image-area">
+                    <img src="assets/ads/ad-slow-pc.webp" alt="Gypsy Optimizer UI" class="product-app-ui">
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="design" class="design-section dark-bg">
+    <section id="design" class="design-section full-screen-section black-bg">
         <div class="container">
             <h2 class="section-title">Vision into Reality: Design Solutions</h2>
             <p class="section-subtitle">Premium 3D Interior, Exterior & Digital Content under **Mallu Gypsy Creations**.</p>
@@ -88,18 +89,18 @@
             <div class="design-grid">
                 <div class="service-block">
                     <img src="assets/ads/ad-solution.webp" alt="3D Interior Design" class="service-image">
-                    <h4>Photorealistic 3D Interior Visualizations</h4>
-                    <p>Crafting stunning, detailed indoor spaces for architects and real estate.</p>
+                    <h4>Photorealistic Interior Visualizations</h4>
+                    <p>Stunning, detailed indoor spaces for architecture and real estate.</p>
                 </div>
                 <div class="service-block">
                     <img src="assets/ads/ad-logs.webp" alt="3D Exterior Design" class="service-image">
                     <h4>Architectural Exterior Renders</h4>
-                    <p>High-fidelity, realistic renders that showcase your buildings and landscapes.</p>
+                    <p>High-fidelity, realistic renders of buildings and landscapes.</p>
                 </div>
                 <div class="service-block">
                     <img src="assets/ads/ad-ui.webp" alt="Digital Content Design" class="service-image">
                     <h4>Custom Digital Content & UI/UX</h4>
-                    <p>Creative assets, modern UI/UX for applications, and custom graphics.</p>
+                    <p>Creative assets, modern UI/UX for applications, and graphics.</p>
                 </div>
             </div>
             <div class="center-cta">
@@ -108,21 +109,22 @@
         </div>
     </section>
 
-    <section id="fashion" class="fashion-section light-bg">
+    <section id="fashion" class="fashion-section full-screen-section dark-bg">
         <div class="container text-center">
             <h2 class="section-title">Style & Culture: Fashion Store</h2>
             <p class="fashion-teaser-text">The ultimate expression of the Mallu Gypsy aesthetic. Get ready for a curated selection of apparel where modern style meets cultural inspiration.</p>
-            <h3>Launching Soon!</h3>
+            <h3 class="coming-soon">Launching Soon!</h3>
             <div class="signup-form">
                 <form action="#" method="POST">
                     <input type="email" placeholder="Enter your email to get launch alerts" required>
                     <button type="submit" class="cta-button primary-cta">Notify Me</button>
                 </form>
             </div>
+            <img src="assets/logos/mg-creations.webp" alt="MG Creations Teaser" class="fashion-teaser-logo">
         </div>
     </section>
 
-    <footer class="main-footer dark-bg">
+    <footer class="main-footer black-bg">
         <div class="container footer-grid">
             <div class="footer-col">
                 <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Logo" class="footer-logo">
@@ -146,7 +148,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Gypsy Cartel. All rights reserved.</p>
+            <p>&copy; 2025 Gypsy Cartel. All rights reserved. Creative & Testing by Vipinraj VR.</p>
         </div>
     </footer>
 
