@@ -6,8 +6,9 @@
 }
 
 body {
-  background: #000;
+  background-color: #000;
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* HEADER */
@@ -42,12 +43,13 @@ body {
 /* HERO */
 .hero {
   min-height: 100vh;
-  padding-top: 100px;
+  padding-top: 120px;
   padding-left: 60px;
   padding-right: 60px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  background-color: #000; /* ONLY BLACK */
 }
 
 .hero-text h1 {
@@ -56,8 +58,8 @@ body {
 }
 
 .hero-text p {
-  max-width: 500px;
-  margin-bottom: 10px;
+  max-width: 520px;
+  margin-bottom: 12px;
   color: #ccc;
 }
 
@@ -65,9 +67,12 @@ body {
   margin-bottom: 20px;
 }
 
+/* HERO IMAGE (APP ONLY) */
 .hero-image img {
   width: 100%;
   max-width: 420px;
+  display: block;
+  margin-left: auto;
 }
 
 /* BUTTON */
@@ -107,7 +112,7 @@ body {
   margin-top: 40px;
   background: #111;
   padding: 40px;
-  max-width: 500px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -131,12 +136,6 @@ body {
 
 .discount {
   color: #4caf50;
-}
-
-/* ABOUT */
-.vision {
-  margin-top: 20px;
-  font-style: italic;
 }
 
 /* FOOTER */
@@ -165,6 +164,10 @@ body {
 
   .hero-image {
     margin-top: 40px;
+  }
+
+  .hero-image img {
+    margin: auto;
   }
 
   .header nav {
