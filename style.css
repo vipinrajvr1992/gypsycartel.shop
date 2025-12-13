@@ -2,163 +2,191 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: #000;
+  background:
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url("assets/ads/ad-logs.webp");
+  background-size: cover;
+  background-attachment: fixed;
   color: #fff;
 }
 
-/* HEADER */
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 20px 60px;
+/* ================= NAVBAR ================= */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0,0,0,0.6);
-  z-index: 100;
+  padding: 20px 40px;
 }
 
-.logo img {
+.navbar img {
   height: 40px;
 }
 
-.nav a {
+.navbar nav a {
   margin-left: 30px;
   text-decoration: none;
   color: #fff;
   font-size: 15px;
 }
 
-.nav a:hover {
+.navbar nav a:hover {
   color: #ff8c00;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
   height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url("assets/ads/ad-logs.webp");
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.hero-logo {
+.hero img {
   max-width: 420px;
 }
 
-/* APPS SECTION */
-.apps-section {
-  padding: 120px 40px;
-  background: #0a0a0a;
-}
-
-.apps-container {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 60px;
-}
-
-.apps-left img {
-  width: 100%;
-  max-width: 500px;
-}
-
-.apps-right h2 {
-  font-size: 36px;
-}
-
-.apps-right h3 {
-  color: #ff8c00;
-  margin: 10px 0 20px;
-}
-
-.apps-right p {
-  color: #ccc;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.download-count {
-  margin-bottom: 25px;
-  font-size: 16px;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 14px 28px;
-  background: #ff8c00;
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
-}
-
-/* ADS */
-.ads-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.ads-section img {
-  width: 100%;
-}
-
-/* ABOUT */
-.about-section {
-  padding: 120px 30px;
-  background: #0a0a0a;
+/* ================= APPS ================= */
+.apps {
+  padding: 100px 20px;
   text-align: center;
 }
 
-.about-container {
+.apps h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.app-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+}
+
+.app-box img {
+  max-width: 420px;
+}
+
+.app-info {
+  max-width: 420px;
+  text-align: left;
+}
+
+.tagline {
+  color: #ff8c00;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.downloads {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  padding: 12px 24px;
+  background: #ff8c00;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ================= ADS ================= */
+.ads {
+  padding: 60px 20px;
+  display: grid;
+  gap: 30px;
+}
+
+.ads img {
+  width: 100%;
   max-width: 900px;
   margin: auto;
 }
 
-.about-section h2 {
-  font-size: 36px;
-  margin-bottom: 25px;
+/* ================= DESIGNS ================= */
+.designs {
+  padding: 100px 20px;
+  text-align: center;
 }
 
-.about-section h3 {
+.designs h2 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.designs p {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.note {
+  margin-top: 15px;
   color: #ff8c00;
-  margin: 35px 0 15px;
 }
 
-.about-desc {
-  color: #ccc;
-  line-height: 1.8;
-  margin-bottom: 15px;
+/* ================= ABOUT ================= */
+.about {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
 }
 
-.vision-list {
-  list-style: none;
+.about h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-.vision-list li {
-  margin: 10px 0;
+.about h3 {
+  margin-top: 40px;
+  color: #ff8c00;
 }
 
-/* FOOTER */
+.about p {
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+.vision {
+  font-weight: bold;
+}
+
+/* ================= FOOTER ================= */
 .footer {
-  background: #000;
   padding: 60px 20px;
   text-align: center;
+  background: #000;
 }
 
 .footer-logos {
   display: flex;
   justify-content: center;
   gap: 40px;
-  mar
+  margin-bottom: 20px;
+}
+
+.footer-logos img {
+  height: 55px;
+}
+
+.highlight {
+  color: #ff8c00;
+}
+
+copyright {
+  margin-top: 10px;
+  font-size: 13px;
+}
