@@ -1,148 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gypsy Cartel — Digital Products</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+/* ===============================
+   ROOT & THEME
+================================ */
+:root {
+  --bg-dark: #0b0b0b;
+  --bg-soft: #121212;
+  --text-main: #ffffff;
+  --text-muted: #b5b5b5;
+  --accent: #ff8c00;
+  --border-soft: rgba(255,255,255,0.08);
+  --max-width: 1200px;
+}
 
-<body>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<!-- ================= HEADER ================= -->
-<header>
-  <div class="navbar">
-    <div class="brand">
-      <img src="assets/logos/GYPSY CARTEL LOGO.webp" alt="Gypsy Cartel Logo">
-      <span>Gypsy Cartel</span>
-    </div>
+html, body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
 
-    <nav class="nav-links">
-      <a href="#apps">Apps</a>
-      <a href="#designs">Designs</a>
-      <a href="#fashion">Fashion</a>
-      <a href="#about">About</a>
-    </nav>
+/* ===============================
+   GLOBAL CONTAINER
+================================ */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-    <a href="#contact" class="nav-cta">Contact</a>
-  </div>
-</header>
+/* ===============================
+   HEADER
+================================ */
+header {
+  background: linear-gradient(to bottom, #000, #0b0b0b);
+  border-bottom: 1px solid var(--border-soft);
+}
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>
-      Digital Products by <span>Gypsy Cartel</span>
-    </h1>
-    <p>
-      Premium Windows apps, creative tools, interior & graphic designs —
-      built for performance, style and modern workflows.
-    </p>
+.navbar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    <div class="hero-buttons">
-      <a href="#apps" class="btn-primary">Explore Apps</a>
-      <a href="#designs" class="btn-secondary">View Designs</a>
-    </div>
-  </div>
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  <div class="hero-media">
-    <!-- IMPORTANT: ONLY HERO IMAGE HERE -->
-    <img src="assets/screenshots/Shot 4.webp" alt="Gypsy Optimizer Preview">
-  </div>
-</section>
+.logo img {
+  height: 38px;
+  width: auto;
+}
 
-<!-- ================= APPS ================= -->
-<section id="apps" class="section">
-  <h2 class="section-title">Windows Apps</h2>
-  <p class="section-desc">
-    Powerful desktop utilities designed to optimize, clean and boost system performance.
-  </p>
+.logo span {
+  font-size: 20px;
+  font-weight: 600;
+}
 
-  <div class="cards">
-    <div class="card">
-      <h3>Gypsy Optimizer PRO+</h3>
-      <p>
-        One-click system optimization. Clean junk files, boost RAM, tune performance
-        and keep your PC running fast.
-      </p>
-      <div class="count">Downloads: <span class="counter">347+</span></div>
-    </div>
-  </div>
-</section>
+/* MENU */
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 14px;
+}
 
-<!-- ================= DESIGNS ================= -->
-<section id="designs" class="section">
-  <h2 class="section-title">Designs & Templates</h2>
-  <p class="section-desc">
-    2D & 3D plans, interior & exterior designs, creative templates and visual assets.
-  </p>
+nav a:hover {
+  color: var(--accent);
+}
 
-  <div class="cards">
-    <div class="card">
-      <h3>Interior & Exterior</h3>
-      <p>Professional 3D interiors, elevations and architectural visuals.</p>
-    </div>
+/* ===============================
+   HERO SECTION
+================================ */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
 
-    <div class="card">
-      <h3>Graphics & Templates</h3>
-      <p>Logos, posters, brand kits and reusable creative templates.</p>
-    </div>
-  </div>
-</section>
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
 
-<!-- ================= FASHION ================= -->
-<section id="fashion" class="section">
-  <h2 class="section-title">Fashion Store</h2>
-  <p class="section-desc">
-    Premium Gypsy Cartel fashion & lifestyle products.
-  </p>
+/* HERO TEXT */
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.2;
+}
 
-  <div class="cards">
-    <div class="card coming-soon">
-      <h3>Coming Soon</h3>
-      <p>Online fashion store launching soon.</p>
-    </div>
-  </div>
-</section>
+.hero p {
+  margin-top: 16px;
+  color: var(--text-muted);
+  max-width: 520px;
+}
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section">
-  <h2 class="section-title">About Gypsy Cartel</h2>
-  <p class="section-desc">
-    Gypsy Cartel is a digital-first creative brand focused on apps, design solutions
-    and modern digital products. Built and curated by MG Creations
-    (MalluGypsy Creations).
-  </p>
-</section>
+/* HERO BUTTONS */
+.hero-buttons {
+  margin-top: 28px;
+}
 
-<!-- ================= FOOTER ================= -->
-<footer id="contact">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="assets/logos/GYPSY CARTEL LOGO.webp" alt="Gypsy Cartel Logo">
-      <p>Digital products · Creative tools · Modern design</p>
-    </div>
+.hero-buttons a {
+  display: inline-block;
+  padding: 12px 22px;
+  margin-right: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+}
 
-    <div class="footer">
-      <h4>Contact</h4>
-      <a href="mailto:support@gypsycartel.shop">support@gypsycartel.shop</a>
-      <a href="https://www.instagram.com/mallugypsy.creations" target="_blank">
-        Instagram @mallugypsy.creations
-      </a>
-    </div>
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
 
-    <div class="footer">
-      <h4>Brand</h4>
-      <a href="#apps">Apps</a>
-      <a href="#designs">Designs</a>
-      <a href="#fashion">Fashion</a>
-    </div>
-  </div>
+.btn-secondary {
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+}
 
-  <div class="footer-bottom">
-    © 2025 Gypsy Cartel. All rights reserved.
-  </div>
-</footer>
+/* HERO IMAGE */
+.hero-image {
+  position: relative;
+  max-width: 100%;
+}
 
-</body>
-</html>
+.hero-image img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+section {
+  padding: 90px 0;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  max-width: 700px;
+}
+
+/* ===============================
+   CARDS (Apps / Designs / Fashion)
+================================ */
+.card-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* DOWNLOAD COUNTER */
+.download-count {
+  margin-top: 12px;
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  background: #050505;
+  border-top: 1px solid var(--border-soft);
+  padding: 40px 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.footer-logo img {
+  height: 36px;
+}
+
+.footer-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
