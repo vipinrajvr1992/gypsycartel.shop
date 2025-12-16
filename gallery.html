@@ -1,115 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | Gypsy Cartel</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/webp" href="assets/logos/gypsy-cartel-icon.webp"> 
-</head>
-<body>
-
-    <header class="main-header">
-        <div class="container">
-            <a href="index.html">
-                <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel" class="header-logo">
-            </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="gallery.html" class="active">Gallery</a></li>
-                    <li><a href="apps.html">Apps</a></li>
-                    <li><a href="design.html">Design</a></li>
-                    <li><a href="fashion.html">Fashion</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html" class="nav-cta">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="gallery-section">
-        <div class="container">
-            <h1>3D Renders & <span class="text-orange">UI/UX</span> Portfolio</h1>
-            <p class="text-grey">A curated selection of our recent hyper-realistic 3D artwork, architectural visualization, and cutting-edge UI/UX design concepts.</p>
-
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/gallery/placeholder-1.webp" alt="3D Render 1">
-                    <h4>Abstract Render</h4>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery/placeholder-2.webp" alt="UI/UX Concept">
-                    <h4>Dashboard UI Concept</h4>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery/placeholder-3.webp" alt="Architectural Visualization">
-                    <h4>Minimalist Architecture</h4>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery/placeholder-4.webp" alt="3D Render 2">
-                    <h4>Cyberpunk Scene</h4>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery/placeholder-5.webp" alt="App UI Screen">
-                    <h4>Mobile App Interface</h4>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery/placeholder-6.webp" alt="Product Visualization">
-                    <h4>High-End Product Viz</h4>
-                </div>
+<section class="gallery-section">
+    <div class="container">
+        <h1>3D Renders & <span class="text-orange">UI/UX</span> Portfolio</h1>
+        <p class="text-grey">A curated selection of our recent hyper-realistic 3D artwork, architectural visualization, and cutting-edge UI/UX design concepts.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/images/3d-render-1.webp" alt="3D Render 1">
+                <p>Abstract Render</p>
             </div>
-        </div>
-    </section>
-
-    <footer class="premium-footer">
-        <div class="container">
-            <div class="footer-grid">
-                
-                <div class="footer-column footer-logo-area">
-                    <img src="assets/logos/gypsy-cartel-icon.webp" alt="Logo" style="height: 50px; margin-bottom: 20px;">
-                    <p style="color: var(--text-grey); font-size: 0.95rem;">Gypsy Cartel is a digital movement, fusing high-performance Windows software with stunning, hyper-realistic 3D design and UI/UX solutions. Precision, innovation, and style.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="apps.html">Apps Development</a></li>
-                        <li><a href="design.html">Design Studio</a></li>
-                        <li><a href="fashion.html">Fashion Line (Soon)</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">Our Vision & History</a></li>
-                        <li><a href="contact.html">Contact Support</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">Connect</h4>
-                    <p style="line-height: 1.5; margin-bottom: 10px;">
-                        <strong style="color: var(--primary-white); display: block; margin-bottom: 5px;">Support:</strong> 
-                        <a href="mailto:support@gypsycartel.shop" style="color: var(--text-grey); font-size: 0.95rem;">support@gypsycartel.shop</a>
-                    </p>
-                    <p style="line-height: 1.5;">
-                        <strong style="color: var(--primary-white); display: block; margin-bottom: 5px;">Creator:</strong> 
-                        <a href="https://www.instagram.com/mallugypsy.creations" target="_blank" class="text-white" style="font-weight: 700;">@mallugypsy.creations</a>
-                    </p>
-                </div>
+            <div class="gallery-item">
+                <img src="assets/images/ui-concept.webp" alt="UI/UX Concept">
+                <p>Dashboard UI Concept</p>
             </div>
+            <div class="gallery-item">
+                <img src="assets/images/architectural-viz.webp" alt="Architectural Visualization">
+                <p>Minimalist Architecture</p>
+            </div>
+            </div>
+    </div>
+    ```
+
+### 3. 📄 `about.html` (Alignment Fix)
+
+This HTML implements the padding and the new Grid structure for the content.
+
+```html
+<section class="about-hero-section">
+    <div class="container">
+        <h1>The Vision Behind Gypsy Cartel.</h1>
+        <p class="text-grey" style="max-width: 800px; margin-bottom: 40px;">Founded by Mallu Gypsy, we are a digital collective focused on performance and aesthetics. We don't just build software, we build tools that empower users to control their technology.</p>
+        
+        <div class="about-content-grid">
             
-            <hr class="footer-divider">
+            <div class="vision-column">
+                <strong class="text-orange">Gypsy Cartel Vision</strong>
+                <p>From the rigorous coding of **PC Beast PRO+** to the artistic detail in our 3D renders, our standard is excellence.</p>
+                <div class="vision-image-container">
+                    <img src="assets/images/gypsy-cartel-vision.webp" alt="Gypsy Cartel Vision Graphic">
+                </div>
+            </div>
 
-            <div class="footer-copyright">
-                <p style="color: var(--text-grey); font-size: 0.8rem;">&copy; 2025 Gypsy Cartel. All Rights Reserved.</p>
+            <div class="philosophy-column">
+                <div class="philosophy-block">
+                    <strong class="text-orange">Our Philosophy</strong>
+                    <p>In a world of generic interfaces, we create tools that are both powerful and visually striking. Every product is a blend of low-latency performance and high-end design, crafted for the enthusiast.</p>
+                </div>
+                
+                <div class="philosophy-block">
+                    <strong class="text-orange">Our Creator</strong>
+                    <p>Mallu Gypsy leads the movement, driven by a passion for clean code and corrupted design—always pushing boundaries in both technology and aesthetics.</p>
+                </div>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+    </div>
+</section>
