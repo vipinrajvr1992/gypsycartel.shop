@@ -1,138 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gypsy Cartel | Gypsy Optimizer - PC Beast V3.1 PRO+</title>
-    <style>
-        /* Basic styles derived from the screenshot for structure/appearance */
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: bold;
-        }
-        .app-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 100px 50px;
-        }
-        .content-left {
-            max-width: 50%;
-        }
-        .windows-optimization-title {
-            color: #ff4500; /* Example accent color for 'WINDOWS OPTIMIZATION' */
-            font-size: 16px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .product-title, .product-subtitle {
-            font-size: 60px;
-            line-height: 1.0;
-            margin: 0;
-        }
-        .product-subtitle {
-            margin-bottom: 20px;
-        }
-        .product-tagline {
-            font-size: 18px;
-            margin: 20px 0;
-            max-width: 90%;
-        }
-        .key-features {
-            list-style: none;
-            padding: 0;
-            margin: 30px 0;
-        }
-        .key-features li {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .download-button {
-            background-color: #ff4500; /* Example accent color for button */
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
-        }
-        .content-right {
-            text-align: center;
-        }
-        .app-illustration {
-            max-width: 100%;
-            height: auto;
-            max-height: 400px; /* Adjust as needed */
-            /* Assuming the background is handled by CSS, or the image has a transparent background */
-        }
-    </style>
+    <title>Gypsy Cartel | Software Solutions</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="header">
-        <div class="logo">
-            <img src="your-logo-path.png" alt="A Cartel Logo"> 
-        </div>
-        <nav class="nav-links">
-            <a href="#">HOME</a>
-            <a href="#" class="active-link">APPS</a> <a href="#">DESIGN</a>
-            <a href="#">FASHION</a>
-            <a href="#">GALLERY</a>
-            <a href="#">ABOUT</a>
-            <a href="#">CONTACT</a>
-        </nav>
-    </div>
-
-    <div class="app-section">
-
-        <div class="content-left">
-            <h3 class="windows-optimization-title">WINDOWS OPTIMIZATION</h3>
-            
-            <h1 class="product-title">
-                GYPSY OPTIMIZER
-            </h1>
-            <h1 class="product-subtitle">
-                PC BEAST V3.1 PRO+
-            </h1>
-            
-            <p class="product-tagline">
-                Eliminate input lag, destroy bloatware. The ultimate, advanced optimization tool designed for **high-performance gaming** and heavy rendering workflows.
-            </p>
-
-            <ul class="key-features">
-                <li>**One-Click Full Optimization** (Runs all 15 tasks)</li>
-                <li>Optimizes **RAM** and refreshes **GPU Shader Cache**</li>
-                <li>Repairs Corrupted System Files (SFC) & Fixes Network Errors</li>
-                <li>**SUPER BOOST MODE** for gaming and critical work</li>
-                <li>Live CPU/RAM/Disk/Network Monitor & PDF Log Export</li>
+    <div class="cursor-dot"></div><div class="cursor-outline"></div>
+    <header>
+        <a href="index.html"><img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="apps.html" class="active">Apps</a></li>
+                <li><a href="design.html">Design</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            
-            <a href="#" class="download-button">DOWNLOAD V3.1</a>
+        </nav>
+    </header>
 
+    <div class="container">
+        <div class="grid-2">
+            <div>
+                <h3 style="color: var(--primary-orange); margin-bottom: 10px; font-size: 1rem;">WINDOWS OPTIMIZATION</h3>
+                <h1 style="font-size: 4rem; margin-bottom: 30px;">PC BEAST <br>PRO+</h1>
+                
+                <p style="color: #ccc; margin-bottom: 30px;">
+                    Eliminate input lag. Destroy bloatware. The ultimate "corrupted" optimization tool designed for high-performance gaming and heavy rendering workflows.
+                </p>
+
+                <ul style="margin-left: 20px; color: var(--text-main); margin-bottom: 40px; list-style-type: '⚡ ';">
+                    <li>1-Click Registry Hacks</li>
+                    <li>Bloatware Destruction Protocol</li>
+                    <li>CPU Core Unparking</li>
+                </ul>
+
+                <a href="#" class="btn btn-primary" style="margin-top: 10px;">Download v1.0</a>
+            </div>
+
+            <div>
+                <img src="assets/ads/ad-solution.webp" alt="PC Beast Pro+ Software Icon" style="width: 100%; height: auto; border-radius: 8px;">
+            </div>
         </div>
-
-        <div class="content-right">
-            <img src="assets/logos/gypsy-app.webp" 
-                 alt="Gypsy Optimizer - PC Beast V3.1 PRO+ App Icon" 
-                 class="app-illustration">
-        </div>
-
     </div>
-    </body>
+    
+    <footer>
+        <div class="footer-content">
+            <div>
+                <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" style="width: 30px; margin-bottom: 10px;">
+                <p>Gypsy Cartel is a digital movement, fusing high-performance Windows software with stunning, hyper-realistic 3D design and UI/UX solutions. Precision, innovation, and style.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="apps.html">Apps Development</a></li>
+                    <li><a href="design.html">Design Studio</a></li>
+                    <li><a href="fashion.html">Fashion Line (Soon)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">Our Vision & History</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <p>Support: <a href="mailto:support@gypsycartel.shop" style="color: var(--primary-orange);">support@gypsycartel.shop</a></p>
+                <p>Creator: <a href="https://instagram.com/mallugypsy.creations" target="_blank" style="color: var(--secondary-accent);">@mallugypsy.creations</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Gypsy Cartel. All Rights Reserved.
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
 </html>
