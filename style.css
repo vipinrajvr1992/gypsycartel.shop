@@ -4,7 +4,7 @@
    ========================================= */
 
 /* --- 1. SETUP & VARIABLES --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700;900;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght+400;600;700;900;900&display=swap');
 
 :root {
     /* Brand Colors */
@@ -46,6 +46,7 @@ h1, h2, h3, h4 {
 a {
     text-decoration: none;
     color: var(--primary-white); 
+    /* Base transition for all links */
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 img {
@@ -72,14 +73,13 @@ img {
 .text-orange { color: var(--primary-orange) !important; }
 .text-white { color: var(--primary-white) !important; } 
 
-/* Index Page Giant Text Styling (Fixes GYPSY CART EL spacing) */
 .giant-text { 
     font-size: 8rem; 
     font-weight: 900; 
     letter-spacing: 0em; 
 }
 
-/* --- 2.2. BUTTON STYLES --- */
+/* --- 2.2. BUTTON STYLES (Includes new animations) --- */
 .btn {
     padding: 15px 35px;
     font-size: 0.85rem;
@@ -90,17 +90,23 @@ img {
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-block;
+    /* Added for animation */
+    transform: perspective(1px) translateZ(0); 
 }
-.btn-orange-fill {
-    background: var(--primary-orange);
-    color: var(--primary-white) !important;
-    border-color: var(--primary-orange);
+
+/* ANIMATION: Orange Fill Button Hover Effect */
+.btn-orange-fill:hover {
+    box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4); 
+    transform: perspective(1px) translateZ(0) translateY(-2px);
 }
-.btn-white-border {
-    background: transparent;
-    color: var(--primary-white) !important;
-    border-color: var(--primary-white);
+
+/* ANIMATION: White Border Button Hover Effect */
+.btn-white-border:hover {
+    background: var(--primary-white);
+    color: var(--primary-black) !important;
+    transform: perspective(1px) translateZ(0) scale(1.02);
 }
+
 .btn-full-width {
     width: 100%;
     text-align: center;
@@ -111,7 +117,7 @@ img {
 }
 
 
-/* --- 3. NAVIGATION & HEADER --- */
+/* --- 3. NAVIGATION & HEADER (Includes new animations) --- */
 .main-header {
     height: var(--header-height);
     background: rgba(5, 5, 5, 0.85);
@@ -139,6 +145,7 @@ img {
     display: flex;
     align-items: center;
     gap: 40px;
+    list-style: none; 
 }
 .main-nav a {
     font-size: 0.85rem;
@@ -148,10 +155,33 @@ img {
     color: var(--text-grey); 
     position: relative;
 }
+
+/* ANIMATION: Sliding Orange Underline for Nav Links */
+.main-nav a:not(.nav-cta)::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-orange);
+    transform: scaleX(0); /* Start hidden */
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.main-nav a:not(.nav-cta):hover::after,
+.main-nav a:not(.nav-cta).active::after {
+    transform: scaleX(1); /* Slide in on hover/active */
+    transform-origin: bottom left;
+}
+
 .main-nav a:not(.nav-cta):hover,
 .main-nav a:not(.nav-cta).active {
     color: var(--primary-white);
 }
+
+/* ANIMATION: Contact Button Hover Effect (CTA) */
 .nav-cta {
     background: var(--primary-orange);
     color: var(--primary-white) !important;
@@ -160,7 +190,12 @@ img {
     font-weight: 700;
     letter-spacing: 1px;
     border: 1px solid var(--primary-orange);
-    transition: all 0.3s;
+    transition: all 0.3s ease; /* Ensure button transition is smooth */
+}
+
+.nav-cta:hover {
+    box-shadow: 0 4px 10px rgba(255, 87, 34, 0.6);
+    background: #ff7043; /* Slightly lighter orange on hover */
 }
 
 
@@ -202,6 +237,11 @@ img {
     animation: fadeUp 1s ease-out;
 }
 
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .brand-title-strip {
     flex: 25; 
     background-color: var(--primary-white);
@@ -234,47 +274,25 @@ img {
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); 
 }
 .design-heading-brand {
-    font-size: 2.5rem;
     color: var(--primary-orange); 
+    font-size: 2.5rem;
     margin-bottom: 5px;
 }
 .design-heading-main {
     font-size: 4rem; 
     margin-bottom: 20px;
 }
-.design-subheading {
-    max-width: 800px;
-    margin: 0 auto 50px auto;
-    font-size: 1.1rem;
-    color: var(--text-grey);
-    line-height: 1.6;
-    letter-spacing: 0.5px;
-}
-.design-hero-cta a {
-    margin: 0 10px;
-}
 
-/* --- CUSTOM REQUEST SECTION (FIXED GRID LAYOUT) --- */
+/* --- CUSTOM REQUEST SECTION (Fixed Grid Layout) --- */
 .custom-request-section {
     padding: 100px 0;
 }
-/* FIX: Form grid layout (info on left, form on right) */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr; 
     gap: 80px;
     align-items: start;
 }
-.form-intro h2 {
-    font-size: 2.5rem;
-    color: var(--primary-orange);
-    margin-bottom: 20px;
-}
-.form-intro i {
-    color: var(--corruption-blue); 
-    margin-right: 10px;
-}
-/* FIX: Two inputs side-by-side */
 .form-row {
     display: flex;
     gap: 20px;
@@ -284,40 +302,18 @@ img {
 }
 .design-form input,
 .design-form textarea {
-    width: 100%;
-    padding: 15px 15px;
+    /* Styles for the inputs */
+    padding: 15px;
     margin-bottom: 20px;
     background: var(--primary-black);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--primary-white);
     font-size: 1rem;
-    outline: none;
     border-radius: var(--radius);
 }
-
-
-/* --- DOWNLOAD ZONE (FIXED GRID LAYOUT & COLOR) --- */
-.download-section {
-    padding: 80px 0 120px 0;
-}
-/* FIX: 3-column grid for download cards */
-.download-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-}
-.download-card {
-    background: var(--secondary-black);
-    padding: 30px;
-    border-radius: var(--radius);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-/* FIX: Download Card Headings are ORANGE */
 .download-card h3 {
-    color: var(--primary-orange); 
+    color: var(--primary-orange); /* Download Card headings are orange */
     font-size: 1.5rem;
-    margin-bottom: 10px;
 }
 
 
@@ -326,86 +322,88 @@ img {
     padding: 100px 0;
     min-height: calc(100vh - var(--header-height));
 }
-.contact-intro h2 {
-    font-size: 3rem;
-    color: var(--primary-white);
-    margin-bottom: 30px;
-}
-.contact-info {
-    font-size: 1.1rem;
-    margin-bottom: 50px;
-}
-.contact-info strong {
-    color: var(--primary-orange);
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-size: 1.4rem;
-}
-.contact-form {
-    max-width: 800px;
-}
 /* FIX: 3 inputs side-by-side using CSS Grid */
 .contact-form .input-row-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 15px 15px;
-    margin-bottom: 20px;
-    background: var(--primary-black);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--primary-white);
-    font-size: 1rem;
-    outline: none;
-    border-radius: var(--radius);
-}
 .contact-form textarea {
     grid-column: 1 / -1; 
     height: 150px;
 }
-.contact-form button {
-    margin-top: 10px;
+
+
+/* --- 7. ABOUT PAGE STYLES (about.html) --- */
+.about-hero {
+    padding: 100px 0 150px 0;
+}
+.about-hero h1 {
+    font-size: 4rem;
+    color: var(--primary-white);
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+.about-hero p {
+    max-width: 900px;
+    font-size: 1.1rem;
+    color: var(--text-grey);
+    margin-bottom: 30px;
+}
+.image-content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+    margin-top: 50px;
+}
+.image-content-grid img {
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 
-/* --- 7. PROFESSIONAL FOOTER (GLOBAL FIX) --- */
+/* --- 8. GALLERY PAGE STYLES (gallery.html) --- */
+.gallery-section {
+    padding: 100px 0;
+    text-align: center;
+}
+.gallery-section h1 {
+    font-size: 3.5rem;
+    color: var(--corruption-blue);
+    margin-bottom: 20px;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+}
+.gallery-item img {
+    border-radius: var(--radius);
+    transition: transform 0.3s ease;
+}
+.gallery-item img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0, 255, 194, 0.3);
+}
+
+
+/* --- 9. PROFESSIONAL FOOTER (GLOBAL FIX) --- */
 .premium-footer {
     background-color: var(--secondary-black); 
     padding: 60px 0 20px 0;
 }
-/* FIX: Ensure the 4-column layout works */
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 2fr; 
     gap: 40px;
     padding-bottom: 40px;
 }
-.footer-heading {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
+/* Ensure footer links animate smoothly */
+.footer-links a:hover {
     color: var(--primary-orange); 
-    margin-bottom: 20px;
-    font-weight: 700;
+    padding-left: 5px;
 }
 .footer-links {
     list-style: none;
-}
-.footer-links li {
-    margin-bottom: 10px;
-}
-.footer-links a {
-    color: var(--text-grey);
-    font-size: 0.95rem;
-}
-.footer-divider {
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.08); 
-    margin: 30px 0;
-}
-.footer-copyright {
-    text-align: center;
 }
