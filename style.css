@@ -145,4 +145,109 @@ img {
     position: absolute;
     inset: 0;
     z-index: 1; 
-    background-color: rgba(0,0,0,0.6); /* Darkens the background slightly
+    background-color: rgba(0,0,0,0.6); /* Darkens the background slightly */
+    
+    /* FINAL BINARY FIX: The filter is applied here to force visibility of the binary data */
+    filter: saturate(0.5) contrast(1.1) brightness(1.2); 
+}
+
+.binary-header-logo {
+    position: relative;
+    z-index: 2; /* Logo MUST be above the pseudo-element */
+    width: 500px; 
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2)) brightness(1); 
+    animation: fadeUp 1s ease-out;
+}
+
+.brand-title-strip {
+    flex: 25; 
+    background-color: var(--primary-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #333;
+}
+
+/* --- 5. SECTIONS & GRIDS --- */
+
+/* --- FINAL FIX: MG Logo Centering on Design Page --- */
+.design-logo-container {
+    text-align: center; 
+    padding-top: 60px; 
+    padding-bottom: 20px;
+}
+.design-logo-container img {
+    display: block; /* Ensures the image behaves as a block element */
+    margin: 0 auto; /* Centers the block element perfectly */
+    width: 150px; 
+    height: auto;
+}
+/* --- Corruption Color Styling --- */
+.text-corruption {
+    color: var(--corruption-blue) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 194, 0.5); 
+}
+
+/* --- 7. FORMS & CONTACT LAYOUT (Cleaned Alignment) --- */
+.contact-section-inner {
+    display: flex;
+    min-height: 80vh; 
+}
+.contact-left {
+    flex: 1;
+    padding: 60px;
+    background-color: var(--primary-black);
+    color: var(--primary-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left !important; 
+}
+
+.contact-left h2 { margin-bottom: 25px; }
+.contact-left h3 {
+    color: var(--primary-orange); 
+    margin-bottom: 5px;
+}
+.contact-right {
+    flex: 1;
+    background-color: var(--primary-orange);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    color: var(--primary-white);
+    font-size: 1rem;
+    outline: none;
+    transition: border-bottom 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-bottom: 2px solid var(--primary-white);
+}
+.contact-form ::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+.btn-submit {
+    background: var(--primary-black);
+    color: var(--primary-white);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+.btn-submit:hover {
+    background: #333333;
+}
