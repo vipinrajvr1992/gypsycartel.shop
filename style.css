@@ -14,7 +14,7 @@
     --secondary-black: #111111; 
     --text-grey: #B0B0B0;
     
-    /* Corruption Effect Color */
+    /* Corruption Effect Color (for accents like list icons) */
     --corruption-blue: #00FFC2; 
     
     /* Dimensions & Spacing */
@@ -67,16 +67,15 @@ img {
 }
 
 
-/* --- 2.1. TEXT COLOR & FONT STYLES (INDEX & DESIGN PAGE FIXES) --- */
+/* --- 2.1. TEXT COLOR & FONT STYLES --- */
 .text-black { color: var(--primary-black) !important; }
 .text-orange { color: var(--primary-orange) !important; }
 .text-white { color: var(--primary-white) !important; } 
 
-/* Index Page Giant Text Styling */
+/* Index Page Giant Text Styling (Fixes GYPSY CART EL spacing) */
 .giant-text { 
     font-size: 8rem; 
     font-weight: 900; 
-    /* FINAL FIX: Set letter spacing to 0 for the correct merged/tight title look */
     letter-spacing: 0em; 
 }
 
@@ -199,7 +198,6 @@ img {
     position: relative;
     z-index: 2; 
     width: 500px; 
-    /* Ensures the metallic logo is fully visible and glowing */
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2)) brightness(1); 
     animation: fadeUp 1s ease-out;
 }
@@ -218,14 +216,14 @@ img {
 .design-hero-section {
     height: calc(100vh - var(--header-height));
     display: flex;
-    flex-direction: column; /* Allows content to stack vertically */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
     padding: 0 40px;
     text-align: center; 
 }
 
-/* FINAL FIX: Ensure MG Creations Logo is visible */
+/* FIX: Ensure MG Creations Logo is visible */
 .design-logo-container {
     padding-bottom: 20px;
 }
@@ -233,7 +231,7 @@ img {
     margin: 0 auto; 
     width: 150px; 
     height: auto;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); /* Add glow for visibility */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); 
 }
 .design-heading-brand {
     font-size: 2.5rem;
@@ -260,7 +258,7 @@ img {
 .custom-request-section {
     padding: 100px 0;
 }
-/* FINAL FIX: Ensure form grid display works */
+/* FIX: Form grid layout (info on left, form on right) */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr; 
@@ -276,7 +274,7 @@ img {
     color: var(--corruption-blue); 
     margin-right: 10px;
 }
-/* FINAL FIX: Ensure two inputs sit side-by-side */
+/* FIX: Two inputs side-by-side */
 .form-row {
     display: flex;
     gap: 20px;
@@ -302,7 +300,7 @@ img {
 .download-section {
     padding: 80px 0 120px 0;
 }
-/* FINAL FIX: Ensure download cards form a 3-column grid */
+/* FIX: 3-column grid for download cards */
 .download-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -315,7 +313,7 @@ img {
     border-radius: var(--radius);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
-/* FINAL FIX: Change Download Card Headings to ORANGE */
+/* FIX: Download Card Headings are ORANGE */
 .download-card h3 {
     color: var(--primary-orange); 
     font-size: 1.5rem;
@@ -347,7 +345,7 @@ img {
 .contact-form {
     max-width: 800px;
 }
-/* CRITICAL FINAL FIX: Ensure three inputs sit side-by-side (contact form row) */
+/* FIX: 3 inputs side-by-side using CSS Grid */
 .contact-form .input-row-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -366,7 +364,6 @@ img {
     border-radius: var(--radius);
 }
 .contact-form textarea {
-    /* Critical fix for textarea width */
     grid-column: 1 / -1; 
     height: 150px;
 }
@@ -380,7 +377,7 @@ img {
     background-color: var(--secondary-black); 
     padding: 60px 0 20px 0;
 }
-/* CRITICAL FINAL FIX: Ensure the 4-column layout works */
+/* FIX: Ensure the 4-column layout works */
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 2fr; 
