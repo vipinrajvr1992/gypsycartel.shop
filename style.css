@@ -144,21 +144,22 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Background set via POSTER 1.jpg as requested */
-    background-image: url('POSTER 1.jpg'); 
+    /* --- CRITICAL CHANGE: Removed background-image to make it solid black --- */
+    background-color: var(--primary-black); 
     background-size: cover;
     background-position: center;
     overflow: hidden;
 }
 
 .binary-header::after {
+    /* Keeping the overlay, though less necessary on solid black, for styling consistency */
     content: '';
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.6); 
 }
 
-/* **Splash Logo Size: CORRECTED to 500px (5x bigger)** */
+/* **Splash Logo Size: 500px (Unchanged)** */
 .binary-header-logo {
     position: relative;
     z-index: 2;
