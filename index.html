@@ -9,15 +9,27 @@
 </head>
 <body>
 
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html">
+                <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel" class="header-logo">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="apps.html">Apps</a></li>
+                    <li><a href="design.html">Design</a></li>
+                    <li><a href="fashion.html">Fashion</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <section class="visual-splash-section">
-        <div class="binary-header" style="
-            background-image: url('assets/ads/1923.jpg'); 
-            background-repeat: repeat; 
-            background-size: cover; 
-            background-position: center;
-            /* **FINAL FIX: Force binary pattern to white, increase contrast, and reduce opacity** */
-            filter: saturate(0) opacity(0.3) contrast(2); 
-        ">
+        <div class="binary-header">
             <img src="assets/logos/metalic-gc-logo.webp" alt="Gypsy Cartel Icon" class="binary-header-logo">
         </div>
         <div class="brand-title-strip">
@@ -28,5 +40,50 @@
         </div>
     </section>
 
-    </body>
+    <footer class="dark-bg">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-column footer-logo-area">
+                    <img src="assets/logos/gypsy-cartel-icon.webp" alt="Logo" style="height: 150px; margin-bottom: 20px;">
+                    <p>Gypsy Cartel is a digital movement, fusing high-performance Windows software with stunning, hyper-realistic 3D design and UI/UX solutions.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="apps.html">Apps</a></li>
+                        <li><a href="design.html">Design Studio</a></li>
+                        <li><a href="fashion.html">Fashion Line (Soon)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="about.html">Our Vision</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <p style="line-height: 1.5;">
+                        <strong style="color: var(--primary-white);">Support:</strong> <a href="mailto:support@gypsycartel.shop" style="color: var(--primary-white);">support@gypsycartel.shop</a><br>
+                    </p>
+                    <p style="margin-top: 20px; line-height: 1.5;">
+                        <strong style="color: var(--primary-white);">Creator:</strong> <a href="https://www.instagram.com/mallugypsy.creations" target="_blank" style="color: var(--primary-white);">@mallugypsy.creations</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p style="color: #444; font-size: 0.8rem;">&copy; 2025 Gypsy Cartel. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
