@@ -1,13 +1,14 @@
-/* GYPSY CARTEL - CORE STYLES (V8: FINAL Structural Stability & Button Fixes)
+/* GYPSY CARTEL - CORE STYLES 
+   Theme: Clean Code, Corrupted Design
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap');
 
 :root {
-    --bg-deep: #050505; /* Primary Color Deep Black */
-    --bg-surface: #111111; /* Secondary Background */
-    --primary-orange: #FF5722; /* Accent Color */
-    --secondary-accent: #FFFFFF; /* White for highlight/contrast */
+    --bg-deep: #050505;
+    --bg-surface: #111111;
+    --primary-orange: #FF5722;
+    --corruption-cyan: #00FFC2;
     --text-main: #FFFFFF;
     --text-muted: #888888;
 }
@@ -17,7 +18,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none;
+    cursor: none; /* Hiding default cursor for custom one */
 }
 
 body {
@@ -28,144 +29,155 @@ body {
     overflow-x: hidden;
 }
 
-/* --- GLOBAL BUTTON STYLES (REQUIRED FIX) --- */
+h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+
+/* --- CUSTOM CURSOR --- */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-orange);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--corruption-cyan);
+    transition: width 0.2s, height 0.2s;
+}
+
+/* --- NAVIGATION --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-icon {
+    width: 40px;
+    height: auto;
+}
+
+nav ul { display: flex; gap: 30px; }
+
+nav a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-orange);
+    text-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
+}
+
+/* --- BUTTONS --- */
 .btn {
     display: inline-block;
-    padding: 10px 25px;
-    margin: 10px 0;
-    text-decoration: none; /* Removes underline from buttons */
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    padding: 12px 30px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
 }
+
 .btn-primary {
     background-color: var(--primary-orange);
-    color: var(--secondary-accent);
-    border-color: var(--primary-orange); /* Ensure border is defined */
+    color: #fff;
 }
+
 .btn-primary:hover {
-    background-color: #e64a19;
-    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
-}
-.btn-outline {
     background-color: transparent;
     border-color: var(--primary-orange);
     color: var(--primary-orange);
 }
+
+.btn-outline {
+    border-color: var(--text-main);
+}
+
 .btn-outline:hover {
-    background-color: var(--primary-orange);
+    background-color: var(--text-main);
     color: var(--bg-deep);
-    border-color: var(--bg-deep); /* Hover state contrast */
 }
 
-/* --- HOME PAGE HERO LAYOUT (Stabilized) --- */
-.hero {
-    position: relative;
-    overflow: hidden;
-    /* Adjusted height calculation to ensure content fits within the screen */
-    min-height: 80vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: var(--bg-deep); 
-    padding: 100px 20px;
-}
-
-/* Binary Code Pattern (Unchanged but reliable) */
-.abstract-design {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    background: 
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="0" y="10" font-family="monospace" font-size="14" fill="%23222">0110101100101</text><text x="50" y="30" font-family="monospace" font-size="14" fill="%23222">1011011010101</text><text x="25" y="50" font-family="monospace" font-size="14" fill="%23222">0101100110110</text><text x="75" y="70" font-family="monospace" font-size="14" fill="%23222">1101010110101</text><text x="10" y="90" font-family="monospace" font-size="14" fill="%23222">0100110101100</text></svg>'),
-        var(--bg-deep);
-    background-size: 100px 100px;
-    opacity: 0.8;
-}
-
-.hero-logo-container {
-    position: relative;
-    z-index: 10;
-}
-.hero-logo-container img {
-    max-width: 400px; 
-    width: 90%;
-    margin-bottom: 30px;
-}
-
-/* Main Headline Styling (Unchanged) */
-.hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 4rem; 
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    line-height: 1;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 10;
-    color: var(--secondary-accent);
-}
-.hero h1 span {
-    color: var(--primary-orange); 
-}
-
-/* Sub-Headline Styling (Unchanged) */
-.hero h2 {
-    font-size: 1.2rem;
-    color: var(--text-muted); 
-    margin-bottom: 40px;
-    font-weight: 300;
-    position: relative;
-    z-index: 10;
-}
-
-/* --- FOOTER STYLES --- */
-footer {
-    padding: 40px 20px;
-    background-color: var(--bg-surface);
-    border-top: 1px solid #222;
-    color: var(--text-muted);
-}
-.footer-content {
-    display: flex;
-    justify-content: space-between;
+/* --- LAYOUT UTILITIES --- */
+.container {
     max-width: 1200px;
-    margin: 0 auto 30px auto;
-    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 120px 20px 80px; /* Top padding clears fixed header */
 }
-.footer-content > div {
-    flex: 1;
-    min-width: 200px;
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* --- FORMS --- */
+input, textarea, select {
+    width: 100%;
+    padding: 15px;
+    background: var(--bg-surface);
+    border: 1px solid #333;
+    color: white;
+    font-family: 'Inter', sans-serif;
     margin-bottom: 20px;
 }
-footer h4 {
-    color: var(--text-main);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--corruption-cyan);
+    box-shadow: 0 0 10px rgba(0, 255, 194, 0.1);
 }
-footer ul {
-    list-style: none;
-}
-footer ul li a {
-    color: var(--text-muted);
-    text-decoration: none;
-    line-height: 2;
-    transition: color 0.3s;
-}
-footer ul li a:hover {
-    color: var(--primary-orange);
-}
-.footer-bottom {
+
+/* --- FOOTER --- */
+footer {
+    background: var(--bg-surface);
+    padding: 40px 0;
     text-align: center;
-    border-top: 1px solid #222;
-    padding-top: 15px;
     font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 2px solid var(--primary-orange);
+}
+
+/* --- RESPONSIVE --- */
+@media(max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    nav ul { gap: 15px; font-size: 0.8rem; }
 }
