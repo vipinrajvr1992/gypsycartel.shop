@@ -23,7 +23,7 @@
     --radius: 4px; 
 }
 
-/* --- 2. GLOBAL RESET --- */
+/* --- 2. GLOBAL RESET & BASE STYLES --- */
 * {
     margin: 0;
     padding: 0;
@@ -60,26 +60,27 @@ img {
 }
 .text-center { text-align: center; } 
 .text-grey { color: var(--text-grey); }
+.section-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08); 
+    margin: 0 0 0 0; 
+}
 
-/* --- TEXT COLOR DEFINITIONS --- */
+
+/* --- 2.1. TEXT COLOR & FONT STYLES (INDEX & DESIGN PAGE FIXES) --- */
 .text-black { color: var(--primary-black) !important; }
 .text-orange { color: var(--primary-orange) !important; }
-/* Home Page Giant Text Styling */
+.text-white { color: var(--primary-white) !important; } 
+
+/* Index Page Giant Text Styling */
 .giant-text { 
     font-size: 8rem; 
     font-weight: 900; 
-    /* Critical Fix: Set letter spacing to 0 for a tighter, merged look (as per image_566036.png) */
+    /* FINAL FIX: Set letter spacing to 0 for the correct merged/tight title look */
     letter-spacing: 0em; 
 }
-/* Design Page Title Color */
-.text-white { color: var(--primary-white) !important; } 
 
-.text-corruption {
-    color: var(--corruption-blue) !important;
-    text-shadow: 0 0 10px rgba(0, 255, 194, 0.5); 
-}
-
-/* --- BUTTON STYLES (PREMIUM CTAs) --- */
+/* --- 2.2. BUTTON STYLES --- */
 .btn {
     padding: 15px 35px;
     font-size: 0.85rem;
@@ -96,18 +97,10 @@ img {
     color: var(--primary-white) !important;
     border-color: var(--primary-orange);
 }
-.btn-orange-fill:hover {
-    background: #FF7043; 
-    border-color: #FF7043;
-}
 .btn-white-border {
     background: transparent;
     color: var(--primary-white) !important;
     border-color: var(--primary-white);
-}
-.btn-white-border:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--primary-white);
 }
 .btn-full-width {
     width: 100%;
@@ -119,7 +112,7 @@ img {
 }
 
 
-/* --- 3. PREMIUM NAVIGATION (Correct) --- */
+/* --- 3. NAVIGATION & HEADER --- */
 .main-header {
     height: var(--header-height);
     background: rgba(5, 5, 5, 0.85);
@@ -141,9 +134,7 @@ img {
 .header-logo {
     width: 35px; 
     height: auto;
-    transition: opacity 0.3s;
 }
-.header-logo:hover { opacity: 0.8; }
 
 .main-nav ul {
     display: flex;
@@ -162,7 +153,6 @@ img {
 .main-nav a:not(.nav-cta).active {
     color: var(--primary-white);
 }
-
 .nav-cta {
     background: var(--primary-orange);
     color: var(--primary-white) !important;
@@ -175,7 +165,7 @@ img {
 }
 
 
-/* --- 4. VISUAL SPLASH (Home Page) --- */
+/* --- 4. VISUAL SPLASH (Home Page - index.html) --- */
 .visual-splash-section {
     height: calc(100vh - var(--header-height));
     display: flex;
@@ -190,9 +180,7 @@ img {
     align-items: center;
     background-color: var(--primary-black); 
     overflow: hidden;
-    filter: none; 
-    
-    background-image: url('assets/ads/1923.jpg'); /* Background image reference */
+    background-image: url('assets/ads/1923.jpg'); 
     background-repeat: repeat; 
     background-size: cover; 
     background-position: center;
@@ -211,6 +199,7 @@ img {
     position: relative;
     z-index: 2; 
     width: 500px; 
+    /* Ensures the metallic logo is fully visible and glowing */
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2)) brightness(1); 
     animation: fadeUp 1s ease-out;
 }
@@ -225,25 +214,26 @@ img {
 }
 
 
-/* --- 5. DESIGN PAGE STYLES (ALL FIXES IMPLEMENTED) --- */
+/* --- 5. DESIGN PAGE STYLES (design.html) --- */
 .design-hero-section {
     height: calc(100vh - var(--header-height));
     display: flex;
+    flex-direction: column; /* Allows content to stack vertically */
     align-items: center;
     justify-content: center;
     padding: 0 40px;
     text-align: center; 
 }
+
+/* FINAL FIX: Ensure MG Creations Logo is visible */
 .design-logo-container {
-    padding-top: 0; 
     padding-bottom: 20px;
 }
-/* FIX: Ensure MG Creations Logo is visible */
 .design-logo-container img {
     margin: 0 auto; 
     width: 150px; 
     height: auto;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); 
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); /* Add glow for visibility */
 }
 .design-heading-brand {
     font-size: 2.5rem;
@@ -253,11 +243,6 @@ img {
 .design-heading-main {
     font-size: 4rem; 
     margin-bottom: 20px;
-}
-/* FIX: Digital Design Studio is white (matching the HTML class .text-white) */
-.design-heading-main.text-white {
-    color: var(--primary-white) !important;
-    text-shadow: none; 
 }
 .design-subheading {
     max-width: 800px;
@@ -270,50 +255,36 @@ img {
 .design-hero-cta a {
     margin: 0 10px;
 }
-.section-divider {
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.08); 
-    margin: 0 0 0 0; 
-}
-
 
 /* --- CUSTOM REQUEST SECTION (FIXED GRID LAYOUT) --- */
 .custom-request-section {
     padding: 100px 0;
 }
-/* CRITICAL FIX: Ensure grid display works */
+/* FINAL FIX: Ensure form grid display works */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr; 
     gap: 80px;
     align-items: start;
 }
-.form-intro {
-    text-align: left; 
-}
 .form-intro h2 {
     font-size: 2.5rem;
     color: var(--primary-orange);
     margin-bottom: 20px;
 }
-.form-intro p {
-    margin-bottom: 20px;
-}
-.form-intro ul {
-    list-style: none;
-    padding-left: 0;
-    font-size: 1rem;
-}
-.form-intro li {
-    margin-bottom: 10px;
-    color: var(--text-grey);
-}
 .form-intro i {
     color: var(--corruption-blue); 
     margin-right: 10px;
 }
-.design-form input[type="text"],
-.design-form input[type="email"],
+/* FINAL FIX: Ensure two inputs sit side-by-side */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+.form-row input {
+    flex: 1;
+}
+.design-form input,
 .design-form textarea {
     width: 100%;
     padding: 15px 15px;
@@ -323,37 +294,15 @@ img {
     color: var(--primary-white);
     font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s;
     border-radius: var(--radius);
 }
-.design-form input:focus,
-.design-form textarea:focus {
-    border-color: var(--primary-orange);
-}
-.design-form ::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-/* CRITICAL FIX: Ensure two inputs sit side-by-side */
-.form-row {
-    display: flex;
-    gap: 20px;
-}
-.form-row input {
-    flex: 1;
-}
+
 
 /* --- DOWNLOAD ZONE (FIXED GRID LAYOUT & COLOR) --- */
 .download-section {
     padding: 80px 0 120px 0;
 }
-.download-heading {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-.download-section p {
-    margin-bottom: 40px;
-}
-/* CRITICAL FIX: Ensure download cards form a 3-column grid */
+/* FINAL FIX: Ensure download cards form a 3-column grid */
 .download-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -365,31 +314,73 @@ img {
     padding: 30px;
     border-radius: var(--radius);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center; 
 }
-.download-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-/* CRITICAL FIX: Change Download Card Headings to ORANGE */
+/* FINAL FIX: Change Download Card Headings to ORANGE */
 .download-card h3 {
-    color: var(--primary-orange); /* FIXED */
+    color: var(--primary-orange); 
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
-.download-card p {
-    font-size: 0.9rem;
-    color: var(--text-grey);
-    margin-bottom: 25px;
+
+
+/* --- 6. CONTACT PAGE STYLES (contact.html) --- */
+.contact-section {
+    padding: 100px 0;
+    min-height: calc(100vh - var(--header-height));
+}
+.contact-intro h2 {
+    font-size: 3rem;
+    color: var(--primary-white);
+    margin-bottom: 30px;
+}
+.contact-info {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+.contact-info strong {
+    color: var(--primary-orange);
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+}
+.contact-form {
+    max-width: 800px;
+}
+/* CRITICAL FINAL FIX: Ensure three inputs sit side-by-side (contact form row) */
+.contact-form .input-row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px 15px;
+    margin-bottom: 20px;
+    background: var(--primary-black);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--primary-white);
+    font-size: 1rem;
+    outline: none;
+    border-radius: var(--radius);
+}
+.contact-form textarea {
+    /* Critical fix for textarea width */
+    grid-column: 1 / -1; 
+    height: 150px;
+}
+.contact-form button {
+    margin-top: 10px;
 }
 
-/* --- 6. PROFESSIONAL FOOTER (CRITICAL FIX: GRID LAYOUT) --- */
+
+/* --- 7. PROFESSIONAL FOOTER (GLOBAL FIX) --- */
 .premium-footer {
     background-color: var(--secondary-black); 
     padding: 60px 0 20px 0;
 }
-/* CRITICAL FIX: Ensure the 4-column layout works */
+/* CRITICAL FINAL FIX: Ensure the 4-column layout works */
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 2fr; 
@@ -412,10 +403,6 @@ img {
 .footer-links a {
     color: var(--text-grey);
     font-size: 0.95rem;
-}
-.footer-links a:hover {
-    color: var(--primary-white); 
-    padding-left: 5px; 
 }
 .footer-divider {
     border: none;
