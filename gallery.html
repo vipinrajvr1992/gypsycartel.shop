@@ -4,18 +4,35 @@
     <title>Gypsy Cartel | Visual Archives</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid #222; }
+        .gallery-item { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 8px; 
+            border: 1px solid #222; 
+            background: var(--bg-surface); /* For the descriptions */
+        }
         .gallery-item img {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
             transition: 0.4s;
-            filter: grayscale(80%) contrast(1.1);
+            filter: none; /* REMOVED ALL FILTERS - SHOW ORIGINAL COLORS */
             display: block;
         }
         .gallery-item:hover img {
-            filter: grayscale(0%) contrast(1);
             transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 87, 34, 0.2);
+        }
+        .gallery-caption {
+            padding: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+        .gallery-caption h4 {
+            color: var(--primary-orange);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -30,6 +47,7 @@
                 <li><a href="design.html">Design</a></li>
                 <li><a href="fashion.html">Fashion</a></li>
                 <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -37,30 +55,95 @@
 
     <div class="container">
         <h1 style="border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 40px;">
-            Work <span style="color: var(--primary-orange)">Logs</span>
+            VISUAL <span style="color: var(--primary-orange)">ARCHIVES</span>
         </h1>
         
         <div class="grid-3">
+            
             <div class="gallery-item">
                 <img src="assets/ads/tree-house-exterior.webp" alt="3D Exterior Tree House">
+                <div class="gallery-caption">
+                    <h4>Tree House Exterior</h4>
+                    <p>Hyper-realistic 3D architectural visualization (Exterior).</p>
+                </div>
             </div>
+            
             <div class="gallery-item">
                 <img src="assets/ads/tree-room.webp" alt="3D Interior Room">
+                <div class="gallery-caption">
+                    <h4>Minimalist Interior</h4>
+                    <p>CGI rendering of a modern, warm bedroom space.</p>
+                </div>
             </div>
+            
             <div class="gallery-item">
-                <img src="assets/ads/imc-222.webp" alt="Office Visualization">
+                <img src="assets/ads/imc-222.webp" alt="Open Office Visualization">
+                <div class="gallery-caption">
+                    <h4>Corporate Office Setup</h4>
+                    <p>Visualizing a modern, low-light, high-tech workspace.</p>
+                </div>
             </div>
+            
             <div class="gallery-item">
-                <img src="assets/ads/ad-ui.webp" alt="UI Concept">
+                <img src="assets/ads/ad-ui.webp" alt="App UI Concept">
+                <div class="gallery-caption">
+                    <h4>Dashboard UI/UX</h4>
+                    <p>Dark-mode interface design for a performance monitoring application.</p>
+                </div>
             </div>
-             <div class="gallery-item">
+            
+            <div class="gallery-item">
+                <img src="assets/logos/metallic-gc-logo.webp" alt="3D Metallic GC Logo Render">
+                <div class="gallery-caption">
+                    <h4>Metallic GC Logo</h4>
+                    <p>High-resolution, 3D rendered version of the primary brand logo.</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
                 <img src="assets/ads/ad-logs.webp" alt="System Logs">
-            </div>
-             <div class="gallery-item">
-                <img src="assets/logos/metalic-gc-logo.webp" alt="3D Logo Render">
+                <div class="gallery-caption">
+                    <h4>Code/Log Aesthetic</h4>
+                    <p>Abstract visualization of system log data and corruption themes.</p>
+                </div>
             </div>
         </div>
     </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div>
+                <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" style="width: 30px; margin-bottom: 10px;">
+                <p>Gypsy Cartel is a digital movement, fusing high-performance Windows software with stunning, hyper-realistic 3D design and UI/UX solutions. Precision, innovation, and style.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="apps.html">Apps Development</a></li>
+                    <li><a href="design.html">Design Studio</a></li>
+                    <li><a href="fashion.html">Fashion Line (Soon)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">Our Vision & History</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <p>Support: <a href="mailto:support@gypsycartel.shop" style="color: var(--primary-orange);">support@gypsycartel.shop</a></p>
+                <p>Creator: <a href="https://instagram.com/mallugypsy.creations" target="_blank" style="color: var(--secondary-accent);">@mallugypsy.creations</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Gypsy Cartel. All Rights Reserved.
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
