@@ -11,7 +11,7 @@
     --primary-orange: #FF5722;
     --primary-white: #FFFFFF;
     --primary-black: #050505;
-    --secondary-black: #111111; /* Darker black for input fields/cards */
+    --secondary-black: #111111; /* Darker black for input fields/cards/footer */
     --text-grey: #B0B0B0;
     
     /* Corruption Effect Color (Used only for list icons/subtle accents) */
@@ -56,6 +56,25 @@ img { display: block; max-width: 100%; height: auto; }
 .text-orange { color: var(--primary-orange) !important; }
 .text-white { color: var(--primary-white) !important; } 
 
+/* --- BUTTON STYLES --- */
+.btn {
+    padding: 15px 35px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.btn-orange-fill { background: var(--primary-orange); color: var(--primary-white) !important; border-color: var(--primary-orange); }
+.btn-white-border { background: transparent; color: var(--primary-white) !important; border-color: var(--primary-white); }
+.btn-white-border:hover { background: var(--primary-white); color: var(--primary-black) !important; }
+.btn-full-width { width: 100%; text-align: center; }
+.btn-small { padding: 10px 20px; font-size: 0.8rem; }
+
+
 /* --- 3. NAVIGATION & HEADER --- */
 .main-header {
     height: var(--header-height);
@@ -75,12 +94,19 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .header-logo { width: 35px; height: auto; }
 .main-nav ul { display: flex; align-items: center; gap: 40px; list-style: none; }
-.main-nav a { /* ... (Nav link styles) ... */ }
-.main-nav a:not(.nav-cta)::after { /* ... (Underline animation) ... */ }
-.main-nav a:not(.nav-cta):hover::after,
-.main-nav a:not(.nav-cta).active::after { /* ... (Underline animation) ... */ }
-.main-nav a:not(.nav-cta):hover,
-.main-nav a:not(.nav-cta).active { color: var(--primary-white); }
+.main-nav a { /* ... Nav link styles ... */ color: var(--text-grey); }
+/* Underline animation for nav links */
+.main-nav a:not(.nav-cta)::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px;
+    background: var(--primary-orange); transform: scaleX(0); transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.main-nav a:not(.nav-cta):hover::after, .main-nav a:not(.nav-cta).active::after {
+    transform: scaleX(1); transform-origin: bottom left;
+}
+.main-nav a:not(.nav-cta):hover, .main-nav a:not(.nav-cta).active { color: var(--primary-white); }
+.nav-cta { /* ... CTA styles ... */ }
+
 
 /* --- 4. HOME PAGE STYLES (index.html) --- */
 .hero-section {
@@ -119,16 +145,14 @@ img { display: block; max-width: 100%; height: auto; }
     padding: 0 40px;
     text-align: center; 
 }
-
-/* FIX: Logo Centering and size */
+/* FIX: Logo Centering and size (Resolves image_48aa33) */
 .design-logo-container { padding-bottom: 20px; margin-bottom: 20px; }
 .design-logo-container img { margin: 0 auto; width: 100px; height: auto; }
-.design-logo-container p { /* ... (Text styles) ... */ }
+.design-logo-container p { color: var(--text-grey); font-size: 0.9rem; margin-top: 5px; font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
 
-/* FIX: Headings - Mallu Gypsy is Orange, Digital Design Studio is White */
+/* FIX: Headings - Mallu Gypsy is Orange, Digital Design Studio is White (Resolves image_48c3a5, image_4a0ab3) */
 .design-heading-brand { color: var(--primary-orange); font-size: 2.5rem; margin-bottom: 5px; }
 .design-heading-main { color: var(--primary-white) !important; font-size: 4rem; margin-bottom: 20px; }
-
 
 /* FIX: Custom Request Section Grid and Input Alignment (Resolves image_492637, image_48b8fc) */
 .custom-request-section { padding: 100px 0; }
@@ -140,24 +164,17 @@ img { display: block; max-width: 100%; height: auto; }
     padding-bottom: 80px; 
 }
 .form-intro h2 { color: var(--primary-orange); margin-bottom: 20px; }
+.form-intro i { color: var(--corruption-blue); margin-right: 10px; }
 
-.design-form { width: 100%; }
-.design-form input,
-.design-form textarea {
+.design-form input, .design-form textarea {
     /* CRITICAL FIX: Ensures dark background and white text for visibility */
     background: var(--secondary-black); 
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--primary-white);
-    padding: 15px 15px;
-    font-size: 1rem;
-    outline: none;
-    border-radius: var(--radius);
-    transition: border-color 0.2s ease;
-    width: 100%; 
+    padding: 15px 15px; font-size: 1rem; outline: none; border-radius: var(--radius);
+    transition: border-color 0.2s ease; width: 100%; 
 }
 .design-form input:focus, .design-form textarea:focus { border-color: var(--primary-orange); }
-
-/* FIX: Proper side-by-side inputs (Name/Email) */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -183,11 +200,8 @@ img { display: block; max-width: 100%; height: auto; }
 .contact-info { font-size: 1.1rem; margin-bottom: 50px; width: 100%; }
 .contact-info strong {
     color: var(--primary-white); 
-    display: block;
-    margin-top: 25px; /* Proper line spacing */
-    margin-bottom: 5px;
-    font-size: 1.4rem;
-    font-weight: 700;
+    display: block; margin-top: 25px; margin-bottom: 5px;
+    font-size: 1.4rem; font-weight: 700;
 }
 
 /* FIX: Contact Form Inputs Visibility and Alignment (Resolves image_4919d6, image_48a9d6) */
@@ -197,18 +211,13 @@ img { display: block; max-width: 100%; height: auto; }
     grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
 }
-/* Applies the dark background fix to Contact form inputs too */
-.contact-form input,
-.contact-form textarea {
+/* Applies the dark background fix to Contact form inputs */
+.contact-form input, .contact-form textarea {
     background: var(--secondary-black); 
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--primary-white);
-    padding: 15px 15px;
-    font-size: 1rem;
-    outline: none;
-    border-radius: var(--radius);
-    transition: border-color 0.2s ease;
-    margin-bottom: 20px;
+    padding: 15px 15px; font-size: 1rem; outline: none; border-radius: var(--radius);
+    transition: border-color 0.2s ease; margin-bottom: 20px;
 }
 .contact-form textarea { grid-column: 1 / -1; height: 150px; }
 .contact-form button { width: 300px; }
@@ -219,49 +228,24 @@ img { display: block; max-width: 100%; height: auto; }
 .about-hero-section {
     padding: calc(var(--header-height) + 50px) 0 80px 0; /* Add top padding to stop text cutting off */
 }
-.about-hero-section h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-}
+.about-hero-section h1 { font-size: 3.5rem; margin-bottom: 20px; }
 .about-content-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* Image/Vision on left, Philosophy/Creator on right */
+    grid-template-columns: 1.5fr 1fr; 
     gap: 60px;
     margin-top: 50px;
 }
-.vision-image-container img {
-    margin-top: 20px;
-    border-radius: var(--radius);
-}
-.philosophy-block {
-    margin-bottom: 30px;
-}
-.philosophy-block h3 {
-    color: var(--primary-orange);
-    font-size: 1.8rem;
-    margin-top: 30px; /* Space between blocks */
-    margin-bottom: 10px;
-}
-.philosophy-block strong {
-    color: var(--primary-orange); /* Ensure sub-headings are orange */
-    display: block;
-    font-size: 1.2rem;
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
+.vision-image-container img { margin-top: 20px; border-radius: var(--radius); }
+.philosophy-block { margin-bottom: 30px; }
+.philosophy-block strong { color: var(--primary-orange); display: block; font-size: 1.2rem; margin-top: 20px; margin-bottom: 5px; }
+
 
 /* --- 8. GALLERY PAGE STYLES (gallery.html) --- */
 .gallery-section { padding: 100px 0; text-align: center; }
 /* FIX: Heading Color (White base with Orange accent - Resolves image_4925f7) */
-.gallery-section h1 {
-    font-size: 3.5rem;
-    color: var(--primary-white); 
-    margin-bottom: 20px;
-}
-.gallery-section h1 span {
-    color: var(--primary-orange) !important; /* Force Orange */
-}
-/* FIX: Gallery Grid structure (for aligned thumbnails) */
+.gallery-section h1 { color: var(--primary-white); font-size: 3.5rem; margin-bottom: 20px; }
+.gallery-section h1 span { color: var(--primary-orange) !important; }
+/* FIX: Gallery Grid structure (for aligned thumbnails) (Resolves image_48aa56) */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -273,20 +257,16 @@ img { display: block; max-width: 100%; height: auto; }
     border-radius: var(--radius);
     transition: transform 0.3s ease;
 }
-.gallery-item img:hover {
-    transform: scale(1.02);
-}
-.gallery-item p {
-    margin-top: 10px;
-    color: var(--text-grey);
-}
+.gallery-item img:hover { transform: scale(1.02); }
+.gallery-item p { margin-top: 10px; color: var(--text-grey); }
 
 
 /* --- 9. PROFESSIONAL FOOTER --- */
 .premium-footer {
-    background: var(--secondary-black); /* Footer needs its own color to separate it from the body */
+    background: var(--secondary-black); 
     padding: 60px 0 20px 0;
-    margin-top: 80px; /* CRITICAL FIX: Adds space above the footer to separate it from content/forms */
+    /* CRITICAL FIX: Adds space above the footer to separate it from content/forms */
+    margin-top: 80px; 
 }
 .footer-grid {
     display: grid;
@@ -294,4 +274,10 @@ img { display: block; max-width: 100%; height: auto; }
     gap: 30px;
     padding-bottom: 40px;
 }
-/* ... (Rest of footer styles) ... */
+.footer-heading { color: var(--primary-orange); font-size: 1.2rem; margin-bottom: 15px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a { color: var(--text-grey); font-size: 0.95rem; }
+.footer-links a:hover { color: var(--primary-orange); }
+.footer-divider { border-top: 1px solid rgba(255, 255, 255, 0.08); margin: 30px 0; }
+.footer-copyright { text-align: center; }
