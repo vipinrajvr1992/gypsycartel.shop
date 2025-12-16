@@ -7,27 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <div class="cursor-dot"></div><div class="cursor-outline"></div>
 
     <header>
-        <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon">
+        <a href="index.html"><img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon"></a>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="apps.html">Apps</a></li>
                 <li><a href="design.html">Design</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-        <img src="assets/logos/gypsy-cartel-main-logo.webp" alt="Gypsy Cartel" style="max-width: 600px; width: 80%; margin-bottom: 2rem;">
+    <section class="hero" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+        <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Main Logo" style="max-width: 650px; width: 90%; margin-bottom: 2rem; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));">
         
-        <h1 style="font-size: 1.5rem; color: var(--text-muted); margin-bottom: 3rem;">
+        <h1 style="font-size: 1.5rem; color: var(--text-muted); margin-bottom: 3rem; letter-spacing: 2px;">
             Clean Code <span style="color: var(--corruption-cyan)">//</span> Corrupted Design
         </h1>
 
@@ -37,17 +36,6 @@
         </div>
     </section>
 
-    <script>
-        // Simple Cursor Script
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
