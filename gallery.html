@@ -1,56 +1,61 @@
-<section class="gallery-section">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gypsy Cartel | Visual Archives</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: 0.4s;
+            filter: grayscale(80%);
+        }
+        .gallery-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div><div class="cursor-outline"></div>
+    <header>
+        <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="container">
-        <h1>3D Renders & <span class="text-orange">UI/UX</span> Portfolio</h1>
-        <p class="text-grey">A curated selection of our recent hyper-realistic 3D artwork, architectural visualization, and cutting-edge UI/UX design concepts.</p>
+        <h1 style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 40px;">
+            Work <span style="color: var(--primary-orange)">Logs</span>
+        </h1>
         
-        <div class="gallery-grid">
+        <div class="grid-3">
             <div class="gallery-item">
-                <img src="assets/images/3d-render-1.webp" alt="3D Render 1">
-                <p>Abstract Render</p>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/images/ui-concept.webp" alt="UI/UX Concept">
-                <p>Dashboard UI Concept</p>
+                <img src="assets/ads/tree-house-exterior.webp" alt="3D Exterior">
             </div>
             <div class="gallery-item">
-                <img src="assets/images/architectural-viz.webp" alt="Architectural Visualization">
-                <p>Minimalist Architecture</p>
+                <img src="assets/ads/tree-room.webp" alt="3D Interior">
             </div>
+            <div class="gallery-item">
+                <img src="assets/ads/imc-222.webp" alt="Office Visualization">
             </div>
-    </div>
-    ```
-
-### 3. 📄 `about.html` (Alignment Fix)
-
-This HTML implements the padding and the new Grid structure for the content.
-
-```html
-<section class="about-hero-section">
-    <div class="container">
-        <h1>The Vision Behind Gypsy Cartel.</h1>
-        <p class="text-grey" style="max-width: 800px; margin-bottom: 40px;">Founded by Mallu Gypsy, we are a digital collective focused on performance and aesthetics. We don't just build software, we build tools that empower users to control their technology.</p>
-        
-        <div class="about-content-grid">
-            
-            <div class="vision-column">
-                <strong class="text-orange">Gypsy Cartel Vision</strong>
-                <p>From the rigorous coding of **PC Beast PRO+** to the artistic detail in our 3D renders, our standard is excellence.</p>
-                <div class="vision-image-container">
-                    <img src="assets/images/gypsy-cartel-vision.webp" alt="Gypsy Cartel Vision Graphic">
-                </div>
+             <div class="gallery-item">
+                <img src="assets/ads/ad-ui.webp" alt="UI Concept">
             </div>
-
-            <div class="philosophy-column">
-                <div class="philosophy-block">
-                    <strong class="text-orange">Our Philosophy</strong>
-                    <p>In a world of generic interfaces, we create tools that are both powerful and visually striking. Every product is a blend of low-latency performance and high-end design, crafted for the enthusiast.</p>
-                </div>
-                
-                <div class="philosophy-block">
-                    <strong class="text-orange">Our Creator</strong>
-                    <p>Mallu Gypsy leads the movement, driven by a passion for clean code and corrupted design—always pushing boundaries in both technology and aesthetics.</p>
-                </div>
+             <div class="gallery-item">
+                <img src="assets/ads/ad-logs.webp" alt="System Logs">
+            </div>
+             <div class="gallery-item">
+                <img src="assets/logos/metalic-gc-logo.webp" alt="3D Logo Render">
             </div>
         </div>
     </div>
-</section>
+    <script src="script.js"></script>
+</body>
+</html>
