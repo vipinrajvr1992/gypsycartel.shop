@@ -62,7 +62,12 @@ img {
 /* --- TEXT COLOR DEFINITIONS (CRITICAL HOME PAGE FIX) --- */
 .text-black { color: var(--primary-black) !important; }
 .text-orange { color: var(--primary-orange) !important; }
-.giant-text { font-size: 3.8rem; font-weight: 900; }
+/* FINAL FIX: Increased size significantly for the 'giant' banner text */
+.giant-text { 
+    font-size: 5.5rem; 
+    font-weight: 900; 
+    letter-spacing: 0.1em; /* Slight increase for visual impact */
+}
 
 
 /* --- 3. PREMIUM NAVIGATION (Correct) --- */
@@ -121,7 +126,7 @@ img {
 }
 
 
-/* --- 4. VISUAL SPLASH (Final Binary Fix) --- */
+/* --- 4. VISUAL SPLASH (Binary Fix - CRITICAL) --- */
 .visual-splash-section {
     height: calc(100vh - var(--header-height));
     display: flex;
