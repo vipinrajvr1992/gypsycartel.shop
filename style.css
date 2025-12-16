@@ -4,14 +4,14 @@
    ========================================= */
 
 /* --- 1. SETUP & VARIABLES --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700;900;900&display=swap');
 
 :root {
     /* Brand Colors */
     --primary-orange: #FF5722;
     --primary-white: #FFFFFF;
     --primary-black: #050505;
-    --secondary-black: #111111;
+    --secondary-black: #111111; /* Used for the Footer background */
     --text-grey: #B0B0B0;
     
     /* Corruption Effect Color */
@@ -59,10 +59,10 @@ img {
     padding: 0 40px;
 }
 
-/* --- TEXT COLOR DEFINITIONS (CRITICAL HOME PAGE FIX) --- */
+/* --- TEXT COLOR DEFINITIONS --- */
 .text-black { color: var(--primary-black) !important; }
 .text-orange { color: var(--primary-orange) !important; }
-/* FINAL FIX: Increased size to 8rem for "4 times bigger" impact */
+/* FINAL FIX: Giant text size for maximum impact on Home Page */
 .giant-text { 
     font-size: 8rem; 
     font-weight: 900; 
@@ -126,7 +126,7 @@ img {
 }
 
 
-/* --- 4. VISUAL SPLASH (Binary Fix - CRITICAL) --- */
+/* --- 4. VISUAL SPLASH (Binary Background) --- */
 .visual-splash-section {
     height: calc(100vh - var(--header-height));
     display: flex;
@@ -151,14 +151,12 @@ img {
 }
 
 .binary-header::after {
-    /* CRITICAL FIX: Pseudo-element handles the filter/opacity, protecting the logo */
+    /* CRITICAL: Filter to force visibility of the binary data behind the logo */
     content: '';
     position: absolute;
     inset: 0;
     z-index: 1; 
     background-color: rgba(0,0,0,0.6); 
-    
-    /* FINAL BINARY FIX: Filter to force visibility of the binary data */
     filter: saturate(0.5) contrast(1.1) brightness(1.2); 
 }
 
@@ -179,9 +177,7 @@ img {
     border-top: 1px solid #333;
 }
 
-/* --- 5. SECTIONS & GRIDS --- */
-
-/* --- FINAL FIX: MG Logo Centering on Design Page --- */
+/* --- 5. DESIGN PAGE FIXES --- */
 .design-logo-container {
     text-align: center; 
     padding-top: 60px; 
@@ -189,7 +185,7 @@ img {
 }
 .design-logo-container img {
     display: block; 
-    margin: 0 auto; 
+    margin: 0 auto; /* Ensures perfect centering */
     width: 150px; 
     height: auto;
 }
@@ -199,7 +195,49 @@ img {
     text-shadow: 0 0 10px rgba(0, 255, 194, 0.5); 
 }
 
-/* --- 7. FORMS & CONTACT LAYOUT (Cleaned Alignment) --- */
+/* --- 6. PROFESSIONAL FOOTER --- */
+.premium-footer {
+    background-color: var(--secondary-black); /* Darker than primary black for contrast */
+    padding: 60px 0 20px 0;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr; /* Layout: Wide-Narrow-Narrow-Wide for better visual balance */
+    gap: 40px;
+    padding-bottom: 40px;
+}
+.footer-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    color: var(--primary-orange); /* Orange headings */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.footer-links {
+    list-style: none;
+}
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: var(--text-grey);
+    font-size: 0.95rem;
+}
+.footer-links a:hover {
+    color: var(--primary-white); /* White hover for premium feel */
+    padding-left: 5px; 
+}
+.footer-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08); 
+    margin: 30px 0;
+}
+.footer-copyright {
+    text-align: center;
+}
+
+
+/* --- 7. FORMS & CONTACT LAYOUT --- */
 .contact-section-inner {
     display: flex;
     min-height: 80vh; 
