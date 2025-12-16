@@ -3,211 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Gypsy Cartel</title>
+    <title>Contact | Gypsy Cartel</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/webp" href="assets/logos/gypsy-cartel-icon.webp"> 
-    <style>
-        /* --- CONTACT PAGE SPECIFIC STYLES --- */
-
-        .contact-hero-section {
-            min-height: 50vh;
-            padding: 100px 0;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-
-        .contact-headline {
-            font-size: 3.5em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .contact-subhead {
-            font-size: 1.3em;
-            color: var(--grey-text);
-            margin-bottom: 40px;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 60px;
-            padding: 100px 0;
-        }
-
-        /* Contact Form Styles */
-        .contact-form-container {
-            background-color: var(--dark-bg);
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-        }
-
-        .contact-form-container h3 {
-            color: var(--secondary-color);
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--grey-text);
-            font-weight: 600;
-        }
-
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 25px;
-            border: 1px solid #333;
-            border-radius: 4px;
-            background-color: var(--black-bg);
-            color: var(--secondary-color);
-            font-family: inherit;
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        /* Info Card Styles */
-        .info-card {
-            background-color: var(--black-bg);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .info-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .info-card ul {
-            list-style: none;
-        }
-
-        .info-card ul li {
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-            color: var(--grey-text);
-        }
-
-        .info-card a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-
-        .info-card a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Responsive adjustments for Contact Page */
-        @media (max-width: 1024px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-form-container { order: 2; }
-            .info-card-container { order: 1; margin-bottom: 40px;}
-        }
-    </style>
 </head>
 <body>
-
     <header class="main-header">
-        <div class="logo">
-            <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Logo" class="header-logo">
+        <div class="container">
+            <a href="index.html"><img src="assets/logos/gypsy-cartel.webp" class="header-logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="apps.html">Apps</a></li>
+                    <li><a href="design.html">Design</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="apps.html">Apps</a></li>
-                <li><a href="design.html">Design</a></li>
-                <li><a href="index.html#fashion">Fashion</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="cta-button nav-cta">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="contact-hero-section black-bg">
-        <div class="container">
-            <h1 class="contact-headline">Get In Touch</h1>
-            <p class="contact-subhead">Whether it's support, a design quote, or business inquiries, we're ready to hear from you.</p>
+    <section class="section-padding black-bg">
+        <div class="container" style="max-width: 600px;">
+            <h1 class="section-title" style="text-align: center;">Get In Touch</h1>
+            <p class="section-subtitle" style="text-align: center;">Support, Business & Design Inquiries.</p>
+
+            <form class="contact-form" style="margin-top: 40px;">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="How can we help?" required></textarea>
+                <button type="submit" class="cta-button primary-cta">Send Message</button>
+            </form>
+
+            <div style="margin-top: 50px; text-align: center; padding-top: 30px; border-top: 1px solid #222;">
+                <p style="color: var(--grey-text); margin-bottom: 10px;">Direct Email</p>
+                <h3 style="color: white;"><a href="mailto:support@gypsycartel.shop">support@gypsycartel.shop</a></h3>
+                
+                <p style="color: var(--grey-text); margin-top: 20px; margin-bottom: 10px;">Instagram</p>
+                <h3 style="color: white;"><a href="https://www.instagram.com/mallugypsy.creations" target="_blank">@mallugypsy.creations</a></h3>
+            </div>
         </div>
     </section>
-
-    <section class="contact-details-section dark-bg">
-        <div class="container contact-grid">
-            
-            <div class="contact-form-container">
-                <h3>Send Us a Message</h3>
-                <form action="#" method="POST" class="contact-form">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Full Name">
-                    
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" required placeholder="example@domain.com">
-
-                    <label for="subject">Subject / Inquiry Type</label>
-                    <input type="text" id="subject" name="subject" required placeholder="App Support, Design Quote, etc.">
-                    
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
-                    
-                    <button type="submit" class="cta-button primary-cta large-cta">SEND MESSAGE</button>
-                </form>
-            </div>
-
-            <div class="info-card-container">
-                <div class="info-card">
-                    <h4>Direct Contact Information</h4>
-                    <ul>
-                        <li>**General & Sales:** <a href="mailto:sales@gypsycartel.shop">sales@gypsycartel.shop</a></li>
-                        <li>**Support & Technical:** <a href="mailto:support@gypsycartel.shop">support@gypsycartel.shop</a></li>
-                        <li>**Design Inquiries:** <a href="mailto:design@mallugypsy.creations">design@mallugypsy.creations</a></li>
-                        <li>**Instagram (Creator):** <a href="https://www.instagram.com/mallugypsy.creations" target="_blank">@mallugypsy.creations</a></li>
-                        <li>**Location:** Based in India (serving clients globally)</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="main-footer dark-bg">
-        <div class="container footer-grid">
-            <div class="footer-col brand-col">
-                <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Logo" class="footer-logo">
-                <p>Digital Excellence, Designed by Mallu Gypsy.</p>
-            </div>
-            <div class="footer-col">
-                <h4>QUICK LINKS</h4>
-                <ul>
-                    <li><a href="apps.html">Windows Apps</a></li>
-                    <li><a href="design.html">Design Studio</a></li>
-                    <li><a href="index.html#fashion">Fashion Store</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>CONTACT & SUPPORT</h4>
-                <ul>
-                    <li>Email: <a href="mailto:support@gypsycartel.shop">support@gypsycartel.shop</a></li>
-                    <li>Instagram: <a href="https://www.instagram.com/mallugypsy.creations" target="_blank">@mallugypsy.creations</a></li>
-                    <li>Shop: <a href="www.gypsycartel.shop" target="_blank">www.gypsycartel.shop</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Gypsy Cartel. All rights reserved. Creative & Testing by Vipinraj VR.</p>
-        </div>
-    </footer>
-
 </body>
 </html>
