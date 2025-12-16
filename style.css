@@ -1,14 +1,14 @@
-/* GYPSY CARTEL - CORE STYLES 
+/* GYPSY CARTEL - CORE STYLES (REVISED)
    Theme: Clean Code, Corrupted Design
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap');
 
 :root {
-    --bg-deep: #050505;
-    --bg-surface: #111111;
-    --primary-orange: #FF5722;
-    --corruption-cyan: #00FFC2;
+    --bg-deep: #050505; /* Primary Color Deep Black */
+    --bg-surface: #111111; /* Secondary Background */
+    --primary-orange: #FF5722; /* Accent Color */
+    --corruption-cyan: #00FFC2; /* Secondary Accent */
     --text-main: #FFFFFF;
     --text-muted: #888888;
 }
@@ -22,7 +22,7 @@
 }
 
 body {
-    background-color: var(--bg-deep);
+    background-color: var(--bg-deep); /* ENSURE DEEP BLACK BACKGROUND */
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -49,6 +49,7 @@ ul { list-style: none; }
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
 }
 
 .cursor-dot {
@@ -61,7 +62,6 @@ ul { list-style: none; }
     width: 40px;
     height: 40px;
     border: 1px solid var(--corruption-cyan);
-    transition: width 0.2s, height 0.2s;
     box-shadow: 0 0 10px rgba(0, 255, 194, 0.2);
 }
 
@@ -77,7 +77,7 @@ header {
     background: rgba(5, 5, 5, 0.9);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--primary-orange); /* Orange Separator */
 }
 
 .logo-icon {
@@ -97,9 +97,9 @@ nav a {
 
 nav a:hover, nav a.active {
     color: var(--primary-orange);
-    text-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
 }
 
+/* Orange bottom indicator for active link */
 nav a.active::after {
     content: '';
     position: absolute;
@@ -107,48 +107,16 @@ nav a.active::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--corruption-cyan);
-    box-shadow: 0 0 5px var(--corruption-cyan);
+    background: var(--primary-orange);
+    box-shadow: 0 0 5px var(--primary-orange);
 }
 
-/* --- BUTTONS --- */
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-}
 
-.btn-primary {
-    background-color: var(--primary-orange);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: transparent;
-    border-color: var(--primary-orange);
-    color: var(--primary-orange);
-    box-shadow: 0 0 15px rgba(255, 87, 34, 0.3);
-}
-
-.btn-outline {
-    border-color: var(--text-main);
-}
-
-.btn-outline:hover {
-    background-color: var(--text-main);
-    color: var(--bg-deep);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-}
-
-/* --- LAYOUT UTILITIES --- */
+/* --- LAYOUT & UTILITIES --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 140px 20px 80px;
+    padding: 120px 20px 80px;
 }
 
 .grid-2 {
@@ -164,16 +132,15 @@ nav a.active::after {
     gap: 30px;
 }
 
-/* --- FORMS --- */
+/* --- FORMS (Matches required dark inputs #111111) --- */
 input, textarea, select {
     width: 100%;
     padding: 15px;
-    background: var(--bg-surface);
+    background: var(--bg-surface); 
     border: 1px solid #333;
     color: white;
     font-family: 'Inter', sans-serif;
     margin-bottom: 20px;
-    transition: 0.3s;
 }
 
 input:focus, textarea:focus {
@@ -182,19 +149,34 @@ input:focus, textarea:focus {
     box-shadow: 0 0 10px rgba(0, 255, 194, 0.1);
 }
 
-/* --- FOOTER --- */
+/* --- FOOTER (Matches required secondary background #111111) --- */
 footer {
     background: var(--bg-surface);
-    padding: 40px 0;
-    text-align: center;
-    font-size: 0.8rem;
+    padding: 40px 5%;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    border-top: 1px solid #222;
+    line-height: 1.8;
 }
 
-/* --- RESPONSIVE --- */
+footer h4 { color: var(--text-main); margin-bottom: 15px; }
+footer a:hover { color: var(--primary-orange); }
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #222;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
 @media(max-width: 768px) {
     .grid-2 { grid-template-columns: 1fr; }
-    nav ul { gap: 15px; font-size: 0.75rem; }
-    .hero h1 { font-size: 1.2rem; }
+    .footer-content { grid-template-columns: 1fr; }
 }
