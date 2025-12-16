@@ -78,9 +78,9 @@ img {
     height: 100%;
 }
 
-/* **Header Logo Size** */
+/* **Header Logo Size: UPDATED (105px / 3 = 35px)** */
 .header-logo {
-    width: 105px; 
+    width: 35px; 
     height: auto;
     transition: opacity 0.3s;
 }
@@ -157,11 +157,11 @@ img {
     background: rgba(0,0,0,0.6); 
 }
 
-/* **Splash Logo Size** */
+/* **Splash Logo Size: UPDATED (300px / 3 = 100px)** */
 .binary-header-logo {
     position: relative;
     z-index: 2;
-    width: 300px; 
+    width: 100px; 
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2)); 
     animation: fadeUp 1s ease-out;
 }
