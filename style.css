@@ -11,11 +11,11 @@
     --primary-orange: #FF5722;
     --primary-white: #FFFFFF;
     --primary-black: #050505;
-    --secondary-black: #111111; /* Used for the Footer background */
+    --secondary-black: #111111; 
     --text-grey: #B0B0B0;
     
     /* Corruption Effect Color */
-    --corruption-blue: #00FFC2; 
+    --corruption-blue: #00FFC2; /* Bright Cyan/Green for Design */
     
     /* Dimensions & Spacing */
     --header-height: 90px;
@@ -58,15 +58,59 @@ img {
     margin: 0 auto;
     padding: 0 40px;
 }
+.text-center { text-align: center; } /* Utility for centering text blocks */
+.text-grey { color: var(--text-grey); }
 
 /* --- TEXT COLOR DEFINITIONS --- */
 .text-black { color: var(--primary-black) !important; }
 .text-orange { color: var(--primary-orange) !important; }
-/* FINAL FIX: Giant text size for maximum impact on Home Page */
 .giant-text { 
     font-size: 8rem; 
     font-weight: 900; 
     letter-spacing: 0.1em; 
+}
+.text-corruption {
+    color: var(--corruption-blue) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 194, 0.5); 
+}
+
+/* --- BUTTON STYLES (NEW PREMIUM CTAs) --- */
+.btn {
+    padding: 15px 35px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.btn-orange-fill {
+    background: var(--primary-orange);
+    color: var(--primary-white) !important;
+    border-color: var(--primary-orange);
+}
+.btn-orange-fill:hover {
+    background: #FF7043; 
+    border-color: #FF7043;
+}
+.btn-white-border {
+    background: transparent;
+    color: var(--primary-white) !important;
+    border-color: var(--primary-white);
+}
+.btn-white-border:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-white);
+}
+.btn-full-width {
+    width: 100%;
+    text-align: center;
+}
+.btn-small {
+    padding: 10px 20px;
+    font-size: 0.8rem;
 }
 
 
@@ -126,7 +170,7 @@ img {
 }
 
 
-/* --- 4. VISUAL SPLASH (Binary Background) --- */
+/* --- 4. VISUAL SPLASH (Home Page) --- */
 .visual-splash-section {
     height: calc(100vh - var(--header-height));
     display: flex;
@@ -143,7 +187,6 @@ img {
     overflow: hidden;
     filter: none; 
     
-    /* Background Image Set Here */
     background-image: url('assets/ads/1923.jpg'); 
     background-repeat: repeat; 
     background-size: cover; 
@@ -151,7 +194,6 @@ img {
 }
 
 .binary-header::after {
-    /* CRITICAL: Filter to force visibility of the binary data behind the logo */
     content: '';
     position: absolute;
     inset: 0;
@@ -177,39 +219,166 @@ img {
     border-top: 1px solid #333;
 }
 
-/* --- 5. DESIGN PAGE FIXES --- */
+
+/* --- 5. DESIGN PAGE STYLES (NEW) --- */
+.design-hero-section {
+    height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+}
 .design-logo-container {
-    text-align: center; 
-    padding-top: 60px; 
+    padding-top: 0; 
     padding-bottom: 20px;
 }
 .design-logo-container img {
-    display: block; 
-    margin: 0 auto; /* Ensures perfect centering */
+    margin: 0 auto; 
     width: 150px; 
     height: auto;
 }
-/* --- Corruption Color Styling --- */
-.text-corruption {
-    color: var(--corruption-blue) !important;
-    text-shadow: 0 0 10px rgba(0, 255, 194, 0.5); 
+.design-heading-brand {
+    font-size: 2.5rem;
+    color: var(--primary-orange); /* Orange for Brand Name */
+    margin-bottom: 5px;
+}
+.design-heading-main {
+    font-size: 4rem; /* Larger for impact */
+    margin-bottom: 20px;
+}
+.design-subheading {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    font-size: 1.1rem;
+    color: var(--text-grey);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+.design-hero-cta a {
+    margin: 0 10px;
+}
+.section-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08); 
+    margin: 0 0 0 0; 
 }
 
-/* --- 6. PROFESSIONAL FOOTER --- */
+
+/* --- CUSTOM REQUEST SECTION (NEW FORM) --- */
+.custom-request-section {
+    padding: 100px 0;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Intro (narrow) and Form (wide) */
+    gap: 80px;
+    align-items: start;
+}
+.form-intro h2 {
+    font-size: 2.5rem;
+    color: var(--primary-orange);
+    margin-bottom: 20px;
+}
+.form-intro p {
+    margin-bottom: 20px;
+}
+.form-intro ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1rem;
+}
+.form-intro li {
+    margin-bottom: 10px;
+    color: var(--text-grey);
+}
+.form-intro i {
+    color: var(--corruption-blue); /* Checkmark icon color */
+    margin-right: 10px;
+}
+.design-form input[type="text"],
+.design-form input[type="email"],
+.design-form textarea {
+    width: 100%;
+    padding: 15px 15px;
+    margin-bottom: 20px;
+    background: var(--primary-black);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--primary-white);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    border-radius: var(--radius);
+}
+.design-form input:focus,
+.design-form textarea:focus {
+    border-color: var(--primary-orange);
+}
+.design-form ::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+.form-row input {
+    flex: 1;
+}
+
+/* --- DOWNLOAD ZONE (NEW) --- */
+.download-section {
+    padding: 80px 0 120px 0;
+}
+.download-heading {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+.download-section p {
+    margin-bottom: 40px;
+}
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+.download-card {
+    background: var(--secondary-black);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.download-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+.download-card h3 {
+    color: var(--corruption-blue);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.download-card p {
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    margin-bottom: 25px;
+}
+
+/* --- 6. PROFESSIONAL FOOTER (Correct) --- */
 .premium-footer {
-    background-color: var(--secondary-black); /* Darker than primary black for contrast */
+    background-color: var(--secondary-black); 
     padding: 60px 0 20px 0;
 }
+/* ... (Footer styles remain correct from the last turn) ... */
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr; /* Layout: Wide-Narrow-Narrow-Wide for better visual balance */
+    grid-template-columns: 2fr 1fr 1fr 2fr; 
     gap: 40px;
     padding-bottom: 40px;
 }
 .footer-heading {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.1rem;
-    color: var(--primary-orange); /* Orange headings */
+    color: var(--primary-orange); 
     margin-bottom: 20px;
     font-weight: 700;
 }
@@ -224,7 +393,7 @@ img {
     font-size: 0.95rem;
 }
 .footer-links a:hover {
-    color: var(--primary-white); /* White hover for premium feel */
+    color: var(--primary-white); 
     padding-left: 5px; 
 }
 .footer-divider {
@@ -234,69 +403,4 @@ img {
 }
 .footer-copyright {
     text-align: center;
-}
-
-
-/* --- 7. FORMS & CONTACT LAYOUT --- */
-.contact-section-inner {
-    display: flex;
-    min-height: 80vh; 
-}
-.contact-left {
-    flex: 1;
-    padding: 60px;
-    background-color: var(--primary-black);
-    color: var(--primary-white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left !important; 
-}
-
-.contact-left h2 { margin-bottom: 25px; }
-.contact-left h3 {
-    color: var(--primary-orange); 
-    margin-bottom: 5px;
-}
-.contact-right {
-    flex: 1;
-    background-color: var(--primary-orange);
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 15px 0;
-    margin-bottom: 20px;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-    color: var(--primary-white);
-    font-size: 1rem;
-    outline: none;
-    transition: border-bottom 0.3s;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-bottom: 2px solid var(--primary-white);
-}
-.contact-form ::placeholder {
-    color: rgba(255, 255, 255, 0.8);
-}
-.btn-submit {
-    background: var(--primary-black);
-    color: var(--primary-white);
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 15px 30px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s;
-}
-.btn-submit:hover {
-    background: #333333;
 }
