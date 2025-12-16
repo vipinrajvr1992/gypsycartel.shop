@@ -11,14 +11,16 @@
 
     <header class="main-header">
         <div class="container">
-            <a href="index.html" class="logo-link">
-                <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel" class="header-logo">
+            <a href="index.html">
+                <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel" class="header-logo">
             </a>
             <nav class="main-nav">
                 <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="apps.html">Apps</a></li>
                     <li><a href="design.html">Design</a></li>
+                    <li><a href="fashion.html">Fashion</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html" class="nav-cta">Contact</a></li>
                 </ul>
@@ -27,8 +29,8 @@
     </header>
 
     <section class="visual-splash-section">
-        <div class="binary-header">
-            <img src="assets/logos/gypsy-cartel-icon.webp" alt="Icon" class="binary-logo">
+        <div class="binary-header" style="background-image: url('POSTER 1.jpg');">
+            <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel Icon" class="binary-header-logo">
         </div>
         <div class="brand-title-strip">
             <h1 class="giant-text">
@@ -38,62 +40,130 @@
     </section>
 
     <section class="section-padding black-bg">
-        <div class="container" style="text-align: center; max-width: 800px;">
-            <h2 class="section-title">Digital Power. Modern Design.</h2>
-            <p class="section-subtitle">High-performance Windows applications & Premium 3D Visuals.</p>
+        <div class="container" style="text-align: center; max-width: 900px;">
+            <div class="section-header">
+                <h2 class="section-title">Digital Power. Modern Design.</h2>
+                <p class="section-subtitle">High-performance Windows applications & Premium 3D Visuals.</p>
+            </div>
             <div style="display: flex; justify-content: center; gap: 20px;">
-                <a href="apps.html" class="cta-button primary-cta">Explore Apps</a>
-                <a href="design.html" class="cta-button secondary-cta">Design Studio</a>
+                <a href="apps.html" class="btn btn-primary">Explore Apps</a>
+                <a href="design.html" class="btn btn-secondary">Design Studio</a>
             </div>
         </div>
     </section>
     
     <section id="apps" class="section-padding dark-bg">
         <div class="container">
-            <h2 class="section-title">PC Beast PRO+</h2>
-            <p class="section-subtitle">Engineered for maximum Windows performance.</p>
+            <div class="section-header">
+                <img src="assets/logos/gypsy-app.webp" alt="App Icon" style="width: 80px; margin: 0 auto 20px; display: block;">
+                <h2 class="section-title">PC Beast PRO+</h2>
+                <p class="section-subtitle">Engineered for maximum Windows performance.</p>
+            </div>
+            
             <div class="grid-3">
-                <div class="card-item">
-                    <h3 style="color:var(--primary-color)">01. Boost</h3>
-                    <p style="color:var(--grey-text)">One-click optimization algorithms.</p>
+                <div class="card-item card-content">
+                    <h3 style="color:var(--primary-orange); margin-bottom: 10px;">01. Boost</h3>
+                    <p style="color:var(--text-grey)">One-click optimization algorithms that intelligently manage RAM and CPU.</p>
                 </div>
-                <div class="card-item">
-                    <h3 style="color:var(--primary-color)">02. Clean</h3>
-                    <p style="color:var(--grey-text)">Deep system & registry cleanup.</p>
+                <div class="card-item card-content">
+                    <h3 style="color:var(--primary-orange); margin-bottom: 10px;">02. Clean</h3>
+                    <p style="color:var(--text-grey)">Deep system & registry cleanup to remove bloatware and trackers.</p>
                 </div>
-                <div class="card-item">
-                    <h3 style="color:var(--primary-color)">03. Control</h3>
-                    <p style="color:var(--grey-text)">Modern CustomTkinter Interface.</p>
+                <div class="card-item card-content">
+                    <h3 style="color:var(--primary-orange); margin-bottom: 10px;">03. Control</h3>
+                    <p style="color:var(--text-grey)">Modern CustomTkinter Interface giving you full admin dominance.</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
-                 <a href="apps.html" class="cta-button primary-cta">VIEW APP DETAILS</a>
+            <div style="text-align: center; margin-top: 60px;">
+                 <a href="apps.html" class="btn btn-primary">VIEW SPECS</a>
             </div>
         </div>
     </section>
 
-    <section id="design" class="section-padding black-bg">
-        <div class="container">
-            <h2 class="section-title">Mallu Gypsy Creations</h2>
-            <p class="section-subtitle">3D & Architectural Design</p>
-            <div class="grid-3">
-                <img src="assets/ads/tree-room.webp" alt="Interior" style="height: 250px; object-fit: cover; border-radius: 4px;">
-                <img src="assets/ads/tree-house-exterior.webp" alt="Exterior" style="height: 250px; object-fit: cover; border-radius: 4px;">
-                <img src="assets/ads/imc-222.webp" alt="Office" style="height: 250px; object-fit: cover; border-radius: 4px;">
+    <section id="ai-superiority" class="section-padding black-bg">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <div class="section-header">
+                <p class="section-subtitle">THE INTELLIGENCE BEHIND THE CODE</p>
+                <h2 class="section-title" style="font-size: 3.5rem;">Engineered by the World's Best AI.</h2>
             </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="design.html" class="cta-button secondary-cta">View Portfolio</a>
+            
+            <div style="padding: 40px; background: rgba(255, 87, 34, 0.1); border: 1px solid var(--primary-orange); border-radius: var(--radius);">
+                <h3 style="font-size: 2rem; color: var(--primary-orange); margin-bottom: 15px;">GEMINI AI: THE SUPERIOR ARCHITECT</h3>
+                <p style="font-size: 1.1rem; color: var(--primary-white); margin-bottom: 20px;">
+                    This website, finalized, optimized, and perfected, was architected by **Gemini AI**. Its ability to study premium design patterns, fix complex errors, and achieve pixel-perfect alignment surpasses the limitations of predecessors like **ChatGPT Pro**.
+                </p>
+                <p style="font-size: 1.1rem; color: var(--text-grey);">
+                    We chose Gemini for its **Advanced Reasoning** and **Multimodal Understanding**, guaranteeing a flawless, premium digital presence for Gypsy Cartel.
+                </p>
+            </div>
+            
+            <a href="about.html" class="btn btn-secondary" style="margin-top: 40px;">LEARN ABOUT OUR TECH STACK</a>
+        </div>
+    </section>
+
+    <section id="design" class="section-padding dark-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mallu Gypsy Creations</h2>
+                <p class="section-subtitle">Architectural Visualization & 3D Art</p>
+            </div>
+            <div class="grid-3">
+                <div class="card-item"><img src="assets/ads/tree-room.webp" class="card-image" alt="Interior"></div>
+                <div class="card-item"><img src="assets/ads/tree-house-exterior.webp" class="card-image" alt="Exterior"></div>
+                <div class="card-item"><img src="assets/ads/imc-222.webp" class="card-image" alt="Office"></div>
+            </div>
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="design.html" class="btn btn-secondary">Open Gallery</a>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer dark-bg" style="text-align: center;">
+    <footer class="dark-bg">
         <div class="container">
-            <img src="assets/logos/gypsy-cartel.webp" alt="Logo" style="height: 30px; margin: 0 auto 20px;">
-            <p style="color: var(--grey-text); margin-bottom: 20px;">
-                Support: <a href="mailto:support@gypsycartel.shop" style="color: white;">support@gypsycartel.shop</a>
-            </p>
-            <p style="color: #444; font-size: 0.8rem;">&copy; 2025 Gypsy Cartel. Designed by Mallu Gypsy.</p>
+            <div class="footer-grid">
+                
+                <div class="footer-column footer-logo-area">
+                    <img src="assets/logos/gypsy-cartel.webp" alt="Logo" style="height: 30px; margin-bottom: 20px;">
+                    <p>Gypsy Cartel is a digital movement, fusing high-performance Windows software with stunning, hyper-realistic 3D design and UI/UX solutions.</p>
+                    <p style="color: var(--primary-orange);">Powered by Gemini AI.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">Our Vision</a></li>
+                        <li><a href="gallery.html">Design Portfolio</a></li>
+                        <li><a href="apps.html">PC Beast PRO+</a></li>
+                        <li><a href="fashion.html">Fashion Store (Soon)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ / Help Center</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <p style="line-height: 1.5;">
+                        <strong style="color: var(--primary-white);">Sales:</strong> sales@gypsycartel.shop<br>
+                        <strong style="color: var(--primary-white);">Support:</strong> support@gypsycartel.shop
+                    </p>
+                    <p style="margin-top: 20px; line-height: 1.5;">
+                        <strong style="color: var(--primary-white);">Design:</strong> design@mallugypsy.creations<br>
+                        <strong style="color: var(--primary-white);">Creator:</strong> @mallugypsy.creations
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p style="color: #444; font-size: 0.8rem;">&copy; 2025 Gypsy Cartel. All Rights Reserved. Engineered by Google Gemini.</p>
+            </div>
         </div>
     </footer>
 </body>
