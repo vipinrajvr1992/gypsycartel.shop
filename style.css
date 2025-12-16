@@ -78,7 +78,7 @@ img {
     height: 100%;
 }
 
-/* **Header Logo Size: UPDATED to 35px** */
+/* **Header Logo Size: 35px** */
 .header-logo {
     width: 35px; 
     height: auto;
@@ -157,7 +157,7 @@ img {
     background: rgba(0,0,0,0.6); 
 }
 
-/* **Splash Logo Size: UPDATED to 100px** */
+/* **Splash Logo Size: 100px** */
 .binary-header-logo {
     position: relative;
     z-index: 2;
