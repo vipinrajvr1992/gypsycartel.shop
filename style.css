@@ -144,19 +144,25 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* --- CRITICAL CHANGE: Removed background-image to make it solid black --- */
+    /* --- CRITICAL CHANGE: Applied CSS Binary Design Pattern --- */
+    background: repeating-linear-gradient(
+        45deg,
+        var(--secondary-black),
+        var(--secondary-black) 2px,
+        var(--primary-black) 2px,
+        var(--primary-black) 10px 
+    );
+    background-size: 20px 20px;
     background-color: var(--primary-black); 
-    background-size: cover;
-    background-position: center;
     overflow: hidden;
 }
 
 .binary-header::after {
-    /* Keeping the overlay, though less necessary on solid black, for styling consistency */
+    /* Slightly stronger overlay to subdue the pattern and focus on the logo */
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.6); 
+    background: rgba(0,0,0,0.75); 
 }
 
 /* **Splash Logo Size: 500px (Unchanged)** */
