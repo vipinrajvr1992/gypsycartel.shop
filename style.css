@@ -78,7 +78,7 @@ img {
     height: 100%;
 }
 
-/* **3X LOGO SIZE IN HEADER** */
+/* **Header Logo Size** */
 .header-logo {
     width: 105px; 
     height: auto;
@@ -157,7 +157,7 @@ img {
     background: rgba(0,0,0,0.6); 
 }
 
-/* **3X LOGO SIZE IN SPLASH SECTION** */
+/* **Splash Logo Size** */
 .binary-header-logo {
     position: relative;
     z-index: 2;
@@ -182,7 +182,7 @@ img {
     text-transform: uppercase;
 }
 
-/* **BRAND COLOR PATTERN** */
+/* **BRAND COLOR PATTERN (GYPSY Black, CARTEL Orange)** */
 .text-black { color: var(--primary-black); } 
 .text-orange { color: var(--primary-orange); } 
 
