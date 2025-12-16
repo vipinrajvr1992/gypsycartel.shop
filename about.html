@@ -3,206 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Gypsy Cartel</title>
+    <title>About | Gypsy Cartel</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/webp" href="assets/logos/gypsy-cartel-icon.webp"> 
-    <style>
-        /* --- ABOUT PAGE SPECIFIC STYLES --- */
-
-        .about-hero-section {
-            min-height: 50vh;
-            padding: 100px 0;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-
-        .about-hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .about-headline {
-            font-size: 3.5em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .about-subhead {
-            font-size: 1.3em;
-            color: var(--grey-text);
-            margin-bottom: 40px;
-        }
-
-        /* Founder/Mission Section */
-        .mission-section {
-            padding: 100px 0;
-        }
-
-        .mission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .founder-photo {
-            width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 3px solid var(--primary-color);
-            /* Using one of your ad images as a placeholder for a founder photo */
-            /* If you have a real photo of Mallu Gypsy, replace this path */
-        }
-
-        .mission-text h3 {
-            color: var(--secondary-color);
-            border-left: 4px solid var(--primary-color);
-            padding-left: 15px;
-            margin-bottom: 20px;
-        }
-        
-        /* Values Section */
-        .values-section {
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .value-item {
-            background-color: var(--dark-bg);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border-top: 5px solid var(--primary-color);
-        }
-
-        .value-item h4 {
-            color: var(--primary-color);
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        .value-item p {
-            color: var(--grey-text);
-        }
-
-        /* Responsive adjustments for About Page */
-        @media (max-width: 1024px) {
-            .mission-grid {
-                grid-template-columns: 1fr;
-            }
-            .founder-photo-container { order: 1; }
-            .mission-text { order: 2; }
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
-
     <header class="main-header">
-        <div class="logo">
-            <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Logo" class="header-logo">
+        <div class="container">
+            <a href="index.html"><img src="assets/logos/gypsy-cartel.webp" class="header-logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="apps.html">Apps</a></li>
+                    <li><a href="design.html">Design</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="apps.html">Apps</a></li>
-                <li><a href="design.html">Design</a></li>
-                <li><a href="index.html#fashion">Fashion</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="cta-button nav-cta">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="about-hero-section black-bg">
-        <div class="container about-hero-content">
-            <h1 class="about-headline">The Vision Behind Gypsy Cartel</h1>
-            <p class="about-subhead">We are not just a brand; we are a digital movement, blending high performance, unique aesthetics, and technical innovation.</p>
-            <a href="#mission" class="cta-button primary-cta">OUR MISSION & STORY</a>
-        </div>
-    </section>
-
-    <section id="mission" class="mission-section dark-bg">
-        <div class="container mission-grid">
-            
-            <div class="founder-photo-container">
-                <img src="assets/ads/ad-solution.webp" alt="Mallu Gypsy Portrait" class="founder-photo">
-            </div>
-
-            <div class="mission-text">
-                <h2 class="section-title" style="text-align: left;">Mallu Gypsy: Founder Story</h2>
-                <p>Gypsy Cartel was founded by **Mallu Gypsy**, a developer and designer with a vision to merge aesthetic appeal with uncompromising efficiency. Frustrated by software that was either powerful but ugly, or beautiful but slow, Mallu Gypsy created Gypsy Cartel to offer solutions that excel in both performance and visual design.</p>
-                
-                <h3 style="margin-top: 30px;">The Digital Cartel</h3>
-                <p>Our philosophy is simple: **Digital Power**. We build tools like the **PC Beast PRO+** optimizer that empower users to control their technology, giving them the edge in gaming, development, and daily productivity. The 'Cartel' represents a close-knit group focused on delivering elite, high-value products to a community that demands the best.</p>
-                
-                <p>We believe that clean, elegant design should be a standard, not a luxury, whether it's in our software UI/UX or our premium 3D visualizations.</p>
-                <a href="https://www.instagram.com/mallugypsy.creations" target="_blank" class="cta-button secondary-cta" style="margin-top: 20px;">Follow Mallu Gypsy</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="values-section black-bg">
+    <section class="section-padding black-bg" style="min-height: 80vh; display: flex; align-items: center;">
         <div class="container">
-            <h2 class="section-title">Our Core Values</h2>
-            
-            <div class="values-grid">
-                <div class="value-item">
-                    <h4>PERFORMANCE</h4>
-                    <p>Building applications and services focused on speed, efficiency, and real, measurable results.</p>
+            <div class="grid-3" style="grid-template-columns: 1fr 1fr; align-items: center;">
+                <div>
+                    <h1 class="section-title" style="font-size: 3rem; line-height: 1.1;">
+                        The Vision Behind<br>
+                        <span style="color:var(--primary-color); white-space: nowrap;">Gypsy Cartel.</span>
+                    </h1>
+                    <p style="color: var(--grey-text); font-size: 1.1rem; margin-top: 30px;">
+                        Founded by <strong>Mallu Gypsy</strong>, we are a digital collective focused on performance and aesthetics. We don't just build software; we build tools that empower users to control their technology.
+                    </p>
+                    <p style="color: var(--grey-text); font-size: 1.1rem; margin-top: 20px;">
+                        From the rigorous coding of <strong>PC Beast PRO+</strong> to the artistic detail in our 3D renders, our standard is excellence.
+                    </p>
                 </div>
-                <div class="value-item">
-                    <h4>AESTHETICS</h4>
-                    <p>Designing interfaces, art, and products with a clean, modern, and visually striking premium finish.</p>
-                </div>
-                <div class="value-item">
-                    <h4>INTEGRITY</h4>
-                    <p>Ensuring transparent development, safe software, and honest service delivery with every client interaction.</p>
+                <div>
+                     <img src="assets/ads/ad-solution.webp" alt="Mallu Gypsy Vision" style="border: 2px solid var(--primary-color); border-radius: var(--border-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 </div>
             </div>
         </div>
     </section>
-
-
-    <footer class="main-footer dark-bg">
-        <div class="container footer-grid">
-            <div class="footer-col brand-col">
-                <img src="assets/logos/gypsy-cartel.webp" alt="Gypsy Cartel Logo" class="footer-logo">
-                <p>Digital Excellence, Designed by Mallu Gypsy.</p>
-            </div>
-            <div class="footer-col">
-                <h4>QUICK LINKS</h4>
-                <ul>
-                    <li><a href="apps.html">Windows Apps</a></li>
-                    <li><a href="design.html">Design Studio</a></li>
-                    <li><a href="index.html#fashion">Fashion Store</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>CONTACT & SUPPORT</h4>
-                <ul>
-                    <li>Email: <a href="mailto:support@gypsycartel.shop">support@gypsycartel.shop</a></li>
-                    <li>Instagram: <a href="https://www.instagram.com/mallugypsy.creations" target="_blank">@mallugypsy.creations</a></li>
-                    <li>Shop: <a href="www.gypsycartel.shop" target="_blank">www.gypsycartel.shop</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Gypsy Cartel. All rights reserved. Creative & Testing by Vipinraj VR.</p>
-        </div>
-    </footer>
-
 </body>
 </html>
