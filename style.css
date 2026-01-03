@@ -298,3 +298,11 @@ footer a:hover { color: var(--primary-orange); }
   font-size: 28px;
   cursor: pointer;
 }
+.gc-popup-box {
+  position: relative;
+  z-index: 10000;
+}
+
+#gc-close {
+  color: #fff;
+}
