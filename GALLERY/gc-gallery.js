@@ -23,3 +23,8 @@ function openGC(item) {
 document.getElementById("gc-close").onclick = () => {
   document.getElementById("gc-popup").classList.add("gc-hidden");
 };
+document.getElementById("gc-popup").addEventListener("click", (e) => {
+  if (e.target.id === "gc-popup") {
+    document.getElementById("gc-popup").classList.add("gc-hidden");
+  }
+});
