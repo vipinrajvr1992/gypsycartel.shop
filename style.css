@@ -257,6 +257,12 @@ footer a:hover { color: var(--primary-orange); }
     .abstract-design { width: 400px; height: 400px; }
 }
 #gc-dynamic-gallery {
+
+
+
+/* ===== GC DYNAMIC GALLERY (ISOLATED & FINAL) ===== */
+
+#gc-dynamic-gallery {
   display: flex;
   gap: 16px;
   overflow-x: auto;
@@ -269,43 +275,7 @@ footer a:hover { color: var(--primary-orange); }
   cursor: pointer;
 }
 
-#gc-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.gc-hidden { display: none; }
-
-.gc-popup-box {
-  background: #000;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 80%;
-}
-
-#gc-popup-img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-#gc-close {
-  float: right;
-  font-size: 28px;
-  cursor: pointer;
-}
-.gc-popup-box {
-  position: relative;
-  z-index: 10000;
-}
-
-#gc-close {
-  color: #fff;
-}
+/* POPUP OVERLAY */
 #gc-popup {
   position: fixed;
   top: 0;
@@ -319,6 +289,12 @@ footer a:hover { color: var(--primary-orange); }
   z-index: 99999;
 }
 
+/* HIDDEN STATE */
+.gc-hidden {
+  display: none;
+}
+
+/* POPUP CONTENT */
 .gc-popup-box {
   background: #000;
   padding: 24px;
@@ -328,6 +304,13 @@ footer a:hover { color: var(--primary-orange); }
   position: relative;
 }
 
+/* POPUP IMAGE */
+#gc-popup-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* CLOSE BUTTON */
 #gc-close {
   position: absolute;
   top: 12px;
