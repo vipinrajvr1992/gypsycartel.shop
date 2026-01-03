@@ -28,3 +28,14 @@ document.getElementById("gc-popup").addEventListener("click", (e) => {
     document.getElementById("gc-popup").classList.add("gc-hidden");
   }
 });
+const popup = document.getElementById("gc-popup");
+
+document.getElementById("gc-close").onclick = () => {
+  popup.classList.add("gc-hidden");
+};
+
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) {
+    popup.classList.add("gc-hidden");
+  }
+});
