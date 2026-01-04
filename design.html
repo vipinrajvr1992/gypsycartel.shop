@@ -37,8 +37,7 @@
         <div>
             <h4 style="color: var(--primary-orange);">SUPPORT & BUSINESS</h4>
             <p>
-                <a href="mailto:support@gypsycartel.shop"
-                   style="color:#ffffff;">
+                <a href="mailto:support@gypsycartel.shop" style="color:#ffffff;">
                     support@gypsycartel.shop
                 </a>
             </p>
@@ -66,13 +65,21 @@
         SEND TRANSMISSION
     </h3>
 
-    <form>
+    <!-- ✅ CONNECTED TO FORMSPREE -->
+    <form action="https://formspree.io/f/xjgkezzp" method="POST">
+
         <div style="display:flex; gap:20px;">
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Email Address">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
         </div>
 
-        <textarea rows="6" placeholder="Your Message / Business Inquiry..."></textarea>
+        <textarea name="message"
+                  rows="6"
+                  placeholder="Your Message / Business Inquiry..."
+                  required></textarea>
+
+        <!-- Optional hidden subject -->
+        <input type="hidden" name="_subject" value="New Contact Inquiry - Gypsy Cartel">
 
         <button type="submit" class="btn btn-primary" style="width:100%;">
             SUBMIT INQUIRY
