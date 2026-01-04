@@ -1,6 +1,6 @@
 /* =========================================================
-   GYPSY CARTEL — CORE STYLES
-   Premium Dark | Orange Accent | Clean SEO Build
+   GYPSY CARTEL — CORE STYLES (FIXED)
+   Premium Dark | Orange Accent | Click Safe
 ========================================================= */
 
 /* GOOGLE FONTS */
@@ -277,16 +277,20 @@ footer a:hover {
 }
 
 /* =========================================================
-   POLICY MODAL (OPTIONAL)
+   POLICY MODAL — CLICK SAFE (FIXED)
 ========================================================= */
 #policy-modal {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.85);
-    display: flex;
+    display: none;            /* ✅ IMPORTANT */
     align-items: center;
     justify-content: center;
     z-index: 99999;
+}
+
+#policy-modal.active {
+    display: flex;
 }
 
 .gc-popup-box {
@@ -304,10 +308,6 @@ footer a:hover {
     right: 16px;
     font-size: 26px;
     cursor: pointer;
-}
-
-.gc-hidden {
-    display: none !important;
 }
 
 /* =========================================================
