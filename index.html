@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gypsy Cartel | Premium Digital Design & Software Studio
-</title>
+
+    <!-- SEO TITLE -->
+    <title>Gypsy Cartel | Premium Digital Design & Software Studio</title>
+
+    <!-- META DESCRIPTION -->
+    <meta name="description" content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications, hyper-realistic 3D design, and modern UI/UX solutions.">
+
+    <!-- LOGO SCHEMA (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Gypsy Cartel",
+      "url": "https://www.gypsycartel.shop",
+      "logo": "https://www.gypsycartel.shop/assets/logos/gypsy-cartel-icon.webp",
+      "sameAs": [
+        "https://instagram.com/mallugypsy.creations"
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- CUSTOM CURSOR -->
@@ -16,7 +36,7 @@
 <!-- HEADER -->
 <header>
     <a href="index.html">
-        <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon">
+        <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel Logo" class="logo-icon">
     </a>
     <nav>
         <ul>
@@ -37,10 +57,11 @@
 
     <div class="hero-logo-container">
         <img src="assets/logos/metalic-gc-logo.webp"
-             alt="Gypsy Cartel Metalic Logo"
+             alt="Gypsy Cartel Metallic Logo"
              style="max-width:650px; width:95%; margin:2rem 0;">
     </div>
- <h1 style="font-size:1.5rem; color:var(--text-muted); margin-bottom:2rem; letter-spacing:2px; z-index:10;">
+
+    <h1 style="font-size:1.5rem; color:var(--text-muted); margin-bottom:2rem; letter-spacing:2px; z-index:10;">
         FUSING HIGH-PERFORMANCE SOFTWARE WITH HYPER-REALISTIC DESIGN.
     </h1>
 
@@ -55,7 +76,7 @@
     <div class="footer-content">
 
         <div>
-            <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" style="width:30px; margin-bottom:10px;">
+            <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel Logo" style="width:30px; margin-bottom:10px;">
             <p>
                 Gypsy Cartel is a digital movement, fusing high-performance Windows software
                 with stunning, hyper-realistic 3D design and UI/UX solutions.
@@ -77,16 +98,8 @@
             <ul>
                 <li><a href="about.html">Our Vision & History</a></li>
                 <li><a href="contact.html">Contact Support</a></li>
-                <li>
-                    <a href="#" onclick="openPolicy('privacy'); return false;">
-                        Privacy Policy
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="openPolicy('terms'); return false;">
-                        Terms of Service
-                    </a>
-                </li>
+                <li><a href="#" onclick="openPolicy('privacy'); return false;">Privacy Policy</a></li>
+                <li><a href="#" onclick="openPolicy('terms'); return false;">Terms of Service</a></li>
             </ul>
         </div>
 
@@ -125,5 +138,6 @@
 
 <!-- SCRIPT -->
 <script src="script.js"></script>
+
 </body>
 </html>
