@@ -2,25 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Design Studio | Gypsy Cartel</title>
-    <meta name="description" content="Gypsy Cartel Design Studio delivers hyper-realistic 3D architectural visualization, floor plans, and high-impact digital graphics.">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- CUSTOM CURSOR -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<!-- HEADER -->
 <header>
-    <a href="index.html">
-        <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel Logo" class="logo-icon">
-    </a>
+    <a href="index.html"><img src="assets/logos/gypsy-cartel-icon.webp" class="logo-icon"></a>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -34,150 +27,32 @@
     </nav>
 </header>
 
-<!-- CONTENT -->
 <div class="container">
     <div class="grid-2">
-
-        <!-- LEFT -->
-        <div class="design-content">
-            <img src="assets/logos/mg-creations.webp"
-                 alt="MG Creations Logo"
-                 class="logo-large">
-
-            <h2 style="font-size:2.4rem; margin-bottom:5px;">
-                HYPER-REALISTIC
-            </h2>
-
-            <h1 style="font-size:3rem; color:var(--primary-orange); margin-bottom:20px;">
-                ARCHITECTURE & GRAPHICS
-            </h1>
-
-            <p style="max-width:500px; margin:0 auto 40px;">
-                We blend technical precision with bold visual storytelling,
-                delivering high-quality 3D architectural visualization,
-                floor plans, and digital graphic design.
-            </p>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:500px; margin:0 auto;">
-
-                <div style="border:1px solid #333; padding:20px; background:var(--bg-surface);">
-                    <h3 style="color:var(--primary-orange); font-size:1.05rem;">
-                        3D VISUALIZATION
-                    </h3>
-                    <ul style="font-size:0.9rem; padding-left:10px; list-style-type:'— '; margin-top:10px;">
-                        <li>Interior & Exterior Renders</li>
-                        <li>2D Floor Plans</li>
-                        <li>Concept Visualization</li>
-                    </ul>
-                </div>
-
-                <div style="border:1px solid #333; padding:20px; background:var(--bg-surface);">
-                    <h3 style="color:var(--primary-orange); font-size:1.05rem;">
-                        GRAPHIC DESIGN
-                    </h3>
-                    <ul style="font-size:0.9rem; padding-left:10px; list-style-type:'— '; margin-top:10px;">
-                        <li>Posters & Banners</li>
-                        <li>Brand Visuals</li>
-                        <li>Social Media Content</li>
-                    </ul>
-                </div>
-
-            </div>
+        <div>
+            <h1>HYPER-REALISTIC<br><span style="color:var(--primary-orange)">ARCHITECTURE & GRAPHICS</span></h1>
+            <p>We blend technical precision with artistic corruption, specializing in architectural visualization and graphic media.</p>
         </div>
 
-        <!-- RIGHT -->
-        <div style="background:var(--bg-surface); padding:40px;">
-
-            <h3 style="color:var(--primary-orange); margin-bottom:30px;">
-                START A PROJECT
-            </h3>
-
-            <form>
-                <div style="display:flex; gap:15px;">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                </div>
-
-                <select required>
-                    <option value="">Select Service</option>
-                    <option>3D Architecture (Interior / Exterior)</option>
-                    <option>2D Floor Plans</option>
-                    <option>Graphic Design</option>
-                    <option>Social Media Content</option>
-                    <option>Other Design Request</option>
-                </select>
-
-                <textarea rows="6" placeholder="Project details..." required></textarea>
-
-                <button type="submit" class="btn btn-primary" style="width:100%;">
-                    INITIALIZE REQUEST
-                </button>
-            </form>
-
+        <div>
+            <h3 style="color:var(--primary-orange);margin-bottom:15px;">Start a Project</h3>
+            <input placeholder="Your Name">
+            <input placeholder="Email">
+            <select>
+                <option>2D Floor Plans</option>
+                <option>3D Visualization</option>
+                <option>Graphic Media</option>
+            </select>
+            <textarea placeholder="Project details"></textarea>
+            <a class="btn btn-primary">Initialize Request</a>
         </div>
-
     </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
-    <div class="footer-content">
-
-        <div>
-            <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel Logo" style="width:30px; margin-bottom:10px;">
-            <p>
-                Gypsy Cartel is a premium digital studio delivering
-                high-performance software and hyper-realistic visual design.
-            </p>
-        </div>
-
-        <div>
-            <h4>Services</h4>
-            <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="apps.html">Apps Development</a></li>
-                <li><a href="design.html">Design Studio</a></li>
-                <li><a href="fashion.html">Fashion Line (Soon)</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li><a href="about.html">Our Vision & History</a></li>
-                <li><a href="contact.html">Contact Support</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Connect</h4>
-            <p>
-                Support:
-                <a href="mailto:support@gypsycartel.shop" style="color:var(--primary-orange);">
-                    support@gypsycartel.shop
-                </a>
-            </p>
-            <p>
-                Instagram:
-                <a href="https://instagram.com/mallugypsy.creations"
-                   target="_blank"
-                   style="color:var(--secondary-accent);">
-                    @mallugypsy.creations
-                </a>
-            </p>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        © 2025 Gypsy Cartel. All Rights Reserved.
-    </div>
+    <div class="footer-bottom">© 2025 Gypsy Cartel. All Rights Reserved.</div>
 </footer>
 
-<!-- SCRIPT -->
 <script src="script.js"></script>
-
 </body>
 </html>
