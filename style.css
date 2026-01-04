@@ -1,136 +1,321 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Gypsy Cartel | Design Studio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* GYPSY CARTEL - CORE STYLES (V4: Finalized Strict Orange/White/Black/Gray)
+*/
 
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap');
 
-<header>
-    <a href="index.html">
-        <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="apps.html">Apps</a></li>
-            <li><a href="design.html" class="active">Design</a></li>
-            <li><a href="fashion.html">Fashion</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+:root {
+    --bg-deep: #050505; /* Primary Color Deep Black */
+    --bg-surface: #111111; /* Secondary Background */
+    --primary-orange: #FF5722; /* Accent Color */
+    --secondary-accent: #FFFFFF; /* Replaces Cyan for highlight/contrast */
+    --text-main: #FFFFFF;
+    --text-muted: #888888;
+}
 
-<div class="container">
-    <div class="grid-2">
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Hides default cursor for custom one */
+}
 
-        <!-- LEFT CONTENT -->
-        <div class="design-content">
-            <img src="assets/logos/mg-creations.webp" alt="MG Creations" class="logo-large">
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-            <h2>HYPER-REALISTIC</h2>
-            <h1 style="color: var(--primary-orange); margin-bottom: 20px;">
-                ARCHITECTURE & GRAPHICS
-            </h1>
+h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
 
-            <p style="color:#ccc; max-width:500px; margin:0 auto 40px;">
-                We blend technical precision with artistic control, delivering
-                hyper-realistic architectural visualization and high-impact
-                digital graphics.
-            </p>
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
 
-            <div class="grid-2" style="gap:20px;">
-                <div style="border:1px solid #333; padding:20px; background:var(--bg-surface);">
-                    <h3 style="color:var(--primary-orange);">3D VIZ</h3>
-                    <ul style="color:var(--text-muted);">
-                        <li>Interior & Exterior Renders</li>
-                        <li>2D Floor Plans</li>
-                    </ul>
-                </div>
+/* --- CUSTOM CURSOR (Outline is now White) --- */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
 
-                <div style="border:1px solid #333; padding:20px; background:var(--bg-surface);">
-                    <h3 style="color:var(--primary-orange);">GRAPHIC MEDIA</h3>
-                    <ul style="color:var(--text-muted);">
-                        <li>Posters & Banners</li>
-                        <li>Social Media Content</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-orange);
+}
 
-        <!-- RIGHT FORM -->
-        <div style="background:var(--bg-surface); padding:40px;">
-            <h3 style="color:var(--primary-orange); margin-bottom:30px;">
-                START A PROJECT
-            </h3>
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--secondary-accent); /* White Border */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
 
-            <form action="https://formspree.io/f/xjgkezzp" method="POST">
-                <div style="display:flex; gap:15px;">
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
+/* --- NAVIGATION --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--primary-orange);
+}
 
-                <select name="service">
-                    <option>3D Architecture (Interior / Exterior)</option>
-                    <option>2D Floor Plans</option>
-                    <option>Graphic Design</option>
-                    <option>Social Media Content</option>
-                    <option>Other</option>
-                </select>
+.logo-icon {
+    width: 40px;
+    height: auto;
+}
 
-                <textarea name="message" rows="6" placeholder="Project Details..." required></textarea>
+nav ul { display: flex; gap: 30px; }
 
-                <button type="submit" class="btn btn-primary" style="width:100%;">
-                    INITIALIZE REQUEST
-                </button>
-            </form>
-        </div>
+nav a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    position: relative;
+}
 
-    </div>
-</div>
+nav a:hover, nav a.active {
+    color: var(--primary-orange);
+}
 
-<footer>
-    <div class="footer-content">
-        <div>
-            <img src="assets/logos/gypsy-cartel-icon.webp" style="width:30px;margin-bottom:10px;">
-            <p>Gypsy Cartel blends performance software with high-impact design and visualization.</p>
-        </div>
+/* Active link indicator remains Orange */
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-orange);
+    box-shadow: 0 0 5px var(--primary-orange);
+}
 
-        <div>
-            <h4>Services</h4>
-            <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="apps.html">Apps</a></li>
-                <li><a href="design.html">Design Studio</a></li>
-            </ul>
-        </div>
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    cursor: none; /* Inherit custom cursor behavior */
+}
 
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
+.btn-primary {
+    background-color: var(--primary-orange);
+    color: #fff;
+}
 
-        <div>
-            <h4>Connect</h4>
-            <p>
-                <a href="mailto:support@gypsycartel.shop">support@gypsycartel.shop</a>
-            </p>
-        </div>
-    </div>
+.btn-primary:hover {
+    background-color: transparent;
+    border-color: var(--primary-orange);
+    color: var(--primary-orange);
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.3);
+}
 
-    <div class="footer-bottom">
-        © 2025 Gypsy Cartel. All Rights Reserved.
-    </div>
-</footer>
+.btn-outline {
+    border-color: var(--secondary-accent); /* White Outline */
+    color: var(--secondary-accent);
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.btn-outline:hover {
+    background-color: var(--secondary-accent);
+    color: var(--bg-deep);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* --- LAYOUT & UTILITIES --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 80px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- FORMS --- */
+input, textarea, select {
+    width: 100%;
+    padding: 15px;
+    background: var(--bg-surface); 
+    border: 1px solid #333;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--secondary-accent); /* White Focus */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* --- FOOTER --- */
+footer {
+    background: var(--bg-surface);
+    padding: 40px 5%;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+footer h4 { color: var(--text-main); margin-bottom: 15px; }
+footer a:hover { color: var(--primary-orange); }
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #222;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+/* --- HOME PAGE ABSTRACT DESIGN (FOR METALLIC LOGO) --- */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-logo-container {
+    position: relative;
+    z-index: 10;
+}
+
+.abstract-design {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: repeating-linear-gradient(
+        45deg,
+        #0a0a0a,
+        #0a0a0a 10px,
+        #050505 10px,
+        #050505 20px
+    );
+    opacity: 0.1;
+    z-index: 5;
+    border: 2px solid #111;
+}
+
+/* --- DESIGN PAGE SPECIFIC STYLES --- */
+.design-content {
+    text-align: center; /* To center the MG Creations logo */
+}
+
+.design-content .logo-large {
+    max-width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin: 0 auto 30px; /* Center the image */
+    display: block;
+}
+
+@media(max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr; }
+    .abstract-design { width: 400px; height: 400px; }
+}
+#gc-dynamic-gallery {
+
+
+
+/* ===== GC DYNAMIC GALLERY (ISOLATED & FINAL) ===== */
+
+#gc-dynamic-gallery {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.gc-card img {
+  width: 260px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* POPUP OVERLAY */
+#gc-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* HIDDEN STATE */
+.gc-hidden {
+  display: none;
+}
+
+/* POPUP CONTENT */
+.gc-popup-box {
+  background: #000;
+  padding: 24px;
+  border-radius: 14px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+
+/* POPUP IMAGE */
+#gc-popup-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* CLOSE BUTTON */
+#gc-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+}
