@@ -3,37 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO TITLE -->
     <title>Gypsy Cartel | Premium Digital Design & Software Studio</title>
-
-    <!-- META DESCRIPTION -->
-    <meta name="description" content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications, hyper-realistic 3D design, and modern UI/UX solutions.">
-
-    <!-- LOGO SCHEMA (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Gypsy Cartel",
-      "url": "https://www.gypsycartel.shop",
-      "logo": "https://www.gypsycartel.shop/assets/logos/gypsy-cartel-icon.webp",
-      "sameAs": [
-        "https://instagram.com/mallugypsy.creations"
-      ]
-    }
-    </script>
-
+    <meta name="description" content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications.">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- CUSTOM CURSOR -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<!-- HEADER -->
 <header>
     <a href="index.html">
         <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel Logo" class="logo-icon">
@@ -51,36 +30,25 @@
     </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero" style="min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20px;">
-    <div class="abstract-design"></div>
-
-    <div class="hero-logo-container">
-        <img src="assets/logos/metalic-gc-logo.webp"
-             alt="Gypsy Cartel Metallic Logo"
-             style="max-width:650px; width:95%; margin:2rem 0;">
+<main class="container">
+    <div class="grid-2">
+        <div>
+            <h4 style="color:var(--primary-orange); margin-bottom:10px;">PREMIUM SOFTWARE & DESIGN</h4>
+            <h1 style="font-size:4.5rem; line-height:1.1; margin-bottom:30px;">THE DIGITAL <br><span style="color:var(--primary-orange)">CARTEL.</span></h1>
+            <p style="margin-bottom:40px; font-size:1.1rem;">High-performance optimization tools, hyper-realistic 3D design, and elite UI/UX solutions for the modern era.</p>
+            <a href="apps.html" class="btn">Explore Apps</a>
+        </div>
+        <div style="text-align:right;">
+             <img src="assets/logos/gypsy-cartel-main.webp" alt="GC" style="width:100%; max-width:500px;">
+        </div>
     </div>
+</main>
 
-    <h1 style="font-size:1.5rem; color:var(--text-muted); margin-bottom:2rem; letter-spacing:2px; z-index:10;">
-        FUSING HIGH-PERFORMANCE SOFTWARE WITH HYPER-REALISTIC DESIGN.
-    </h1>
-
-    <div class="cta-group" style="z-index:10;">
-        <a href="gallery.html" class="btn btn-primary">View Portfolio</a>
-        <a href="contact.html" class="btn btn-outline" style="margin-left:15px;">Contact Us</a>
-    </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
     <div class="footer-content">
-
         <div>
-            <img src="assets/logos/gypsy-cartel-icon.webp" alt="Gypsy Cartel Logo" style="width:30px; margin-bottom:10px;">
-            <p>
-                Gypsy Cartel is a digital movement, fusing high-performance Windows software
-                with stunning, hyper-realistic 3D design and UI/UX solutions.
-            </p>
+            <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC" style="height:30px; margin-bottom:20px;">
+            <p style="font-size:0.85rem;">Gypsy Cartel is a creative technology collective providing high-performance Windows software and hyper-realistic 3D design.</p>
         </div>
 
         <div>
@@ -89,7 +57,7 @@
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="apps.html">Apps Development</a></li>
                 <li><a href="design.html">Design Studio</a></li>
-                <li><a href="fashion.html">Fashion Line (Soon)</a></li>
+                <li><a href="fashion.html">Fashion Line</a></li>
             </ul>
         </div>
 
@@ -98,29 +66,16 @@
             <ul>
                 <li><a href="about.html">Our Vision & History</a></li>
                 <li><a href="contact.html">Contact Support</a></li>
-                <li><a href="#" onclick="openPolicy('privacy'); return false;">Privacy Policy</a></li>
-                <li><a href="#" onclick="openPolicy('terms'); return false;">Terms of Service</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
             </ul>
         </div>
 
         <div>
             <h4>Connect</h4>
-            <p>
-                Support:
-                <a href="mailto:support@gypsycartel.shop" style="color:var(--primary-orange);">
-                    support@gypsycartel.shop
-                </a>
-            </p>
-            <p>
-                Creator:
-                <a href="https://instagram.com/mallugypsy.creations"
-                   target="_blank"
-                   style="color:var(--secondary-accent);">
-                    @mallugypsy.creations
-                </a>
-            </p>
+            <p>Support: <a href="mailto:support@gypsycartel.shop" style="color:var(--primary-orange);">support@gypsycartel.shop</a></p>
+            <p>Instagram: <a href="https://instagram.com/mallugypsy.creations" target="_blank">@mallugypsy.creations</a></p>
         </div>
-
     </div>
 
     <div class="footer-bottom">
@@ -128,15 +83,6 @@
     </div>
 </footer>
 
-<!-- POLICY MODAL -->
-<div id="policy-modal" class="gc-hidden">
-    <div class="gc-popup-box">
-        <span id="gc-close" onclick="closePolicy()">×</span>
-        <div id="policy-content"></div>
-    </div>
-</div>
-
-<!-- SCRIPT -->
 <script src="script.js"></script>
 
 </body>
