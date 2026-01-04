@@ -31,13 +31,9 @@
 
         <!-- LEFT CONTENT -->
         <div class="design-content">
-            <img src="assets/logos/mg-creations.webp"
-                 alt="MG Creations Logo"
-                 class="logo-large">
+            <img src="assets/logos/mg-creations.webp" alt="MG Creations Logo" class="logo-large">
 
-            <h2 style="font-size:2.5rem; margin-bottom:5px;">
-                HYPER-REALISTIC
-            </h2>
+            <h2 style="font-size:2.5rem; margin-bottom:5px;">HYPER-REALISTIC</h2>
 
             <h1 style="font-size:3rem; color:var(--primary-orange); margin-bottom:20px;">
                 ARCHITECTURE & GRAPHICS
@@ -50,11 +46,8 @@
             </p>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:500px; margin:0 auto;">
-
                 <div style="border:1px solid #333; padding:20px; background:var(--bg-surface);">
-                    <h3 style="color:var(--primary-orange); font-size:1.1rem;">
-                        3D VIZ
-                    </h3>
+                    <h3 style="color:var(--primary-orange); font-size:1.1rem;">3D VIZ</h3>
                     <ul style="color:var(--text-muted); font-size:0.9rem; list-style-type:'— '; padding-left:10px;">
                         <li>Interior & Exterior Renders</li>
                         <li>2D Floor Plans</li>
@@ -62,29 +55,24 @@
                 </div>
 
                 <div style="border:1px solid #333; padding:20px; background:var(--bg-surface);">
-                    <h3 style="color:var(--primary-orange); font-size:1.1rem;">
-                        GRAPHIC MEDIA
-                    </h3>
+                    <h3 style="color:var(--primary-orange); font-size:1.1rem;">GRAPHIC MEDIA</h3>
                     <ul style="color:var(--text-muted); font-size:0.9rem; list-style-type:'— '; padding-left:10px;">
                         <li>Posters & Banner Graphics</li>
                         <li>Social Media Content</li>
                     </ul>
                 </div>
-
             </div>
         </div>
 
         <!-- RIGHT FORM -->
         <div style="background:var(--bg-surface); padding:40px;">
-
             <h3 style="margin-bottom:30px; color:var(--primary-orange);">
                 START A PROJECT
             </h3>
 
-            <!-- ✅ CONNECTED TO FORMSPREE -->
-            <form action="https://formspree.io/f/xjgkezzp" method="POST">
+            <!-- FIX: removed action, handled via JS -->
+            <form id="designForm">
 
-                <!-- IDENTIFIER -->
                 <input type="hidden" name="form_type" value="Design Project Request">
                 <input type="hidden" name="_subject" value="New Design Project Inquiry - Gypsy Cartel">
 
@@ -101,19 +89,19 @@
                     <option value="Other">Other Design Request</option>
                 </select>
 
-                <textarea name="project_details"
-                          rows="6"
-                          placeholder="Project Details..."
-                          required></textarea>
+                <textarea name="project_details" rows="6" placeholder="Project Details..." required></textarea>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        style="width:100%;">
+                <button type="submit" class="btn btn-primary" style="width:100%;">
                     INITIALIZE REQUEST
                 </button>
 
-            </form>
+                <!-- FIX: success message -->
+                <p id="designSuccess"
+                   style="display:none; margin-top:15px; color:#00ff99;">
+                   ✔ Request sent successfully. We’ll contact you shortly.
+                </p>
 
+            </form>
         </div>
 
     </div>
@@ -121,15 +109,11 @@
 
 <footer>
     <div class="footer-content">
-
         <div>
-            <img src="assets/logos/gypsy-cartel-icon.webp"
-                 alt="GC Icon"
-                 style="width:30px; margin-bottom:10px;">
+            <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" style="width:30px; margin-bottom:10px;">
             <p>
                 Gypsy Cartel is a digital movement fusing high-performance
-                software with bold visual design. Precision, innovation,
-                and modern digital craftsmanship.
+                software with bold visual design.
             </p>
         </div>
 
@@ -148,30 +132,17 @@
             <ul>
                 <li><a href="about.html">Our Vision & History</a></li>
                 <li><a href="contact.html">Contact Support</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
             </ul>
         </div>
 
         <div>
             <h4>Connect</h4>
-            <p>
-                Email:
-                <a href="mailto:support@gypsycartel.shop"
-                   style="color:var(--primary-orange);">
+            <p>Email:
+                <a href="mailto:support@gypsycartel.shop" style="color:var(--primary-orange);">
                     support@gypsycartel.shop
                 </a>
             </p>
-            <p>
-                Instagram:
-                <a href="https://instagram.com/mallugypsy.creations"
-                   target="_blank"
-                   style="color:var(--secondary-accent);">
-                    @mallugypsy.creations
-                </a>
-            </p>
         </div>
-
     </div>
 
     <div class="footer-bottom">
@@ -180,5 +151,24 @@
 </footer>
 
 <script src="script.js"></script>
+
+<!-- FIX: Formspree AJAX -->
+<script>
+document.getElementById("designForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    fetch("https://formspree.io/f/xjgkezzp", {
+        method: "POST",
+        body: new FormData(this),
+        headers: { "Accept": "application/json" }
+    }).then(response => {
+        if (response.ok) {
+            document.getElementById("designSuccess").style.display = "block";
+            this.reset();
+        }
+    });
+});
+</script>
+
 </body>
 </html>
