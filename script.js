@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         });
 
-        document.querySelectorAll('a, button').forEach(el => {
+        document.querySelectorAll('a, button, input, textarea').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
             });
@@ -31,16 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ===============================
-       POLICY MODAL (FIXED)
+       POLICY MODAL – FORCE SAFE STATE
     =============================== */
     const modal = document.getElementById('policy-modal');
     if (modal) {
-        modal.classList.add('gc-hidden'); // FORCE HIDE ON LOAD
+        modal.classList.add('gc-hidden'); // ALWAYS hidden on load
     }
 });
 
 /* ===============================
-   POLICY FUNCTIONS
+   POLICY OPEN / CLOSE FUNCTIONS
+   (USED BY index.html FOOTER)
 =============================== */
 function openPolicy(type) {
     const modal = document.getElementById('policy-modal');
@@ -50,19 +51,36 @@ function openPolicy(type) {
 
     if (type === 'privacy') {
         content.innerHTML = `
-            <h2>Privacy Policy</h2>
-            <p>Gypsy Cartel respects your privacy. We only collect necessary
-            information submitted through forms to respond to inquiries.</p>
-            <p>We do not sell or share your data.</p>
+            <h2 style="color:var(--primary-orange); margin-bottom:15px;">
+                Privacy Policy
+            </h2>
+            <p>
+                Gypsy Cartel respects your privacy. We collect only the
+                information you voluntarily provide through our forms
+                to respond to inquiries and project requests.
+            </p>
+            <p>
+                We do not sell, rent, or share your personal data.
+                Form submissions may be processed securely via trusted
+                third-party services such as Formspree.
+            </p>
         `;
     }
 
     if (type === 'terms') {
         content.innerHTML = `
-            <h2>Terms of Service</h2>
-            <p>Using this website means you agree to our terms.
-            Submitting a project request does not guarantee acceptance.</p>
-            <p>All content belongs to Gypsy Cartel.</p>
+            <h2 style="color:var(--primary-orange); margin-bottom:15px;">
+                Terms of Service
+            </h2>
+            <p>
+                By using this website, you agree to these terms.
+                Submitting a project request does not guarantee acceptance.
+            </p>
+            <p>
+                All designs, graphics, software, and content displayed
+                on this site are the intellectual property of Gypsy Cartel.
+                Unauthorized use is prohibited.
+            </p>
         `;
     }
 
@@ -71,5 +89,7 @@ function openPolicy(type) {
 
 function closePolicy() {
     const modal = document.getElementById('policy-modal');
-    if (modal) modal.classList.add('gc-hidden');
+    if (modal) {
+        modal.classList.add('gc-hidden');
+    }
 }
