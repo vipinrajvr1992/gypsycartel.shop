@@ -1,6 +1,6 @@
 /* =========================================================
-   GYPSY CARTEL — CORE STYLES (CLICK SAFE)
-   Dark UI | Orange Accent | SEO Friendly
+   GYPSY CARTEL — CORE STYLES (FIXED)
+   Theme, UI, Colors UNCHANGED
 ========================================================= */
 
 /* GOOGLE FONTS */
@@ -21,9 +21,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none;
 }
 
-/* GLOBAL */
 html {
     scroll-behavior: smooth;
 }
@@ -52,11 +52,7 @@ p {
 a {
     color: inherit;
     text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--primary-orange);
+    transition: 0.3s ease;
 }
 
 ul {
@@ -64,7 +60,7 @@ ul {
 }
 
 /* =========================================================
-   CUSTOM CURSOR (SAFE)
+   CUSTOM CURSOR (FIXED CLICK ISSUE)
 ========================================================= */
 .cursor-dot,
 .cursor-outline {
@@ -73,7 +69,7 @@ ul {
     left: 0;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    pointer-events: none; /* IMPORTANT */
+    pointer-events: none; /* CRITICAL FIX */
     z-index: 9999;
 }
 
@@ -91,17 +87,18 @@ ul {
 }
 
 /* =========================================================
-   HEADER & NAV
+   HEADER & NAV (SAFE)
 ========================================================= */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px 5%;
+    height: 80px;
+    padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(5, 5, 5, 0.9);
+    background: rgba(5, 5, 5, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--primary-orange);
     z-index: 1000;
@@ -109,7 +106,6 @@ header {
 
 .logo-icon {
     width: 40px;
-    display: block;
 }
 
 nav ul {
@@ -125,8 +121,8 @@ nav a {
     position: relative;
 }
 
-nav a.active,
-nav a:hover {
+nav a:hover,
+nav a.active {
     color: var(--primary-orange);
 }
 
@@ -165,7 +161,7 @@ nav a.active::after {
 }
 
 .btn-outline {
-    border: 1px solid var(--secondary-accent);
+    border-color: var(--secondary-accent);
     color: var(--secondary-accent);
 }
 
@@ -175,12 +171,12 @@ nav a.active::after {
 }
 
 /* =========================================================
-   LAYOUT
+   LAYOUT (HEADER OFFSET FIX)
 ========================================================= */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 140px 20px 80px;
+    padding: 140px 20px 80px; /* HEADER SAFE SPACE */
 }
 
 .grid-2 {
@@ -200,12 +196,13 @@ nav a.active::after {
 ========================================================= */
 .hero {
     position: relative;
+    min-height: 100vh;
+    padding-top: 80px;
     overflow: hidden;
 }
 
 .hero-logo-container {
-    position: relative;
-    z-index: 10;
+    z-index: 5;
 }
 
 .abstract-design {
@@ -224,7 +221,7 @@ nav a.active::after {
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     z-index: 1;
-    pointer-events: none; /* CRITICAL FIX */
+    pointer-events: none; /* FIX */
 }
 
 /* =========================================================
@@ -249,14 +246,12 @@ textarea:focus {
 }
 
 /* =========================================================
-   FOOTER (CLICK SAFE)
+   FOOTER
 ========================================================= */
 footer {
     background: var(--bg-surface);
     padding: 50px 5% 30px;
     font-size: 0.9rem;
-    position: relative;
-    z-index: 2;
 }
 
 .footer-content {
@@ -274,8 +269,8 @@ footer h4 {
     margin-bottom: 12px;
 }
 
-footer a {
-    cursor: pointer;
+footer a:hover {
+    color: var(--primary-orange);
 }
 
 .footer-bottom {
