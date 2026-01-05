@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gypsy Cartel | Premium Digital Design & Software Studio</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications, hyper-realistic 3D design, and modern UI/UX solutions.">
+
+    <!-- SITE ICON / FAVICON (FIX) -->
+    <link rel="icon" type="image/webp" href="assets/logos/gypsy-cartel-icon.webp">
+    <link rel="apple-touch-icon" href="assets/logos/gypsy-cartel-icon.webp">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<header>
+    <a href="index.html">
+        <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="apps.html">Apps</a></li>
+            <li><a href="design.html">Design</a></li>
+            <li><a href="fashion.html">Fashion</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1 style="text-align:center; margin-bottom:60px;">
+        INITIALIZE <span style="color:var(--primary-orange)">CONTACT</span>
+    </h1>
+
+    <div class="grid-3" style="margin-bottom:60px; text-align:center;">
+        <div>
+            <h4 style="color:var(--primary-orange)">SUPPORT & BUSINESS</h4>
+            <p>
+                <a href="mailto:support@gypsycartel.shop" style="color:#fff;">
+                    support@gypsycartel.shop
+                </a>
+            </p>
+        </div>
+
+        <div>
+            <h4 style="color:var(--primary-orange)">INSTAGRAM (CREATOR)</h4>
+            <p>
+                <a href="https://instagram.com/mallugypsy.creations" target="_blank" style="color:#fff;">
+                    @mallugypsy.creations
+                </a>
+            </p>
+        </div>
+
+        <div>
+            <h4 style="color:var(--primary-orange)">LOCATION</h4>
+            <p>India (Serving Globally)</p>
+        </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <form id="contactForm"
+          action="https://formspree.io/f/xjgkezzp"
+          method="POST"
+          style="max-width:900px; margin:0 auto;">
+
+        <h3 style="color:var(--primary-orange); margin-bottom:20px;">
+            SEND TRANSMISSION
+        </h3>
+
+        <div style="display:flex; gap:20px;">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+
+        <textarea name="message" rows="6" placeholder="Your Message / Business Inquiry..." required></textarea>
+
+        <!-- Hidden metadata -->
+        <input type="hidden" name="_subject" value="New Contact Inquiry - Gypsy Cartel">
+        <input type="hidden" name="_template" value="table">
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">
+            SUBMIT INQUIRY
+        </button>
+
+        <p id="successMsg"
+           style="display:none; margin-top:20px; color:#00ff9c;">
+            ✔ Message sent successfully. We’ll contact you shortly.
+        </p>
+
+        <!-- WhatsApp fallback -->
+        <p style="margin-top:15px; font-size:0.9rem; color:var(--text-muted);">
+            Didn’t get a response?
+            <a href="https://wa.me/918086604808?text=Hello%20Gypsy%20Cartel,%20I%20sent%20an%20inquiry%20via%20your%20website."
+               target="_blank"
+               style="color:var(--primary-orange);">
+               Contact via WhatsApp
+            </a>
+        </p>
+    </form>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <img src="assets/logos/gypsy-cartel-icon.webp" style="width:30px;">
+            <p>
+                Gypsy Cartel is a digital movement fusing performance,
+                precision design, and modern digital craftsmanship.
+            </p>
+        </div>
+
+        <div>
+            <h4>Services</h4>
+            <ul>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="design.html">Design Studio</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Company</h4>
+            <ul>
+                <li><a href="about.html">Our Vision</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Connect</h4>
+            <p>
+                <a href="mailto:support@gypsycartel.shop" style="color:var(--primary-orange)">
+                    support@gypsycartel.shop
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 Gypsy Cartel. All Rights Reserved.
+    </div>
+</footer>
+
+<script>
+const form = document.getElementById("contactForm");
+const successMsg = document.getElementById("successMsg");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+        form.reset();
+        successMsg.style.display = "block";
+    } else {
+        alert("Something went wrong. Please try again or contact via WhatsApp.");
+    }
+});
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
