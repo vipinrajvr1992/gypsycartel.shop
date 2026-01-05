@@ -237,38 +237,50 @@ textarea:focus {
 }
 
 /* =========================================================
-   DESIGN PAGE — MG LOGO + CENTER ALIGN (FINAL)
+   DESIGN PAGE — FULL CENTER ALIGN (MG LOGO + TEXT)
+   SAFE FIX — NO THEME CHANGE
 ========================================================= */
-.design-hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-}
 
-/* CENTER LEFT CONTENT */
+/* Left content wrapper */
 .design-hero > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* center logo + text */
+    justify-content: center;
     text-align: center;
 }
 
-.design-hero h1,
-.design-hero p {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+/* MG CREATIONS LOGO — CENTERED ABOVE */
 .mg-logo-wrap {
     width: 100%;
-    text-align: center;
-    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
 }
 
 .mg-logo-wrap img {
     width: 180px;
     max-width: 100%;
-    display: inline-block;
-    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));
+    display: block;
+}
+
+/* HEADINGS — PERFECT CENTER */
+.design-hero h1 {
+    text-align: center;
+    line-height: 1.25;
+}
+
+/* DESCRIPTION TEXT — CENTERED BLOCK */
+.design-hero p {
+    text-align: center;
+    max-width: 520px;
+    margin: 18px auto 0;
+}
+
+/* OPTIONAL: cards stay clean */
+.design-hero .grid-2,
+.design-hero .grid-3 {
+    justify-items: center;
 }
 
 /* =========================================================
@@ -371,41 +383,4 @@ footer a:hover {
         width: 400px;
         height: 400px;
     }
-}
-/* =========================================================
-   DESIGN PAGE — CENTER ALIGN FIX (SAFE)
-========================================================= */
-
-/* Left column center alignment */
-.design-hero > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;     /* horizontal center */
-    text-align: center;      /* text center */
-}
-
-/* MG logo perfectly centered */
-.mg-logo-wrap {
-    margin-bottom: 32px;
-    display: flex;
-    justify-content: center;
-}
-
-/* Headings spacing & balance */
-.design-hero h1 {
-    line-height: 1.25;
-}
-
-/* Paragraph center + width control */
-.design-hero p {
-    text-align: center;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Small cards alignment stays clean */
-.design-hero .grid-2,
-.design-hero .grid-3 {
-    justify-items: center;
 }
