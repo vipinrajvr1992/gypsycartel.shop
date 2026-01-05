@@ -384,3 +384,15 @@ footer a:hover {
         height: 400px;
     }
 }
+/* =========================================================
+   HOME PAGE — REDUCE GAP BETWEEN LOGO & TEXT
+   SAFE FIX — HOME ONLY
+========================================================= */
+
+.hero img {
+    margin-bottom: 2rem;
+}
+
+.hero p {
+    margin-top: 0;
+}
