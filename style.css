@@ -362,9 +362,8 @@ footer {
 
 /* override container padding ONLY inside hero */
 .hero .container {
-    padding-top: 0;
-    padding-bottom: 0;
-    min-height: calc(100vh - 80px); /* header height */
+    padding: 0 20px; /* keep horizontal rhythm */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
