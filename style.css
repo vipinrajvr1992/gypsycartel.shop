@@ -378,3 +378,31 @@ footer a:hover {
         height: 400px;
     }
 }
+/* =========================================================
+   HERO — SUBTLE PREMIUM DEPTH (OPTIONAL)
+   Does NOT affect layout
+========================================================= */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            60% 45% at 20% 25%,
+            rgba(255,255,255,0.035),
+            transparent 70%
+        ),
+        radial-gradient(
+            55% 40% at 80% 70%,
+            rgba(255,87,34,0.045),
+            transparent 75%
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* keep content above */
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
