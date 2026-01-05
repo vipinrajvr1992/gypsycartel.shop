@@ -409,3 +409,10 @@ footer a:hover {
 .hero img {
     margin-bottom: 1.5rem; /* pull text closer */
 }
+/* =========================================================
+   HOME PAGE — FIX LOGO TO TAGLINE GAP (SAFE & FINAL)
+========================================================= */
+.hero h1 {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
