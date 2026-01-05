@@ -399,3 +399,53 @@ footer a:hover {
 .hero .hero-logo-container p {
     margin-top: 1rem;
 }
+/* =========================================================
+   HOME HERO — LUXURY ABSTRACT BACKGROUND (SCOPED)
+========================================================= */
+
+.hero {
+    position: relative;
+    background: #050505;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            60% 40% at 20% 30%,
+            rgba(255, 255, 255, 0.04),
+            transparent 70%
+        ),
+        radial-gradient(
+            50% 35% at 80% 70%,
+            rgba(255, 87, 34, 0.05),
+            transparent 75%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.02),
+            rgba(0, 0, 0, 0.6)
+        );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* subtle noise layer */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* keep hero content above background */
+.hero > * {
+    position: relative;
+    z-index: 5;
+}
