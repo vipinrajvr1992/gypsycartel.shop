@@ -396,3 +396,16 @@ footer a:hover {
 .hero p {
     margin-top: 0;
 }
+/* =========================================================
+   HOME PAGE — REDUCE GAP BETWEEN LOGO & TAGLINE
+   SAFE FIX — HOME ONLY
+========================================================= */
+
+.hero h2,
+.hero p {
+    margin-top: 1.5rem;   /* reduce space from logo */
+}
+
+.hero img {
+    margin-bottom: 1.5rem; /* pull text closer */
+}
