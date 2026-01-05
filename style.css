@@ -254,7 +254,7 @@ textarea:focus {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 28px;
+    margin-bottom: 2rem;
 }
 
 .design-page .mg-logo-wrap img {
