@@ -1,69 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Gypsy Cartel | Privacy Policy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-</head>
+/* =========================================================
+   LEGAL PAGES (PRIVACY / TERMS)
+   SAFE ADD — NO THEME CHANGE
+========================================================= */
 
-<body>
+.legal-page {
+    min-height: 100vh;
+    padding-top: 140px; /* header offset */
+    padding-bottom: 80px;
+}
 
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
+.legal-content {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px;
+    background: var(--bg-surface);
+    border-radius: 14px;
+    border: 1px solid #222;
+}
 
-<header>
-    <a href="index.html">
-        <img src="assets/logos/gypsy-cartel-icon.webp" class="logo-icon" alt="GC">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="apps.html">Apps</a></li>
-            <li><a href="design.html">Design</a></li>
-            <li><a href="fashion.html">Fashion</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+/* MAIN TITLE */
+.legal-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
 
-<main class="legal-page">
-    <section class="legal-content">
-        <h1>PRIVACY <span class="accent">POLICY</span></h1>
-        <p>Gypsy Cartel respects your privacy. This policy explains how we handle your data.</p>
-        
-        <h3>Information We Collect</h3>
-        <p>We collect names and emails only when you contact us via our forms. This data is used solely to respond to your requests.</p>
-        
-        <h3>Data Protection</h3>
-        <p>We do not sell your data. We use industry-standard security to protect your information.</p>
+.legal-content .accent {
+    color: var(--primary-orange);
+}
 
-        <p class="contact-note">
-            Questions? Contact us at <a href="mailto:support@gypsycartel.shop">support@gypsycartel.shop</a>
-        </p>
-    </section>
-</main>
+/* SECTION HEADINGS */
+.legal-content h3 {
+    margin-top: 35px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--secondary-accent);
+}
 
-<footer>
-    <div class="footer-content">
-        <div>
-            <img src="assets/logos/gypsy-cartel-icon.webp" alt="GC" style="height:30px; margin-bottom:20px;">
-        </div>
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">© 2025 Gypsy Cartel. All Rights Reserved.</div>
-</footer>
+/* TEXT */
+.legal-content p {
+    margin-bottom: 14px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+/* CONTACT NOTE */
+.contact-note {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+    font-size: 0.9rem;
+}
+
+.contact-note a {
+    color: var(--primary-orange);
+}
+
+/* MOBILE SAFE */
+@media (max-width: 768px) {
+    .legal-content {
+        padding: 25px;
+    }
+
+    .legal-content h1 {
+        font-size: 1.7rem;
+    }
+}
