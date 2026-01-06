@@ -445,3 +445,36 @@ footer a:hover { color: var(--primary-orange); }
 .design-page section {
     overflow: hidden;
 }
+/* =========================================================
+   DESIGN PAGE — FINAL SPACING & SCALE FIX
+   (NO STRUCTURE CHANGE)
+========================================================= */
+
+/* Reduce top gap from header (ribbon) */
+.design-page .container {
+    padding-top: calc(80px + 2rem); /* header height + 2rem */
+}
+
+/* MG Logo — make it 2x smaller */
+.design-page img {
+    max-width: 130px;   /* was ~260px */
+    height: auto;
+    margin-bottom: 1.2rem; /* reduce gap below logo */
+}
+
+/* Reduce gap between logo and heading text */
+.design-page h1,
+.design-page h2 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+}
+
+/* Tighten spacing for description text */
+.design-page p {
+    margin-top: 0.5rem;
+}
+
+/* Ensure left column stays visually balanced */
+.design-page .grid-2 {
+    align-items: center;
+}
