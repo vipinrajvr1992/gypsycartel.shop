@@ -391,3 +391,12 @@ footer a:hover { color: var(--primary-orange); }
         height: 400px;
     }
 }
+/* CONTACT PAGE — Reduce gap under INITIALIZE CONTACT */
+.contact-page h1 {
+    margin-bottom: 1rem !important;
+}
+
+/* Reduce gap above support / instagram / location row */
+.contact-page .grid-3 {
+    margin-top: 1rem !important;
+}
