@@ -23,6 +23,9 @@
         gtag('js', new Date());
         gtag('config', 'G-92193J0YS6');
     </script>
+
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -60,7 +63,6 @@
         <!-- LEFT CONTENT -->
         <div>
 
-            <!-- MG CREATIONS LOGO -->
             <div class="mg-logo-wrap">
                 <img src="../assets/logos/mg-creations.webp"
                      alt="MG Creations Logo">
@@ -87,7 +89,7 @@
                 START A PROJECT
             </h3>
 
-    <form id="designForm"
+<form id="designForm"
       action="https://formspree.io/f/xjgkezzp"
       method="POST"
       autocomplete="on">
@@ -136,6 +138,13 @@
       rows="5"
       placeholder="I have a project"
       autocomplete="on"></textarea>
+
+    <!-- Cloudflare Turnstile -->
+    <div class="cf-turnstile"
+         data-sitekey="0x4AAAAAACK2g8v3gHryb9Aq"
+         data-theme="dark"
+         style="margin:18px 0;">
+    </div>
 
     <button type="submit"
             class="btn btn-primary"
