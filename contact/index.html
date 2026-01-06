@@ -73,6 +73,7 @@
     <form id="contactForm"
           action="https://formspree.io/f/xjgkezzp"
           method="POST"
+          autocomplete="on"
           style="max-width:900px; margin:0 auto;">
 
         <h3 style="color:var(--primary-orange); margin-bottom:20px;">
@@ -80,12 +81,44 @@
         </h3>
 
         <div style="display:flex; gap:20px;">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
+
+            <label for="contact-name" style="display:none;">Name</label>
+            <input
+                id="contact-name"
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                autocomplete="name"
+                required
+            >
+
+            <label for="contact-email" style="display:none;">Email</label>
+            <input
+                id="contact-email"
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                autocomplete="email"
+                required
+            >
         </div>
 
-        <textarea name="message" rows="6"
-                  placeholder="Your Message / Business Inquiry..." required></textarea>
+        <label for="contact-phone" style="display:none;">Phone</label>
+        <input
+            id="contact-phone"
+            type="tel"
+            name="tel"
+            placeholder="Phone Number"
+            autocomplete="tel"
+            inputmode="tel"
+        >
+
+        <textarea
+            name="message"
+            rows="6"
+            placeholder="Your Message / Business Inquiry..."
+            autocomplete="on"
+            required></textarea>
 
         <!-- Hidden metadata -->
         <input type="hidden" name="_subject" value="New Contact Inquiry - Gypsy Cartel">
