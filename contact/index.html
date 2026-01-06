@@ -14,6 +14,9 @@
 
     <!-- STYLES -->
     <link rel="stylesheet" href="/style.css">
+
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body class="contact-page">
@@ -73,52 +76,37 @@
     <form id="contactForm"
           action="https://formspree.io/f/xjgkezzp"
           method="POST"
-          autocomplete="on"
-          style="max-width:900px; margin:0 auto;">
+          style="max-width:900px; margin:0 auto;"
+          autocomplete="on">
 
         <h3 style="color:var(--primary-orange); margin-bottom:20px;">
             SEND TRANSMISSION
         </h3>
 
         <div style="display:flex; gap:20px;">
-
-            <label for="contact-name" style="display:none;">Name</label>
-            <input
-                id="contact-name"
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                autocomplete="name"
-                required
-            >
-
-            <label for="contact-email" style="display:none;">Email</label>
-            <input
-                id="contact-email"
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                autocomplete="email"
-                required
-            >
+            <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
+            <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
         </div>
 
-        <label for="contact-phone" style="display:none;">Phone</label>
         <input
-            id="contact-phone"
             type="tel"
-            name="tel"
+            name="phone"
             placeholder="Phone Number"
             autocomplete="tel"
             inputmode="tel"
+            required
         >
 
-        <textarea
-            name="message"
-            rows="6"
-            placeholder="Your Message / Business Inquiry..."
-            autocomplete="on"
-            required></textarea>
+        <textarea name="message" rows="6"
+                  placeholder="Your Message / Business Inquiry..."
+                  required></textarea>
+
+        <!-- Cloudflare Turnstile -->
+        <div class="cf-turnstile"
+             data-sitekey="0x4AAAAAACK2g8v3gHryb9Aq"
+             data-theme="dark"
+             style="margin:20px 0;">
+        </div>
 
         <!-- Hidden metadata -->
         <input type="hidden" name="_subject" value="New Contact Inquiry - Gypsy Cartel">
