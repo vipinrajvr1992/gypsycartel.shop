@@ -15,13 +15,13 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="../style.css">
 
-    <!-- Google Analytics -->
+    <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92193J0YS6"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-92193J0YS6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-92193J0YS6');
     </script>
 </head>
 
@@ -60,6 +60,7 @@
         <!-- LEFT CONTENT -->
         <div>
 
+            <!-- MG CREATIONS LOGO -->
             <div class="mg-logo-wrap">
                 <img src="../assets/logos/mg-creations.webp"
                      alt="MG Creations Logo">
@@ -90,17 +91,27 @@
                   action="https://formspree.io/f/xjgkezzp"
                   method="POST">
 
-                <input type="text"
-                       name="name"
-                       placeholder="Your Name"
-                       autocomplete="name"
-                       required>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    autocomplete="name"
+                    required>
 
-                <input type="email"
-                       name="email"
-                       placeholder="Email"
-                       autocomplete="email"
-                       required>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    autocomplete="email"
+                    required>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    required>
 
                 <select name="service" required>
                     <option value="">Select Service</option>
@@ -110,9 +121,10 @@
                     <option value="social-media">Social Media Design</option>
                 </select>
 
-                <textarea name="message"
-                          rows="5"
-                          placeholder="I have a project"></textarea>
+                <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="I have a project"></textarea>
 
                 <button type="submit"
                         class="btn btn-primary"
@@ -120,6 +132,7 @@
                     INITIALIZE REQUEST
                 </button>
 
+                <!-- SUCCESS MESSAGE -->
                 <p id="design-success"
                    style="display:none; margin-top:14px; color:#00ff8f;">
                     ✓ Message sent successfully. We’ll contact you shortly.
@@ -133,8 +146,10 @@
 
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-content">
+
         <div>
             <img src="../assets/logos/gypsy-cartel-icon.webp"
                  alt="GC Icon"
@@ -183,6 +198,7 @@
                 </a>
             </p>
         </div>
+
     </div>
 
     <div class="footer-bottom">
@@ -191,16 +207,5 @@
 </footer>
 
 <script src="../script.js"></script>
-
-<!-- GA Event for Design Form -->
-<script>
-document.getElementById('designForm').addEventListener('submit', function () {
-    gtag('event', 'design_form_submit', {
-        event_category: 'form',
-        event_label: 'design_page'
-    });
-});
-</script>
-
 </body>
 </html>
