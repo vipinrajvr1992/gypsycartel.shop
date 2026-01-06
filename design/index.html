@@ -87,64 +87,68 @@
                 START A PROJECT
             </h3>
 
-            <form id="designForm"
-                  action="https://formspree.io/f/xjgkezzp"
-                  method="POST"
-                  autocomplete="on">
+    <form id="designForm"
+      action="https://formspree.io/f/xjgkezzp"
+      method="POST"
+      autocomplete="on">
 
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  autocomplete="name"
-                  required
-                >
+    <label for="name" style="display:none;">Name</label>
+    <input
+      id="name"
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      autocomplete="name"
+      required
+    >
 
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  autocomplete="email"
-                  required
-                >
+    <label for="email" style="display:none;">Email</label>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      placeholder="Email"
+      autocomplete="email"
+      required
+    >
 
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  autocomplete="tel"
-                  inputmode="tel"
-                  pattern="[0-9+ ]{7,15}"
-                  required
-                >
+    <label for="tel" style="display:none;">Phone</label>
+    <input
+      id="tel"
+      type="tel"
+      name="tel"
+      placeholder="Phone Number"
+      autocomplete="tel"
+      inputmode="tel"
+      required
+    >
 
-                <select name="service" required>
-                    <option value="">Select Service</option>
-                    <option value="2d-floor-plans">2D Floor Plans</option>
-                    <option value="3d-visualization">3D Visualization</option>
-                    <option value="graphic-media">Graphic Media</option>
-                    <option value="social-media">Social Media Design</option>
-                </select>
+    <select name="service" required>
+        <option value="">Select Service</option>
+        <option value="2d-floor-plans">2D Floor Plans</option>
+        <option value="3d-visualization">3D Visualization</option>
+        <option value="graphic-media">Graphic Media</option>
+        <option value="social-media">Social Media Design</option>
+    </select>
 
-                <textarea
-                    name="message"
-                    rows="5"
-                    placeholder="I have a project"
-                    autocomplete="on"></textarea>
+    <textarea
+      name="message"
+      rows="5"
+      placeholder="I have a project"
+      autocomplete="on"></textarea>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        style="width:100%; margin-top:10px;">
-                    INITIALIZE REQUEST
-                </button>
+    <button type="submit"
+            class="btn btn-primary"
+            style="width:100%; margin-top:10px;">
+        INITIALIZE REQUEST
+    </button>
 
-                <!-- SUCCESS MESSAGE -->
-                <p id="design-success"
-                   style="display:none; margin-top:14px; color:#00ff8f;">
-                    ✓ Message sent successfully. We’ll contact you shortly.
-                </p>
+    <p id="design-success"
+       style="display:none; margin-top:14px; color:#00ff8f;">
+        ✓ Message sent successfully. We’ll contact you shortly.
+    </p>
 
-            </form>
+</form>
 
         </div>
 
