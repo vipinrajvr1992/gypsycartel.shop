@@ -376,3 +376,72 @@ footer a:hover { color: var(--primary-orange); }
         height: 400px;
     }
 }
+/* =========================================================
+   CRITICAL PAGE OFFSET FIX (HEADER SAFE)
+========================================================= */
+
+/* Ensure all pages start BELOW fixed header */
+.page-offset {
+    padding-top: 120px;
+}
+
+/* =========================================================
+   CONTACT PAGE — HEADER OVERLAP FIX
+========================================================= */
+
+.contact-page .container {
+    padding-top: 160px; /* pushes content below header */
+}
+
+.contact-page h1,
+.contact-page h2 {
+    margin-top: 0;
+}
+
+/* Ensure title is readable */
+.contact-page .section-title {
+    margin-bottom: 40px;
+}
+
+/* =========================================================
+   DESIGN PAGE — BROKEN LAYOUT FIX
+========================================================= */
+
+/* Prevent hero media from exploding */
+.design-page img,
+.design-page svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fix oversized logo / graphic on right */
+.design-page .hero-visual,
+.design-page .design-visual {
+    max-width: 420px;
+    margin-left: auto;
+}
+
+/* Restore left content balance */
+.design-page .hero-content {
+    max-width: 520px;
+}
+
+/* Force proper grid alignment */
+.design-page .grid-2 {
+    align-items: center;
+}
+
+/* Push design section below header safely */
+.design-page .container {
+    padding-top: 160px;
+}
+
+/* =========================================================
+   SAFETY: PREVENT ABSOLUTE ELEMENT BLEED
+========================================================= */
+
+.design-page .hero,
+.design-page section {
+    overflow: hidden;
+}
