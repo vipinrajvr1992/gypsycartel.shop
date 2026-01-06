@@ -1,5 +1,5 @@
 /* =========================================================
-   GYPSY CARTEL — CORE STYLES (FINAL MERGED & STABLE)
+   GYPSY CARTEL — CORE STYLES (FINAL CLEAN)
    Theme, UI, Colors PRESERVED
 ========================================================= */
 
@@ -245,7 +245,7 @@ select:focus {
 }
 
 /* =========================================================
-   APPS PAGE — GYPSY OPTIMIZER
+   APPS PAGE
 ========================================================= */
 .apps-page h1 { line-height: 1.2; }
 
@@ -265,10 +265,14 @@ select:focus {
 }
 
 /* =========================================================
-   DESIGN PAGE — STABLE & CONTAINED
+   DESIGN PAGE — FINAL & CLEAN
 ========================================================= */
 .design-page {
     overflow-x: hidden;
+}
+
+.design-page .container {
+    padding-top: calc(80px + 2rem);
 }
 
 .design-page .grid-2 > div:first-child {
@@ -279,19 +283,37 @@ select:focus {
     text-align: center;
 }
 
+.design-page .mg-logo-wrap img {
+    max-width: 130px;
+    margin-bottom: 1rem;
+}
+
 .design-page h1 {
+    margin-bottom: 0.8rem;
     text-align: center;
-    margin-bottom: 1.5rem;
 }
 
 .design-page p {
-    text-align: center;
+    margin-top: 0.5rem;
     max-width: 520px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 /* =========================================================
-   PRIVACY & TERMS — LEGAL PAGES (RESTORED)
+   CONTACT PAGE — FINAL & CLEAN
+========================================================= */
+.contact-page .container {
+    padding-top: calc(80px + 2rem);
+}
+
+.contact-page h1 {
+    margin-bottom: 2.5rem;
+}
+
+/* =========================================================
+   PRIVACY & TERMS
 ========================================================= */
 .legal-page {
     max-width: 900px;
@@ -315,13 +337,6 @@ select:focus {
 .legal-page p {
     line-height: 1.9;
     max-width: 760px;
-}
-
-/* =========================================================
-   CONTACT PAGE
-========================================================= */
-.contact-page .container {
-    padding-top: 60px;
 }
 
 /* =========================================================
@@ -375,169 +390,4 @@ footer a:hover { color: var(--primary-orange); }
         width: 400px;
         height: 400px;
     }
-}
-/* =========================================================
-   CRITICAL PAGE OFFSET FIX (HEADER SAFE)
-========================================================= */
-
-/* Ensure all pages start BELOW fixed header */
-.page-offset {
-    padding-top: 120px;
-}
-
-/* =========================================================
-   CONTACT PAGE — HEADER OVERLAP FIX
-========================================================= */
-
-.contact-page .container {
-    padding-top: 160px; /* pushes content below header */
-}
-
-.contact-page h1,
-.contact-page h2 {
-    margin-top: 0;
-}
-
-/* Ensure title is readable */
-.contact-page .section-title {
-    margin-bottom: 40px;
-}
-
-/* =========================================================
-   DESIGN PAGE — BROKEN LAYOUT FIX
-========================================================= */
-
-/* Prevent hero media from exploding */
-.design-page img,
-.design-page svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Fix oversized logo / graphic on right */
-.design-page .hero-visual,
-.design-page .design-visual {
-    max-width: 420px;
-    margin-left: auto;
-}
-
-/* Restore left content balance */
-.design-page .hero-content {
-    max-width: 520px;
-}
-
-/* Force proper grid alignment */
-.design-page .grid-2 {
-    align-items: center;
-}
-
-/* Push design section below header safely */
-.design-page .container {
-    padding-top: 160px;
-}
-
-/* =========================================================
-   SAFETY: PREVENT ABSOLUTE ELEMENT BLEED
-========================================================= */
-
-.design-page .hero,
-.design-page section {
-    overflow: hidden;
-}
-/* =========================================================
-   DESIGN PAGE — FINAL SPACING & SCALE FIX
-   (NO STRUCTURE CHANGE)
-========================================================= */
-
-/* Reduce top gap from header (ribbon) */
-.design-page .container {
-    padding-top: calc(80px + 2rem); /* header height + 2rem */
-}
-
-/* MG Logo — make it 2x smaller */
-.design-page img {
-    max-width: 130px;   /* was ~260px */
-    height: auto;
-    margin-bottom: 1.2rem; /* reduce gap below logo */
-}
-/* =========================================================
-   CONTACT PAGE — FINAL ALIGNMENT FIX (SAFE)
-   No structure change
-========================================================= */
-
-.contact-page .container {
-    padding-top: calc(80px + 2rem); /* ribbon height + exact 2rem */
-}
-
-/* INITIALIZE CONTACT heading */
-.contact-page h1,
-.contact-page .page-title {
-    margin-top: 0;
-    margin-bottom: 2.5rem;
-}
-
-/* Support / Instagram / Location row */
-.contact-page .contact-info {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem; /* reduced gap */
-    margin-bottom: 2.5rem;
-}
-
-/* Individual info blocks */
-.contact-page .contact-info h4 {
-    margin-bottom: 0.4rem;
-}
-
-.contact-page .contact-info p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* SEND TRANSMISSION label */
-.contact-page .contact-form-title {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
-/* Form spacing tightening */
-.contact-page form {
-    margin-top: 0;
-}
-
-.contact-page input,
-.contact-page textarea {
-    margin-bottom: 1.2rem;
-}
-
-/* Submit button spacing */
-.contact-page .btn-primary {
-    margin-top: 1.5rem;
-}
-
-/* Mobile safety */
-@media (max-width: 900px) {
-    .contact-page .contact-info {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        text-align: center;
-    }
-}
-
-/* Reduce gap between logo and heading text */
-.design-page h1,
-.design-page h2 {
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-}
-
-/* Tighten spacing for description text */
-.design-page p {
-    margin-top: 0.5rem;
-}
-
-/* Ensure left column stays visually balanced */
-.design-page .grid-2 {
-    align-items: center;
 }
