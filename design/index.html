@@ -89,29 +89,34 @@
 
             <form id="designForm"
                   action="https://formspree.io/f/xjgkezzp"
-                  method="POST">
+                  method="POST"
+                  autocomplete="on">
 
                 <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    autocomplete="name"
-                    required>
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  autocomplete="name"
+                  required
+                >
 
                 <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    autocomplete="email"
-                    required>
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  autocomplete="email"
+                  required
+                >
 
                 <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    autocomplete="tel"
-                    inputmode="tel"
-                    required>
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  pattern="[0-9+ ]{7,15}"
+                  required
+                >
 
                 <select name="service" required>
                     <option value="">Select Service</option>
@@ -124,7 +129,8 @@
                 <textarea
                     name="message"
                     rows="5"
-                    placeholder="I have a project"></textarea>
+                    placeholder="I have a project"
+                    autocomplete="on"></textarea>
 
                 <button type="submit"
                         class="btn btn-primary"
