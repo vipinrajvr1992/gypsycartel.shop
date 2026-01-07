@@ -1,24 +1,24 @@
 /* =========================================================
-   GYPSY CARTEL — FUTURISTIC DARK THEME (SAFE UPGRADE)
-   NO STRUCTURE CHANGES • NO FUNCTIONAL BREAKS
+   GYPSY CARTEL — FUTURISTIC MINIMAL THEME (FINAL)
+   SAFE UPGRADE • NO STRUCTURE / JS BREAKS
 ========================================================= */
 
 /* GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap');
 
 /* =========================================================
-   ROOT VARIABLES — REFINED (SAFE)
+   ROOT VARIABLES — BRAND CONTROL
 ========================================================= */
 :root {
     --bg-deep: #050505;
     --bg-surface: #0f0f0f;
-    --bg-elevated: #151515;
+    --bg-elevated: #161616;
 
     --primary-orange: #ff6a1a;
-    --accent-soft: rgba(255, 106, 26, 0.15);
+    --orange-glow: rgba(255,106,26,0.18);
 
     --text-main: #ffffff;
-    --text-muted: #8b8b8b;
+    --text-muted: #8c8c8c;
 
     --border-soft: rgba(255,255,255,0.08);
 }
@@ -36,13 +36,13 @@
 html { scroll-behavior: smooth; }
 
 /* =========================================================
-   BODY — FUTURISTIC BASE BACKGROUND
+   BODY — CLEAN FUTURISTIC DEPTH
 ========================================================= */
 body {
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,106,26,0.06), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(255,106,26,0.04), transparent 40%),
-        linear-gradient(180deg, #050505, #070707 40%, #050505);
+        radial-gradient(circle at 30% 15%, rgba(255,106,26,0.06), transparent 45%),
+        radial-gradient(circle at 70% 85%, rgba(255,106,26,0.05), transparent 45%),
+        linear-gradient(180deg, #050505, #070707 45%, #050505);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -50,27 +50,26 @@ body {
     position: relative;
 }
 
-/* subtle tech grid overlay */
+/* subtle noise texture (no grid) */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 80px 80px;
+    background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.35;
     pointer-events: none;
     z-index: 0;
 }
 
 /* =========================================================
-   TYPOGRAPHY (UNCHANGED LOGIC)
+   TYPOGRAPHY
 ========================================================= */
 h1, h2, h3, h4 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 p {
@@ -87,7 +86,7 @@ a {
 ul { list-style: none; }
 
 /* =========================================================
-   CUSTOM CURSOR (UNCHANGED)
+   CUSTOM CURSOR
 ========================================================= */
 .cursor-dot,
 .cursor-outline {
@@ -114,7 +113,7 @@ ul { list-style: none; }
 }
 
 /* =========================================================
-   HEADER — GLASS + LUXURY
+   HEADER — MINIMAL GLASS
 ========================================================= */
 header {
     position: fixed;
@@ -125,23 +124,22 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(5,5,5,0.85);
-    backdrop-filter: blur(14px);
+    background: rgba(5,5,5,0.88);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-soft);
     z-index: 1000;
 }
 
-.logo-icon { width: 40px; }
+.logo-icon { width: 38px; }
 
 nav ul {
     display: flex;
-    gap: 30px;
+    gap: 28px;
 }
 
 nav a {
     font-size: 0.85rem;
     font-weight: 600;
-    text-transform: uppercase;
     color: var(--text-muted);
     position: relative;
 }
@@ -162,7 +160,7 @@ nav a.active::after {
 }
 
 /* =========================================================
-   BUTTONS — PREMIUM FEEL
+   BUTTONS — PREMIUM
 ========================================================= */
 .btn {
     display: inline-block;
@@ -177,12 +175,14 @@ nav a.active::after {
 .btn-primary {
     background: linear-gradient(135deg, #ff6a1a, #ff3c00);
     color: #fff;
+    box-shadow: 0 10px 30px rgba(255,106,26,0.25);
 }
 
 .btn-primary:hover {
     background: transparent;
     border-color: var(--primary-orange);
     color: var(--primary-orange);
+    box-shadow: none;
 }
 
 .btn-outline {
@@ -196,7 +196,7 @@ nav a.active::after {
 }
 
 /* =========================================================
-   LAYOUT (UNCHANGED STRUCTURE)
+   LAYOUT
 ========================================================= */
 .container {
     max-width: 1200px;
@@ -219,36 +219,56 @@ nav a.active::after {
 }
 
 /* =========================================================
-   HERO — FUTURISTIC ABSTRACT
+   HERO — LOGO CENTERED & CONTROLLED
 ========================================================= */
 .hero {
     position: relative;
     min-height: 100vh;
     padding-top: 80px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.abstract-design {
+/* orange light beams */
+.hero::after {
+    content: "";
     position: absolute;
-    width: 900px;
-    height: 900px;
+    inset: 0;
     background:
-        repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,0.03),
-            rgba(255,255,255,0.03) 8px,
-            transparent 8px,
-            transparent 16px
-        );
-    opacity: 0.12;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
+        linear-gradient(120deg, transparent 60%, rgba(255,106,26,0.08)),
+        radial-gradient(circle at center, rgba(255,106,26,0.12), transparent 60%);
     pointer-events: none;
 }
 
 /* =========================================================
-   FORMS — PREMIUM DARK
+   DESIGN PAGE — FIXED (NO GIANT LOGO)
+========================================================= */
+.design-page .container {
+    padding-top: calc(80px + 2rem);
+}
+
+.design-page .mg-logo-wrap img {
+    max-width: 140px;
+    margin-bottom: 1.2rem;
+    filter: drop-shadow(0 20px 40px rgba(255,106,26,0.25));
+}
+
+.design-page h1 {
+    margin-bottom: 0.8rem;
+    text-align: center;
+}
+
+.design-page p {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* =========================================================
+   FORMS — CLEAN DARK
 ========================================================= */
 input,
 textarea,
@@ -262,24 +282,19 @@ select {
     margin-bottom: 20px;
 }
 
-input::placeholder,
-textarea::placeholder {
-    color: var(--text-muted);
-}
-
 input:focus,
 textarea:focus,
 select:focus {
     outline: none;
     border-color: var(--primary-orange);
-    box-shadow: 0 0 0 2px rgba(255,106,26,0.15);
+    box-shadow: 0 0 0 2px var(--orange-glow);
 }
 
 /* =========================================================
-   PAGE-SPECIFIC — SAFE
+   APPS / IMAGES
 ========================================================= */
 .apps-page img {
-    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.75);
     transition: transform 0.4s ease;
 }
 
@@ -287,15 +302,8 @@ select:focus {
     transform: scale(1.03);
 }
 
-.design-page,
-.contact-page,
-.legal-page,
-.fashion-page {
-    position: relative;
-}
-
 /* =========================================================
-   FOOTER — CLEAN LUXURY
+   FOOTER — SUBTLE LUXURY
 ========================================================= */
 footer {
     background: linear-gradient(180deg, #0a0a0a, #050505);
@@ -325,7 +333,7 @@ footer a:hover { color: var(--primary-orange); }
 }
 
 /* =========================================================
-   RESPONSIVE (UNCHANGED LOGIC)
+   RESPONSIVE
 ========================================================= */
 @media (max-width: 900px) {
     .grid-2 { grid-template-columns: 1fr; }
@@ -333,8 +341,5 @@ footer a:hover { color: var(--primary-orange); }
 }
 
 @media (max-width: 600px) {
-    .abstract-design {
-        width: 420px;
-        height: 420px;
-    }
+    .hero::after { opacity: 0.6; }
 }
