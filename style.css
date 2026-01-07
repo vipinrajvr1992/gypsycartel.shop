@@ -351,3 +351,16 @@ a[href^="mailto:support@gypsycartel.shop"]:hover {
     .grid-2 { grid-template-columns: 1fr; }
     .footer-content { grid-template-columns: 1fr; }
 }
+/* =========================================================
+   HOME PAGE FIX — SPACE BETWEEN HERO BUTTONS & FOOTER
+========================================================= */
+
+/* Create clear separation before footer */
+.hero {
+    padding-bottom: 2rem;
+}
+
+/* Extra safety: ensure buttons don’t touch footer visually */
+.hero-buttons {
+    margin-bottom: 2rem;
+}
