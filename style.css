@@ -50,7 +50,7 @@ body {
     position: relative;
 }
 
-/* subtle noise texture (no grid) */
+/* subtle noise texture (premium, no grid) */
 body::before {
     content: "";
     position: fixed;
@@ -185,16 +185,6 @@ nav a.active::after {
     box-shadow: none;
 }
 
-.btn-outline {
-    border-color: rgba(255,255,255,0.5);
-    color: #fff;
-}
-
-.btn-outline:hover {
-    background: #fff;
-    color: #000;
-}
-
 /* =========================================================
    LAYOUT
 ========================================================= */
@@ -219,7 +209,7 @@ nav a.active::after {
 }
 
 /* =========================================================
-   HERO — LOGO CENTERED & CONTROLLED
+   HERO — FUTURISTIC LIGHTING
 ========================================================= */
 .hero {
     position: relative;
@@ -232,7 +222,6 @@ nav a.active::after {
     text-align: center;
 }
 
-/* orange light beams */
 .hero::after {
     content: "";
     position: absolute;
@@ -244,27 +233,37 @@ nav a.active::after {
 }
 
 /* =========================================================
-   DESIGN PAGE — FIXED (NO GIANT LOGO)
+   DESIGN PAGE — FIXED & CENTERED
 ========================================================= */
 .design-page .container {
     padding-top: calc(80px + 2rem);
 }
 
-.design-page .mg-logo-wrap img {
-    max-width: 140px;
-    margin-bottom: 1.2rem;
-    filter: drop-shadow(0 20px 40px rgba(255,106,26,0.25));
+.design-page .grid-2 > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.design-page h1 {
-    margin-bottom: 0.8rem;
-    text-align: center;
+.design-page .mg-logo-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.design-page .mg-logo-wrap img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 20px 40px rgba(255,106,26,0.25));
 }
 
 .design-page p {
     max-width: 520px;
     margin: 0 auto;
-    text-align: center;
 }
 
 /* =========================================================
@@ -303,7 +302,7 @@ select:focus {
 }
 
 /* =========================================================
-   FOOTER — SUBTLE LUXURY
+   FOOTER — PREMIUM + SOCIAL FIX
 ========================================================= */
 footer {
     background: linear-gradient(180deg, #0a0a0a, #050505);
@@ -332,6 +331,17 @@ footer a:hover { color: var(--primary-orange); }
     color: var(--text-muted);
 }
 
+/* Instagram link orange */
+.insta-link {
+    color: var(--primary-orange);
+    font-weight: 500;
+}
+
+.insta-link:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+}
+
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -342,28 +352,4 @@ footer a:hover { color: var(--primary-orange); }
 
 @media (max-width: 600px) {
     .hero::after { opacity: 0.6; }
-}
-/* =========================================================
-   DESIGN PAGE — FIX MG LOGO CENTER ALIGNMENT
-========================================================= */
-
-.design-page .grid-2 > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   /* horizontal center */
-    justify-content: center;
-    text-align: center;
-}
-
-.design-page .mg-logo-wrap {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.design-page .mg-logo-wrap img {
-    max-width: 160px;      /* controlled size (not oversized) */
-    height: auto;
-    display: block;
 }
