@@ -367,3 +367,48 @@ a[href^="mailto:support@gypsycartel.shop"]:hover {
     color: var(--primary-orange) !important;
     text-decoration: underline;
 }
+/* =========================
+   LEGAL PAGES (PRIVACY / TERMS)
+========================= */
+
+.legal-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 120px;
+}
+
+.legal-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.legal-title span {
+    color: var(--primary-orange);
+}
+
+.legal-subtitle {
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 60px;
+    line-height: 1.7;
+}
+
+.legal-section {
+    margin-bottom: 50px;
+}
+
+.legal-section h3 {
+    color: var(--primary-orange);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.legal-section p {
+    color: #ccc;
+    line-height: 1.8;
+    max-width: 800px;
+}
