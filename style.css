@@ -1,4 +1,4 @@
-/* =========================================================
+GIVE ME FULLY UPDATED CSS. NO OTHER CHANGES . NO MISS ANYTHING /* =========================================================
    GYPSY CARTEL — FUTURISTIC MINIMAL THEME (FINAL)
    SAFE UPGRADE • NO STRUCTURE / JS BREAKS
 ========================================================= */
@@ -143,6 +143,7 @@ header nav a {
     position: relative;
 }
 
+/* ✅ NAV HIGHLIGHT — FIXED */
 header nav a:hover,
 header nav a.active {
     color: var(--primary-orange);
@@ -214,7 +215,6 @@ header nav a.active::after {
     position: relative;
     min-height: 100vh;
     padding-top: 80px;
-    padding-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,7 +238,6 @@ header nav a.active::after {
     display: flex;
     gap: 16px;
     justify-content: center;
-    margin-bottom: 2rem;
 }
 
 .hero-btn {
@@ -252,7 +251,10 @@ header nav a.active::after {
     position: relative;
 }
 
-.hero-btn::after { content: none !important; }
+/* prevent nav underline bleed */
+.hero-btn::after {
+    content: none !important;
+}
 
 .hero-btn.primary {
     background: #ff6a1a;
@@ -349,40 +351,38 @@ a[href^="mailto:support@gypsycartel.shop"]:hover {
     .grid-2 { grid-template-columns: 1fr; }
     .footer-content { grid-template-columns: 1fr; }
 }
-
 /* =========================================================
-   DESIGN PAGE — FINAL ALIGNMENT & LOGO FIX
+   HOME PAGE FIX — SPACE BETWEEN HERO BUTTONS & FOOTER
 ========================================================= */
 
-.design-page { overflow-x: hidden; }
-
-.design-page .grid-2 {
-    align-items: center;
+/* Create clear separation before footer */
+.hero {
+    padding-bottom: 2rem;
 }
 
-.design-page .grid-2 > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Extra safety: ensure buttons don’t touch footer visually */
+.hero-buttons {
+    margin-bottom: 2rem;
+}
+/* =========================================================
+   DESIGN PAGE FIX — PREVENT BIG LOGO OVERFLOW
+========================================================= */
+
+/* Ensure design page hero does not overflow */
+.design-page {
+    overflow-x: hidden;
 }
 
-.design-page .mg-logo-wrap {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem; /* EXACT GAP */
-}
-
-.design-page .mg-logo-wrap img {
-    max-width: 120px;
+/* Constrain large design visuals */
+.design-page img,
+.design-page .hero img,
+.design-page .grid-2 img {
+    max-width: 100%;
     height: auto;
+    object-fit: contain;
 }
 
-.design-page p {
-    max-width: 520px;
-    margin: 0 auto;
-}
-
+/* Optional: slightly reduce visual dominance on large screens */
 @media (min-width: 1200px) {
     .design-page .grid-2 img {
         max-width: 90%;
