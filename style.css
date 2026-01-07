@@ -353,3 +353,17 @@ footer a:hover { color: var(--primary-orange); }
 @media (max-width: 600px) {
     .hero::after { opacity: 0.6; }
 }
+/* =========================================================
+   GLOBAL FIX — SUPPORT EMAIL ALWAYS ORANGE
+========================================================= */
+
+/* Force support email color everywhere */
+a[href^="mailto:support@gypsycartel.shop"] {
+    color: var(--primary-orange) !important;
+}
+
+/* Keep it orange on hover as well */
+a[href^="mailto:support@gypsycartel.shop"]:hover {
+    color: var(--primary-orange) !important;
+    text-decoration: underline;
+}
