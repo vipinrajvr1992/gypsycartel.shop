@@ -513,3 +513,36 @@ a[href^="mailto:support@gypsycartel.shop"]:hover {
 .contact-page header nav a.active::after {
     background: var(--primary-orange);
 }
+/* =========================================================
+   DESIGN PAGE — LOGO SIZE + CENTER ALIGN (SAFE & SCOPED)
+========================================================= */
+
+/* Center left section content */
+.design-page .grid-2 {
+    align-items: center;
+}
+
+/* Left content wrapper (logo + text) */
+.design-page .grid-2 > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;          /* center horizontally */
+    text-align: center;           /* center text */
+    gap: 2rem;                    /* requested gap */
+}
+
+/* MG LOGO SIZE REDUCTION */
+.design-page .grid-2 > div:first-child img {
+    max-width: 260px;             /* reduced logo size */
+    width: 100%;
+    height: auto;
+}
+
+/* Reduce big text dominance slightly */
+.design-page h1,
+.design-page h2,
+.design-page h3 {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
