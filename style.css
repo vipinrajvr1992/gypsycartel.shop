@@ -488,3 +488,18 @@ footer a[href^="mailto:support@gypsycartel.shop"] {
 footer a[href^="mailto:support@gypsycartel.shop"]:hover {
     color: var(--primary-orange) !important;
 }
+/* =========================================================
+   CONTACT PAGE — RIBBON → TITLE GAP (FINAL LOCKED FIX)
+   EXACT GAP: 2rem
+========================================================= */
+
+/* Override default container padding ONLY for contact page */
+.contact-page .container {
+    padding-top: calc(80px + 2rem) !important; /* header height + 2rem */
+}
+
+/* Remove any extra top margins from title */
+.contact-page .container > h1 {
+    margin-top: 0 !important;
+    margin-bottom: 1rem; /* title → info */
+}
