@@ -36,7 +36,7 @@
 html { scroll-behavior: smooth; }
 
 /* =========================================================
-   BODY — CLEAN FUTURISTIC DEPTH
+   BODY
 ========================================================= */
 body {
     background:
@@ -47,7 +47,6 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
 }
 
 body::before {
@@ -112,7 +111,7 @@ ul { list-style: none; }
 }
 
 /* =========================================================
-   HEADER — MINIMAL GLASS
+   HEADER
 ========================================================= */
 header {
     position: fixed;
@@ -159,7 +158,7 @@ header nav a.active::after {
 }
 
 /* =========================================================
-   BUTTONS — GLOBAL
+   BUTTONS
 ========================================================= */
 .btn {
     display: inline-block;
@@ -181,12 +180,11 @@ header nav a.active::after {
     background: transparent;
     border-color: var(--primary-orange);
     color: var(--primary-orange);
-    box-shadow: none;
 }
 
 .btn-outline {
     background: transparent;
-    color: #ffffff;
+    color: #fff;
     border: 1px solid rgba(255,255,255,0.6);
 }
 
@@ -203,8 +201,6 @@ header nav a.active::after {
     max-width: 1200px;
     margin: 0 auto;
     padding: 140px 20px 80px;
-    position: relative;
-    z-index: 2;
 }
 
 .grid-2 {
@@ -223,28 +219,17 @@ header nav a.active::after {
    HERO
 ========================================================= */
 .hero {
-    position: relative;
     min-height: 100vh;
     padding-top: 80px;
     padding-bottom: 2rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(120deg, transparent 60%, rgba(255,106,26,0.08)),
-        radial-gradient(circle at center, rgba(255,106,26,0.12), transparent 60%);
-    pointer-events: none;
-}
-
 /* =========================================================
-   HERO BUTTONS — HOME ONLY
+   HOME — CONTACT BUTTON
 ========================================================= */
 .hero-actions {
     display: flex;
@@ -255,29 +240,22 @@ header nav a.active::after {
 
 .hero-actions .contact-btn {
     background: transparent;
-    color: #ffffff;
+    color: #fff;
     border: 1px solid rgba(255,255,255,0.6);
     padding: 14px 34px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
 }
 
 .hero-actions .contact-btn:hover {
     color: var(--primary-orange);
     border-color: var(--primary-orange);
     box-shadow: 0 0 18px rgba(255,106,26,0.45);
-    transform: translateY(-1px);
 }
 
 /* =========================================================
    FORMS
 ========================================================= */
 input,
-textarea,
-select {
+textarea {
     width: 100%;
     padding: 14px;
     background: var(--bg-elevated);
@@ -287,11 +265,9 @@ select {
 }
 
 input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
+textarea:focus {
     border-color: var(--primary-orange);
-    box-shadow: 0 0 0 2px var(--orange-glow);
+    outline: none;
 }
 
 /* =========================================================
@@ -312,8 +288,6 @@ footer {
     padding-bottom: 30px;
 }
 
-footer a:hover { color: var(--primary-orange); }
-
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
@@ -325,15 +299,11 @@ footer a:hover { color: var(--primary-orange); }
    SUPPORT EMAIL — GLOBAL ORANGE
 ========================================================= */
 a[href^="mailto:support@gypsycartel.shop"] {
-    color: var(--primary-orange) !important;
-}
-
-a[href^="mailto:support@gypsycartel.shop"]:hover {
-    text-decoration: underline;
+    color: var(--primary-orange);
 }
 
 /* =========================================================
-   CONTACT PAGE — SAFE SCOPED FIXES ONLY
+   CONTACT PAGE — ONLY REQUIRED FIXES
 ========================================================= */
 .contact-page .container > h1 {
     margin-top: 2rem;
@@ -351,22 +321,19 @@ a[href^="mailto:support@gypsycartel.shop"]:hover {
 
 /* override email color ONLY on contact page */
 .contact-page a[href^="mailto:support@gypsycartel.shop"] {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 .contact-page a[href^="mailto:support@gypsycartel.shop"]:hover {
-    color: var(--primary-orange) !important;
-}
-
-/* ensure footer matches global */
-.contact-page footer {
-    background: linear-gradient(180deg, #0a0a0a, #050505);
+    color: var(--primary-orange);
 }
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 @media (max-width: 900px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .footer-content { grid-template-columns: 1fr; }
+    .grid-2,
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
 }
