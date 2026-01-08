@@ -693,3 +693,16 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
         transform: translateY(0);
     }
 }
+/* =========================================
+   APPS PAGE — IMAGE HOVER ZOOM (SAFE)
+   No layout shift • No conflicts
+========================================= */
+
+.apps-page img.apps-image {
+    transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+    will-change: transform;
+}
+
+.apps-page img.apps-image:hover {
+    transform: scale(1.06);
+}
