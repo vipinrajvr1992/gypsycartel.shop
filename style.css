@@ -503,3 +503,17 @@ footer a[href^="mailto:support@gypsycartel.shop"]:hover {
     margin-top: 0 !important;
     margin-bottom: 1rem; /* title → info */
 }
+/* =========================================================
+   FOOTER — CREATOR LINK COLOR FIX (SAFE)
+========================================================= */
+
+/* Default WHITE */
+footer a[href*="instagram.com"] {
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+
+/* Hover → ORANGE */
+footer a[href*="instagram.com"]:hover {
+    color: var(--primary-orange) !important;
+}
