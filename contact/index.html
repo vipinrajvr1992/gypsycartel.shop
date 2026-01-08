@@ -8,7 +8,7 @@
     <meta name="description"
           content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications, hyper-realistic 3D design, and modern UI/UX solutions.">
 
-    <!-- SITE ICON / FAVICON -->
+    <!-- SITE ICON -->
     <link rel="icon" type="image/webp" href="/assets/logos/gypsy-cartel-icon.webp">
     <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.webp">
 
@@ -21,35 +21,22 @@
 
 <body class="contact-page">
 
+<!-- CUSTOM CURSOR -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<header>
-    <a href="/">
-        <img src="/assets/logos/gypsy-cartel-icon.webp" alt="GC Icon" class="logo-icon">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/apps/">Apps</a></li>
-            <li><a href="/design/">Design</a></li>
-            <li><a href="/fashion/">Fashion</a></li>
-            <li><a href="/gallery/">Gallery</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/contact/" class="active">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<!-- HEADER (PARTIAL) -->
+<div id="site-header"></div>
 
+<!-- PAGE CONTENT -->
 <div class="container">
 
-    <!-- ✅ CENTERED TITLE -->
     <h1 style="text-align:center;">
         INITIALIZE <span style="color:var(--primary-orange)">CONTACT</span>
     </h1>
 
     <!-- CONTACT INFO -->
-    <div class="grid-3" style="text-align:center; margin-top:2rem; margin-bottom:2rem;">
+    <div class="grid-3" style="text-align:center; margin-top:1rem; margin-bottom:2rem;">
         <div>
             <h4>SUPPORT &amp; BUSINESS</h4>
             <p>
@@ -99,7 +86,8 @@
             required
         >
 
-        <textarea name="message" rows="6"
+        <textarea name="message"
+                  rows="6"
                   placeholder="Your Message / Business Inquiry..."
                   required></textarea>
 
@@ -134,53 +122,13 @@
     </form>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <div>
-            <img src="/assets/logos/gypsy-cartel-icon.webp" style="width:30px;">
-            <p>
-                Gypsy Cartel delivers software development
-                and architectural visualization services.
-                We specialize in graphic design
-                and digital media solutions
-                focused on clarity, performance, and visual quality.
-            </p>
-        </div>
+<!-- FOOTER (PARTIAL) -->
+<div id="site-footer"></div>
 
-        <div>
-            <h4>Services</h4>
-            <ul>
-                <li><a href="/gallery/">Gallery</a></li>
-                <li><a href="/apps/">Apps</a></li>
-                <li><a href="/design/">Design</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/contact/">Contact</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Connect</h4>
-            <p>
-                <a href="mailto:support@gypsycartel.shop">
-                    support@gypsycartel.shop
-                </a>
-            </p>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        © 2025 Gypsy Cartel. All Rights Reserved.
-    </div>
-</footer>
-
+<!-- GLOBAL SCRIPT -->
 <script src="/script.js"></script>
 
+<!-- CONTACT FORM AJAX (UNCHANGED) -->
 <script>
 const form = document.getElementById("contactForm");
 const successMsg = document.getElementById("successMsg");
