@@ -45,14 +45,10 @@
 <div id="site-header"></div>
 
 <!-- HERO SECTION -->
-<section class="hero"
-         style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+<section class="hero hero-center">
 
-    <div class="abstract-design"></div>
-
-    <!-- HERO LOGO + ANIMATION -->
-    <div class="hero-logo-container"
-         style="position:relative; width:650px; max-width:95%; margin:1rem 0;">
+    <!-- LOGO + ANIMATION -->
+    <div class="hero-logo-container">
 
         <!-- ANIMATED DOTS -->
         <lottie-player
@@ -60,37 +56,24 @@
             background="transparent"
             speed="1"
             loop
-            autoplay
-            style="
-                position:absolute;
-                top:50%;
-                left:50%;
-                width:120%;
-                height:120%;
-                transform:translate(-50%, -50%);
-                pointer-events:none;
-                z-index:1;
-            ">
+            autoplay>
         </lottie-player>
 
-        <!-- LOGO -->
-        <img src="/assets/logos/metalic-gc-logo.webp"
-             alt="Gypsy Cartel"
-             style="
-                position:relative;
-                z-index:2;
-                width:100%;
-                height:auto;
-             ">
+        <!-- MAIN LOGO -->
+        <img
+            src="/assets/logos/metalic-gc-logo.webp"
+            alt="Gypsy Cartel Logo"
+            class="hero-logo"
+        >
     </div>
 
     <!-- TAGLINE -->
-    <h1 style="font-size:1.5rem;color:var(--text-muted);margin-bottom:1.5rem;">
+    <h1 class="hero-tagline">
         FUSING HIGH-PERFORMANCE SOFTWARE WITH HYPER-REALISTIC DESIGN.
     </h1>
 
     <!-- HERO ACTIONS -->
-    <div class="hero-actions" style="display:flex;gap:15px;justify-content:center;">
+    <div class="hero-actions">
         <a href="/gallery/" class="btn btn-primary">
             VIEW PORTFOLIO
         </a>
