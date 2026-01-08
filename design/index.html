@@ -9,11 +9,11 @@
           content="Gypsy Cartel Design Studio delivers hyper-realistic architectural visualization, 3D graphics, and high-impact digital design solutions.">
 
     <!-- SITE ICON / FAVICON -->
-    <link rel="icon" type="image/webp" href="../assets/logos/gypsy-cartel-icon.webp">
-    <link rel="apple-touch-icon" href="../assets/logos/gypsy-cartel-icon.webp">
+    <link rel="icon" type="image/webp" href="/assets/logos/gypsy-cartel-icon.webp">
+    <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.webp">
 
     <!-- STYLES -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css">
 
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92193J0YS6"></script>
@@ -28,35 +28,17 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
-<body>
+<body class="design-page">
 
 <!-- CUSTOM CURSOR -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<!-- HEADER -->
-<header>
-    <a href="/">
-        <img src="../assets/logos/gypsy-cartel-icon.webp"
-             alt="Gypsy Cartel Logo"
-             class="logo-icon">
-    </a>
+<!-- HEADER (PARTIAL) -->
+<div id="site-header"></div>
 
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/apps/">Apps</a></li>
-            <li><a href="/design/" class="active">Design</a></li>
-            <li><a href="/fashion/">Fashion</a></li>
-            <li><a href="/gallery/">Gallery</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/contact/">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- DESIGN SECTION -->
-<section class="container design-page">
+<!-- PAGE CONTENT -->
+<section class="container">
 
     <div class="grid-2">
 
@@ -64,7 +46,7 @@
         <div>
 
             <div class="mg-logo-wrap">
-                <img src="../assets/logos/mg-creations.webp"
+                <img src="/assets/logos/mg-creations.webp"
                      alt="MG Creations Logo">
             </div>
 
@@ -89,75 +71,75 @@
                 START A PROJECT
             </h3>
 
-<form id="designForm"
-      action="https://formspree.io/f/xjgkezzp"
-      method="POST"
-      autocomplete="on">
+            <form id="designForm"
+                  action="https://formspree.io/f/xjgkezzp"
+                  method="POST"
+                  autocomplete="on">
 
-    <label for="name" style="display:none;">Name</label>
-    <input
-      id="name"
-      type="text"
-      name="name"
-      placeholder="Your Name"
-      autocomplete="name"
-      required
-    >
+                <label for="name" style="display:none;">Name</label>
+                <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    autocomplete="name"
+                    required
+                >
 
-    <label for="email" style="display:none;">Email</label>
-    <input
-      id="email"
-      type="email"
-      name="email"
-      placeholder="Email"
-      autocomplete="email"
-      required
-    >
+                <label for="email" style="display:none;">Email</label>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    autocomplete="email"
+                    required
+                >
 
-    <label for="tel" style="display:none;">Phone</label>
-    <input
-      id="tel"
-      type="tel"
-      name="tel"
-      placeholder="Phone Number"
-      autocomplete="tel"
-      inputmode="tel"
-      required
-    >
+                <label for="tel" style="display:none;">Phone</label>
+                <input
+                    id="tel"
+                    type="tel"
+                    name="tel"
+                    placeholder="Phone Number"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    required
+                >
 
-    <select name="service" required>
-        <option value="">Select Service</option>
-        <option value="2d-floor-plans">2D Floor Plans</option>
-        <option value="3d-visualization">3D Visualization</option>
-        <option value="graphic-media">Graphic Media</option>
-        <option value="social-media">Social Media Design</option>
-    </select>
+                <select name="service" required>
+                    <option value="">Select Service</option>
+                    <option value="2d-floor-plans">2D Floor Plans</option>
+                    <option value="3d-visualization">3D Visualization</option>
+                    <option value="graphic-media">Graphic Media</option>
+                    <option value="social-media">Social Media Design</option>
+                </select>
 
-    <textarea
-      name="message"
-      rows="5"
-      placeholder="I have a project"
-      autocomplete="on"></textarea>
+                <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="I have a project"
+                    autocomplete="on"></textarea>
 
-    <!-- Cloudflare Turnstile -->
-    <div class="cf-turnstile"
-         data-sitekey="0x4AAAAAACK2g8v3gHryb9Aq"
-         data-theme="dark"
-         style="margin:18px 0;">
-    </div>
+                <!-- Cloudflare Turnstile -->
+                <div class="cf-turnstile"
+                     data-sitekey="0x4AAAAAACK2g8v3gHryb9Aq"
+                     data-theme="dark"
+                     style="margin:18px 0;">
+                </div>
 
-    <button type="submit"
-            class="btn btn-primary"
-            style="width:100%; margin-top:10px;">
-        INITIALIZE REQUEST
-    </button>
+                <button type="submit"
+                        class="btn btn-primary"
+                        style="width:100%; margin-top:10px;">
+                    INITIALIZE REQUEST
+                </button>
 
-    <p id="design-success"
-       style="display:none; margin-top:14px; color:#00ff8f;">
-        ✓ Message sent successfully. We’ll contact you shortly.
-    </p>
+                <p id="design-success"
+                   style="display:none; margin-top:14px; color:#00ff8f;">
+                    ✓ Message sent successfully. We’ll contact you shortly.
+                </p>
 
-</form>
+            </form>
 
         </div>
 
@@ -165,68 +147,11 @@
 
 </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-content">
+<!-- FOOTER (PARTIAL) -->
+<div id="site-footer"></div>
 
-        <div>
-            <img src="../assets/logos/gypsy-cartel-icon.webp"
-                 alt="GC Icon"
-                 style="width:30px; margin-bottom:10px;">
-   <p>
-               Gypsy Cartel delivers software development
-and architectural visualization services.
-We specialize in graphic design
-and digital media solutions
-focused on clarity, performance, and visual quality.
-            </p>
-        </div>
+<!-- GLOBAL SCRIPT -->
+<script src="/script.js"></script>
 
-        <div>
-            <h4>Services</h4>
-            <ul>
-                <li><a href="/gallery/">Gallery</a></li>
-                <li><a href="/apps/">Apps</a></li>
-                <li><a href="/design/">Design Studio</a></li>
-                <li><a href="/fashion/">Fashion Line (Soon)</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/contact/">Contact</a></li>
-                <li><a href="/privacy/">Privacy Policy</a></li>
-                <li><a href="/terms/">Terms of Service</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Connect</h4>
-            <p>
-                Support:
-                <a href="mailto:support@gypsycartel.shop"
-                   style="color:var(--primary-orange);">
-                    support@gypsycartel.shop
-                </a>
-            </p>
-            <p>
-                Creator:
-                <a href="https://instagram.com/mallugypsy.creations"
-                   target="_blank">
-                    @mallugypsy.creations
-                </a>
-            </p>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        © 2025 Gypsy Cartel. All Rights Reserved.
-    </div>
-</footer>
-
-<script src="../script.js"></script>
 </body>
 </html>
