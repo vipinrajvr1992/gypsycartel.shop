@@ -61,7 +61,16 @@
             font-size: 1.4rem;
             letter-spacing: 1px;
             max-width: 900px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-services {
+            margin-bottom: 2.4rem;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            text-align: center;
         }
 
         .hero-actions {
@@ -75,18 +84,14 @@
 
 <body>
 
-<!-- =========================
-     CUSTOM CURSOR (FIX)
-========================= -->
+<!-- CUSTOM CURSOR -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
 <!-- HEADER (PARTIAL) -->
 <div id="site-header"></div>
 
-<!-- =======================
-     HERO SECTION
-======================== -->
+<!-- HERO SECTION -->
 <section class="hero">
 
     <lottie-player
@@ -102,13 +107,20 @@
         HIGH-PERFORMANCE SOFTWARE & VISUAL DESIGN STUDIO.
     </h1>
 
+    <p class="hero-services">
+        Software Development &nbsp; • &nbsp;
+        Architecture &amp; Interiors &nbsp; • &nbsp;
+        3D Visualization &nbsp; • &nbsp;
+        Graphic &amp; Digital Design
+    </p>
+
     <div class="hero-actions">
         <a href="/gallery/" class="btn btn-primary">
-            VIEW PORTFOLIO
+            VIEW WORK
         </a>
 
         <a href="/contact/" class="btn btn-outline contact-btn">
-            CONTACT US
+            START A PROJECT
         </a>
     </div>
 
