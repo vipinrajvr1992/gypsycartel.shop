@@ -157,3 +157,40 @@ if (designForm) {
         }
     });
 }
+/* ===============================
+   LOAD HEADER & FOOTER PARTIALS
+   (STATIC SAFE — GITHUB PAGES)
+=============================== */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Load Header
+    fetch('/partials/header.html')
+        .then(res => res.text())
+        .then(html => {
+            const headerMount = document.getElementById('site-header');
+            if (headerMount) headerMount.innerHTML = html;
+
+            // Activate current nav
+            const path = window.location.pathname;
+            document.querySelectorAll('nav a[data-nav]').forEach(link => {
+                if (path === '/' && link.dataset.nav === 'home') {
+                    link.classList.add('active');
+                } else if (path.includes(link.dataset.nav)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+    // Load Footer
+    fetch('/partials/footer.html')
+        .then(res => res.text())
+        .then(html => {
+            const footerMount = document.getElementById('site-footer');
+            if (footerMount) footerMount.innerHTML = html;
+
+            // Dynamic Year
+            const y = document.getElementById('year');
+            if (y) y.textContent = new Date().getFullYear();
+        });
+
+});
