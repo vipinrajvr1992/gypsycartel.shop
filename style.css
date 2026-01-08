@@ -712,7 +712,7 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
 ========================================= */
 
 .apps-page .apps-image {
-    transition: transform 0.2s cubic-bezier(.22,.61,.36,1);
+    transition: transform 1s cubic-bezier(.22,.61,.36,1);
 }
 
 .apps-page .apps-image:hover {
