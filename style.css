@@ -644,3 +644,21 @@ footer a:hover {
 .btn:hover::after {
     transform: translateX(100%);
 }
+/* =========================================
+   DESIGN PAGE — FINAL LOGO GAP FIX (LOCKED)
+========================================= */
+
+/* Remove flex gap completely */
+.design-page .grid-2 > div:first-child {
+    gap: 0 !important;
+}
+
+/* Control logo → text gap ONLY here */
+.design-page .mg-logo-wrap {
+    margin-bottom: 1.2rem !important; /* 👈 adjust this value */
+}
+
+/* Kill heading top margin */
+.design-page h1 {
+    margin-top: 0 !important;
+}
