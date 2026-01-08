@@ -706,3 +706,15 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
 .apps-page img.apps-image:hover {
     transform: scale(1.06);
 }
+/* =========================================
+   APPS PAGE — IMAGE HOVER ZOOM FIX
+   Overrides animation transform safely
+========================================= */
+
+.apps-page .apps-image {
+    transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+}
+
+.apps-page .apps-image:hover {
+    transform: translateY(0) scale(1.06) !important;
+}
