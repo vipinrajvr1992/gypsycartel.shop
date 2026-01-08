@@ -9,44 +9,30 @@
           content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications, hyper-realistic design, and modern UI/UX solutions.">
 
     <!-- SITE ICON / FAVICON -->
-    <link rel="icon" type="image/webp" href="assets/logos/gypsy-cartel-icon.webp">
-    <link rel="apple-touch-icon" href="assets/logos/gypsy-cartel-icon.webp">
+    <link rel="icon" type="image/webp" href="/assets/logos/gypsy-cartel-icon.webp">
+    <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.webp">
 
     <!-- STYLES -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
+<!-- CUSTOM CURSOR -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<header>
-    <a href="/">
-        <img src="assets/logos/gypsy-cartel-icon.webp"
-             class="logo-icon"
-             alt="Gypsy Cartel Logo">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="/" class="active">Home</a></li>
-            <li><a href="/apps/">Apps</a></li>
-            <li><a href="/design/">Design</a></li>
-            <li><a href="/fashion/">Fashion</a></li>
-            <li><a href="/gallery/">Gallery</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/contact/">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<!-- HEADER (PARTIAL) -->
+<div id="site-header"></div>
 
+<!-- HERO SECTION -->
 <section class="hero"
          style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
     
     <div class="abstract-design"></div>
 
     <div class="hero-logo-container">
-        <img src="assets/logos/metalic-gc-logo.webp"
+        <img src="/assets/logos/metalic-gc-logo.webp"
              style="max-width:650px;width:95%;margin:1rem 0;"
              alt="Gypsy Cartel">
     </div>
@@ -55,7 +41,7 @@
         FUSING HIGH-PERFORMANCE SOFTWARE WITH HYPER-REALISTIC DESIGN.
     </h1>
 
-    <!-- ✅ UPDATED BUTTON GROUP -->
+    <!-- HERO ACTIONS -->
     <div class="hero-actions" style="display:flex;gap:15px;justify-content:center;">
         <a href="/gallery/" class="btn btn-primary">
             VIEW PORTFOLIO
@@ -68,63 +54,11 @@
 
 </section>
 
-<footer>
-    <div class="footer-content">
-        <div>
-            <img src="assets/logos/gypsy-cartel-icon.webp" style="width:30px;">
-            <p>
-               Gypsy Cartel delivers software development
-and architectural visualization services.
-We specialize in graphic design
-and digital media solutions
-focused on clarity, performance, and visual quality.
-            </p>
-        </div>
+<!-- FOOTER (PARTIAL) -->
+<div id="site-footer"></div>
 
-        <div>
-            <h4>Services</h4>
-            <ul>
-                <li><a href="/gallery/">Gallery</a></li>
-                <li><a href="/apps/">Apps Development</a></li>
-                <li><a href="/design/">Design Studio</a></li>
-                <li><a href="/fashion/">Fashion Line (Soon)</a></li>
-            </ul>
-        </div>
+<!-- GLOBAL SCRIPT -->
+<script src="/script.js"></script>
 
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li><a href="/about/">Our Vision & History</a></li>
-                <li><a href="/contact/">Contact Support</a></li>
-                <li><a href="/privacy/">Privacy Policy</a></li>
-                <li><a href="/terms/">Terms of Service</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Connect</h4>
-            <p>
-                Support:
-                <a href="mailto:support@gypsycartel.shop"
-                   style="color:var(--primary-orange);">
-                    support@gypsycartel.shop
-                </a>
-            </p>
-            <p>
-                Creator:
-                <a href="https://instagram.com/mallugypsy.creations"
-                   target="_blank">
-                    @mallugypsy.creations
-                </a>
-            </p>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        © 2025 Gypsy Cartel. All Rights Reserved.
-    </div>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
