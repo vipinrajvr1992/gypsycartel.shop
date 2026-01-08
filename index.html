@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.png">
     <link rel="shortcut icon" href="/assets/logos/gypsy-cartel-icon.png">
 
-    <!-- ORGANIZATION LOGO SCHEMA (FOR GOOGLE SEARCH LOGO) -->
+    <!-- ORGANIZATION LOGO SCHEMA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -30,6 +30,9 @@
 
     <!-- STYLES -->
     <link rel="stylesheet" href="/style.css">
+
+    <!-- LOTTIE PLAYER -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
@@ -44,15 +47,44 @@
 <!-- HERO SECTION -->
 <section class="hero"
          style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
-    
+
     <div class="abstract-design"></div>
 
-    <div class="hero-logo-container">
+    <!-- HERO LOGO + ANIMATION -->
+    <div class="hero-logo-container"
+         style="position:relative; width:650px; max-width:95%; margin:1rem 0;">
+
+        <!-- ANIMATED DOTS -->
+        <lottie-player
+            src="/assets/animations/hero-dots.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+            style="
+                position:absolute;
+                top:50%;
+                left:50%;
+                width:120%;
+                height:120%;
+                transform:translate(-50%, -50%);
+                pointer-events:none;
+                z-index:1;
+            ">
+        </lottie-player>
+
+        <!-- LOGO -->
         <img src="/assets/logos/metalic-gc-logo.webp"
-             style="max-width:650px;width:95%;margin:1rem 0;"
-             alt="Gypsy Cartel">
+             alt="Gypsy Cartel"
+             style="
+                position:relative;
+                z-index:2;
+                width:100%;
+                height:auto;
+             ">
     </div>
 
+    <!-- TAGLINE -->
     <h1 style="font-size:1.5rem;color:var(--text-muted);margin-bottom:1.5rem;">
         FUSING HIGH-PERFORMANCE SOFTWARE WITH HYPER-REALISTIC DESIGN.
     </h1>
