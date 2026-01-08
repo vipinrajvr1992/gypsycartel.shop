@@ -517,3 +517,16 @@ footer a[href*="instagram.com"] {
 footer a[href*="instagram.com"]:hover {
     color: var(--primary-orange) !important;
 }
+/* =========================================================
+   DESIGN PAGE — LOGO → TEXT GAP FIX (2rem EXACT)
+========================================================= */
+
+/* Control logo spacing */
+.design-page .mg-logo-wrap {
+    margin-bottom: 2rem;
+}
+
+/* Remove extra top margin from heading */
+.design-page h1 {
+    margin-top: 0;
+}
