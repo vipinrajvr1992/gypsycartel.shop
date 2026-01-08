@@ -1,71 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Gypsy Cartel | Premium Digital Design & Software Studio</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
           content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications, hyper-realistic design, and modern UI/UX solutions.">
 
-    <!-- BRAND ICON / FAVICON (GOOGLE READY) -->
+    <!-- FAVICON -->
     <link rel="icon" href="/assets/logos/gypsy-cartel-icon.png" sizes="32x32">
-    <link rel="icon" href="/assets/logos/gypsy-cartel-icon.png" sizes="192x192">
     <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.png">
-    <link rel="shortcut icon" href="/assets/logos/gypsy-cartel-icon.png">
 
-    <!-- ORGANIZATION LOGO SCHEMA (GOOGLE SEARCH LOGO) -->
+    <!-- SCHEMA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Gypsy Cartel",
       "url": "https://www.gypsycartel.shop",
-      "logo": "https://www.gypsycartel.shop/assets/logos/gypsy-cartel-icon.png",
-      "sameAs": [
-        "https://instagram.com/mallugypsy.creations"
-      ]
+      "logo": "https://www.gypsycartel.shop/assets/logos/gypsy-cartel-icon.png"
     }
     </script>
 
-    <!-- STYLES -->
-    <link rel="stylesheet" href="/style.css">
-
     <!-- LOTTIE PLAYER -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- HERO FIX CSS -->
+    <style>
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-lottie {
+            width: min(900px, 90vw);
+            height: auto;
+            transform: scale(2); /* 🔥 2x SCALE */
+            transform-origin: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-lottie {
+                transform: scale(1.4);
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        .hero-tagline {
+            color: #aaa;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            max-width: 900px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
-<!-- HEADER (PARTIAL LOAD) -->
+<!-- HEADER -->
 <div id="site-header"></div>
 
-<!-- ===============================
-     HERO SECTION (FINAL)
-================================ -->
-<section class="hero hero-center">
+<!-- HERO SECTION -->
+<section class="hero">
 
-    <!-- LOTTIE ANIMATION (INCLUDES METALLIC LOGO INSIDE) -->
-    <div class="hero-lottie-wrap">
-        <lottie-player
-            src="/assets/animations/hero-dots.json"
-            background="transparent"
-            speed="1"
-            loop
-            autoplay>
-        </lottie-player>
-    </div>
+    <!-- ✅ ONLY LOTTIE (NO STATIC LOGO) -->
+    <lottie-player
+        class="hero-lottie"
+        src="/assets/animations/hero-dots.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay>
+    </lottie-player>
 
-    <!-- TAGLINE -->
     <h1 class="hero-tagline">
         FUSING HIGH-PERFORMANCE SOFTWARE WITH HYPER-REALISTIC DESIGN.
     </h1>
 
-    <!-- HERO ACTIONS -->
     <div class="hero-actions">
         <a href="/gallery/" class="btn btn-primary">
             VIEW PORTFOLIO
@@ -78,7 +109,7 @@
 
 </section>
 
-<!-- FOOTER (PARTIAL LOAD) -->
+<!-- FOOTER -->
 <div id="site-footer"></div>
 
 <!-- GLOBAL SCRIPT -->
