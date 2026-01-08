@@ -9,37 +9,23 @@
           content="Gypsy Cartel Fashion is an upcoming fusion of digital aesthetics and modern streetwear.">
 
     <!-- SITE ICON -->
-    <link rel="icon" type="image/webp" href="../assets/logos/gypsy-cartel-icon.webp">
-    <link rel="apple-touch-icon" href="../assets/logos/gypsy-cartel-icon.webp">
+    <link rel="icon" type="image/webp" href="/assets/logos/gypsy-cartel-icon.webp">
+    <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.webp">
 
     <!-- STYLES -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
+<!-- CUSTOM CURSOR -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<header>
-    <a href="/">
-        <img src="../assets/logos/gypsy-cartel-icon.webp"
-             alt="GC Icon"
-             class="logo-icon">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/apps/">Apps</a></li>
-            <li><a href="/design/">Design</a></li>
-            <li><a href="/fashion/" class="active">Fashion</a></li>
-            <li><a href="/gallery/">Gallery</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/contact/">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<!-- HEADER (PARTIAL) -->
+<div id="site-header"></div>
 
+<!-- PAGE CONTENT -->
 <div class="container fashion-page"
      style="text-align:center; min-height:60vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
 
@@ -83,67 +69,13 @@
     </form>
 </div>
 
-<footer>
-    <div class="footer-content">
+<!-- FOOTER (PARTIAL) -->
+<div id="site-footer"></div>
 
-        <div>
-            <img src="../assets/logos/gypsy-cartel-icon.webp"
-                 alt="GC Icon"
-                 style="width:30px; margin-bottom:10px;">
-          <p>
-               Gypsy Cartel delivers software development
-and architectural visualization services.
-We specialize in graphic design
-and digital media solutions
-focused on clarity, performance, and visual quality.
-            </p>
-        </div>
+<!-- GLOBAL SCRIPT -->
+<script src="/script.js"></script>
 
-        <div>
-            <h4>Services</h4>
-            <ul>
-                <li><a href="/gallery/">Gallery</a></li>
-                <li><a href="/apps/">Apps</a></li>
-                <li><a href="/design/">Design Studio</a></li>
-                <li><a href="/fashion/">Fashion Line (Soon)</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li><a href="/about/">Our Vision & History</a></li>
-                <li><a href="/contact/">Contact Support</a></li>
-                <li><a href="/privacy/">Privacy Policy</a></li>
-                <li><a href="/terms/">Terms of Service</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Connect</h4>
-            <p>
-                Support:
-                <a href="mailto:support@gypsycartel.shop">
-                    support@gypsycartel.shop
-                </a>
-            </p>
-            <p>
-                Creator:
-                <a href="https://instagram.com/mallugypsy.creations" target="_blank">
-                    @mallugypsy.creations
-                </a>
-            </p>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        © 2025 Gypsy Cartel. All Rights Reserved.
-    </div>
-</footer>
-
-<script src="../script.js"></script>
-
+<!-- FASHION FORM AJAX (UNCHANGED) -->
 <script>
 const fashionForm = document.getElementById("fashionNotifyForm");
 const fashionSuccess = document.getElementById("fashionSuccess");
