@@ -8,14 +8,14 @@
     <meta name="description"
           content="Gypsy Cartel Design Studio delivers hyper-realistic architectural visualization, 3D graphics, and high-impact digital design solutions.">
 
-    <!-- SITE ICON / FAVICON -->
+    <!-- SITE ICON -->
     <link rel="icon" type="image/webp" href="/assets/logos/gypsy-cartel-icon.webp">
     <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.webp">
 
-    <!-- STYLES -->
+    <!-- MAIN STYLES -->
     <link rel="stylesheet" href="/style.css">
 
-    <!-- Google Analytics (GA4) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92193J0YS6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -26,6 +26,17 @@
 
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    <!-- 🔒 DESIGN PAGE GAP FIX (ISOLATED & SAFE) -->
+    <style>
+        .design-page .mg-logo-wrap {
+            margin-bottom: 2rem; /* ✅ EXACT GAP */
+        }
+
+        .design-page h1 {
+            margin-top: 0;
+        }
+    </style>
 </head>
 
 <body class="design-page">
@@ -34,10 +45,12 @@
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<!-- HEADER (PARTIAL) -->
+<!-- HEADER -->
 <div id="site-header"></div>
 
-<!-- PAGE CONTENT -->
+<!-- ======================
+     PAGE CONTENT
+====================== -->
 <section class="container">
 
     <div class="grid-2">
@@ -46,8 +59,10 @@
         <div>
 
             <div class="mg-logo-wrap">
-                <img src="/assets/logos/mg-creations.webp"
-                     alt="MG Creations Logo">
+                <img
+                    src="/assets/logos/mg-creations.webp"
+                    alt="MG Creations Logo"
+                    style="max-width:260px;width:100%;height:auto;">
             </div>
 
             <h1>
@@ -71,41 +86,32 @@
                 START A PROJECT
             </h3>
 
-            <form id="designForm"
-                  action="https://formspree.io/f/xjgkezzp"
-                  method="POST"
-                  autocomplete="on">
+            <form
+                id="designForm"
+                action="https://formspree.io/f/xjgkezzp"
+                method="POST"
+                autocomplete="on">
 
-                <label for="name" style="display:none;">Name</label>
                 <input
-                    id="name"
                     type="text"
                     name="name"
                     placeholder="Your Name"
                     autocomplete="name"
-                    required
-                >
+                    required>
 
-                <label for="email" style="display:none;">Email</label>
                 <input
-                    id="email"
                     type="email"
                     name="email"
                     placeholder="Email"
                     autocomplete="email"
-                    required
-                >
+                    required>
 
-                <label for="tel" style="display:none;">Phone</label>
                 <input
-                    id="tel"
                     type="tel"
                     name="tel"
                     placeholder="Phone Number"
                     autocomplete="tel"
-                    inputmode="tel"
-                    required
-                >
+                    required>
 
                 <select name="service" required>
                     <option value="">Select Service</option>
@@ -118,24 +124,25 @@
                 <textarea
                     name="message"
                     rows="5"
-                    placeholder="I have a project"
-                    autocomplete="on"></textarea>
+                    placeholder="I have a project"></textarea>
 
-                <!-- Cloudflare Turnstile -->
+                <!-- Turnstile -->
                 <div class="cf-turnstile"
                      data-sitekey="0x4AAAAAACK2g8v3gHryb9Aq"
                      data-theme="dark"
                      style="margin:18px 0;">
                 </div>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        style="width:100%; margin-top:10px;">
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="width:100%; margin-top:10px;">
                     INITIALIZE REQUEST
                 </button>
 
-                <p id="design-success"
-                   style="display:none; margin-top:14px; color:#00ff8f;">
+                <p
+                    id="design-success"
+                    style="display:none; margin-top:14px; color:#00ff8f;">
                     ✓ Message sent successfully. We’ll contact you shortly.
                 </p>
 
@@ -147,7 +154,7 @@
 
 </section>
 
-<!-- FOOTER (PARTIAL) -->
+<!-- FOOTER -->
 <div id="site-footer"></div>
 
 <!-- GLOBAL SCRIPT -->
