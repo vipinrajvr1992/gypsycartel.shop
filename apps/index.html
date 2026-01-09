@@ -15,7 +15,7 @@
     <!-- MAIN STYLES -->
     <link rel="stylesheet" href="/style.css">
 
-    <!-- APPS PAGE ANIMATIONS (SAFE & LOCAL) -->
+    <!-- APPS PAGE ANIMATIONS -->
     <style>
         .apps-page {
             opacity: 0;
@@ -37,10 +37,7 @@
         .apps-reveal.delay-3 { animation-delay: 0.45s; }
 
         @keyframes textReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .apps-image {
@@ -51,10 +48,7 @@
         }
 
         @keyframes imageReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
     </style>
 </head>
@@ -70,6 +64,7 @@
 
 <!-- PAGE CONTENT -->
 <div class="container apps-page">
+
     <div class="grid-2">
 
         <!-- LEFT CONTENT -->
@@ -79,23 +74,21 @@
                 WINDOWS OPTIMIZATION
             </h3>
 
-            <h1 class="apps-reveal delay-2"
-                style="font-size: 2rem; margin-bottom: 25px;">
+            <h1 class="apps-reveal delay-2" style="font-size: 2rem; margin-bottom: 25px;">
                 GYPSY OPTIMIZER: PC BEAST <br>V3.1 PRO+
             </h1>
 
-            <p class="apps-reveal delay-3"
-               style="color: #ccc; margin-bottom: 25px;">
+            <p class="apps-reveal delay-3" style="color: #ccc; margin-bottom: 25px;">
                 GYPSY OPTIMIZER V3.1 PRO+ is a professional Windows optimization and system
                 maintenance tool designed to improve speed, stability, and overall PC
-                performance. Built for Windows 10 &amp; 11 with safe, one-click optimization.
+                performance.
             </p>
 
             <ul class="apps-reveal delay-3"
-                style="margin-left: 20px; margin-bottom: 25px; list-style-type: '⚡ '; ">
+                style="margin-left: 20px; margin-bottom: 25px; list-style-type:'⚡ '; ">
                 <li>One-Click Full System Optimization</li>
-                <li>Junk, Cache &amp; Temporary File Cleanup</li>
-                <li>CPU, RAM &amp; Network Performance Boost</li>
+                <li>Junk, Cache & Temporary File Cleanup</li>
+                <li>CPU, RAM & Network Performance Boost</li>
                 <li>Windows System Repair Tools</li>
             </ul>
 
@@ -106,21 +99,12 @@
                 ✔ Instant download after payment
             </p>
 
-            <div class="apps-reveal delay-3" style="margin-bottom: 18px;">
-                <span style="color:#777; text-decoration:line-through; margin-right:10px;">
-                    ₹999
-                </span>
-                <span style="color:var(--primary-orange); font-size:1.4rem; font-weight:700;">
-                    ₹499
-                </span>
-                <span style="
-                    margin-left:10px;
-                    border:1px solid var(--primary-orange);
-                    padding:4px 12px;
-                    border-radius:20px;
-                    font-size:0.75rem;
-                    color:var(--primary-orange);
-                    background:rgba(255,106,26,0.15);">
+            <div class="apps-reveal delay-3" style="margin-bottom:18px;">
+                <span style="color:#777; text-decoration:line-through; margin-right:10px;">₹999</span>
+                <span style="color:var(--primary-orange); font-size:1.4rem; font-weight:700;">₹499</span>
+                <span style="margin-left:10px; border:1px solid var(--primary-orange);
+                    padding:4px 12px; border-radius:20px; font-size:0.75rem;
+                    color:var(--primary-orange); background:rgba(255,106,26,0.15);">
                     50% OFF
                 </span>
             </div>
@@ -139,30 +123,37 @@
                  class="apps-image"
                  style="width:100%; border-radius:8px;">
         </div>
-
     </div>
 
-    <!-- APP SCREEN GALLERY -->
-    <section class="apps-gallery">
+    <!-- APP GALLERY -->
+    <section class="apps-gallery apps-reveal delay-3">
 
-        <h3 class="apps-gallery-title">
-            APPLICATION PREVIEW
-        </h3>
+        <h3 class="apps-gallery-title">APPLICATION PREVIEW</h3>
 
-        <div class="apps-gallery-track">
-            <img src="/assets/apps/screen-1.webp" class="apps-gallery-img" alt="App Screen 1">
-            <img src="/assets/apps/screen-2.webp" class="apps-gallery-img" alt="App Screen 2">
-            <img src="/assets/apps/screen-3.webp" class="apps-gallery-img" alt="App Screen 3">
-            <img src="/assets/apps/screen-4.webp" class="apps-gallery-img" alt="App Screen 4">
-            <img src="/assets/apps/screen-5.webp" class="apps-gallery-img" alt="App Screen 5">
+        <div class="apps-gallery-wrapper">
+
+            <!-- LEFT ARROW -->
+            <div class="apps-gallery-arrow left" onclick="scrollGallery(-1)">‹</div>
+
+            <!-- TRACK -->
+            <div class="apps-gallery-track" id="appsGallery">
+                <img src="/assets/apps/screen-1.webp" class="apps-gallery-img">
+                <img src="/assets/apps/screen-2.webp" class="apps-gallery-img">
+                <img src="/assets/apps/screen-3.webp" class="apps-gallery-img">
+                <img src="/assets/apps/screen-4.webp" class="apps-gallery-img">
+                <img src="/assets/apps/screen-5.webp" class="apps-gallery-img">
+            </div>
+
+            <!-- RIGHT ARROW -->
+            <div class="apps-gallery-arrow right" onclick="scrollGallery(1)">›</div>
+
         </div>
-
     </section>
 </div>
 
 <!-- IMAGE MODAL -->
 <div class="apps-modal" id="appsModal">
-    <span class="apps-modal-close">&times;</span>
+    <span class="apps-modal-close" onclick="closeModal()">×</span>
     <img class="apps-modal-img" id="appsModalImg">
 </div>
 
@@ -172,12 +163,18 @@
 <!-- GLOBAL SCRIPT -->
 <script src="/script.js"></script>
 
-<!-- GALLERY MODAL SCRIPT -->
+<!-- GALLERY SCRIPT -->
 <script>
+const gallery = document.getElementById("appsGallery");
 const modal = document.getElementById("appsModal");
 const modalImg = document.getElementById("appsModalImg");
-const closeBtn = document.querySelector(".apps-modal-close");
 
+/* Arrow scrolling */
+function scrollGallery(dir) {
+    gallery.scrollBy({ left: dir * 360, behavior: "smooth" });
+}
+
+/* Open modal */
 document.querySelectorAll(".apps-gallery-img").forEach(img => {
     img.addEventListener("click", () => {
         modal.style.display = "flex";
@@ -185,10 +182,14 @@ document.querySelectorAll(".apps-gallery-img").forEach(img => {
     });
 });
 
-closeBtn.onclick = () => modal.style.display = "none";
-modal.onclick = (e) => {
-    if (e.target === modal) modal.style.display = "none";
-};
+/* Close modal */
+function closeModal() {
+    modal.style.display = "none";
+}
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+});
 </script>
 
 </body>
