@@ -745,16 +745,14 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     text-shadow: 0 0 12px rgba(255,106,26,0.35);
 }
 /* =========================================================
-   APPS PAGE — PREMIUM SCREENSHOT GALLERY
-   Horizontal scroll • Hover zoom • Modal popup
+   APPS PAGE — PREMIUM SCREENSHOT GALLERY (FINAL)
+   Horizontal scroll • Hover zoom • Modal navigation
 ========================================================= */
 
-/* Section spacing */
 .apps-gallery {
     margin-top: 80px;
 }
 
-/* Title */
 .apps-gallery-title {
     text-align: center;
     margin-bottom: 24px;
@@ -763,96 +761,11 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     letter-spacing: 2px;
 }
 
-/* Horizontal scroll container */
-.apps-gallery-track {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
-}
-
-/* Hide scrollbar (clean look) */
-.apps-gallery-track::-webkit-scrollbar {
-    height: 6px;
-}
-.apps-gallery-track::-webkit-scrollbar-thumb {
-    background: rgba(255,106,26,0.35);
-    border-radius: 10px;
-}
-
-/* Gallery images */
-.apps-gallery-img {
-    width: 320px;
-    height: auto;
-    border-radius: 12px;
-    cursor: pointer;
-    scroll-snap-align: start;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-}
-
-/* Hover zoom (NO layout shift) */
-.apps-gallery-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 50px rgba(255,106,26,0.25);
-}
-
-/* =========================================================
-   APPS GALLERY — MODAL VIEW
-========================================================= */
-
-.apps-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(6px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.apps-modal-img {
-    max-width: 90%;
-    max-height: 85vh;
-    border-radius: 14px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-    animation: modalZoom 0.35s ease;
-}
-
-@keyframes modalZoom {
-    from { transform: scale(0.95); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-}
-
-/* Close button */
-.apps-modal-close {
-    position: absolute;
-    top: 24px;
-    right: 32px;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.apps-modal-close:hover {
-    color: var(--primary-orange);
-}
-/* =========================================================
-   APPS PAGE — SCREENSHOT GALLERY FINAL SUPPORT
-   Add ONLY (do not replace anything)
-========================================================= */
-
-/* Gallery wrapper for arrows */
+/* ===== Horizontal gallery ===== */
 .apps-gallery-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
-/* Horizontal gallery track */
 .apps-gallery-track {
     display: flex;
     gap: 24px;
@@ -862,7 +775,6 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     padding-bottom: 12px;
 }
 
-/* Hide scrollbar (clean look) */
 .apps-gallery-track::-webkit-scrollbar {
     height: 6px;
 }
@@ -871,23 +783,21 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     border-radius: 10px;
 }
 
-/* Gallery images */
 .apps-gallery-img {
     width: 320px;
     border-radius: 12px;
     cursor: pointer;
     scroll-snap-align: start;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
     box-shadow: 0 10px 30px rgba(0,0,0,0.45);
 }
 
-/* Hover zoom */
 .apps-gallery-img:hover {
     transform: scale(1.05);
     box-shadow: 0 20px 50px rgba(255,106,26,0.25);
 }
 
-/* Scroll arrows */
+/* Gallery arrows */
 .apps-gallery-arrow {
     position: absolute;
     top: 50%;
@@ -903,9 +813,8 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 5;
+    z-index: 4;
     transition: 0.3s ease;
-    user-select: none;
 }
 
 .apps-gallery-arrow:hover {
@@ -913,15 +822,13 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     box-shadow: 0 0 18px rgba(255,106,26,0.35);
 }
 
-.apps-gallery-arrow.left {
-    left: -22px;
-}
+.apps-gallery-arrow.left { left: -22px; }
+.apps-gallery-arrow.right { right: -22px; }
 
-.apps-gallery-arrow.right {
-    right: -22px;
-}
+/* =========================================================
+   MODAL VIEW — WITH NAVIGATION
+========================================================= */
 
-/* Modal */
 .apps-modal {
     position: fixed;
     inset: 0;
@@ -931,12 +838,14 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    cursor: none; /* keep custom cursor */
+
+    /* IMPORTANT: keep your custom cursor */
+    cursor: none;
 }
 
 .apps-modal-img {
-    max-width: 90%;
-    max-height: 85vh;
+    max-width: 88%;
+    max-height: 82vh;
     border-radius: 14px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.7);
     animation: modalZoom 0.35s ease;
@@ -947,6 +856,27 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     to   { transform: scale(1); opacity: 1; }
 }
 
+/* Modal arrows */
+.apps-modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.2rem;
+    color: var(--primary-orange);
+    cursor: pointer;
+    padding: 12px;
+    transition: 0.3s ease;
+    user-select: none;
+}
+
+.apps-modal-arrow:hover {
+    text-shadow: 0 0 18px rgba(255,106,26,0.45);
+}
+
+.apps-modal-arrow.left { left: 40px; }
+.apps-modal-arrow.right { right: 40px; }
+
+/* Close button */
 .apps-modal-close {
     position: absolute;
     top: 24px;
