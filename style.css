@@ -729,37 +729,18 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
         #000;
 }
 /* =========================================
-   CONTACT PAGE — WHATSAPP GLOW (NO ZOOM)
+   CONTACT PAGE — WHATSAPP TEXT EMPHASIS
+   No zoom • No underline • No overlap
 ========================================= */
 
 .contact-page .contact-whatsapp {
-    display: inline-block;
-    position: relative;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    font-weight: 600; /* slightly bold */
+    letter-spacing: 0.3px;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
-/* Subtle premium glow */
+/* Subtle premium highlight on hover */
 .contact-page .contact-whatsapp:hover {
-    color: #25D366; /* WhatsApp green */
-    text-shadow:
-        0 0 6px rgba(37, 211, 102, 0.6),
-        0 0 14px rgba(37, 211, 102, 0.35);
-}
-
-/* Clean underline reveal */
-.contact-page .contact-whatsapp::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 1px;
-    background: #25D366;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s ease;
-}
-
-.contact-page .contact-whatsapp:hover::after {
-    transform: scaleX(1);
+    color: var(--primary-orange);
+    text-shadow: 0 0 10px rgba(255,106,26,0.35);
 }
