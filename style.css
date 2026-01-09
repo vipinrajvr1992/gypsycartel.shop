@@ -840,3 +840,123 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
 .apps-modal-close:hover {
     color: var(--primary-orange);
 }
+/* =========================================================
+   APPS PAGE — SCREENSHOT GALLERY FINAL SUPPORT
+   Add ONLY (do not replace anything)
+========================================================= */
+
+/* Gallery wrapper for arrows */
+.apps-gallery-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Horizontal gallery track */
+.apps-gallery-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+}
+
+/* Hide scrollbar (clean look) */
+.apps-gallery-track::-webkit-scrollbar {
+    height: 6px;
+}
+.apps-gallery-track::-webkit-scrollbar-thumb {
+    background: rgba(255,106,26,0.35);
+    border-radius: 10px;
+}
+
+/* Gallery images */
+.apps-gallery-img {
+    width: 320px;
+    border-radius: 12px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* Hover zoom */
+.apps-gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 50px rgba(255,106,26,0.25);
+}
+
+/* Scroll arrows */
+.apps-gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15,15,15,0.9);
+    border: 1px solid var(--border-soft);
+    color: var(--primary-orange);
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: 0.3s ease;
+    user-select: none;
+}
+
+.apps-gallery-arrow:hover {
+    background: rgba(255,106,26,0.12);
+    box-shadow: 0 0 18px rgba(255,106,26,0.35);
+}
+
+.apps-gallery-arrow.left {
+    left: -22px;
+}
+
+.apps-gallery-arrow.right {
+    right: -22px;
+}
+
+/* Modal */
+.apps-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: none; /* keep custom cursor */
+}
+
+.apps-modal-img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 14px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    animation: modalZoom 0.35s ease;
+}
+
+@keyframes modalZoom {
+    from { transform: scale(0.95); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.apps-modal-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.apps-modal-close:hover {
+    color: var(--primary-orange);
+}
