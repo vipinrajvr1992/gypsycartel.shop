@@ -825,56 +825,43 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
 .apps-gallery-arrow.left { left: -22px; }
 .apps-gallery-arrow.right { right: -22px; }
 
-/* =========================================================
-   MODAL VIEW — WITH NAVIGATION
-========================================================= */
+/* =========================================
+   APPS MODAL — CURSOR SAFE + NAVIGATION
+========================================= */
 
 .apps-modal {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.88);
     backdrop-filter: blur(6px);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 9999;
 
-    /* IMPORTANT: keep your custom cursor */
-    cursor: none;
+    /* IMPORTANT — DO NOT HIDE CURSOR */
+    cursor: default;
 }
 
+/* Keep custom cursor ABOVE modal */
+.cursor-dot,
+.cursor-outline {
+    z-index: 10000;
+}
+
+/* Modal image */
 .apps-modal-img {
-    max-width: 88%;
-    max-height: 82vh;
+    max-width: 90%;
+    max-height: 85vh;
     border-radius: 14px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-    animation: modalZoom 0.35s ease;
+    animation: modalZoom 0.25s ease;
 }
 
 @keyframes modalZoom {
-    from { transform: scale(0.95); opacity: 0; }
+    from { transform: scale(0.96); opacity: 0; }
     to   { transform: scale(1); opacity: 1; }
 }
-
-/* Modal arrows */
-.apps-modal-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.2rem;
-    color: var(--primary-orange);
-    cursor: pointer;
-    padding: 12px;
-    transition: 0.3s ease;
-    user-select: none;
-}
-
-.apps-modal-arrow:hover {
-    text-shadow: 0 0 18px rgba(255,106,26,0.45);
-}
-
-.apps-modal-arrow.left { left: 40px; }
-.apps-modal-arrow.right { right: 40px; }
 
 /* Close button */
 .apps-modal-close {
@@ -884,9 +871,42 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
     font-size: 2rem;
     color: #fff;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.25s ease;
 }
 
 .apps-modal-close:hover {
     color: var(--primary-orange);
+}
+
+/* Modal arrows */
+.apps-modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(15,15,15,0.9);
+    border: 1px solid var(--border-soft);
+    color: var(--primary-orange);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.25s ease;
+}
+
+.apps-modal-arrow:hover {
+    background: rgba(255,106,26,0.15);
+    box-shadow: 0 0 18px rgba(255,106,26,0.35);
+}
+
+.apps-modal-arrow.left {
+    left: 24px;
+}
+
+.apps-modal-arrow.right {
+    right: 24px;
 }
