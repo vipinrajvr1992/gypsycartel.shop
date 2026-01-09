@@ -17,7 +17,6 @@
 
     <!-- APPS PAGE ANIMATIONS (SAFE & LOCAL) -->
     <style>
-        /* Page fade-in */
         .apps-page {
             opacity: 0;
             animation: pageFade 0.8s ease forwards;
@@ -27,7 +26,6 @@
             to { opacity: 1; }
         }
 
-        /* Text reveal */
         .apps-reveal {
             opacity: 0;
             transform: translateY(18px);
@@ -45,7 +43,6 @@
             }
         }
 
-        /* App image premium lift */
         .apps-image {
             opacity: 0;
             transform: translateY(20px) scale(0.97);
@@ -77,7 +74,6 @@
 
         <!-- LEFT CONTENT -->
         <div>
-
             <h3 class="apps-reveal delay-1"
                 style="color: var(--primary-orange); margin-bottom: 10px; font-size: 1rem;">
                 WINDOWS OPTIMIZATION
@@ -110,7 +106,6 @@
                 ✔ Instant download after payment
             </p>
 
-            <!-- PRICE -->
             <div class="apps-reveal delay-3" style="margin-bottom: 18px;">
                 <span style="color:#777; text-decoration:line-through; margin-right:10px;">
                     ₹999
@@ -146,6 +141,29 @@
         </div>
 
     </div>
+
+    <!-- APP SCREEN GALLERY -->
+    <section class="apps-gallery">
+
+        <h3 class="apps-gallery-title">
+            APPLICATION PREVIEW
+        </h3>
+
+        <div class="apps-gallery-track">
+            <img src="/assets/apps/screen-1.webp" class="apps-gallery-img" alt="App Screen 1">
+            <img src="/assets/apps/screen-2.webp" class="apps-gallery-img" alt="App Screen 2">
+            <img src="/assets/apps/screen-3.webp" class="apps-gallery-img" alt="App Screen 3">
+            <img src="/assets/apps/screen-4.webp" class="apps-gallery-img" alt="App Screen 4">
+            <img src="/assets/apps/screen-5.webp" class="apps-gallery-img" alt="App Screen 5">
+        </div>
+
+    </section>
+</div>
+
+<!-- IMAGE MODAL -->
+<div class="apps-modal" id="appsModal">
+    <span class="apps-modal-close">&times;</span>
+    <img class="apps-modal-img" id="appsModalImg">
 </div>
 
 <!-- FOOTER -->
@@ -153,6 +171,25 @@
 
 <!-- GLOBAL SCRIPT -->
 <script src="/script.js"></script>
+
+<!-- GALLERY MODAL SCRIPT -->
+<script>
+const modal = document.getElementById("appsModal");
+const modalImg = document.getElementById("appsModalImg");
+const closeBtn = document.querySelector(".apps-modal-close");
+
+document.querySelectorAll(".apps-gallery-img").forEach(img => {
+    img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+    });
+});
+
+closeBtn.onclick = () => modal.style.display = "none";
+modal.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+};
+</script>
 
 </body>
 </html>
