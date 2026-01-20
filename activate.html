@@ -12,7 +12,6 @@ body {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .container {
     max-width: 480px;
     margin: 80px auto;
@@ -21,63 +20,39 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 40px rgba(255,122,24,0.15);
 }
-
-h1 {
-    text-align: center;
-    color: #ff7a18;
-}
-
-p {
-    text-align: center;
-    color: #ccc;
-    font-size: 14px;
-}
-
+h1 { text-align:center; color:#ff7a18; }
+p { text-align:center; color:#ccc; font-size:14px; }
 input, button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 12px;
-    border-radius: 6px;
-    border: none;
-    font-size: 15px;
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border-radius:6px;
+    border:none;
+    font-size:15px;
 }
-
 input {
-    background: #0b0f14;
-    color: white;
-    border: 1px solid #ff7a1844;
+    background:#0b0f14;
+    color:white;
+    border:1px solid #ff7a1844;
 }
-
 button {
-    background: #ff7a18;
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
+    background:#ff7a18;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
 }
-
-button:hover {
-    background: #e66a10;
-}
-
-.status {
-    margin-top: 15px;
-    text-align: center;
-    min-height: 22px;
-}
-
-.success {
-    color: #00ff9c;
-}
-
-.error {
-    color: #ff4d4d;
-}
-
-.footer {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 12px;
-    color: #888;
+button:hover { background:#e66a10; }
+.status { margin-top:15px; text-align:center; min-height:24px; }
+.success { color:#00ff9c; }
+.error { color:#ff4d4d; }
+.footer { margin-top:25px; text-align:center; font-size:12px; color:#888; }
+.code {
+    background:#0b0f14;
+    border:1px dashed #ff7a18;
+    padding:10px;
+    margin-top:10px;
+    font-weight:bold;
+    color:#00ff9c;
 }
 </style>
 </head>
@@ -86,67 +61,98 @@ button:hover {
 
 <div class="container">
     <h1>Gypsy Cartel</h1>
-    <p>Enter your license key to activate Gypsy Optimizer.</p>
+    <p>Enter your email to generate and activate your license.</p>
 
-    <input id="license" placeholder="Enter License Key">
+    <input id="email" placeholder="Enter Email Address">
+    <input id="license" placeholder="License Key" disabled>
 
+    <button onclick="generate()">Generate License</button>
     <button onclick="activate()">Activate License</button>
 
     <div id="status" class="status"></div>
 
-    <div class="footer">
-        support@gypsycartel.shop
-    </div>
+    <div class="footer">support@gypsycartel.shop</div>
 </div>
 
 <script>
+const API = "https://web-production-eed1e8.up.railway.app";
+
+async function generate() {
+    const email = document.getElementById("email").value.trim();
+    const status = document.getElementById("status");
+
+    if (!email) {
+        status.innerHTML = "<span class='error'>Please enter email.</span>";
+        return;
+    }
+
+    status.innerHTML = "Generating license...";
+
+    try {
+        const res = await fetch(API + "/download", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+
+        if (data.key) {
+            document.getElementById("license").value = data.key;
+            status.innerHTML =
+                "<div class='success'>License generated successfully</div>" +
+                "<div class='code'>" + data.key + "</div>";
+        } else {
+            status.innerHTML = "<span class='error'>Failed to generate license</span>";
+        }
+    } catch {
+        status.innerHTML = "<span class='error'>Server not reachable</span>";
+    }
+}
+
 async function activate() {
     const key = document.getElementById("license").value.trim();
     const status = document.getElementById("status");
 
     if (!key) {
-        status.innerHTML = "<span class='error'>Please enter your license key.</span>";
+        status.innerHTML = "<span class='error'>Generate license first.</span>";
         return;
     }
 
     status.innerHTML = "Activating license...";
 
-    // Temporary browser HWID (launcher will override this)
     const hwid = navigator.userAgent + "-" + screen.width + "x" + screen.height;
 
     try {
-        const res = await fetch(
-            "https://web-production-eed1e8.up.railway.app/start_session",
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ key, hwid })
-            }
-        );
+        const res = await fetch(API + "/start_session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ key, hwid })
+        });
 
         const data = await res.json();
 
         if (data.status === "ok") {
             localStorage.setItem("gypsy_session_token", data.token);
             status.innerHTML =
-                "<span class='success'>License activated successfully. You may now open the app.</span>";
+                "<span class='success'>License activated successfully.</span>";
         }
         else if (data.status === "limit") {
             status.innerHTML =
-                "<span class='error'>Device limit reached for this license.</span>";
+                "<span class='error'>Device limit reached (2 systems only).</span>";
         }
         else if (data.status === "blocked") {
             status.innerHTML =
-                "<span class='error'>This license has been blocked.</span>";
+                "<span class='error'>License is blocked.</span>";
         }
         else {
             status.innerHTML =
-                "<span class='error'>Invalid license key.</span>";
+                "<span class='error'>Invalid license.</span>";
         }
 
-    } catch (err) {
+    } catch {
         status.innerHTML =
-            "<span class='error'>Unable to connect to license server.</span>";
+            "<span class='error'>Unable to connect to server.</span>";
     }
 }
 </script>
