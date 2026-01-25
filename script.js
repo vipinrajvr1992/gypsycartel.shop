@@ -264,36 +264,3 @@ document.querySelectorAll("select").forEach((select) => {
     });
 
 });
-/* =========================================================
-   PREMIUM CUSTOM DROPDOWN — STUDIO FIX
-========================================================= */
-
-document.querySelectorAll(".gc-dropdown").forEach(drop => {
-
-    const selected = drop.querySelector(".gc-dropdown-selected");
-    const list = drop.querySelector(".gc-dropdown-list");
-    const hiddenInput = drop.querySelector("input");
-
-    // Toggle open/close
-    selected.addEventListener("click", () => {
-        list.style.display =
-            list.style.display === "block" ? "none" : "block";
-    });
-
-    // Select item
-    list.querySelectorAll("li").forEach(item => {
-        item.addEventListener("click", () => {
-            selected.textContent = item.textContent;
-            hiddenInput.value = item.dataset.value;
-            list.style.display = "none";
-        });
-    });
-
-    // Close when clicking outside
-    document.addEventListener("click", (e) => {
-        if (!drop.contains(e.target)) {
-            list.style.display = "none";
-        }
-    });
-
-});
