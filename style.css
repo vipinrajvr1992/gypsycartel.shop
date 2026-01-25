@@ -1098,8 +1098,8 @@ body.select-open option {
     cursor: auto !important;
 }
 /* =========================================
-   GYPSY CARTEL — CUSTOM DROPDOWN (STUDIO)
-   Cursor works perfectly inside
+   STUDIO — CUSTOM DROPDOWN (FINAL CLEAN)
+   No repetition • No scroll • Cursor perfect
 ========================================= */
 
 .gc-dropdown {
@@ -1110,62 +1110,6 @@ body.select-open option {
 }
 
 /* Selected Box */
-.gc-dropdown-selected {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-soft);
-    padding: 14px;
-    color: #fff;
-    cursor: none;
-    user-select: none;
-}
-
-/* Dropdown List */
-.gc-dropdown-list {
-    position: absolute;
-    top: 105%;
-    left: 0;
-    width: 100%;
-    background: #111;
-    border: 1px solid var(--border-soft);
-    border-radius: 8px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 220px;
-    overflow-y: auto;
-    display: none;
-    z-index: 9999;
-}
-
-/* Items */
-.gc-dropdown-list li {
-    padding: 14px;
-    color: #fff;
-    cursor: none;
-    transition: 0.2s ease;
-}
-
-/* Hover */
-.gc-dropdown-list li:hover {
-    background: rgba(255,106,26,0.15);
-    color: var(--primary-orange);
-}
-
-/* Active Open */
-.gc-dropdown.open .gc-dropdown-list {
-    display: block;
-}
-/* =========================================
-   STUDIO — PREMIUM CUSTOM DROPDOWN (SAFE)
-   No theme change • Cursor works perfectly
-========================================= */
-
-.gc-dropdown {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
 .gc-dropdown-selected {
     background: var(--bg-elevated);
     border: 1px solid var(--border-soft);
@@ -1182,6 +1126,7 @@ body.select-open option {
     box-shadow: 0 0 0 2px rgba(255,106,26,0.15);
 }
 
+/* Dropdown List */
 .gc-dropdown-list {
     position: absolute;
     top: 110%;
@@ -1194,26 +1139,18 @@ body.select-open option {
     margin: 0;
     list-style: none;
 
-    max-height: 240px;
-    overflow-y: auto;
+    /* ✅ FIX: No unnecessary scrollbar */
+    max-height: none;
+    overflow: hidden;
 
     display: none;
     z-index: 9999;
-
-    overscroll-behavior: contain;
 }
 
-.gc-dropdown-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.gc-dropdown-list::-webkit-scrollbar-thumb {
-    background: rgba(255,106,26,0.35);
-    border-radius: 10px;
-}
-
+/* Items (Reduced height = no scroll needed) */
 .gc-dropdown-list li {
-    padding: 14px 16px;
+    padding: 10px 16px; /* ✅ smaller gap */
+    font-size: 0.95rem;
     color: #fff;
     cursor: none;
     transition: 0.2s ease;
@@ -1224,6 +1161,7 @@ body.select-open option {
     color: var(--primary-orange);
 }
 
+/* Open */
 .gc-dropdown.open .gc-dropdown-list {
     display: block;
 }
