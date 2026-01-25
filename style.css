@@ -1082,3 +1082,18 @@ select {
 select option {
     cursor: none !important;
 }
+/* =========================================
+   CURSOR FIX — DISABLE CUSTOM CURSOR INSIDE SELECT OPEN
+========================================= */
+
+/* When dropdown is active, hide custom cursor */
+body.select-open .cursor-dot,
+body.select-open .cursor-outline {
+    opacity: 0 !important;
+}
+
+/* Restore normal cursor ONLY inside select dropdown */
+body.select-open select,
+body.select-open option {
+    cursor: auto !important;
+}
