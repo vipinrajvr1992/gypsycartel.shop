@@ -1070,3 +1070,15 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
 .cursor-fix {
     cursor: none !important;
 }
+/* =========================================
+   CURSOR FIX — SELECT DROPDOWN (FINAL)
+   Keeps cursor hidden on select box only
+========================================= */
+
+select {
+    cursor: none !important;
+}
+
+select option {
+    cursor: none !important;
+}
