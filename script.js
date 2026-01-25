@@ -264,3 +264,33 @@ document.querySelectorAll("select").forEach((select) => {
     });
 
 });
+/* =========================================
+   GC CUSTOM DROPDOWN — PREMIUM FINAL
+   Cursor works inside dropdown perfectly
+========================================= */
+
+document.querySelectorAll(".gc-dropdown").forEach(drop => {
+
+    const selected = drop.querySelector(".gc-dropdown-selected");
+    const list = drop.querySelector(".gc-dropdown-list");
+    const hiddenInput = drop.querySelector("input[type='hidden']");
+
+    selected.addEventListener("click", () => {
+        drop.classList.toggle("open");
+    });
+
+    list.querySelectorAll("li").forEach(item => {
+        item.addEventListener("click", () => {
+            selected.textContent = item.textContent;
+            hiddenInput.value = item.dataset.value;
+            drop.classList.remove("open");
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!drop.contains(e.target)) {
+            drop.classList.remove("open");
+        }
+    });
+
+});
