@@ -262,6 +262,14 @@ select:focus {
     align-items: center;
 }
 
+.design-page .grid-2 > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem; /* ✅ EXACT GAP CONTROL */
+}
+
 .design-page .grid-2 > div:first-child img {
     max-width: 260px;
     width: 100%;
@@ -1090,8 +1098,8 @@ body.select-open option {
     cursor: auto !important;
 }
 /* =========================================
-   STUDIO — CUSTOM DROPDOWN (FINAL CLEAN)
-   No repetition • No scroll • Cursor perfect
+   GYPSY CARTEL — CUSTOM DROPDOWN (STUDIO)
+   Cursor works perfectly inside
 ========================================= */
 
 .gc-dropdown {
@@ -1102,6 +1110,62 @@ body.select-open option {
 }
 
 /* Selected Box */
+.gc-dropdown-selected {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-soft);
+    padding: 14px;
+    color: #fff;
+    cursor: none;
+    user-select: none;
+}
+
+/* Dropdown List */
+.gc-dropdown-list {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    background: #111;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    display: none;
+    z-index: 9999;
+}
+
+/* Items */
+.gc-dropdown-list li {
+    padding: 14px;
+    color: #fff;
+    cursor: none;
+    transition: 0.2s ease;
+}
+
+/* Hover */
+.gc-dropdown-list li:hover {
+    background: rgba(255,106,26,0.15);
+    color: var(--primary-orange);
+}
+
+/* Active Open */
+.gc-dropdown.open .gc-dropdown-list {
+    display: block;
+}
+/* =========================================
+   STUDIO — PREMIUM CUSTOM DROPDOWN (SAFE)
+   No theme change • Cursor works perfectly
+========================================= */
+
+.gc-dropdown {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .gc-dropdown-selected {
     background: var(--bg-elevated);
     border: 1px solid var(--border-soft);
@@ -1118,7 +1182,6 @@ body.select-open option {
     box-shadow: 0 0 0 2px rgba(255,106,26,0.15);
 }
 
-/* Dropdown List */
 .gc-dropdown-list {
     position: absolute;
     top: 110%;
@@ -1131,18 +1194,26 @@ body.select-open option {
     margin: 0;
     list-style: none;
 
-    /* ✅ FIX: No unnecessary scrollbar */
-    max-height: none;
-    overflow: hidden;
+    max-height: 240px;
+    overflow-y: auto;
 
     display: none;
     z-index: 9999;
+
+    overscroll-behavior: contain;
 }
 
-/* Items (Reduced height = no scroll needed) */
+.gc-dropdown-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gc-dropdown-list::-webkit-scrollbar-thumb {
+    background: rgba(255,106,26,0.35);
+    border-radius: 10px;
+}
+
 .gc-dropdown-list li {
-    padding: 10px 16px; /* ✅ smaller gap */
-    font-size: 0.95rem;
+    padding: 14px 16px;
     color: #fff;
     cursor: none;
     transition: 0.2s ease;
@@ -1153,158 +1224,6 @@ body.select-open option {
     color: var(--primary-orange);
 }
 
-/* Open */
 .gc-dropdown.open .gc-dropdown-list {
     display: block;
 }
-/* =========================================================
-   CAREERS PAGE — PREMIUM LOAD ANIMATION (MATCHING THEME)
-   Safe fade + reveal • No layout change • No conflicts
-========================================================= */
-
-.careers-page {
-    animation: pageFade 0.6s ease forwards;
-}
-
-/* Headings reveal */
-.careers-page h1,
-.careers-page h2,
-.careers-page h3,
-.careers-page h4 {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: textReveal 0.75s ease forwards;
-}
-
-/* Paragraph reveal */
-.careers-page p,
-.careers-page li {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: textReveal 0.75s ease forwards;
-    animation-delay: 0.2s;
-}
-
-/* Stagger effect for role list */
-.careers-page li:nth-child(1) { animation-delay: 0.25s; }
-.careers-page li:nth-child(2) { animation-delay: 0.35s; }
-.careers-page li:nth-child(3) { animation-delay: 0.45s; }
-.careers-page li:nth-child(4) { animation-delay: 0.55s; }
-.careers-page li:nth-child(5) { animation-delay: 0.65s; }
-.careers-page li:nth-child(6) { animation-delay: 0.75s; }
-
-/* =========================================================
-   CAREERS PAGE — SOFT SECTION ELEVATION (PREMIUM)
-========================================================= */
-
-.careers-page .container > div {
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.careers-page .container > div:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-}
-/* =========================================================
-   CAREERS PAGE — PREMIUM LOAD ANIMATION (SAFE)
-   Only content animates • Header/Footer untouched
-========================================================= */
-
-/* Fade-in ONLY main careers content */
-.legal-page {
-    opacity: 0;
-    transform: translateY(18px);
-    animation: careersFade 0.7s ease forwards;
-}
-
-/* Keyframe */
-@keyframes careersFade {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Text reveal stagger (premium feel) */
-.legal-page h1,
-.legal-page h3,
-.legal-page p,
-.legal-page ul {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: careersText 0.8s ease forwards;
-}
-
-/* Stagger timing */
-.legal-page h1 { animation-delay: 0.10s; }
-.legal-page p  { animation-delay: 0.20s; }
-.legal-page h3 { animation-delay: 0.30s; }
-.legal-page ul { animation-delay: 0.40s; }
-
-/* Keyframe */
-@keyframes careersText {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* =========================================
-   STUDIO PAGE — HEADING ALIGN FIX (FINAL)
-   ARCHITECTURE & GRAPHICS ONE LINE
-========================================= */
-
-.studio-page h1,
-.studio-page h2 {
-    text-align: center !important;
-    width: 100%;
-}
-
-/* Force ARCHITECTURE & GRAPHICS stay in one line */
-.studio-page h1 span,
-.studio-page h2 span {
-    white-space: nowrap !important;
-    display: inline-block;
-}
-
-/* If your heading is exactly this class */
-.studio-page .hero-title {
-    text-align: center !important;
-    line-height: 1.15;
-}
-
-/* Prevent ugly breaking */
-.studio-page .hero-title br {
-    display: none !important;
-}
-
-/* Responsive scaling so it fits mobile also */
-@media (max-width: 900px) {
-    .studio-page .hero-title {
-        font-size: 2.2rem !important;
-    }
-}
-
-@media (max-width: 500px) {
-    .studio-page .hero-title {
-        font-size: 1.8rem !important;
-    }
-}
-/style.css
-/* =========================================================
-   FINAL LOCKED FIX — STUDIO + CAREERS (NO CONFLICT)
-   Paste at END of style.css
-========================================================= */
-
-/* =========================================
-   STUDIO PAGE — HEADER → LOGO GAP = 3rem
-========================================= */
-
-.design-page .container {
-    padding-top: calc(80px + 3rem) !important;
-}
-
-/* Logo gap exactly */
-.design-page .mg-logo-wrap {
-    margin-bottom: 3rem !important;
-}
-
