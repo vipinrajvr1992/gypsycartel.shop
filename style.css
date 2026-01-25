@@ -1248,3 +1248,44 @@ body.select-open option {
         transform: translateY(0);
     }
 }
+/* =========================================
+   STUDIO PAGE — HEADING ALIGN FIX (FINAL)
+   ARCHITECTURE & GRAPHICS ONE LINE
+========================================= */
+
+.studio-page h1,
+.studio-page h2 {
+    text-align: center !important;
+    width: 100%;
+}
+
+/* Force ARCHITECTURE & GRAPHICS stay in one line */
+.studio-page h1 span,
+.studio-page h2 span {
+    white-space: nowrap !important;
+    display: inline-block;
+}
+
+/* If your heading is exactly this class */
+.studio-page .hero-title {
+    text-align: center !important;
+    line-height: 1.15;
+}
+
+/* Prevent ugly breaking */
+.studio-page .hero-title br {
+    display: none !important;
+}
+
+/* Responsive scaling so it fits mobile also */
+@media (max-width: 900px) {
+    .studio-page .hero-title {
+        font-size: 2.2rem !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .studio-page .hero-title {
+        font-size: 1.8rem !important;
+    }
+}
