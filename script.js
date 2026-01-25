@@ -245,3 +245,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (y) y.textContent = new Date().getFullYear();
         });
 });
+/* =========================================
+   CURSOR FIX — SELECT DROPDOWN SAFE PATCH
+========================================= */
+
+document.querySelectorAll("select").forEach((select) => {
+
+    select.addEventListener("mousedown", () => {
+        document.body.classList.add("select-open");
+    });
+
+    select.addEventListener("blur", () => {
+        document.body.classList.remove("select-open");
+    });
+
+    select.addEventListener("change", () => {
+        document.body.classList.remove("select-open");
+    });
+
+});
