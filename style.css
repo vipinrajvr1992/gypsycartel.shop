@@ -1,7 +1,6 @@
 /* =========================================================
    GYPSY CARTEL — FUTURISTIC MINIMAL THEME
-   FINAL • STABLE • CLEAN • NO CONFLICTS
-   Updated: Studio Alignment Fixed
+   FINAL • STABLE • CLEAN • INCLUDES CAREER FIX
 ========================================================= */
 
 /* =========================================================
@@ -10,19 +9,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap');
 
 /* =========================================================
-   ROOT VARIABLES — BRAND CONTROL
+   ROOT VARIABLES
 ========================================================= */
 :root {
     --bg-deep: #050505;
     --bg-surface: #0f0f0f;
     --bg-elevated: #161616;
-
     --primary-orange: #ff6a1a;
     --orange-glow: rgba(255,106,26,0.18);
-
     --text-main: #ffffff;
     --text-muted: #8c8c8c;
-
     --border-soft: rgba(255,255,255,0.08);
 }
 
@@ -54,7 +50,7 @@ body {
 }
 
 /* Page fade in animation (Safe for all pages) */
-body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):not(.legal-page) {
+body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):not(.legal-page):not(.career-page) {
     animation: pageFade 0.6s ease forwards;
 }
 
@@ -203,19 +199,12 @@ header nav a.active::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.25),
-        transparent
-    );
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
     transform: translateX(-100%);
     transition: transform 0.6s ease;
 }
 
-.btn:hover::after {
-    transform: translateX(100%);
-}
+.btn:hover::after { transform: translateX(100%); }
 
 .btn-primary {
     background: linear-gradient(135deg, #ff6a1a, #ff3c00);
@@ -266,7 +255,7 @@ header nav a.active::after {
 }
 
 /* =========================================================
-   HERO SECTION
+   HERO
 ========================================================= */
 .hero {
     min-height: 100vh;
@@ -301,10 +290,7 @@ header nav a.active::after {
     margin-bottom: 1.6rem;
 }
 
-.hero-lottie-wrap lottie-player {
-    width: 100%;
-    height: 100%;
-}
+.hero-lottie-wrap lottie-player { width: 100%; height: 100%; }
 
 .hero-tagline {
     font-size: 1.25rem;
@@ -317,16 +303,9 @@ header nav a.active::after {
     animation-delay: 0.15s;
 }
 
-@keyframes heroTextReveal {
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes heroTextReveal { to { opacity: 1; transform: translateY(0); } }
 
-.hero-actions {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
 /* =========================================================
    HOME CONTENT SECTIONS
@@ -350,7 +329,6 @@ header nav a.active::after {
 
 @keyframes homeReveal { to { opacity: 1; transform: translateY(0); } }
 
-/* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -393,7 +371,6 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 0 0 0 2px var(--orange-glow);
 }
 
-/* Custom Dropdown (Premium Safe Version) */
 .gc-dropdown {
     position: relative;
     width: 100%;
@@ -448,25 +425,24 @@ input:focus, textarea:focus, select:focus {
 .gc-dropdown.open .gc-dropdown-list { display: block; }
 
 /* =========================================================
-   ✅ STUDIO TAB ALIGNMENT (DESIGN PAGE)
-   Consolidated & Fixed according to your list
+   ✅ STUDIO TAB ALIGNMENT (DESIGN PAGE FIX)
+   Preserved from recent update
 ========================================================= */
 .design-page { animation: pageFade 0.6s ease forwards; }
-
 .design-page .grid-2 { align-items: center; }
 
-/* 1 & 2 & 5: Center Content, Tight Gap, Balanced Spacing */
+/* Center Content & Tight Gap */
 .design-page .grid-2 > div:first-child {
     display: flex;
     flex-direction: column;
-    align-items: center;      /* Horizontal Center */
-    justify-content: center;  /* Vertical Center */
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    gap: 1.5rem;              /* TIGHT GAP (Requested) */
-    padding-top: 0;           /* Fixes "floating too high" */
+    gap: 1.5rem;
+    padding-top: 0;
 }
 
-/* 2: Logo Alignment (No extra margins) */
+/* Logo Fix */
 .design-page .mg-logo-wrap {
     margin: 0 !important;
     display: flex;
@@ -485,9 +461,9 @@ input:focus, textarea:focus, select:focus {
     50% { transform: translateY(-6px); }
 }
 
-/* 3: Heading - Single Line "ARCHITECTURE & GRAPHICS" */
+/* Heading Fix - Single Line */
 .design-page h1 {
-    white-space: nowrap;      /* FORCES ONE LINE */
+    white-space: nowrap;
     margin: 0 !important;
     width: auto;
     line-height: 1.2;
@@ -497,9 +473,9 @@ input:focus, textarea:focus, select:focus {
     animation-delay: 0.15s;
 }
 
-/* 4: Paragraph - Max Width & Centered */
+/* Paragraph Fix */
 .design-page p {
-    max-width: 580px;         /* CONTROLS WIDTH */
+    max-width: 580px;
     margin: 0 auto !important;
     width: 100%;
     display: block;
@@ -509,25 +485,73 @@ input:focus, textarea:focus, select:focus {
     animation-delay: 0.3s;
 }
 
-/* Mobile Safety for Studio Page */
+/* Mobile Safety */
 @media (max-width: 768px) {
-    .design-page h1 {
-        white-space: normal; /* Allow wrap on mobile */
-    }
+    .design-page h1 { white-space: normal; }
 }
 
-/* Form Card Hover */
 .design-page .grid-2 > div:last-child {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
-
 .design-page .grid-2 > div:last-child:hover {
     transform: translateY(-6px);
     box-shadow: 0 25px 60px rgba(0,0,0,0.45);
 }
 
 /* =========================================================
-   CONTACT, ABOUT & FASHION PAGES
+   ✅ CAREER PAGE FIX (NEW)
+   Solves the header overlap and spacing issue
+========================================================= */
+.career-page {
+    animation: pageFade 0.6s ease forwards;
+}
+
+/* Creates space below header and centers content */
+.career-page .container {
+    padding-top: 180px; 
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.career-page h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: var(--text-main);
+}
+
+.career-page h4 {
+    color: var(--primary-orange);
+    margin-top: 40px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.career-page p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    max-width: 100%;
+    color: var(--text-muted);
+}
+
+/* Fixes the list format and spacing */
+.career-page ul {
+    margin-bottom: 20px;
+}
+
+.career-page ul li {
+    margin-bottom: 10px;
+    color: var(--text-muted);
+    padding-left: 0;
+}
+
+.career-page strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* =========================================================
+   OTHER PAGES (CONTACT, ABOUT, ETC)
 ========================================================= */
 .about-page, .fashion-page, .contact-page, .legal-page {
     animation: pageFade 0.6s ease forwards;
@@ -545,12 +569,10 @@ input:focus, textarea:focus, select:focus {
 @keyframes textReveal { to { opacity: 1; transform: translateY(0); } }
 @keyframes pageFade { from { opacity: 0; } to { opacity: 1; } }
 
-/* Contact Specifics */
 .contact-page .container { padding-top: calc(80px + 2rem); }
 .contact-page h4 { color: var(--primary-orange); }
 .contact-page .grid-3 p, .contact-page .grid-3 a { color: #ffffff !important; }
 
-/* WhatsApp Hover Effect */
 .contact-page a[href*="wa.me"] {
     font-weight: 500;
     color: var(--primary-orange);
@@ -561,19 +583,23 @@ input:focus, textarea:focus, select:focus {
     text-shadow: 0 0 12px rgba(255,106,26,0.35);
 }
 
+.legal-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 160px 20px 80px;
+}
+.legal-page h1 span { color: var(--primary-orange); }
+.legal-page p { margin-bottom: 1.2rem; }
+
 /* =========================================================
-   APPS PAGE
+   APPS PAGE & GALLERY
 ========================================================= */
-/* Image Hover Zoom */
 .apps-page .apps-image {
     transition: transform 0.8s cubic-bezier(.22,.61,.36,1);
     will-change: transform;
 }
-.apps-page .apps-image:hover {
-    transform: translateY(0) scale(1.06);
-}
+.apps-page .apps-image:hover { transform: translateY(0) scale(1.06); }
 
-/* Gallery */
 .apps-gallery { margin-top: 80px; }
 .apps-gallery-title {
     text-align: center;
@@ -602,7 +628,6 @@ input:focus, textarea:focus, select:focus {
 }
 .apps-gallery-img:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(255,106,26,0.25); }
 
-/* Gallery Arrows */
 .apps-gallery-arrow {
     position: absolute;
     top: 50%;
@@ -624,61 +649,6 @@ input:focus, textarea:focus, select:focus {
 .apps-gallery-arrow:hover { background: rgba(255,106,26,0.12); box-shadow: 0 0 18px rgba(255,106,26,0.35); }
 .apps-gallery-arrow.left { left: -22px; }
 .apps-gallery-arrow.right { right: -22px; }
-
-/* Modal */
-.apps-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.88);
-    backdrop-filter: blur(6px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: default;
-}
-
-.apps-modal-img {
-    max-width: 90%;
-    max-height: 85vh;
-    border-radius: 14px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-    animation: modalZoom 0.25s ease;
-}
-@keyframes modalZoom { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-.apps-modal-close {
-    position: absolute;
-    top: 24px;
-    right: 32px;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-.apps-modal-close:hover { color: var(--primary-orange); }
-
-.apps-modal-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(15,15,15,0.9);
-    border: 1px solid var(--border-soft);
-    color: var(--primary-orange);
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.25s ease;
-}
-.apps-modal-arrow:hover { background: rgba(255,106,26,0.15); box-shadow: 0 0 18px rgba(255,106,26,0.35); }
-.apps-modal-arrow.left { left: 24px; }
-.apps-modal-arrow.right { right: 24px; }
 
 /* =========================================================
    FOOTER
@@ -708,7 +678,6 @@ footer {
 footer a { color: #ffffff; }
 footer a:hover { color: var(--primary-orange); }
 
-/* Career Link Animation */
 .career-open-link {
     display: inline-block;
     color: var(--primary-orange);
@@ -717,7 +686,6 @@ footer a:hover { color: var(--primary-orange); }
     position: relative;
     transition: 0.3s ease;
 }
-
 .career-open-link::after {
     content: "";
     position: absolute;
@@ -728,7 +696,6 @@ footer a:hover { color: var(--primary-orange); }
     background: var(--primary-orange);
     transition: 0.35s ease;
 }
-
 .career-open-link:hover { color: #fff; transform: translateX(4px); }
 .career-open-link:hover::after { width: 100%; }
 
