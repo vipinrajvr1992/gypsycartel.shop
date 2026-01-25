@@ -12,7 +12,7 @@
     <link rel="icon" type="image/webp" href="/assets/logos/gypsy-cartel-icon.webp">
     <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.webp">
 
-    <!-- MAIN STYLES -->
+    <!-- MAIN CSS -->
     <link rel="stylesheet" href="/style.css">
 
     <!-- Google Analytics -->
@@ -27,13 +27,29 @@
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
-    <!-- STUDIO PAGE GAP FIX -->
+    <!-- ✅ STUDIO FIX (ONLY ALIGNMENT + HEADING) -->
     <style>
+        /* Center left content properly */
+        .design-page .grid-2 > div:first-child {
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Logo spacing */
         .design-page .mg-logo-wrap {
             margin-bottom: 2rem;
         }
+
+        /* Heading fix */
         .design-page h1 {
             margin-top: 0;
+            line-height: 1.2;
+        }
+
+        /* Keep ARCHITECTURE & GRAPHICS in one line */
+        .design-page h1 span {
+            white-space: nowrap;
+            display: inline-block;
         }
     </style>
 </head>
@@ -44,11 +60,11 @@
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<!-- HEADER -->
+<!-- HEADER (DO NOT TOUCH) -->
 <div id="site-header"></div>
 
 <!-- ======================
-     PAGE CONTENT
+     STUDIO PAGE CONTENT
 ====================== -->
 <section class="container">
 
@@ -57,6 +73,7 @@
         <!-- LEFT CONTENT -->
         <div>
 
+            <!-- Logo -->
             <div class="mg-logo-wrap">
                 <img
                     src="/assets/logos/mg-creations.webp"
@@ -64,12 +81,15 @@
                     style="max-width:260px;width:100%;height:auto;">
             </div>
 
+            <!-- ✅ FIXED HEADING -->
             <h1>
                 HYPER-REALISTIC<br>
-                <span style="color:var(--primary-orange)">ARCHITECTURE &</span><br>
-                <span style="color:var(--primary-orange)">GRAPHICS</span>
+                <span style="color:var(--primary-orange)">
+                    ARCHITECTURE & GRAPHICS
+                </span>
             </h1>
 
+            <!-- Description -->
             <p>
                 Our studio blends technical precision with artistic execution,
                 delivering architectural visualization, interiors, exteriors,
@@ -134,7 +154,7 @@
                         <li data-value="other">Other / Custom Project</li>
                     </ul>
 
-                    <!-- Hidden Input (Formspree Works Perfect) -->
+                    <!-- Hidden Input -->
                     <input type="hidden" name="service" required>
                 </div>
 
@@ -161,7 +181,7 @@
                     INITIALIZE REQUEST
                 </button>
 
-                <!-- Success -->
+                <!-- Success Message -->
                 <p
                     id="design-success"
                     style="display:none; margin-top:14px; color:#00ff8f;">
@@ -176,7 +196,7 @@
 
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER (DO NOT TOUCH) -->
 <div id="site-footer"></div>
 
 <!-- GLOBAL SCRIPT -->
