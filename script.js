@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .apps-gallery-img,
             .apps-gallery-arrow,
             .apps-modal-close,
-            .apps-modal-arrow
+            .apps-modal-arrow,
+            .gc-dropdown-selected,
+            .gc-dropdown-list li
         `;
 
         document.addEventListener('mouseover', (e) => {
@@ -147,6 +149,45 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImg.src = galleryImages[currentIndex].src;
         }
     }
+
+    /* =========================================
+       GC CUSTOM DROPDOWN — FINAL STABLE VERSION
+       Cursor works inside dropdown perfectly
+    ========================================= */
+
+    document.querySelectorAll(".gc-dropdown").forEach(drop => {
+
+        const selected = drop.querySelector(".gc-dropdown-selected");
+        const list = drop.querySelector(".gc-dropdown-list");
+        const hiddenInput = drop.querySelector("input[type='hidden']");
+
+        if (!selected || !list || !hiddenInput) return;
+
+        // Open / Close dropdown
+        selected.addEventListener("click", () => {
+            drop.classList.toggle("open");
+        });
+
+        // Select option
+        list.querySelectorAll("li").forEach(item => {
+            item.addEventListener("click", () => {
+
+                selected.textContent = item.textContent;
+                hiddenInput.value = item.dataset.value;
+
+                drop.classList.remove("open");
+            });
+        });
+
+        // Click outside closes dropdown
+        document.addEventListener("click", (e) => {
+            if (!drop.contains(e.target)) {
+                drop.classList.remove("open");
+            }
+        });
+
+    });
+
 });
 
 
@@ -244,53 +285,5 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = document.getElementById('year');
             if (y) y.textContent = new Date().getFullYear();
         });
-});
-/* =========================================
-   CURSOR FIX — SELECT DROPDOWN SAFE PATCH
-========================================= */
-
-document.querySelectorAll("select").forEach((select) => {
-
-    select.addEventListener("mousedown", () => {
-        document.body.classList.add("select-open");
-    });
-
-    select.addEventListener("blur", () => {
-        document.body.classList.remove("select-open");
-    });
-
-    select.addEventListener("change", () => {
-        document.body.classList.remove("select-open");
-    });
-
-});
-/* =========================================
-   GC CUSTOM DROPDOWN — PREMIUM FINAL
-   Cursor works inside dropdown perfectly
-========================================= */
-
-document.querySelectorAll(".gc-dropdown").forEach(drop => {
-
-    const selected = drop.querySelector(".gc-dropdown-selected");
-    const list = drop.querySelector(".gc-dropdown-list");
-    const hiddenInput = drop.querySelector("input[type='hidden']");
-
-    selected.addEventListener("click", () => {
-        drop.classList.toggle("open");
-    });
-
-    list.querySelectorAll("li").forEach(item => {
-        item.addEventListener("click", () => {
-            selected.textContent = item.textContent;
-            hiddenInput.value = item.dataset.value;
-            drop.classList.remove("open");
-        });
-    });
-
-    document.addEventListener("click", (e) => {
-        if (!drop.contains(e.target)) {
-            drop.classList.remove("open");
-        }
-    });
 
 });
