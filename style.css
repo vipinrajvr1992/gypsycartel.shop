@@ -1097,3 +1097,61 @@ body.select-open select,
 body.select-open option {
     cursor: auto !important;
 }
+/* =========================================
+   GYPSY CARTEL — CUSTOM DROPDOWN (STUDIO)
+   Cursor works perfectly inside
+========================================= */
+
+.gc-dropdown {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: inherit;
+}
+
+/* Selected Box */
+.gc-dropdown-selected {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-soft);
+    padding: 14px;
+    color: #fff;
+    cursor: none;
+    user-select: none;
+}
+
+/* Dropdown List */
+.gc-dropdown-list {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    background: #111;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    display: none;
+    z-index: 9999;
+}
+
+/* Items */
+.gc-dropdown-list li {
+    padding: 14px;
+    color: #fff;
+    cursor: none;
+    transition: 0.2s ease;
+}
+
+/* Hover */
+.gc-dropdown-list li:hover {
+    background: rgba(255,106,26,0.15);
+    color: var(--primary-orange);
+}
+
+/* Active Open */
+.gc-dropdown.open .gc-dropdown-list {
+    display: block;
+}
