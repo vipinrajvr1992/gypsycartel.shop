@@ -1,98 +1,79 @@
 /* =========================================================
    GYPSY CARTEL — GLOBAL SCRIPT (FINAL MASTER)
-   ✅ Cinematic Page Load Trigger
-   ✅ Cursor Engine (Physics + CSS Class Zoom)
-   ✅ Apps Modal + Scroll Lock
-   ✅ Studio Dropdown (Active Grey)
-   ✅ Header/Footer Loader (Absolute Path Fix)
-   ✅ Auto Nav Highlight (Folder Safe)
-   ✅ Design Form AJAX Submit
+   ✅ Zero-Lag Cursor Physics (Old Style)
+   ✅ No Input Flickering
+   ✅ No Modal Issues
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================================
-       1. PREMIUM PAGE LOAD TRIGGER
+       1. PAGE LOAD TRIGGER
     ========================================================= */
-    // Add class after short delay to trigger CSS fade-in
     setTimeout(() => {
         document.body.classList.add("page-loaded");
     }, 50);
 
-
     /* =========================================================
-       2. DEVICE DETECTION (Cursor Safe)
+       2. DEVICE DETECTION
     ========================================================= */
     const isTouchDevice =
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
         window.matchMedia("(hover: none)").matches;
 
-
     /* =========================================================
-       3. CUSTOM CURSOR ENGINE (Desktop Only)
+       3. PREMIUM CURSOR ENGINE (CLEAN PHYSICS)
     ========================================================= */
-    const cursorDot = document.querySelector(".cursor-dot");
-    const cursorOutline = document.querySelector(".cursor-outline");
+    const dot = document.querySelector(".cursor-dot");
+    const outline = document.querySelector(".cursor-outline");
 
-    if (!isTouchDevice && cursorDot && cursorOutline) {
-
+    if (!isTouchDevice && dot && outline) {
+        
+        // Variables for position
         let mouseX = 0, mouseY = 0;
         let outlineX = 0, outlineY = 0;
 
-        // Instant Dot Movement
+        // 1. Instant Dot Movement (No lag)
         window.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
-
-            cursorDot.style.opacity = "1";
-            cursorOutline.style.opacity = "1";
+            
+            // Dot follows instantly
+            dot.style.left = mouseX + "px";
+            dot.style.top = mouseY + "px";
         });
 
-        // Smooth Physics Loop
+        // 2. Smooth Outline Physics Loop
         function animateCursor() {
+            // Standard smooth lerp physics (0.15 = premium weight)
             outlineX += (mouseX - outlineX) * 0.15;
             outlineY += (mouseY - outlineY) * 0.15;
 
-            cursorOutline.style.left = `${outlineX}px`;
-            cursorOutline.style.top = `${outlineY}px`;
+            outline.style.left = outlineX + "px";
+            outline.style.top = outlineY + "px";
 
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
 
-        /* ✅ FIX 1: Hide cursor ONLY for typing (Inputs) — NOT Buttons */
-        document.querySelectorAll("input, textarea, select").forEach(el => {
+        // 3. Hover Zoom Logic (ADD CLASS ONLY - NO INLINE STYLES)
+        // This makes the ring bigger on buttons, links, etc.
+        const interactives = document.querySelectorAll('a, button, .btn, .apps-gallery-img, .gc-dropdown-selected, .gc-dropdown-list li, .apps-gallery-arrow, .apps-modal-arrow, .apps-modal-close');
+
+        interactives.forEach(el => {
             el.addEventListener("mouseenter", () => {
-                cursorDot.style.opacity = "0";
-                cursorOutline.style.opacity = "0";
+                outline.classList.add("active");
             });
             el.addEventListener("mouseleave", () => {
-                cursorDot.style.opacity = "1";
-                cursorOutline.style.opacity = "1";
+                outline.classList.remove("active");
             });
         });
-
-        /* ✅ FIX 2: Premium CSS Class Zoom (Links, Buttons, Images) */
-        document.querySelectorAll("a, button, .btn, .apps-gallery-img").forEach(el => {
-            el.addEventListener("mouseenter", () => {
-                cursorOutline.classList.add("active"); // Triggers CSS transition
-            });
-            el.addEventListener("mouseleave", () => {
-                cursorOutline.classList.remove("active");
-            });
-        });
-
-    } else {
-        /* Mobile: Disable custom cursor */
-        if (cursorDot) cursorDot.style.display = "none";
-        if (cursorOutline) cursorOutline.style.display = "none";
-        document.body.style.cursor = "auto";
+        
+        // NOTE: We do NOT hide the cursor on inputs anymore to prevent flickering.
+        // The system I-Beam will show up because of CSS (cursor:text), 
+        // and the custom dot will float above it.
     }
-
 
     /* =========================================================
        4. APPS GALLERY MODAL + SCROLL LOCK
@@ -137,26 +118,19 @@ document.addEventListener("DOMContentLoaded", () => {
             img.addEventListener("click", () => showImage(index));
         });
 
-        // Close Button
+        // Close
         if (closeBtn) closeBtn.addEventListener("click", closeModal);
-
-        // Background Click
         modal.addEventListener("click", (e) => {
             if (e.target === modal) closeModal();
         });
 
-        // Arrow Buttons (Desktop)
+        // Arrows
         const leftArrow = document.querySelector('.apps-modal-arrow.left');
         const rightArrow = document.querySelector('.apps-modal-arrow.right');
-        
-        if (leftArrow) leftArrow.addEventListener('click', (e) => {
-            e.stopPropagation(); prevImage();
-        });
-        if (rightArrow) rightArrow.addEventListener('click', (e) => {
-            e.stopPropagation(); nextImage();
-        });
+        if (leftArrow) leftArrow.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+        if (rightArrow) rightArrow.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
 
-        // Keyboard Nav
+        // Keys
         document.addEventListener("keydown", (e) => {
             if (modal.style.display !== "flex") return;
             if (e.key === "Escape") closeModal();
@@ -165,9 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     /* =========================================================
-       5. STUDIO CUSTOM DROPDOWN (Grey Active)
+       5. STUDIO DROPDOWN
     ========================================================= */
     document.querySelectorAll(".gc-dropdown").forEach(dropdown => {
         const selectedBox = dropdown.querySelector(".gc-dropdown-selected");
@@ -191,45 +164,37 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Close on click outside
         document.addEventListener("click", (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove("open");
-            }
+            if (!dropdown.contains(e.target)) dropdown.classList.remove("open");
         });
     });
 
-
     /* =========================================================
-       6. HEADER + FOOTER LOADER (ABSOLUTE PATH FIX)
+       6. HEADER + FOOTER LOADER
     ========================================================= */
-    
-    /* ✅ FIX 4: Use Absolute Path for Production Domain */
     const partialsPath = "/partials/";
 
-    /* LOAD HEADER */
+    // Header
     fetch(partialsPath + "header.html")
         .then(res => res.text())
         .then(html => {
             const mount = document.getElementById("site-header");
             if (mount) mount.innerHTML = html;
 
-            /* ✅ FIX 3: Folder Safe Nav Highlight */
-            let currentPath = window.location.pathname
-                .replace(/\/$/, "") // remove trailing slash
-                .split("/")
-                .pop();
-            
+            let currentPath = window.location.pathname.replace(/\/$/, "").split("/").pop();
             if (currentPath === "" || currentPath === "index") currentPath = "home";
 
             document.querySelectorAll("header nav a").forEach(link => {
-                if (link.dataset.nav === currentPath) {
-                    link.classList.add("active");
+                // Re-attach hover listeners to dynamic header links
+                if (!isTouchDevice && outline) {
+                    link.addEventListener("mouseenter", () => outline.classList.add("active"));
+                    link.addEventListener("mouseleave", () => outline.classList.remove("active"));
                 }
+                if (link.dataset.nav === currentPath) link.classList.add("active");
             });
         });
 
-    /* LOAD FOOTER */
+    // Footer
     fetch(partialsPath + "footer.html")
         .then(res => res.text())
         .then(html => {
@@ -237,18 +202,23 @@ document.addEventListener("DOMContentLoaded", () => {
             if (mount) mount.innerHTML = html;
             const year = document.getElementById("year");
             if (year) year.textContent = new Date().getFullYear();
+            
+            // Re-attach hover listeners to dynamic footer links
+            if (!isTouchDevice && outline) {
+                document.querySelectorAll("footer a").forEach(link => {
+                    link.addEventListener("mouseenter", () => outline.classList.add("active"));
+                    link.addEventListener("mouseleave", () => outline.classList.remove("active"));
+                });
+            }
         });
-
 
     /* =========================================================
        7. DESIGN FORM AJAX SUBMIT
     ========================================================= */
     const designForm = document.getElementById("designForm");
-
     if (designForm) {
         designForm.addEventListener("submit", async (e) => {
             e.preventDefault();
-
             const successMsg = document.getElementById("design-success");
             const submitBtn = designForm.querySelector("button");
             const originalText = submitBtn.innerText;
@@ -262,27 +232,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: formData,
                     headers: { Accept: "application/json" }
                 });
-
                 if (response.ok) {
                     designForm.reset();
                     submitBtn.innerText = "SENT ✅";
-                    
-                    /* Show Success Message */
-                    if (successMsg) {
-                        successMsg.style.display = "block";
-                        successMsg.style.color = "#00ff88";
-                    }
-
+                    if (successMsg) successMsg.style.display = "block";
                     setTimeout(() => {
                         submitBtn.innerText = originalText;
                         if (successMsg) successMsg.style.display = "none";
                     }, 4000);
                 } else {
-                    alert("Submission failed. Try again.");
+                    alert("Submission failed.");
                     submitBtn.innerText = originalText;
                 }
             } catch {
-                alert("Network error. Please try again.");
+                alert("Network error.");
                 submitBtn.innerText = originalText;
             }
         });
