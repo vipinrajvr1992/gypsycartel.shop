@@ -1232,6 +1232,19 @@ body.select-open option {
    Only content area animates (NOT header/footer)
 ========================================================= */
 
+/* ✅ Footer always stays at bottom */
+.career-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content expands and pushes footer down */
+.career-page main {
+    flex: 1;
+}
+
+/* Content reveal animation */
 .career-page .container {
     opacity: 0;
     transform: translateY(18px);
@@ -1252,14 +1265,14 @@ body.select-open option {
 
 /* Main Page Title */
 .career-page h1 {
-    margin-bottom: 26px;
+    margin-bottom: 22px;
     line-height: 1.25;
 }
 
 /* Paragraphs stay grey */
 .career-page p {
-    line-height: 1.8;
-    margin-bottom: 18px;
+    line-height: 1.7;
+    margin-bottom: 14px;
     max-width: 880px;
     font-size: 1rem;
     color: var(--text-muted);
@@ -1267,8 +1280,8 @@ body.select-open option {
 
 /* Section Headings in Orange */
 .career-page h4 {
-    margin-top: 34px;
-    margin-bottom: 12px;
+    margin-top: 22px;
+    margin-bottom: 10px;
     font-size: 0.95rem;
     letter-spacing: 1.5px;
     color: var(--primary-orange);
@@ -1280,17 +1293,16 @@ body.select-open option {
 ========================================================= */
 
 .career-page .career-roles {
-    margin-top: 18px;
-    margin-bottom: 28px;
+    margin-top: 12px;
+    margin-bottom: 18px;
     padding-left: 0;
     list-style: none;
 }
 
 /* All roles always white */
 .career-page .career-roles li {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: 1.6;
     color: #ffffff !important;
 }
-
