@@ -256,32 +256,6 @@ select:focus {
 }
 
 /* =========================================================
-   DESIGN PAGE — FINAL FIX (THIS IS THE IMPORTANT PART)
-========================================================= */
-.design-page .grid-2 {
-    align-items: center;
-}
-
-.design-page .grid-2 > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 2rem; /* ✅ EXACT GAP CONTROL */
-}
-
-.design-page .grid-2 > div:first-child img {
-    max-width: 260px;
-    width: 100%;
-    height: auto;
-    margin: 0; /* 🔒 NO INTERFERENCE */
-}
-
-.design-page h1 {
-    margin: 0; /* 🔒 NO HIDDEN SPACING */
-}
-
-/* =========================================================
    CONTACT PAGE
 ========================================================= */
 .contact-page .container {
@@ -361,24 +335,7 @@ footer a:hover {
     .grid-2 { grid-template-columns: 1fr; }
     .footer-content { grid-template-columns: 1fr; }
 }
-/* =========================================================
-   DESIGN PAGE — LOGO → HEADING GAP (EXACT 2rem)
-========================================================= */
 
-/* Kill all unexpected spacing first */
-.design-page .grid-2 > div:first-child {
-    gap: 0; /* disable flex gap completely */
-}
-
-/* Control ONLY logo → heading */
-.design-page .mg-logo-wrap {
-    margin-bottom: 2rem !important;
-}
-
-/* Ensure heading has no extra top margin */
-.design-page h1 {
-    margin-top: 0 !important;
-}
 /* ================================
    HERO — CLEAN CENTERED LOGO
 ================================ */
@@ -472,86 +429,7 @@ footer a:hover {
     justify-content: center;
     flex-wrap: wrap;
 }
-/* =========================================================
-   DESIGN PAGE — PREMIUM MOTION POLISH (SAFE)
-   No layout changes • No JS • No conflicts
-========================================================= */
 
-/* Smooth page load */
-.design-page {
-    animation: pageFade 0.6s ease forwards;
-}
-
-@keyframes pageFade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* MG Logo — subtle float */
-.design-page .mg-logo-wrap img {
-    animation: logoFloat 6s ease-in-out infinite;
-}
-
-@keyframes logoFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-/* Heading reveal */
-.design-page h1 {
-    opacity: 0;
-    transform: translateY(12px);
-    animation: textReveal 0.7s ease forwards;
-    animation-delay: 0.15s;
-}
-
-.design-page p {
-    opacity: 0;
-    transform: translateY(12px);
-    animation: textReveal 0.7s ease forwards;
-    animation-delay: 0.3s;
-}
-
-@keyframes textReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Form card elevation */
-.design-page .grid-2 > div:last-child {
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.design-page .grid-2 > div:last-child:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-}
-
-/* Button micro interaction */
-.design-page .btn-primary {
-    position: relative;
-    overflow: hidden;
-}
-
-.design-page .btn-primary::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.25),
-        transparent
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.design-page .btn-primary:hover::after {
-    transform: translateX(100%);
-}
 /* =========================================================
    GLOBAL PAGE LOAD SMOOTHNESS
    (About, Fashion, Contact, Legal)
@@ -644,24 +522,7 @@ footer a:hover {
 .btn:hover::after {
     transform: translateX(100%);
 }
-/* =========================================
-   DESIGN PAGE — FINAL LOGO GAP FIX (LOCKED)
-========================================= */
 
-/* Remove flex gap completely */
-.design-page .grid-2 > div:first-child {
-    gap: 0 !important;
-}
-
-/* Control logo → text gap ONLY here */
-.design-page .mg-logo-wrap {
-    margin-bottom: 1.2rem !important; /* 👈 adjust this value */
-}
-
-/* Kill heading top margin */
-.design-page h1 {
-    margin-top: 0 !important;
-}
 /* =========================================
    HOME PAGE — HERO SMOOTH LOADING
 ========================================= */
@@ -1233,4 +1094,176 @@ body.select-open option {
 /* Underline swipe */
 .footer-openroles:hover::after {
     width: 100%;
+}
+/* =========================================================
+   STUDIO PAGE (DESIGN TAB) — FINAL PERFECT ALIGNMENT
+   Ribbon → Logo = 4rem
+   Logo → Heading = 2rem
+   Heading → Paragraph = 1rem
+   Paragraph = 3 clean lines, aligned to heading width
+========================================================= */
+
+.design-page .grid-2 {
+    align-items: center;
+}
+
+/* ================================
+   LEFT HERO CONTENT (LOGO + TEXT)
+================================ */
+
+.design-page .grid-2 > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* 🔒 No random flex gap */
+    gap: 0 !important;
+}
+
+/* 1️⃣ Ribbon/Nav → Logo gap = 4rem */
+.design-page .mg-logo-wrap {
+    margin-top: 4rem !important;
+
+    /* 2️⃣ Logo → Heading gap = 2rem */
+    margin-bottom: 2rem !important;
+}
+
+/* Logo sizing */
+.design-page .mg-logo-wrap img {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Heading reset */
+.design-page h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.25;
+}
+
+/* Orange highlight text inside heading */
+.design-page h1 span {
+    color: var(--primary-orange);
+}
+
+/* 3️⃣ Heading → Paragraph gap = 1rem */
+.design-page p {
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+
+    /* 4️⃣ Paragraph wrap into 3 lines */
+    max-width: 440px;
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+/* ================================
+   RIGHT SIDE FORM CARD (START PROJECT)
+================================ */
+
+.design-page .grid-2 > div:last-child {
+    background: rgba(15, 15, 15, 0.75);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 42px 38px;
+    box-shadow: 0 20px 55px rgba(0,0,0,0.55);
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Hover lift */
+.design-page .grid-2 > div:last-child:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 75px rgba(0,0,0,0.65);
+}
+
+/* Form title */
+.design-page h2 {
+    color: var(--primary-orange);
+    margin-bottom: 26px;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+}
+
+/* Inputs */
+.design-page input,
+.design-page textarea,
+.design-page select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(22,22,22,0.85);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+}
+
+.design-page input:focus,
+.design-page textarea:focus,
+.design-page select:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 2px rgba(255,106,26,0.18);
+}
+
+/* Textarea height */
+.design-page textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+/* Submit Button */
+.design-page button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    cursor: none;
+
+    background: linear-gradient(135deg, #ff6a1a, #ff3c00);
+    color: #fff;
+
+    transition: 0.35s ease;
+}
+
+.design-page button:hover {
+    background: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+    box-shadow: 0 0 20px rgba(255,106,26,0.35);
+}
+
+/* ================================
+   RESPONSIVE STUDIO FIX
+================================ */
+
+@media (max-width: 900px) {
+
+    .design-page .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    /* Reduce top spacing on mobile */
+    .design-page .mg-logo-wrap {
+        margin-top: 2.5rem !important;
+    }
+
+    /* Paragraph width full */
+    .design-page p {
+        max-width: 90%;
+    }
+
+    /* Form padding smaller */
+    .design-page .grid-2 > div:last-child {
+        padding: 32px 22px;
+    }
 }
