@@ -1201,17 +1201,25 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* =========================================================
-   ✅ CAREER PAGE — LAYOUT FIX + ANIMATION
+   ✅ CAREER PAGE — FIXED (HEADER IS SAFE)
+   Animation applies ONLY to content, not the nav bar.
 ========================================================= */
+
+/* 1. DO NOT animate the body/header */
 .career-page {
-    animation: pageFade 0.6s ease forwards;
+    animation: none !important;
+    opacity: 1 !important;
 }
 
-/* 1. Layout Fix: Prevent overlap with Header */
+/* 2. Animate ONLY the content container */
 .career-page .container {
     padding-top: 180px; 
     max-width: 900px;
     margin: 0 auto;
+    
+    /* The Fade Animation moves here */
+    opacity: 0;
+    animation: pageFade 0.6s ease forwards;
 }
 
 .career-page h1 {
@@ -1243,7 +1251,7 @@ input:focus, textarea:focus, select:focus {
 }
 .career-page strong { color: #fff; font-weight: 600; }
 
-/* 2. Text Reveal Animation (The "Same" Loading Effect) */
+/* 3. Text Reveal Animation (Inside the container) */
 .career-page h1, 
 .career-page p, 
 .career-page h4, 
@@ -1253,7 +1261,9 @@ input:focus, textarea:focus, select:focus {
     animation: textReveal 0.7s ease forwards;
 }
 
-/* Staggered Delay for Premium Feel */
-.career-page h4 { animation-delay: 0.15s; }
-.career-page p  { animation-delay: 0.3s; }
-.career-page li { animation-delay: 0.45s; }
+/* Staggered Delay */
+/* Note: We add a small base delay so container fades first */
+.career-page h1 { animation-delay: 0.1s; }
+.career-page h4 { animation-delay: 0.25s; }
+.career-page p  { animation-delay: 0.4s; }
+.career-page li { animation-delay: 0.55s; }
