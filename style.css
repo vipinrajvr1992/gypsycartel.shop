@@ -1201,11 +1201,11 @@ body.select-open option {
     color: #ffffff !important;
 }
 /* =========================================================
-   FOOTER — PREMIUM SWIPE UNDERLINE (CAREERS LINK ONLY)
+   FOOTER — PREMIUM SWIPE UNDERLINE (GLOBAL FIX)
    View Open Roles → Hover Animation
 ========================================================= */
 
-.footer-careers a {
+.footer-openroles {
     position: relative;
     display: inline-block;
     font-weight: 500;
@@ -1213,8 +1213,8 @@ body.select-open option {
     transition: color 0.25s ease;
 }
 
-/* White underline swipe */
-.footer-careers a::after {
+/* White underline swipe effect */
+.footer-openroles::after {
     content: "";
     position: absolute;
     left: 0;
@@ -1225,11 +1225,12 @@ body.select-open option {
     transition: width 0.35s ease;
 }
 
-/* Hover = Orange + underline swipe */
-.footer-careers a:hover {
+/* Hover = Orange text */
+.footer-openroles:hover {
     color: var(--primary-orange);
 }
 
-.footer-careers a:hover::after {
+/* Underline swipe */
+.footer-openroles:hover::after {
     width: 100%;
 }
