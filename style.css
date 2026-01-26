@@ -490,3 +490,25 @@ footer a:hover {
     }
 }
 
+/* =========================================================
+   FOOTER LINK COLOR FIX — FORCE WHITE
+   Support Email + Instagram + Careers Link
+========================================================= */
+
+/* Support Email + Creator Instagram */
+footer .footer-content a,
+footer .footer-content p a {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Careers: View Open Roles → */
+footer .career-open-link {
+    color: #ffffff !important;
+}
+
+/* Hover stays orange */
+footer .career-open-link:hover,
+footer .footer-content a:hover {
+    color: var(--primary-orange) !important;
+}
