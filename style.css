@@ -1,6 +1,6 @@
 /* =========================================================
    GYPSY CARTEL — FUTURISTIC MINIMAL THEME
-   FINAL • STABLE • CLEAN • NO CONFLICTS
+   MASTER STYLE.CSS — CLEAN • NO DUPLICATES • FINAL
 ========================================================= */
 
 /* =========================================================
@@ -35,7 +35,9 @@
     cursor: none;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 /* =========================================================
    BODY
@@ -84,7 +86,9 @@ a {
     transition: 0.3s ease;
 }
 
-ul { list-style: none; }
+ul {
+    list-style: none;
+}
 
 /* =========================================================
    CUSTOM CURSOR
@@ -97,7 +101,7 @@ ul { list-style: none; }
     transform: translate(-50%, -50%);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 10000;
 }
 
 .cursor-dot {
@@ -131,7 +135,9 @@ header {
     z-index: 1000;
 }
 
-.logo-icon { width: 38px; }
+.logo-icon {
+    width: 38px;
+}
 
 header nav ul {
     display: flex;
@@ -147,7 +153,7 @@ header nav a {
 
 header nav a:hover,
 header nav a.active {
-    color: var(--primary-orange);
+    color: var(--primary-orange) !important;
 }
 
 header nav a.active::after {
@@ -158,6 +164,7 @@ header nav a.active::after {
     width: 100%;
     height: 2px;
     background: var(--primary-orange);
+    opacity: 1 !important;
 }
 
 /* =========================================================
@@ -171,6 +178,26 @@ header nav a.active::after {
     text-transform: uppercase;
     border: 1px solid transparent;
     transition: 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn:hover::after {
+    transform: translateX(100%);
 }
 
 .btn-primary {
@@ -256,71 +283,116 @@ select:focus {
 }
 
 /* =========================================================
-   DESIGN PAGE — FINAL FIX (THIS IS THE IMPORTANT PART)
+   PAGE LOAD ANIMATION (GLOBAL)
 ========================================================= */
-.design-page .grid-2 {
-    align-items: center;
+@keyframes pageFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
-.design-page .grid-2 > div:first-child {
+.about-page,
+.fashion-page,
+.contact-page,
+.legal-page,
+.design-page,
+.careers-page {
+    animation: pageFade 0.6s ease forwards;
+}
+
+/* =========================================================
+   STUDIO PAGE — FINAL PERFECT FIX
+========================================================= */
+.design-page .studio-left {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2rem; /* ✅ EXACT GAP CONTROL */
 }
 
-.design-page .grid-2 > div:first-child img {
-    max-width: 260px;
-    width: 100%;
-    height: auto;
-    margin: 0; /* 🔒 NO INTERFERENCE */
+.design-page .mg-logo-wrap {
+    margin-bottom: 2rem;
+}
+
+.design-page .studio-highlight {
+    color: var(--primary-orange) !important;
 }
 
 .design-page h1 {
-    margin: 0; /* 🔒 NO HIDDEN SPACING */
+    margin-bottom: 1rem;
+    line-height: 1.15;
+}
+
+.design-page .studio-desc {
+    max-width: 520px !important;
+    line-height: 1.65;
+    text-align: center;
+}
+
+/* Success message */
+#design-success {
+    display: none;
+    margin-top: 14px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #00ff88 !important;
 }
 
 /* =========================================================
-   CONTACT PAGE
+   CUSTOM DROPDOWN — FULL LIST NO SCROLL
 ========================================================= */
-.contact-page .container {
-    padding-top: calc(80px + 2rem);
+.gc-dropdown {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.contact-page .grid-3 {
-    gap: 1rem;
-    margin: 1rem 0 2rem;
+.gc-dropdown-selected {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-soft);
+    padding: 14px;
+    border-radius: 12px;
+    color: #fff;
+    cursor: none;
+    user-select: none;
 }
 
-.contact-page h4 {
-    color: var(--primary-orange);
+.gc-dropdown-list {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: rgba(15,15,15,0.98);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+    display: none;
+    z-index: 9999;
+
+    /* FULL OPEN — NO SCROLL */
+    max-height: none !important;
+    overflow: visible !important;
 }
 
-.contact-page .grid-3 p,
-.contact-page .grid-3 a {
-    color: #ffffff !important;
+.gc-dropdown-list li {
+    padding: 14px 16px;
+    color: #fff;
+    cursor: none;
+    transition: 0.2s ease;
+}
+
+.gc-dropdown-list li:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+}
+
+.gc-dropdown.open .gc-dropdown-list {
+    display: block;
 }
 
 /* =========================================================
-   LEGAL PAGES
-========================================================= */
-.legal-page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 160px 20px 80px;
-}
-
-.legal-page h1 span {
-    color: var(--primary-orange);
-}
-
-.legal-page p {
-    margin-bottom: 1.2rem;
-}
-
-/* =========================================================
-   FOOTER
+   FOOTER (UNCHANGED)
 ========================================================= */
 footer {
     background: linear-gradient(180deg, #0a0a0a, #050505);
@@ -344,12 +416,10 @@ footer {
     color: var(--text-muted);
 }
 
-/* Footer links default WHITE */
 footer a {
     color: #ffffff;
 }
 
-/* Hover ORANGE */
 footer a:hover {
     color: var(--primary-orange);
 }
@@ -358,945 +428,10 @@ footer a:hover {
    RESPONSIVE
 ========================================================= */
 @media (max-width: 900px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .footer-content { grid-template-columns: 1fr; }
-}
-/* =========================================================
-   DESIGN PAGE — LOGO → HEADING GAP (EXACT 2rem)
-========================================================= */
-
-/* Kill all unexpected spacing first */
-.design-page .grid-2 > div:first-child {
-    gap: 0; /* disable flex gap completely */
-}
-
-/* Control ONLY logo → heading */
-.design-page .mg-logo-wrap {
-    margin-bottom: 2rem !important;
-}
-
-/* Ensure heading has no extra top margin */
-.design-page h1 {
-    margin-top: 0 !important;
-}
-/* ================================
-   HERO — CLEAN CENTERED LOGO
-================================ */
-
-.hero-center {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* Logo container */
-.hero-logo-container {
-    position: relative;
-    width: 420px;
-    max-width: 90vw;
-    aspect-ratio: 1 / 1;
-    margin-bottom: 1.5rem;
-}
-
-/* Lottie dots */
-.hero-logo-container lottie-player {
-    position: absolute;
-    inset: -10%;
-    width: 120%;
-    height: 120%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Logo */
-.hero-logo {
-    position: relative;
-    width: 100%;
-    height: auto;
-    z-index: 2;
-}
-
-/* Tagline */
-.hero-tagline {
-    font-size: 1.3rem;
-    color: var(--text-muted);
-    margin-bottom: 1.8rem;
-    max-width: 720px;
-}
-/* =====================================
-   HERO — LOTTIE LOGO PERFECT FIT
-===================================== */
-
-.hero-center {
-    min-height: 100vh;
-    padding-top: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* Lottie container */
-.hero-lottie-wrap {
-    width: 420px;
-    max-width: 90vw;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.6rem;
-}
-
-/* Lottie itself */
-.hero-lottie-wrap lottie-player {
-    width: 100%;
-    height: 100%;
-}
-
-/* Tagline */
-.hero-tagline {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 720px;
-    margin-bottom: 1.8rem;
-}
-
-/* Buttons spacing */
-.hero-actions {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-/* =========================================================
-   DESIGN PAGE — PREMIUM MOTION POLISH (SAFE)
-   No layout changes • No JS • No conflicts
-========================================================= */
-
-/* Smooth page load */
-.design-page {
-    animation: pageFade 0.6s ease forwards;
-}
-
-@keyframes pageFade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* MG Logo — subtle float */
-.design-page .mg-logo-wrap img {
-    animation: logoFloat 6s ease-in-out infinite;
-}
-
-@keyframes logoFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-/* Heading reveal */
-.design-page h1 {
-    opacity: 0;
-    transform: translateY(12px);
-    animation: textReveal 0.7s ease forwards;
-    animation-delay: 0.15s;
-}
-
-.design-page p {
-    opacity: 0;
-    transform: translateY(12px);
-    animation: textReveal 0.7s ease forwards;
-    animation-delay: 0.3s;
-}
-
-@keyframes textReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .grid-2 {
+        grid-template-columns: 1fr;
     }
-}
-
-/* Form card elevation */
-.design-page .grid-2 > div:last-child {
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.design-page .grid-2 > div:last-child:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-}
-
-/* Button micro interaction */
-.design-page .btn-primary {
-    position: relative;
-    overflow: hidden;
-}
-
-.design-page .btn-primary::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.25),
-        transparent
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.design-page .btn-primary:hover::after {
-    transform: translateX(100%);
-}
-/* =========================================================
-   GLOBAL PAGE LOAD SMOOTHNESS
-   (About, Fashion, Contact, Legal)
-========================================================= */
-
-/* Pages that fade in */
-.about-page,
-.fashion-page,
-.contact-page,
-.legal-page {
-    animation: pageFade 0.6s ease forwards;
-}
-
-@keyframes pageFade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* =========================================================
-   TEXT REVEAL — HEADINGS & PARAGRAPHS
-   (About, Fashion, Contact only)
-========================================================= */
-
-.about-page h1,
-.about-page p,
-.fashion-page h1,
-.fashion-page p,
-.contact-page h1,
-.contact-page p {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: textReveal 0.7s ease forwards;
-}
-
-/* Stagger effect */
-.about-page p,
-.fashion-page p,
-.contact-page p {
-    animation-delay: 0.2s;
-}
-
-@keyframes textReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .footer-content {
+        grid-template-columns: 1fr;
     }
-}
-
-/* =========================================================
-   CARD / SECTION ELEVATION
-   (Contact forms, Fashion blocks, About sections)
-========================================================= */
-
-.about-page .container > div,
-.fashion-page .container > div,
-.contact-page .container > div {
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.about-page .container > div:hover,
-.fashion-page .container > div:hover,
-.contact-page .container > div:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-}
-
-/* =========================================================
-   BUTTON MICRO-INTERACTION (GLOBAL SAFE)
-========================================================= */
-
-.btn {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.25),
-        transparent
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.btn:hover::after {
-    transform: translateX(100%);
-}
-/* =========================================
-   DESIGN PAGE — FINAL LOGO GAP FIX (LOCKED)
-========================================= */
-
-/* Remove flex gap completely */
-.design-page .grid-2 > div:first-child {
-    gap: 0 !important;
-}
-
-/* Control logo → text gap ONLY here */
-.design-page .mg-logo-wrap {
-    margin-bottom: 1.2rem !important; /* 👈 adjust this value */
-}
-
-/* Kill heading top margin */
-.design-page h1 {
-    margin-top: 0 !important;
-}
-/* =========================================
-   HOME PAGE — HERO SMOOTH LOADING
-========================================= */
-
-/* Page fade */
-body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):not(.legal-page) {
-    animation: pageFade 0.6s ease forwards;
-}
-
-/* Hero tagline reveal */
-.hero-tagline {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: heroTextReveal 0.7s ease forwards;
-    animation-delay: 0.15s;
-}
-
-/* Services row reveal (if present) */
-.hero-services {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: heroTextReveal 0.7s ease forwards;
-    animation-delay: 0.3s;
-}
-
-@keyframes heroTextReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* =========================================
-   APPS PAGE — IMAGE HOVER ZOOM (SAFE)
-   No layout shift • No conflicts
-========================================= */
-
-.apps-page img.apps-image {
-    transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
-    will-change: transform;
-}
-
-.apps-page img.apps-image:hover {
-    transform: scale(1.06);
-}
-/* =========================================
-   APPS PAGE — IMAGE HOVER ZOOM FIX
-   Overrides animation transform safely
-========================================= */
-
-.apps-page .apps-image {
-    transition: transform 0.8s cubic-bezier(.22,.61,.36,1);
-}
-
-.apps-page .apps-image:hover {
-    transform: translateY(0) scale(1.06) !important;
-}
-/* =========================================
-   HOME PAGE — ORANGE GLOW BOOST (SUBTLE)
-========================================= */
-
-.hero {
-    background:
-        radial-gradient(circle at 30% 20%, rgba(255,106,26,0.12), transparent 55%),
-        radial-gradient(circle at 70% 80%, rgba(255,106,26,0.10), transparent 55%),
-        #000;
-}
-/* =========================================
-   CONTACT PAGE — WHATSAPP CTA (CLEAN & CLEAR)
-   Normal → Bold on hover
-========================================= */
-
-.contact-page a[href*="wa.me"] {
-    font-weight: 500; /* normal */
-    color: var(--primary-orange);
-    transition: font-weight 0.25s ease, text-shadow 0.25s ease;
-}
-
-/* Hover state — clear but classy */
-.contact-page a[href*="wa.me"]:hover {
-    font-weight: 700; /* bold */
-    text-shadow: 0 0 12px rgba(255,106,26,0.35);
-}
-/* =========================================================
-   APPS PAGE — PREMIUM SCREENSHOT GALLERY (FINAL)
-   Horizontal scroll • Hover zoom • Modal navigation
-========================================================= */
-
-.apps-gallery {
-    margin-top: 80px;
-}
-
-.apps-gallery-title {
-    text-align: center;
-    margin-bottom: 24px;
-    font-size: 1.2rem;
-    color: var(--primary-orange);
-    letter-spacing: 2px;
-}
-
-/* ===== Horizontal gallery ===== */
-.apps-gallery-wrapper {
-    position: relative;
-}
-
-.apps-gallery-track {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 12px;
-}
-
-.apps-gallery-track::-webkit-scrollbar {
-    height: 6px;
-}
-.apps-gallery-track::-webkit-scrollbar-thumb {
-    background: rgba(255,106,26,0.35);
-    border-radius: 10px;
-}
-
-.apps-gallery-img {
-    width: 320px;
-    border-radius: 12px;
-    cursor: pointer;
-    scroll-snap-align: start;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-}
-
-.apps-gallery-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 50px rgba(255,106,26,0.25);
-}
-
-/* Gallery arrows */
-.apps-gallery-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(15,15,15,0.9);
-    border: 1px solid var(--border-soft);
-    color: var(--primary-orange);
-    font-size: 1.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 4;
-    transition: 0.3s ease;
-}
-
-.apps-gallery-arrow:hover {
-    background: rgba(255,106,26,0.12);
-    box-shadow: 0 0 18px rgba(255,106,26,0.35);
-}
-
-.apps-gallery-arrow.left { left: -22px; }
-.apps-gallery-arrow.right { right: -22px; }
-
-/* =========================================
-   APPS MODAL — CURSOR SAFE + NAVIGATION
-========================================= */
-
-.apps-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.88);
-    backdrop-filter: blur(6px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-
-    /* IMPORTANT — DO NOT HIDE CURSOR */
-    cursor: default;
-}
-
-/* Keep custom cursor ABOVE modal */
-.cursor-dot,
-.cursor-outline {
-    z-index: 10000;
-}
-
-/* Modal image */
-.apps-modal-img {
-    max-width: 90%;
-    max-height: 85vh;
-    border-radius: 14px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-    animation: modalZoom 0.25s ease;
-}
-
-@keyframes modalZoom {
-    from { transform: scale(0.96); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-}
-
-/* Close button */
-.apps-modal-close {
-    position: absolute;
-    top: 24px;
-    right: 32px;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-
-.apps-modal-close:hover {
-    color: var(--primary-orange);
-}
-
-/* Modal arrows */
-.apps-modal-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(15,15,15,0.9);
-    border: 1px solid var(--border-soft);
-    color: var(--primary-orange);
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.25s ease;
-}
-
-.apps-modal-arrow:hover {
-    background: rgba(255,106,26,0.15);
-    box-shadow: 0 0 18px rgba(255,106,26,0.35);
-}
-
-.apps-modal-arrow.left {
-    left: 24px;
-}
-
-.apps-modal-arrow.right {
-    right: 24px;
-}
-/* ===============================
-   PREMIUM CAREER FOOTER ANIMATION
-================================ */
-
-/* Open Roles Link (FINAL ACTIVE) */
-.career-open-link {
-    display: inline-block;
-    color: var(--primary-orange);
-    font-weight: 600;
-    text-decoration: none;
-    position: relative;
-    transition: 0.3s ease;
-}
-
-.career-open-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0%;
-    height: 2px;
-    background: var(--primary-orange);
-    transition: 0.35s ease;
-}
-
-.career-open-link:hover {
-    color: #fff;
-    transform: translateX(4px);
-}
-
-.career-open-link:hover::after {
-    width: 100%;
-}
-/* =========================================================
-   HOME PAGE — PREMIUM CONTENT SECTIONS (SAFE ADD)
-   Only used in index.html • No theme conflicts
-========================================================= */
-
-.home-section {
-    padding: 90px 20px;
-    text-align: center;
-}
-
-.home-section h2 {
-    font-size: 2.2rem;
-    margin-bottom: 22px;
-}
-
-.home-section p {
-    max-width: 900px;
-    margin: 0 auto 20px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    font-size: 1.05rem;
-}
-
-/* Services Grid */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 22px;
-    margin-top: 50px;
-}
-
-/* Service Cards */
-.service-card {
-    background: var(--bg-surface);
-    padding: 28px;
-    border-radius: 16px;
-    border: 1px solid var(--border-soft);
-    text-align: left;
-    transition: 0.3s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary-orange);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.45);
-}
-
-.service-card h3 {
-    color: var(--primary-orange);
-    margin-bottom: 12px;
-    font-size: 1.15rem;
-}
-
-.service-card p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-/* Guidelines List */
-.guideline-list {
-    max-width: 720px;
-    margin: 35px auto 0;
-    text-align: left;
-    color: var(--text-muted);
-    line-height: 1.9;
-}
-
-.guideline-list li {
-    margin-bottom: 10px;
-}
-
-/* CTA Section */
-.home-cta {
-    padding: 90px 20px;
-    background: var(--bg-surface);
-    border-top: 1px solid var(--border-soft);
-    text-align: center;
-}
-
-.home-cta h2 {
-    font-size: 2.2rem;
-    margin-bottom: 18px;
-}
-
-.home-cta p {
-    max-width: 750px;
-    margin: 0 auto 30px;
-    color: var(--text-muted);
-    line-height: 1.7;
-}
-/* =========================================================
-   HOME PAGE — SUBTLE SECTION FADE-IN (SAFE)
-   Matches About/Design/Fashion animation style
-========================================================= */
-
-/* Fade + Slide effect for homepage sections */
-.home-section,
-.home-cta {
-    opacity: 0;
-    transform: translateY(18px);
-    animation: homeReveal 0.8s ease forwards;
-}
-
-/* Stagger timing (smooth premium flow) */
-.home-section:nth-of-type(1) { animation-delay: 0.15s; }
-.home-section:nth-of-type(2) { animation-delay: 0.30s; }
-.home-section:nth-of-type(3) { animation-delay: 0.45s; }
-.home-section:nth-of-type(4) { animation-delay: 0.60s; }
-.home-cta                 { animation-delay: 0.75s; }
-
-/* Keyframes */
-@keyframes homeReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* =========================================
-   CURSOR FIX — FORM ELEMENTS ONLY (SAFE)
-   Keeps custom cursor consistent in forms
-========================================= */
-
-.cursor-fix {
-    cursor: none !important;
-}
-/* =========================================
-   CURSOR FIX — SELECT DROPDOWN (FINAL)
-   Keeps cursor hidden on select box only
-========================================= */
-
-select {
-    cursor: none !important;
-}
-
-select option {
-    cursor: none !important;
-}
-/* =========================================
-   CURSOR FIX — DISABLE CUSTOM CURSOR INSIDE SELECT OPEN
-========================================= */
-
-/* When dropdown is active, hide custom cursor */
-body.select-open .cursor-dot,
-body.select-open .cursor-outline {
-    opacity: 0 !important;
-}
-
-/* Restore normal cursor ONLY inside select dropdown */
-body.select-open select,
-body.select-open option {
-    cursor: auto !important;
-}
-/* =========================================
-   GYPSY CARTEL — CUSTOM DROPDOWN (STUDIO)
-   Cursor works perfectly inside
-========================================= */
-
-.gc-dropdown {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-    font-family: inherit;
-}
-
-/* Selected Box */
-.gc-dropdown-selected {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-soft);
-    padding: 14px;
-    color: #fff;
-    cursor: none;
-    user-select: none;
-}
-
-/* Dropdown List */
-.gc-dropdown-list {
-    position: absolute;
-    top: 105%;
-    left: 0;
-    width: 100%;
-    background: #111;
-    border: 1px solid var(--border-soft);
-    border-radius: 8px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 220px;
-    overflow-y: auto;
-    display: none;
-    z-index: 9999;
-}
-
-/* Items */
-.gc-dropdown-list li {
-    padding: 14px;
-    color: #fff;
-    cursor: none;
-    transition: 0.2s ease;
-}
-
-/* Hover */
-.gc-dropdown-list li:hover {
-    background: rgba(255,106,26,0.15);
-    color: var(--primary-orange);
-}
-
-/* Active Open */
-.gc-dropdown.open .gc-dropdown-list {
-    display: block;
-}
-/* =========================================
-   STUDIO — PREMIUM CUSTOM DROPDOWN (SAFE)
-   No theme change • Cursor works perfectly
-========================================= */
-
-.gc-dropdown {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.gc-dropdown-selected {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-soft);
-    padding: 14px;
-    border-radius: 10px;
-    color: #fff;
-    cursor: none;
-    user-select: none;
-    transition: 0.25s ease;
-}
-
-.gc-dropdown-selected:hover {
-    border-color: var(--primary-orange);
-    box-shadow: 0 0 0 2px rgba(255,106,26,0.15);
-}
-
-.gc-dropdown-list {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    width: 100%;
-    background: #0f0f0f;
-    border: 1px solid var(--border-soft);
-    border-radius: 12px;
-    padding: 6px 0;
-    margin: 0;
-    list-style: none;
-
-    max-height: 240px;
-    overflow-y: auto;
-
-    display: none;
-    z-index: 9999;
-
-    overscroll-behavior: contain;
-}
-
-.gc-dropdown-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.gc-dropdown-list::-webkit-scrollbar-thumb {
-    background: rgba(255,106,26,0.35);
-    border-radius: 10px;
-}
-
-.gc-dropdown-list li {
-    padding: 14px 16px;
-    color: #fff;
-    cursor: none;
-    transition: 0.2s ease;
-}
-
-.gc-dropdown-list li:hover {
-    background: rgba(255,106,26,0.12);
-    color: var(--primary-orange);
-}
-
-.gc-dropdown.open .gc-dropdown-list {
-    display: block;
-}
-
-
-/* STUDIO FIX */
-/* =========================================================
-   FINAL OVERRIDES — CLEAN FIX (STUDIO + NAV + CAREERS)
-   Add ONLY ONCE at END of style.css
-========================================================= */
-
-
-/* ===============================
-   NAV ACTIVE UNDERLINE (FIXED)
-================================ */
-header nav a.active {
-    color: var(--primary-orange) !important;
-}
-
-header nav a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 2px;
-    background: var(--primary-orange);
-    opacity: 1 !important;
-}
-
-
-/* ===============================
-   CAREERS PAGE LOAD ANIMATION
-================================ */
-.careers-page {
-    animation: pageFade 0.6s ease forwards;
-}
-
-
-/* ===============================
-   STUDIO SUCCESS MESSAGE (GREEN)
-================================ */
-#design-success {
-    display: none;
-    margin-top: 14px;
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: #00ff88 !important;
-}
-
-
-/* ===============================
-   STUDIO DROPDOWN — NO SCROLL FULL LIST
-================================ */
-.design-page .gc-dropdown-list {
-    max-height: none !important;
-    overflow: visible !important;
-}
-
-
-/* ===============================
-   STUDIO TEXT PERFECT 3 LINES FIT
-================================ */
-.design-page .studio-desc {
-    max-width: 520px !important;
-    line-height: 1.65;
-    text-align: center;
-}
-
-
-/* ===============================
-   STUDIO ORANGE WORD ONLY
-================================ */
-.design-page .studio-highlight {
-    color: var(--primary-orange) !important;
 }
