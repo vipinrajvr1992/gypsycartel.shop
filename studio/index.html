@@ -40,30 +40,31 @@
 <!-- ======================
      STUDIO PAGE CONTENT
 ====================== -->
-<section class="container studio-section">
+<section class="container">
 
-    <div class="grid-2 studio-grid">
+    <div class="grid-2">
 
-        <!-- ======================
-             LEFT CONTENT
-        ====================== -->
+        <!-- LEFT CONTENT -->
         <div class="studio-left">
 
             <!-- Logo -->
             <div class="mg-logo-wrap">
                 <img
                     src="/assets/logos/mg-creations.webp"
-                    alt="MG Creations Logo">
+                    alt="MG Creations Logo"
+                    style="max-width:260px;width:100%;height:auto;">
             </div>
 
             <!-- Heading -->
             <h1>
-                HYPER-REALISTIC<br>
-                <span>ARCHITECTURE & GRAPHICS</span>
+                <span class="studio-highlight">HYPER-REALISTIC</span><br>
+                <span style="color:var(--text-main)">
+                    ARCHITECTURE & GRAPHICS
+                </span>
             </h1>
 
-            <!-- Description -->
-            <p>
+            <!-- Paragraph -->
+            <p class="studio-desc">
                 Our studio blends technical precision with artistic execution,
                 delivering architectural visualization, interiors, exteriors,
                 and high-impact digital graphics.
@@ -71,12 +72,12 @@
 
         </div>
 
-        <!-- ======================
-             RIGHT FORM CARD
-        ====================== -->
-        <div class="studio-form-card">
+        <!-- RIGHT FORM -->
+        <div class="studio-form-box">
 
-            <h3>START A PROJECT</h3>
+            <h3 class="studio-form-title">
+                START A PROJECT
+            </h3>
 
             <form
                 id="designForm"
@@ -84,31 +85,16 @@
                 method="POST"
                 autocomplete="on">
 
-                <!-- Name -->
-                <input
-                    class="cursor-fix"
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required>
+                <input class="cursor-fix" type="text" name="name"
+                       placeholder="Your Name" required>
 
-                <!-- Email -->
-                <input
-                    class="cursor-fix"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required>
+                <input class="cursor-fix" type="email" name="email"
+                       placeholder="Email" required>
 
-                <!-- Phone -->
-                <input
-                    class="cursor-fix"
-                    type="tel"
-                    name="tel"
-                    placeholder="Phone Number"
-                    required>
+                <input class="cursor-fix" type="tel" name="tel"
+                       placeholder="Phone Number" required>
 
-                <!-- PREMIUM CUSTOM DROPDOWN -->
+                <!-- PREMIUM DROPDOWN -->
                 <div class="gc-dropdown" data-name="service">
 
                     <div class="gc-dropdown-selected cursor-fix">
@@ -116,50 +102,36 @@
                     </div>
 
                     <ul class="gc-dropdown-list">
-                        <li data-value="architecture-interior">
-                            Architecture & Interiors
-                        </li>
-                        <li data-value="3d-visualization">
-                            3D Visualization
-                        </li>
-                        <li data-value="branding-design">
-                            Branding & Digital Design
-                        </li>
-                        <li data-value="floor-plans">
-                            2D / 3D Floor Plans
-                        </li>
-                        <li data-value="web-branding">
-                            Website & Brand Identity
-                        </li>
-                        <li data-value="other">
-                            Other / Custom Project
-                        </li>
+                        <li data-value="architecture-interior">Architecture & Interiors</li>
+                        <li data-value="3d-visualization">3D Visualization</li>
+                        <li data-value="branding-design">Branding & Digital Design</li>
+                        <li data-value="floor-plans">2D / 3D Floor Plans</li>
+                        <li data-value="web-branding">Website & Brand Identity</li>
+                        <li data-value="other">Other / Custom Project</li>
                     </ul>
 
-                    <!-- Hidden Input -->
                     <input type="hidden" name="service" required>
                 </div>
 
-                <!-- Message -->
-                <textarea
-                    class="cursor-fix"
-                    name="message"
-                    rows="5"
-                    placeholder="I have a project"
-                    required></textarea>
+                <textarea class="cursor-fix" name="message"
+                          rows="5"
+                          placeholder="I have a project"
+                          required></textarea>
 
                 <!-- Turnstile -->
                 <div class="cf-turnstile"
                      data-sitekey="0x4AAAAAACK2g8v3gHryb9Aq"
-                     data-theme="dark">
+                     data-theme="dark"
+                     style="margin:18px 0;">
                 </div>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary cursor-fix">
+                <button type="submit"
+                        class="btn btn-primary cursor-fix"
+                        style="width:100%; margin-top:10px;">
                     INITIALIZE REQUEST
                 </button>
 
-                <!-- Success Message -->
+                <!-- ✅ SUCCESS MESSAGE (Hidden Default) -->
                 <p id="design-success">
                     ✓ Message sent successfully. We’ll contact you shortly.
                 </p>
@@ -177,6 +149,30 @@
 
 <!-- GLOBAL SCRIPT -->
 <script src="/script.js"></script>
+
+<!-- ✅ STUDIO SUCCESS FIX -->
+<script>
+const designForm = document.getElementById("designForm");
+
+if (designForm) {
+    designForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(designForm);
+
+        const response = await fetch(designForm.action, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+            document.getElementById("design-success").style.display = "block";
+            designForm.reset();
+        }
+    });
+}
+</script>
 
 </body>
 </html>
