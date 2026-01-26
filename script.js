@@ -1,17 +1,27 @@
 /* =========================================================
-   GYPSY CARTEL — GLOBAL SCRIPT (FINAL MASTER FIXED)
-   ✅ Cursor Engine
-   ✅ Apps Modal + Scroll Lock
-   ✅ Studio Dropdown Active Grey
-   ✅ Header/Footer Loader FIXED for GitHub Pages
-   ✅ Auto Nav Highlight Perfect
-   ✅ Design Form AJAX Submit
+   GYPSY CARTEL — GLOBAL SCRIPT (FINAL MASTER)
+   ✅ Cinematic Page Load Trigger
+   ✅ Physics Cursor Engine (Old Premium Feel)
+   ✅ Cursor Zoom via .active Class
+   ✅ Apps Modal + Scroll Lock + Arrows
+   ✅ Studio Dropdown Locked
+   ✅ Auto Nav Highlight Folder Safe
+   ✅ Header/Footer Loader Universal
+   ✅ Design Form Success Message FIXED
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================================
-       1. DEVICE DETECTION (Cursor Safe)
+       1. PREMIUM PAGE LOAD TRIGGER
+    ========================================================= */
+    setTimeout(() => {
+        document.body.classList.add("page-loaded");
+    }, 60);
+
+
+    /* =========================================================
+       2. DEVICE DETECTION (Cursor Safe)
     ========================================================= */
     const isTouchDevice =
         "ontouchstart" in window ||
@@ -20,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       2. CUSTOM CURSOR ENGINE (Desktop Only)
+       3. CUSTOM CURSOR ENGINE (DESKTOP ONLY)
     ========================================================= */
     const cursorDot = document.querySelector(".cursor-dot");
     const cursorOutline = document.querySelector(".cursor-outline");
@@ -30,20 +40,19 @@ document.addEventListener("DOMContentLoaded", () => {
         let mouseX = 0, mouseY = 0;
         let outlineX = 0, outlineY = 0;
 
+        /* Instant Dot */
         window.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
 
             cursorDot.style.left = `${mouseX}px`;
             cursorDot.style.top = `${mouseY}px`;
-
-            cursorDot.style.opacity = "1";
-            cursorOutline.style.opacity = "1";
         });
 
+        /* Smooth Physics Outline */
         function animateCursor() {
-            outlineX += (mouseX - outlineX) * 0.15;
-            outlineY += (mouseY - outlineY) * 0.15;
+            outlineX += (mouseX - outlineX) * 0.14;
+            outlineY += (mouseY - outlineY) * 0.14;
 
             cursorOutline.style.left = `${outlineX}px`;
             cursorOutline.style.top = `${outlineY}px`;
@@ -52,32 +61,46 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         animateCursor();
 
-        /* Hide cursor when typing */
-        document.querySelectorAll("input, textarea, select").forEach(el => {
+
+        /* =========================================================
+           CURSOR PREMIUM ZOOM ONLY ON CLICKABLES
+        ========================================================= */
+        const clickables = document.querySelectorAll(
+            "a, button, .btn, .apps-gallery-img, footer a"
+        );
+
+        clickables.forEach(el => {
+            el.addEventListener("mouseenter", () => {
+                cursorOutline.classList.add("active");
+            });
+
+            el.addEventListener("mouseleave", () => {
+                cursorOutline.classList.remove("active");
+            });
+        });
+
+
+        /* =========================================================
+           HIDE CURSOR INSIDE INPUTS (Typing Comfort)
+        ========================================================= */
+        const formFields = document.querySelectorAll(
+            "input, textarea, select"
+        );
+
+        formFields.forEach(el => {
             el.addEventListener("mouseenter", () => {
                 cursorDot.style.opacity = "0";
                 cursorOutline.style.opacity = "0";
             });
+
             el.addEventListener("mouseleave", () => {
                 cursorDot.style.opacity = "1";
                 cursorOutline.style.opacity = "1";
             });
         });
 
-        /* Hover scale effect */
-        document.querySelectorAll("a, button, .btn, .apps-gallery-img").forEach(el => {
-            el.addEventListener("mouseenter", () => {
-                cursorOutline.style.transform =
-                    "translate(-50%, -50%) scale(1.5)";
-            });
-            el.addEventListener("mouseleave", () => {
-                cursorOutline.style.transform =
-                    "translate(-50%, -50%) scale(1)";
-            });
-        });
-
     } else {
-        /* Mobile: disable custom cursor */
+        /* Mobile Cursor Disable */
         if (cursorDot) cursorDot.style.display = "none";
         if (cursorOutline) cursorOutline.style.display = "none";
         document.body.style.cursor = "auto";
@@ -85,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       3. APPS GALLERY MODAL + SCROLL LOCK
+       4. APPS MODAL + ARROWS + SCROLL LOCK
     ========================================================= */
     const modal = document.getElementById("appsModal");
     const modalImg = document.getElementById("appsModalImg");
@@ -123,16 +146,35 @@ document.addEventListener("DOMContentLoaded", () => {
             modalImg.src = galleryImages[currentIndex].src;
         }
 
+        /* Open */
         galleryImages.forEach((img, index) => {
             img.addEventListener("click", () => showImage(index));
         });
 
+        /* Close */
         if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
         modal.addEventListener("click", (e) => {
             if (e.target === modal) closeModal();
         });
 
+        /* Modal Arrows */
+        const leftArrow = document.querySelector(".apps-modal-arrow.left");
+        const rightArrow = document.querySelector(".apps-modal-arrow.right");
+
+        if (leftArrow)
+            leftArrow.addEventListener("click", (e) => {
+                e.stopPropagation();
+                prevImage();
+            });
+
+        if (rightArrow)
+            rightArrow.addEventListener("click", (e) => {
+                e.stopPropagation();
+                nextImage();
+            });
+
+        /* Keyboard */
         document.addEventListener("keydown", (e) => {
             if (modal.style.display !== "flex") return;
 
@@ -144,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       4. STUDIO CUSTOM DROPDOWN (Grey Active)
+       5. STUDIO CUSTOM DROPDOWN
     ========================================================= */
     document.querySelectorAll(".gc-dropdown").forEach(dropdown => {
 
@@ -161,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         items.forEach(item => {
             item.addEventListener("click", () => {
-
                 selectedBox.textContent = item.textContent;
                 hiddenInput.value = item.dataset.value;
 
@@ -172,70 +213,48 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        document.addEventListener("click", () => {
-            dropdown.classList.remove("open");
+        document.addEventListener("click", (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove("open");
+            }
         });
-
     });
 
 
     /* =========================================================
-       5. HEADER + FOOTER LOADER (FINAL FIX)
-       ✅ Works in ALL folders + GitHub Pages
+       6. HEADER + FOOTER LOADER + ACTIVE NAV
     ========================================================= */
+    const partialsPath = "partials/";
 
-    function getBasePath() {
-        let depth = window.location.pathname.split("/").length - 2;
-        return depth > 0 ? "../".repeat(depth) : "./";
-    }
-
-    const BASE = getBasePath();
-
-    /* ---------- LOAD HEADER ---------- */
-    fetch(BASE + "partials/header.html")
+    fetch(partialsPath + "header.html")
         .then(res => res.text())
         .then(html => {
-
             const mount = document.getElementById("site-header");
             if (mount) mount.innerHTML = html;
 
-            /* Auto Active Nav */
-            let path = window.location.pathname
-                .replace(/\/$/, "")
-                .split("/")
-                .pop();
-
-            if (path === "" || path === "index.html") path = "home";
-            path = path.replace(".html", "");
+            let current = window.location.pathname.split("/").filter(Boolean).pop();
+            if (!current) current = "home";
 
             document.querySelectorAll("header nav a").forEach(link => {
-                if (link.dataset.nav === path) {
+                if (link.dataset.nav === current.replace(".html", "")) {
                     link.classList.add("active");
                 }
             });
+        });
 
-        })
-        .catch(() => console.warn("Header failed to load"));
-
-
-    /* ---------- LOAD FOOTER ---------- */
-    fetch(BASE + "partials/footer.html")
+    fetch(partialsPath + "footer.html")
         .then(res => res.text())
         .then(html => {
-
             const mount = document.getElementById("site-footer");
             if (mount) mount.innerHTML = html;
 
             const year = document.getElementById("year");
             if (year) year.textContent = new Date().getFullYear();
-
-        })
-        .catch(() => console.warn("Footer failed to load"));
-
+        });
 
 
     /* =========================================================
-       6. DESIGN FORM AJAX SUBMIT
+       7. DESIGN FORM AJAX SUBMIT + SUCCESS MESSAGE
     ========================================================= */
     const designForm = document.getElementById("designForm");
 
@@ -246,16 +265,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const successMsg = document.getElementById("design-success");
             const submitBtn = designForm.querySelector("button");
-
             const originalText = submitBtn.innerText;
-            const formData = new FormData(designForm);
 
             submitBtn.innerText = "SENDING...";
 
             try {
                 const response = await fetch(designForm.action, {
                     method: "POST",
-                    body: formData,
+                    body: new FormData(designForm),
                     headers: { Accept: "application/json" }
                 });
 
@@ -264,12 +281,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     designForm.reset();
                     submitBtn.innerText = "SENT ✅";
 
-                    if (successMsg) successMsg.style.display = "block";
+                    if (successMsg) {
+                        successMsg.style.display = "block";
+                    }
 
                     setTimeout(() => {
                         submitBtn.innerText = originalText;
                         if (successMsg) successMsg.style.display = "none";
-                    }, 3000);
+                    }, 4000);
 
                 } else {
                     alert("Submission failed. Try again.");
@@ -281,7 +300,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.innerText = originalText;
             }
         });
-
     }
 
 });
