@@ -121,13 +121,6 @@ ul {
     list-style: none;
 }
 
-/* ✅ FIX 2: Premium Active State (Toggled by JS) */
-.cursor-outline.active {
-    transform: translate(-50%, -50%) scale(1.6);
-    border-color: rgba(255,106,26,0.9);
-    background-color: rgba(255,106,26,0.05);
-}
-
 /* --- CURSOR VISIBILITY RULES --- */
 
 /* 1. Text Inputs: Show 'I-beam' */
@@ -402,7 +395,7 @@ input, textarea, select, button {
 .gc-dropdown-list li {
     padding: 14px 16px;
     color: #fff;
-    cursor: pointer !important;
+    cursor: none !important;
     transition: 0.2s ease;
 }
 
