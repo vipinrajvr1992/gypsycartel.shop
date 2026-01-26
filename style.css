@@ -256,6 +256,32 @@ select:focus {
 }
 
 /* =========================================================
+   DESIGN PAGE — FINAL FIX (THIS IS THE IMPORTANT PART)
+========================================================= */
+.design-page .grid-2 {
+    align-items: center;
+}
+
+.design-page .grid-2 > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem; /* ✅ EXACT GAP CONTROL */
+}
+
+.design-page .grid-2 > div:first-child img {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    margin: 0; /* 🔒 NO INTERFERENCE */
+}
+
+.design-page h1 {
+    margin: 0; /* 🔒 NO HIDDEN SPACING */
+}
+
+/* =========================================================
    CONTACT PAGE
 ========================================================= */
 .contact-page .container {
@@ -335,7 +361,24 @@ footer a:hover {
     .grid-2 { grid-template-columns: 1fr; }
     .footer-content { grid-template-columns: 1fr; }
 }
+/* =========================================================
+   DESIGN PAGE — LOGO → HEADING GAP (EXACT 2rem)
+========================================================= */
 
+/* Kill all unexpected spacing first */
+.design-page .grid-2 > div:first-child {
+    gap: 0; /* disable flex gap completely */
+}
+
+/* Control ONLY logo → heading */
+.design-page .mg-logo-wrap {
+    margin-bottom: 2rem !important;
+}
+
+/* Ensure heading has no extra top margin */
+.design-page h1 {
+    margin-top: 0 !important;
+}
 /* ================================
    HERO — CLEAN CENTERED LOGO
 ================================ */
@@ -429,7 +472,86 @@ footer a:hover {
     justify-content: center;
     flex-wrap: wrap;
 }
+/* =========================================================
+   DESIGN PAGE — PREMIUM MOTION POLISH (SAFE)
+   No layout changes • No JS • No conflicts
+========================================================= */
 
+/* Smooth page load */
+.design-page {
+    animation: pageFade 0.6s ease forwards;
+}
+
+@keyframes pageFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* MG Logo — subtle float */
+.design-page .mg-logo-wrap img {
+    animation: logoFloat 6s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Heading reveal */
+.design-page h1 {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: textReveal 0.7s ease forwards;
+    animation-delay: 0.15s;
+}
+
+.design-page p {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: textReveal 0.7s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes textReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form card elevation */
+.design-page .grid-2 > div:last-child {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.design-page .grid-2 > div:last-child:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+}
+
+/* Button micro interaction */
+.design-page .btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.design-page .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.design-page .btn-primary:hover::after {
+    transform: translateX(100%);
+}
 /* =========================================================
    GLOBAL PAGE LOAD SMOOTHNESS
    (About, Fashion, Contact, Legal)
@@ -522,7 +644,24 @@ footer a:hover {
 .btn:hover::after {
     transform: translateX(100%);
 }
+/* =========================================
+   DESIGN PAGE — FINAL LOGO GAP FIX (LOCKED)
+========================================= */
 
+/* Remove flex gap completely */
+.design-page .grid-2 > div:first-child {
+    gap: 0 !important;
+}
+
+/* Control logo → text gap ONLY here */
+.design-page .mg-logo-wrap {
+    margin-bottom: 1.2rem !important; /* 👈 adjust this value */
+}
+
+/* Kill heading top margin */
+.design-page h1 {
+    margin-top: 0 !important;
+}
 /* =========================================
    HOME PAGE — HERO SMOOTH LOADING
 ========================================= */
@@ -771,7 +910,39 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
 .apps-modal-arrow.right {
     right: 24px;
 }
+/* ===============================
+   PREMIUM CAREER FOOTER ANIMATION
+================================ */
 
+/* Open Roles Link (FINAL ACTIVE) */
+.career-open-link {
+    display: inline-block;
+    color: var(--primary-orange);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.career-open-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-orange);
+    transition: 0.35s ease;
+}
+
+.career-open-link:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.career-open-link:hover::after {
+    width: 100%;
+}
 /* =========================================================
    HOME PAGE — PREMIUM CONTENT SECTIONS (SAFE ADD)
    Only used in index.html • No theme conflicts
@@ -926,113 +1097,136 @@ body.select-open select,
 body.select-open option {
     cursor: auto !important;
 }
+/* =========================================
+   GYPSY CARTEL — CUSTOM DROPDOWN (STUDIO)
+   Cursor works perfectly inside
+========================================= */
 
-/* =========================================================
-   FOOTER — PREMIUM SWIPE UNDERLINE (GLOBAL FIX)
-   View Open Roles → Hover Animation
-========================================================= */
-
-.footer-openroles {
+.gc-dropdown {
     position: relative;
-    display: inline-block;
-    font-weight: 500;
-    color: #ffffff;
-    transition: color 0.25s ease;
-}
-
-/* White underline swipe effect */
-.footer-openroles::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 2px;
-    background: #ffffff;
-    transition: width 0.35s ease;
-}
-
-/* Hover = Orange text */
-.footer-openroles:hover {
-    color: var(--primary-orange);
-}
-
-/* Underline swipe */
-.footer-openroles:hover::after {
     width: 100%;
-}
-/* =========================================================
-   STUDIO PAGE — FINAL SAFE ALIGNMENT OVERRIDE
-   Does NOT affect other pages
-========================================================= */
-
-.design-page .grid-2 > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    margin-bottom: 20px;
+    font-family: inherit;
 }
 
-/* Ribbon → Logo gap */
-.design-page .studio-ribbon {
-    margin-bottom: 4rem !important;
-}
-
-/* Logo → Heading gap */
-.design-page .mg-logo-wrap {
-    margin-bottom: 2rem !important;
-}
-
-/* Heading → Paragraph gap */
-.design-page h1 {
-    margin-bottom: 1rem !important;
-    line-height: 1.2;
-}
-
-/* Paragraph alignment (3 clean lines) */
-.design-page p {
-    max-width: 440px;
-    line-height: 1.6;
-    text-wrap: balance;
-}
-
-
-/* =========================================================
-   STUDIO DROPDOWN — FINAL PREMIUM GREY OVERRIDE
-   Overrides old orange dropdown styles safely
-========================================================= */
-
-.design-page .gc-dropdown-selected {
-    background: rgba(22,22,22,0.96) !important;
-    border: 1px solid rgba(255,255,255,0.10) !important;
-    border-radius: 12px !important;
-    color: #ffffff !important;
-}
-
-.design-page .gc-dropdown-selected:hover {
-    border-color: rgba(255,255,255,0.25) !important;
-    box-shadow: 0 0 18px rgba(255,255,255,0.08) !important;
+/* Selected Box */
+.gc-dropdown-selected {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-soft);
+    padding: 14px;
+    color: #fff;
+    cursor: none;
+    user-select: none;
 }
 
 /* Dropdown List */
-.design-page .gc-dropdown-list {
-    background: rgba(15,15,15,0.98) !important;
-    border-radius: 14px !important;
-
-    /* No scroll */
-    max-height: none !important;
-    overflow: hidden !important;
-
-    box-shadow: 0 18px 55px rgba(0,0,0,0.75) !important;
+.gc-dropdown-list {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    background: #111;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    display: none;
+    z-index: 9999;
 }
 
 /* Items */
-.design-page .gc-dropdown-list li {
-    color: #ffffff !important;
+.gc-dropdown-list li {
+    padding: 14px;
+    color: #fff;
+    cursor: none;
+    transition: 0.2s ease;
 }
 
-/* Hover Grey */
-.design-page .gc-dropdown-list li:hover {
-    background: rgba(255,255,255,0.08) !important;
-    color: #ffffff !important;
+/* Hover */
+.gc-dropdown-list li:hover {
+    background: rgba(255,106,26,0.15);
+    color: var(--primary-orange);
 }
+
+/* Active Open */
+.gc-dropdown.open .gc-dropdown-list {
+    display: block;
+}
+/* =========================================
+   STUDIO — PREMIUM CUSTOM DROPDOWN (SAFE)
+   No theme change • Cursor works perfectly
+========================================= */
+
+.gc-dropdown {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.gc-dropdown-selected {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-soft);
+    padding: 14px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: none;
+    user-select: none;
+    transition: 0.25s ease;
+}
+
+.gc-dropdown-selected:hover {
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 2px rgba(255,106,26,0.15);
+}
+
+.gc-dropdown-list {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: #0f0f0f;
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+
+    max-height: 240px;
+    overflow-y: auto;
+
+    display: none;
+    z-index: 9999;
+
+    overscroll-behavior: contain;
+}
+
+.gc-dropdown-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gc-dropdown-list::-webkit-scrollbar-thumb {
+    background: rgba(255,106,26,0.35);
+    border-radius: 10px;
+}
+
+.gc-dropdown-list li {
+    padding: 14px 16px;
+    color: #fff;
+    cursor: none;
+    transition: 0.2s ease;
+}
+
+.gc-dropdown-list li:hover {
+    background: rgba(255,106,26,0.12);
+    color: var(--primary-orange);
+}
+
+.gc-dropdown.open .gc-dropdown-list {
+    display: block;
+}
+
+
+/* STUDIO FIX */
