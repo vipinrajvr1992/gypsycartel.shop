@@ -1278,3 +1278,24 @@ body.select-open option {
     line-height: 1.65;
     font-size: 1rem;
 }
+/* =========================================
+   CAREERS ROLES — ORANGE TITLE + GREY TEXT
+========================================= */
+
+.career-page .career-roles {
+    margin-top: 18px;
+    padding-left: 0;
+}
+
+.career-page .career-roles li {
+    margin-bottom: 14px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted); /* Grey for description */
+}
+
+/* Role Name Highlight */
+.career-page .career-roles li span {
+    color: var(--primary-orange);
+    font-weight: 700;
+}
