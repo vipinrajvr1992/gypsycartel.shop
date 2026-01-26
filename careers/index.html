@@ -14,55 +14,31 @@
   <!-- MAIN THEME -->
   <link rel="stylesheet" href="/style.css">
 
-  <!-- CAREERS PAGE STYLE -->
+  <!-- PREMIUM CAREERS PAGE FIX -->
   <style>
-    body {
-      background: linear-gradient(120deg, #000 60%, #1a1a1a 100%);
-    }
 
-    /* HERO WRAP */
+    /* ===============================
+       CAREERS WRAP (NO SHAPES)
+    =============================== */
     .careers-wrap {
-      position: relative;
-      padding: 90px 20px;
-      overflow: hidden;
+      padding: 160px 20px 90px;
     }
 
-    /* DIAGONAL ORANGE SHAPE */
-    .careers-wrap::before {
-      content: "";
-      position: absolute;
-      top: -120px;
-      right: -120px;
-      width: 320px;
-      height: 320px;
-      background: var(--primary-orange);
-      transform: rotate(45deg);
-      opacity: 0.9;
-    }
-
-    /* DIAGONAL DARK SHAPE */
-    .careers-wrap::after {
-      content: "";
-      position: absolute;
-      bottom: -160px;
-      left: -160px;
-      width: 420px;
-      height: 420px;
-      background: rgba(255,255,255,0.04);
-      transform: rotate(45deg);
-    }
-
-    /* HERO PANEL */
+    /* ===============================
+       MAIN PANEL (MATCH OTHER PAGES)
+    =============================== */
     .careers-panel {
       max-width: 1100px;
       margin: auto;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-soft);
       border-radius: 18px;
       padding: 70px 55px;
-      backdrop-filter: blur(12px);
-      position: relative;
-      z-index: 2;
+      backdrop-filter: blur(14px);
+
+      /* Premium subtle glow */
+      box-shadow: 0 0 80px rgba(255,106,26,0.08);
+
       opacity: 0;
       animation: pageFade 0.8s ease forwards;
     }
@@ -71,11 +47,13 @@
       to { opacity: 1; }
     }
 
-    /* REVEAL */
+    /* ===============================
+       TEXT REVEAL (GLOBAL STYLE)
+    =============================== */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      animation: textReveal 0.8s ease forwards;
+      transform: translateY(16px);
+      animation: textReveal 0.75s ease forwards;
     }
 
     .delay-1 { animation-delay: 0.15s; }
@@ -90,11 +68,13 @@
       }
     }
 
-    /* TITLE */
+    /* ===============================
+       HERO TITLE
+    =============================== */
     .careers-panel h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      margin-bottom: 12px;
+      font-size: 3.8rem;
+      margin-bottom: 14px;
+      text-align: center;
     }
 
     .careers-panel h1 span {
@@ -103,23 +83,25 @@
 
     .careers-panel p {
       max-width: 760px;
-      margin-bottom: 50px;
+      margin: 0 auto 55px;
       font-size: 1rem;
-      color: var(--text-muted);
       line-height: 1.7;
+      text-align: center;
+      color: var(--text-muted);
     }
 
-    /* POSITIONS GRID */
+    /* ===============================
+       POSITIONS GRID
+    =============================== */
     .career-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
     }
 
-    /* CARD */
     .career-card {
       background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border-soft);
       padding: 28px;
       border-radius: 16px;
       transition: 0.35s ease;
@@ -128,19 +110,19 @@
     .career-card:hover {
       border-color: var(--primary-orange);
       transform: translateY(-7px);
-      box-shadow: 0 0 30px rgba(255,106,26,0.15);
+      box-shadow: 0 20px 50px rgba(255,106,26,0.12);
     }
 
     .career-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       margin-bottom: 10px;
     }
 
     .career-card p {
-      font-size: 0.9rem;
-      color: #aaa;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      color: var(--text-muted);
       margin-bottom: 14px;
+      line-height: 1.6;
     }
 
     .career-tag {
@@ -148,15 +130,18 @@
       letter-spacing: 1px;
       color: var(--primary-orange);
       font-weight: 600;
+      text-transform: uppercase;
     }
 
-    /* APPLY BOX */
+    /* ===============================
+       APPLY BOX (PREMIUM CTA)
+    =============================== */
     .apply-box {
-      margin-top: 70px;
-      padding: 50px;
+      margin-top: 75px;
+      padding: 55px 35px;
       border-radius: 18px;
-      background: rgba(255,106,26,0.07);
-      border: 1px solid rgba(255,106,26,0.3);
+      background: rgba(255,106,26,0.06);
+      border: 1px solid rgba(255,106,26,0.25);
       text-align: center;
     }
 
@@ -166,11 +151,13 @@
     }
 
     .apply-box p {
-      margin-bottom: 30px;
-      color: #bbb;
+      margin: 0 auto 28px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1rem;
     }
 
-    /* APPLY BUTTONS → USE HOME BUTTON STYLE */
+    /* Buttons = Home Style */
     .apply-buttons {
       display: flex;
       justify-content: center;
@@ -178,23 +165,31 @@
       flex-wrap: wrap;
     }
 
-    /* NOTE */
     .apply-note {
       margin-top: 18px;
       font-size: 0.85rem;
-      color: #888;
+      color: var(--text-muted);
     }
 
-    /* RESPONSIVE */
+    /* ===============================
+       RESPONSIVE
+    =============================== */
     @media(max-width:768px) {
+
       .careers-panel {
-        padding: 55px 25px;
+        padding: 55px 22px;
       }
 
       .careers-panel h1 {
-        font-size: 2.8rem;
+        font-size: 2.7rem;
       }
+
+      .apply-box {
+        padding: 45px 20px;
+      }
+
     }
+
   </style>
 </head>
 
@@ -207,7 +202,10 @@
 <!-- HEADER -->
 <div id="site-header"></div>
 
+
+<!-- CAREERS CONTENT -->
 <section class="careers-wrap">
+
   <div class="careers-panel">
 
     <!-- HERO -->
@@ -262,15 +260,15 @@
 
     </div>
 
-    <!-- APPLY -->
+    <!-- APPLY SECTION -->
     <div class="apply-box reveal delay-4">
+
       <h2>Apply for Collaboration</h2>
 
       <p>
         Send your portfolio directly through WhatsApp or Instagram DM.
       </p>
 
-      <!-- HOME STYLE BUTTONS -->
       <div class="apply-buttons">
 
         <a href="https://wa.me/918086604808?text=Hello%20Gypsy%20Cartel,%20I%20want%20to%20apply%20for%20freelance%20collaboration."
@@ -290,10 +288,12 @@
       <div class="apply-note">
         Remote • Project-Based • India & UAE Collaborations Only
       </div>
+
     </div>
 
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <div id="site-footer"></div>
