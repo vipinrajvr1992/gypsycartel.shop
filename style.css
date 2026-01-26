@@ -5,7 +5,7 @@
    INCLUDES:
    - Studio Fix (Locked)
    - Apps Gallery (Horizontal + Modal)
-   - Custom Cursor (Physics Enabled + Mobile Safe)
+   - Custom Cursor (Smart Logic)
    - Home Page Sections & Animations
    - Global Page Transitions
 ========================================================= */
@@ -44,7 +44,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* ✅ FIXED: Removed cursor:none to allow native inputs */
+    cursor: none; /* Default to Custom Cursor */
 }
 
 html {
@@ -61,9 +61,6 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-    
-    /* ✅ FIXED: Custom cursor applies only to body */
-    cursor: none; 
 }
 
 /* Global Grid Overlay Pattern */
@@ -98,7 +95,6 @@ a {
     color: inherit;
     text-decoration: none;
     transition: 0.3s ease;
-    cursor: pointer !important; /* Ensure links are clickable */
 }
 
 ul {
@@ -106,7 +102,7 @@ ul {
 }
 
 /* =========================================================
-   5. CUSTOM CURSOR (PHYSICS READY)
+   5. CUSTOM CURSOR & FIXES
 ========================================================= */
 .cursor-dot,
 .cursor-outline {
@@ -115,7 +111,7 @@ ul {
     left: 0;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    pointer-events: none !important; /* Crucial: clicks pass through */
+    pointer-events: none;
     z-index: 10000;
 }
 
@@ -129,34 +125,35 @@ ul {
     width: 40px;
     height: 40px;
     border: 1px solid rgba(255,255,255,0.6);
-    
-    /* ✅ FIXED: No transition = No lag (JS handles smoothing) */
-    transition: none !important; 
+    transition: transform 0.15s ease;
 }
 
-/* --- CURSOR OVERRIDES (PATCH 1: CORRECT TYPES) --- */
+/* --- CRITICAL CURSOR FIXES --- */
 
-/* 1. Text Inputs: Show 'I-beam' cursor */
-input,
-textarea {
-    cursor: text !important;
+/* Force custom cursor hidden in specific states */
+.cursor-fix {
+    cursor: none !important;
 }
 
-/* 2. Selects & Labels: Show 'Pointer' hand */
-select,
-label {
-    cursor: pointer !important;
+/* 1. Native cursor for Select elements (Usability) */
+select {
+    cursor: none !important;
 }
 
-/* 3. Clickables: Show 'Pointer' hand */
-a, button, .btn, .apps-gallery-img {
-    cursor: pointer !important;
+select option {
+    cursor: none !important;
 }
 
-/* 4. Hide Custom Cursor when Native is forced (e.g., inside open selects) */
+/* 2. Hide custom cursor when a dropdown is active/open */
 body.select-open .cursor-dot,
 body.select-open .cursor-outline {
     opacity: 0 !important;
+}
+
+/* 3. Restore system cursor inside open selects */
+body.select-open select,
+body.select-open option {
+    cursor: auto !important;
 }
 
 /* =========================================================
@@ -175,7 +172,6 @@ header {
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-soft);
     z-index: 1000;
-    animation: none !important; /* Prevent header fade-in */
 }
 
 .logo-icon {
@@ -191,47 +187,29 @@ header nav ul {
 header nav a {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #ffffff !important; /* Default White */
+    color: var(--text-muted);
     position: relative;
-    transition: none !important; /* Disable color transition */
 }
 
-/* --- NAV HIGHLIGHT LOGIC --- */
-
-/* 1. Active Page = Orange Text */
+header nav a:hover,
 header nav a.active {
     color: var(--primary-orange) !important;
 }
 
-/* 2. Underline Base (Hidden) */
-header nav a::after {
+/* Active Link Indicator */
+header nav a.active::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: -6px;
-    width: 0%;
+    width: 100%;
     height: 2px;
     background: var(--primary-orange);
-    border-radius: 10px;
-    transition: width 0.3s ease;
-}
-
-/* 3. Hover = Show Underline */
-header nav a:hover::after {
-    width: 100%;
-}
-
-/* 4. Active Link logic: No underline unless hovered */
-header nav a.active::after {
-    width: 0% !important;
-}
-
-header nav a.active:hover::after {
-    width: 100% !important;
+    opacity: 1;
 }
 
 /* =========================================================
-   7. BUTTONS & INTERACTIONS
+   7. BUTTONS & MICRO-INTERACTIONS
 ========================================================= */
 .btn {
     display: inline-block;
@@ -243,10 +221,9 @@ header nav a.active:hover::after {
     transition: 0.35s ease;
     position: relative;
     overflow: hidden;
-    cursor: pointer !important;
 }
 
-/* Shine Effect */
+/* Shine Effect on Hover */
 .btn::after {
     content: "";
     position: absolute;
@@ -301,8 +278,6 @@ header nav a.active:hover::after {
     padding: 140px 20px 80px;
     position: relative;
     z-index: 2;
-    /* Global Page Fade In */
-    animation: pageFade 0.65s ease forwards;
 }
 
 .grid-2 {
@@ -342,6 +317,7 @@ select:focus {
 
 /* =========================================================
    10. PREMIUM CUSTOM DROPDOWN
+   (Supports Scrolling & Hover)
 ========================================================= */
 .gc-dropdown {
     position: relative;
@@ -356,7 +332,7 @@ select:focus {
     padding: 14px;
     border-radius: 10px;
     color: #fff;
-    cursor: pointer !important;
+    cursor: none;
     user-select: none;
     transition: 0.25s ease;
 }
@@ -377,6 +353,8 @@ select:focus {
     padding: 6px 0;
     margin: 0;
     list-style: none;
+
+    /* Scrollable if list is long */
     max-height: 240px;
     overflow-y: auto;
     display: none;
@@ -397,12 +375,11 @@ select:focus {
 .gc-dropdown-list li {
     padding: 14px 16px;
     color: #fff;
-    cursor: pointer !important;
+    cursor: none;
     transition: 0.2s ease;
 }
 
-.gc-dropdown-list li:hover,
-.gc-dropdown-list li.active {
+.gc-dropdown-list li:hover {
     background: rgba(255,106,26,0.12);
     color: var(--primary-orange);
 }
@@ -423,6 +400,7 @@ select:focus {
     align-items: center;
     justify-content: center;
     text-align: center;
+    /* Subtle Orange Pulse Background */
     background:
         radial-gradient(circle at 30% 20%, rgba(255,106,26,0.12), transparent 55%),
         radial-gradient(circle at 70% 80%, rgba(255,106,26,0.10), transparent 55%),
@@ -438,6 +416,7 @@ select:focus {
     text-align: center;
 }
 
+/* Lottie Container */
 .hero-lottie-wrap {
     width: 420px;
     max-width: 90vw;
@@ -453,11 +432,13 @@ select:focus {
     height: 100%;
 }
 
+/* Tagline with Reveal Animation */
 .hero-tagline {
     font-size: 1.25rem;
     color: var(--text-muted);
     max-width: 720px;
     margin-bottom: 1.8rem;
+    
     opacity: 0;
     transform: translateY(14px);
     animation: heroTextReveal 0.7s ease forwards;
@@ -465,24 +446,31 @@ select:focus {
 }
 
 @keyframes heroTextReveal {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* Hero Buttons */
 .hero-actions {
     display: flex;
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
+    
     opacity: 0;
     transform: translateY(14px);
     animation: heroTextReveal 0.7s ease forwards;
     animation-delay: 0.3s;
 }
 
-/* --- HOME CONTENT --- */
+/* --- HOME CONTENT SECTIONS --- */
 .home-section {
     padding: 90px 20px;
     text-align: center;
+    
+    /* Scroll Reveal Animation */
     opacity: 0;
     transform: translateY(18px);
     animation: homeReveal 0.8s ease forwards;
@@ -509,6 +497,7 @@ select:focus {
     margin-top: 50px;
 }
 
+/* Service Card */
 .service-card {
     background: var(--bg-surface);
     padding: 28px;
@@ -537,21 +526,45 @@ select:focus {
     line-height: 1.6;
 }
 
+/* Guidelines List */
+.guideline-list {
+    max-width: 720px;
+    margin: 35px auto 0;
+    text-align: left;
+    color: var(--text-muted);
+    line-height: 1.9;
+}
+
+.guideline-list li {
+    margin-bottom: 10px;
+}
+
+/* CTA Section */
 .home-cta {
     padding: 90px 20px;
     background: var(--bg-surface);
     border-top: 1px solid var(--border-soft);
     text-align: center;
+    
     opacity: 0;
     transform: translateY(18px);
     animation: homeReveal 0.8s ease forwards;
     animation-delay: 0.75s;
 }
 
-.home-cta h2 { font-size: 2.2rem; margin-bottom: 18px; }
-.home-cta p { max-width: 750px; margin: 0 auto 30px; color: var(--text-muted); line-height: 1.7; }
+.home-cta h2 {
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+}
 
-/* Staggered Delay */
+.home-cta p {
+    max-width: 750px;
+    margin: 0 auto 30px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Staggered Delay for Home Sections */
 .home-section:nth-of-type(1) { animation-delay: 0.15s; }
 .home-section:nth-of-type(2) { animation-delay: 0.30s; }
 .home-section:nth-of-type(3) { animation-delay: 0.45s; }
@@ -562,21 +575,37 @@ select:focus {
 }
 
 /* =========================================================
-   12. DESIGN / STUDIO PAGE
+   12. DESIGN / STUDIO PAGE (LOCKED FIXES)
 ========================================================= */
-.design-page .grid-2 { align-items: center; }
 
-/* Left Column */
+/* Smooth Fade In */
+.design-page {
+    animation: pageFade 0.6s ease forwards;
+}
+
+/* Layout Alignment */
+.design-page .grid-2 {
+    align-items: center;
+}
+
+/* Left Column: Logo & Text */
 .design-page .grid-2 > div:first-child {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    
+    /* [LOCKED] DISABLE FLEX GAP TO CONTROL SPACING MANUALLY */
     gap: 0 !important; 
 }
 
-.design-page .mg-logo-wrap { margin-bottom: 1.2rem !important; }
+/* Logo Wrapper */
+.design-page .mg-logo-wrap {
+    /* [LOCKED] EXACT SPACING TO HEADING */
+    margin-bottom: 1.2rem !important; 
+}
 
+/* MG Logo Animation */
 .design-page .mg-logo-wrap img {
     max-width: 260px;
     width: 100%;
@@ -589,28 +618,38 @@ select:focus {
     50% { transform: translateY(-6px); }
 }
 
+/* Heading Typography */
 .design-page h1 {
-    margin-top: 0 !important;
+    margin-top: 0 !important; /* Safety Lock */
     margin-bottom: 1rem;
     line-height: 1.15;
+    
+    /* Animation */
     opacity: 0;
     transform: translateY(12px);
     animation: textReveal 0.7s ease forwards;
     animation-delay: 0.15s;
 }
 
+/* Description Typography */
 .design-page .studio-desc {
     max-width: 520px !important;
     line-height: 1.65;
     text-align: center;
+    
+    /* Animation */
     opacity: 0;
     transform: translateY(12px);
     animation: textReveal 0.7s ease forwards;
     animation-delay: 0.3s;
 }
 
-.design-page .studio-highlight { color: var(--primary-orange) !important; }
+/* Highlight Text */
+.design-page .studio-highlight {
+    color: var(--primary-orange) !important;
+}
 
+/* Right Column: Form Elevation */
 .design-page .grid-2 > div:last-child {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
@@ -620,6 +659,7 @@ select:focus {
     box-shadow: 0 25px 60px rgba(0,0,0,0.45);
 }
 
+/* Success Message */
 #design-success {
     display: none;
     margin-top: 14px;
@@ -629,15 +669,25 @@ select:focus {
 }
 
 /* =========================================================
-   13. APPS PAGE & GALLERY
+   13. APPS PAGE & GALLERY (FULL FEATURE)
 ========================================================= */
+
+/* Apps Hero Image Hover Effect */
 .apps-page .apps-image {
     transition: transform 0.8s cubic-bezier(.22,.61,.36,1);
     will-change: transform;
 }
-.apps-page .apps-image:hover { transform: translateY(0) scale(1.06) !important; }
 
-.apps-gallery { margin-top: 80px; }
+.apps-page .apps-image:hover {
+    /* Safe Scale override */
+    transform: translateY(0) scale(1.06) !important;
+}
+
+/* --- HORIZONTAL GALLERY --- */
+.apps-gallery {
+    margin-top: 80px;
+}
+
 .apps-gallery-title {
     text-align: center;
     margin-bottom: 24px;
@@ -646,7 +696,10 @@ select:focus {
     letter-spacing: 2px;
 }
 
-.apps-gallery-wrapper { position: relative; }
+.apps-gallery-wrapper {
+    position: relative;
+}
+
 .apps-gallery-track {
     display: flex;
     gap: 24px;
@@ -656,27 +709,31 @@ select:focus {
     padding-bottom: 12px;
 }
 
-/* Scrollbar */
-.apps-gallery-track::-webkit-scrollbar { height: 6px; }
+/* Gallery Scrollbar Styling */
+.apps-gallery-track::-webkit-scrollbar {
+    height: 6px;
+}
 .apps-gallery-track::-webkit-scrollbar-thumb {
     background: rgba(255,106,26,0.35);
     border-radius: 10px;
 }
 
+/* Gallery Images */
 .apps-gallery-img {
     width: 320px;
     border-radius: 12px;
-    cursor: pointer !important;
+    cursor: pointer;
     scroll-snap-align: start;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     box-shadow: 0 10px 30px rgba(0,0,0,0.45);
 }
+
 .apps-gallery-img:hover {
     transform: scale(1.05);
     box-shadow: 0 20px 50px rgba(255,106,26,0.25);
 }
 
-/* Gallery Arrows */
+/* Gallery Navigation Arrows */
 .apps-gallery-arrow {
     position: absolute;
     top: 50%;
@@ -691,18 +748,20 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer !important;
+    cursor: pointer;
     z-index: 4;
     transition: 0.3s ease;
 }
+
 .apps-gallery-arrow:hover {
     background: rgba(255,106,26,0.12);
     box-shadow: 0 0 18px rgba(255,106,26,0.35);
 }
+
 .apps-gallery-arrow.left { left: -22px; }
 .apps-gallery-arrow.right { right: -22px; }
 
-/* Modal */
+/* --- APPS MODAL (LIGHTBOX) --- */
 .apps-modal {
     position: fixed;
     inset: 0;
@@ -712,15 +771,12 @@ select:focus {
     align-items: center;
     justify-content: center;
     z-index: 9999;
+    
+    /* ALLOW CURSOR IN MODAL */
     cursor: default;
 }
 
-/* ✅ PATCH 2: Hide custom cursor when hovering/inside modal */
-.apps-modal .cursor-dot,
-.apps-modal .cursor-outline {
-    opacity: 0 !important;
-}
-
+/* Modal Image */
 .apps-modal-img {
     max-width: 90%;
     max-height: 85vh;
@@ -728,21 +784,28 @@ select:focus {
     box-shadow: 0 30px 80px rgba(0,0,0,0.7);
     animation: modalZoom 0.25s ease;
 }
+
 @keyframes modalZoom {
     from { transform: scale(0.96); opacity: 0; }
-    to    { transform: scale(1); opacity: 1; }
+    to   { transform: scale(1); opacity: 1; }
 }
+
+/* Close Button */
 .apps-modal-close {
     position: absolute;
     top: 24px;
     right: 32px;
     font-size: 2rem;
     color: #fff;
-    cursor: pointer !important;
+    cursor: pointer;
     transition: 0.25s ease;
 }
-.apps-modal-close:hover { color: var(--primary-orange); }
 
+.apps-modal-close:hover {
+    color: var(--primary-orange);
+}
+
+/* Modal Arrows */
 .apps-modal-arrow {
     position: absolute;
     top: 50%;
@@ -757,39 +820,64 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer !important;
+    cursor: pointer;
     user-select: none;
     transition: 0.25s ease;
 }
+
 .apps-modal-arrow:hover {
     background: rgba(255,106,26,0.15);
     box-shadow: 0 0 18px rgba(255,106,26,0.35);
 }
+
 .apps-modal-arrow.left { left: 24px; }
 .apps-modal-arrow.right { right: 24px; }
 
 /* =========================================================
-   14. LEGAL, CONTACT & OTHERS
+   14. LEGAL, CONTACT & OTHER PAGES
 ========================================================= */
+
+/* --- LEGAL PAGE --- */
 .legal-page {
     max-width: 900px;
     margin: 0 auto;
     padding: 160px 20px 80px;
+    animation: pageFade 0.6s ease forwards;
 }
-.legal-page h1 span { color: var(--primary-orange); }
-.legal-page p { margin-bottom: 1.2rem; }
 
-.contact-page .container { padding-top: calc(80px + 2rem); }
-.contact-page h4 { color: var(--primary-orange); }
+.legal-page h1 span {
+    color: var(--primary-orange);
+}
+
+.legal-page p {
+    margin-bottom: 1.2rem;
+}
+
+/* --- CONTACT PAGE --- */
+.contact-page {
+    animation: pageFade 0.6s ease forwards;
+}
+
+.contact-page .container {
+    padding-top: calc(80px + 2rem);
+}
+
+.contact-page h4 {
+    color: var(--primary-orange);
+}
+
 .contact-page .grid-3 p,
-.contact-page .grid-3 a { color: #ffffff !important; }
+.contact-page .grid-3 a {
+    color: #ffffff !important;
+}
 
-/* WhatsApp Highlight */
+/* WhatsApp Link Highlight */
 .contact-page a[href*="wa.me"] {
     font-weight: 500;
-    color: var(--primary-orange) !important;
+    color: var(--primary-orange);
     transition: font-weight 0.25s ease, text-shadow 0.25s ease;
 }
+
 .contact-page a[href*="wa.me"]:hover {
     font-weight: 700;
     text-shadow: 0 0 12px rgba(255,106,26,0.35);
@@ -799,13 +887,24 @@ select:focus {
    15. GLOBAL ANIMATION CONTROLS
 ========================================================= */
 
-/* Fade In */
-@keyframes pageFade {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+/* Shared Page Fade In */
+/* Applies to all main pages and default body if not specified */
+.about-page,
+.fashion-page,
+.contact-page,
+.legal-page,
+.design-page,
+.careers-page,
+body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):not(.legal-page):not(.careers-page) {
+    animation: pageFade 0.6s ease forwards;
 }
 
-/* Text Reveal */
+@keyframes pageFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Text Reveal Stagger for About/Fashion/Contact */
 .about-page h1, .about-page p,
 .fashion-page h1, .fashion-page p,
 .contact-page h1, .contact-page p {
@@ -822,15 +921,19 @@ select:focus {
 }
 
 @keyframes textReveal {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Card Hover Elevation */
+/* Shared Card Hover Elevation */
 .about-page .container > div,
 .fashion-page .container > div,
 .contact-page .container > div {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
+
 .about-page .container > div:hover,
 .fashion-page .container > div:hover,
 .contact-page .container > div:hover {
@@ -844,7 +947,6 @@ select:focus {
 footer {
     background: linear-gradient(180deg, #0a0a0a, #050505);
     padding: 50px 5% 30px;
-    animation: none !important; /* Fixed position, no anim */
 }
 
 .footer-content {
@@ -864,9 +966,15 @@ footer {
     color: var(--text-muted);
 }
 
-footer a { color: #ffffff; cursor: pointer !important; }
-footer a:hover { color: var(--primary-orange); }
+footer a {
+    color: #ffffff;
+}
 
+footer a:hover {
+    color: var(--primary-orange);
+}
+
+/* Footer Career Link Animation */
 .career-open-link {
     display: inline-block;
     color: var(--primary-orange);
@@ -875,6 +983,7 @@ footer a:hover { color: var(--primary-orange); }
     position: relative;
     transition: 0.3s ease;
 }
+
 .career-open-link::after {
     content: "";
     position: absolute;
@@ -885,26 +994,105 @@ footer a:hover { color: var(--primary-orange); }
     background: var(--primary-orange);
     transition: 0.35s ease;
 }
-.career-open-link:hover { color: #fff; transform: translateX(4px); }
-.career-open-link:hover::after { width: 100%; }
 
-/* =========================================================
-   17. RESPONSIVE MEDIA QUERIES (PATCH 3: MOBILE SAFE)
-========================================================= */
-@media (max-width: 900px) {
-    .grid-2, .footer-content { grid-template-columns: 1fr; }
-    .design-page .grid-2 > div:first-child { margin-bottom: 60px; }
-    .hero-lottie-wrap { width: 100%; max-width: 300px; }
+.career-open-link:hover {
+    color: #fff;
+    transform: translateX(4px);
 }
 
-/* ✅ PATCH 3: Disable Custom Cursor Fully on Touch Devices */
-@media (hover: none) {
-    body {
-        cursor: auto !important;
+.career-open-link:hover::after {
+    width: 100%;
+}
+
+/* =========================================================
+   17. RESPONSIVE MEDIA QUERIES
+========================================================= */
+@media (max-width: 900px) {
+    /* Grid Collapses */
+    .grid-2,
+    .footer-content {
+        grid-template-columns: 1fr;
     }
 
-    .cursor-dot,
-    .cursor-outline {
-        display: none !important;
+    /* Design Page Mobile Adjustments */
+    .design-page .grid-2 > div:first-child {
+        margin-bottom: 60px;
     }
+    
+    /* Lottie Mobile Size */
+    .hero-lottie-wrap {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* =========================================================
+   NAV ACTIVE = ORANGE TEXT ONLY
+   NAV HOVER  = UNDERLINE ONLY (NO COLOR CHANGE)
+========================================================= */
+
+/* Default nav link text = WHITE */
+header nav a {
+    color: #ffffff !important;
+    position: relative;
+    transition: none !important; /* 🚫 No color animation */
+}
+
+/* ACTIVE PAGE = ORANGE TEXT */
+header nav a.active {
+    color: var(--primary-orange) !important;
+}
+
+/* Underline base hidden */
+header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-orange);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* HOVER = UNDERLINE ONLY */
+header nav a:hover::after {
+    width: 100%;
+}
+
+/* ACTIVE underline hidden unless hovered */
+header nav a.active::after {
+    width: 0% !important;
+}
+
+/* Active underline appears only when cursor is there */
+header nav a.active:hover::after {
+    width: 100% !important;
+}
+/* =========================================================
+   GLOBAL PAGE LOAD ANIMATION — ALL PAGES
+   (Header/Footer NOT affected)
+========================================================= */
+
+@keyframes pageFade {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animate only main page content */
+.container {
+    animation: pageFade 0.65s ease forwards;
+}
+
+/* ✅ Disable animation on Header + Footer completely */
+header,
+footer {
+    animation: none !important;
 }
