@@ -1209,10 +1209,11 @@ body.select-open option {
     position: relative;
     display: inline-block;
     font-weight: 500;
+    color: #ffffff;
     transition: color 0.25s ease;
 }
 
-/* White underline swipe effect */
+/* White underline swipe */
 .footer-careers a::after {
     content: "";
     position: absolute;
@@ -1224,7 +1225,7 @@ body.select-open option {
     transition: width 0.35s ease;
 }
 
-/* Hover = Orange text + underline swipe */
+/* Hover = Orange + underline swipe */
 .footer-careers a:hover {
     color: var(--primary-orange);
 }
