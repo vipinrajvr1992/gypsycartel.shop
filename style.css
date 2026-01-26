@@ -1,11 +1,11 @@
 /* =========================================================
    GYPSY CARTEL — FUTURISTIC MINIMAL THEME
-   VERSION: PRODUCTION MASTER v1.0
+   VERSION: PRODUCTION MASTER v1.1 (FINAL)
    STATUS: LOCKED + CLEAN
    
    INCLUDES:
    - Cinematic Global Page Load (Fade + Lift)
-   - Physics Cursor (Safe Mode + Class-based Zoom)
+   - Physics Cursor (Smart Hide on Typing)
    - Premium Apps Slider (Glow Arrows + Smooth Scroll)
    - Modal Lightbox (With Navigation Arrows)
    - Studio Dropdown Locked
@@ -123,15 +123,62 @@ ul {
 
 /* --- CURSOR VISIBILITY RULES --- */
 
-/* 1. Text Inputs: Show 'I-beam' */
+/* 1. Text Inputs: Show 'I-beam' (Native Cursor) */
 input, textarea {
     cursor: text !important;
 }
 
-/* 2. Interactables: Show 'none' */
+/* 2. Interactables: Force 'none' so Custom Cursor takes over */
 select, label, button, .btn, .apps-gallery-img {
     cursor: none !important;
 }
+
+
+/* =========================================================
+   5. CUSTOM CURSOR (PREMIUM STABLE + SMART HIDE)
+========================================================= */
+
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none !important;
+    z-index: 999999;
+}
+
+/* Dot */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-orange);
+    transition: opacity 0.2s ease; /* Fade out smooth */
+}
+
+/* Outline */
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.6);
+    transition: transform 0.15s ease, opacity 0.2s ease; /* Fade out smooth */
+}
+
+/* Hover Zoom */
+.cursor-outline.active {
+    transform: translate(-50%, -50%) scale(1.6);
+}
+
+/* ✅ SMART HIDE: Hides custom cursor when user is typing (Modern CSS) */
+/* This detects if ANY input/textarea on the page is focused */
+body:has(input:focus) .cursor-dot,
+body:has(textarea:focus) .cursor-dot,
+body:has(input:focus) .cursor-outline,
+body:has(textarea:focus) .cursor-outline {
+    opacity: 0;
+}
+
 
 /* =========================================================
    6. HEADER & NAVIGATION (LOCKED)
@@ -277,7 +324,7 @@ header nav a.active:hover::after {
     z-index: 2;
 }
 
-/* ✅ FIX 3: Safe Section Reveal (Only targets specific content) */
+/* ✅ Safe Section Reveal (Only targets specific content) */
 .container > section,
 .container > div:not(.gc-dropdown),
 .container > article {
@@ -553,7 +600,7 @@ input, textarea, select, button {
 
 
 /* =========================================================
-   13. LEGAL PAGES (TERMS & PRIVACY) - ✅ FIX 4
+   13. LEGAL PAGES (TERMS & PRIVACY)
 ========================================================= */
 .legal-page {
     max-width: 900px;
@@ -651,40 +698,4 @@ footer p a:hover,
     header nav a {
         cursor: none !important;
     }
-}
-/* =========================================================
-   5. CUSTOM CURSOR (OLD PREMIUM STABLE)
-========================================================= */
-
-.cursor-dot,
-.cursor-outline {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    pointer-events: none !important;
-    z-index: 999999;
-}
-
-/* Dot */
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--primary-orange);
-}
-
-/* Outline */
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255,255,255,0.6);
-
-    /* ✅ OLD PERFECT SMOOTH TRANSITION */
-    transition: transform 0.15s ease;
-}
-
-/* Hover Zoom */
-.cursor-outline.active {
-    transform: translate(-50%, -50%) scale(1.6);
 }
