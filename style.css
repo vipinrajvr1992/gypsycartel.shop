@@ -1025,3 +1025,29 @@ footer a:hover {
         max-width: 300px;
     }
 }
+
+/* =========================================================
+   NAV HOVER UNDERLINE — ORANGE (LIKE ACTIVE)
+========================================================= */
+
+header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-orange);
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+/* Hover underline */
+header nav a:hover::after {
+    width: 100%;
+}
+
+/* Active page underline stays full */
+header nav a.active::after {
+    width: 100%;
+}
