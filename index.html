@@ -143,8 +143,21 @@
             line-height: 1.9;
         }
 
+        /* ✅ ORANGE BULLETS ADDED */
         .guideline-list li {
+            position: relative;
+            padding-left: 22px;
             margin-bottom: 10px;
+        }
+
+        .guideline-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-orange);
+            font-size: 1.4rem;
+            line-height: 1;
         }
 
         .home-cta {
