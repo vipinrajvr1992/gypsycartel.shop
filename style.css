@@ -1,13 +1,15 @@
 /* =========================================================
    GYPSY CARTEL — FUTURISTIC MINIMAL THEME
-   VERSION: FINAL MASTER (FULL PRODUCTION)
-   STATUS: LOCKED + CLEAN + NO DUPLICATES
+   VERSION: PRODUCTION MASTER v1.0
+   STATUS: LOCKED + CLEAN
    
    INCLUDES:
-   - Physics Cursor (Safe Mode)
+   - Cinematic Global Page Load (Fade + Lift)
+   - Physics Cursor (Safe Mode + Class-based Zoom)
    - Premium Apps Slider (Glow Arrows + Smooth Scroll)
    - Modal Lightbox (With Navigation Arrows)
    - Studio Dropdown Locked
+   - Legal Pages Styling
    - Mobile Optimization (Cursor Disabled)
 ========================================================= */
 
@@ -46,7 +48,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* ✅ Safe: Cursor defined on Body only */
 }
 
 html {
@@ -68,6 +69,17 @@ body {
 
     /* ✅ Custom Cursor Active */
     cursor: none;
+
+    /* ✅ PREMIUM PAGE LOAD: Initial Invisible State */
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ✅ PREMIUM PAGE LOAD: Visible State (Triggered by JS) */
+body.page-loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Grid Overlay */
@@ -111,8 +123,9 @@ ul {
 
 
 /* =========================================================
-   5. CUSTOM CURSOR (PHYSICS READY)
+   5. CUSTOM CURSOR (PHYSICS + CLASS ZOOM)
 ========================================================= */
+/* High Z-Index to sit above everything */
 .cursor-dot,
 .cursor-outline {
     position: fixed;
@@ -121,7 +134,8 @@ ul {
     transform: translate(-50%, -50%);
     border-radius: 50%;
     pointer-events: none !important;
-    z-index: 99999;
+    z-index: 999999;
+    will-change: transform;
 }
 
 .cursor-dot {
@@ -134,11 +148,20 @@ ul {
     width: 40px;
     height: 40px;
     border: 1px solid rgba(255,255,255,0.6);
-    /* ✅ No Transition = Smooth Physics */
-    transition: none !important;
+    
+    /* ✅ FIX 2: Transition ONLY transform/colors. 
+       NEVER transition left/top (Physics handles that) */
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-/* --- CURSOR CRITICAL FIXES --- */
+/* ✅ FIX 2: Premium Active State (Toggled by JS) */
+.cursor-outline.active {
+    transform: translate(-50%, -50%) scale(1.6);
+    border-color: rgba(255,106,26,0.9);
+    background-color: rgba(255,106,26,0.05);
+}
+
+/* --- CURSOR VISIBILITY RULES --- */
 
 /* 1. Text Inputs: Show 'I-beam' */
 input, textarea {
@@ -150,7 +173,7 @@ select, label, button, .btn, .apps-gallery-img {
     cursor: pointer !important;
 }
 
-/* 3. Hide Custom Cursor Inside Modal */
+/* 3. Hide Custom Cursor Inside Modal Only */
 .apps-modal .cursor-dot,
 .apps-modal .cursor-outline {
     opacity: 0 !important;
@@ -173,7 +196,10 @@ header {
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-soft);
     z-index: 1000;
-    animation: none !important;
+    
+    /* Header never fades out, stays solid */
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 .logo-icon {
@@ -288,7 +314,7 @@ header nav a.active:hover::after {
 
 
 /* =========================================================
-   8. LAYOUT UTILITIES
+   8. LAYOUT UTILITIES & ANIMATION
 ========================================================= */
 .container {
     max-width: var(--container-width);
@@ -296,9 +322,22 @@ header nav a.active:hover::after {
     padding: 140px 20px 80px;
     position: relative;
     z-index: 2;
+}
 
-    /* Global Page Fade In */
-    animation: pageFade 0.65s ease forwards;
+/* ✅ FIX 3: Safe Section Reveal (Only targets specific content) */
+.container > section,
+.container > div:not(.gc-dropdown),
+.container > article {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: sectionReveal 0.8s ease forwards;
+}
+.container > *:nth-child(2) { animation-delay: 0.15s; }
+.container > *:nth-child(3) { animation-delay: 0.3s; }
+.container > *:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes sectionReveal {
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .grid-2 {
@@ -315,21 +354,7 @@ header nav a.active:hover::after {
 
 
 /* =========================================================
-   9. GLOBAL PAGE LOAD ANIMATION
-========================================================= */
-@keyframes pageFade {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Header/Footer Never Animate */
-header, footer {
-    animation: none !important;
-}
-
-
-/* =========================================================
-   10. FORMS & INPUTS
+   9. FORMS & INPUTS
 ========================================================= */
 input, textarea, select {
     width: 100%;
@@ -347,9 +372,28 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 0 0 0 2px var(--orange-glow);
 }
 
+/* ✅ Z-Index Fix: Forms never block cursor */
+input, textarea, select, button {
+    position: relative;
+    z-index: 5;
+}
+
+/* Success Message Hidden by Default */
+#design-success {
+    display: none;
+    margin-top: 18px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: rgba(0,255,120,0.08);
+    border: 1px solid rgba(0,255,120,0.35);
+    color: #00ff88 !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
 
 /* =========================================================
-   11. PREMIUM CUSTOM DROPDOWN
+   10. PREMIUM CUSTOM DROPDOWN
 ========================================================= */
 .gc-dropdown {
     position: relative;
@@ -392,7 +436,6 @@ input:focus, textarea:focus, select:focus {
     overscroll-behavior: contain;
 }
 
-/* Custom Scrollbar for Dropdown */
 .gc-dropdown-list::-webkit-scrollbar { width: 6px; }
 .gc-dropdown-list::-webkit-scrollbar-thumb { background: rgba(255,106,26,0.35); border-radius: 10px; }
 
@@ -415,7 +458,7 @@ input:focus, textarea:focus, select:focus {
 
 
 /* =========================================================
-   12. HOME PAGE & DESIGN PAGE
+   11. HOME PAGE & DESIGN PAGE
 ========================================================= */
 /* Hero */
 .hero {
@@ -441,7 +484,7 @@ input:focus, textarea:focus, select:focus {
 
 
 /* =========================================================
-   13. APPS PAGE (PREMIUM SLIDER + ARROWS + MODAL)
+   12. APPS PAGE (PREMIUM SLIDER + ARROWS + MODAL)
 ========================================================= */
 
 /* Premium Horizontal Track */
@@ -557,11 +600,46 @@ input:focus, textarea:focus, select:focus {
 
 
 /* =========================================================
+   13. LEGAL PAGES (TERMS & PRIVACY) - ✅ FIX 4
+========================================================= */
+.legal-page {
+    max-width: 900px;
+    margin: auto;
+    padding: 160px 20px 90px;
+}
+
+.legal-page h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: var(--primary-orange);
+}
+
+.legal-page h2 {
+    margin-top: 35px;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.legal-page p {
+    margin-top: 12px;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.legal-page a {
+    color: var(--primary-orange);
+}
+
+
+/* =========================================================
    14. FOOTER
 ========================================================= */
 footer {
     background: linear-gradient(180deg, #0a0a0a, #050505);
     padding: 50px 5% 30px;
+    /* Footer Never Fades */
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 .footer-content {
@@ -620,171 +698,4 @@ footer p a:hover,
     header nav a {
         cursor: pointer !important;
     }
-}
-/* =========================================================
-   STUDIO FORM SUCCESS MESSAGE — PREMIUM GREEN (HIDDEN DEFAULT)
-========================================================= */
-
-#design-success {
-    display: none; /* ✅ Hidden until request sent */
-    margin-top: 14px;
-    padding: 12px 16px;
-    border-radius: 10px;
-
-    background: rgba(0, 255, 136, 0.08);
-    border: 1px solid rgba(0, 255, 136, 0.35);
-
-    color: #00ff88;
-    font-size: 0.92rem;
-    font-weight: 600;
-
-    text-align: center;
-
-    box-shadow: 0 0 18px rgba(0, 255, 136, 0.15);
-}
-/* =========================================================
-   FORM SUCCESS MESSAGE — PREMIUM GREEN
-========================================================= */
-
-#design-success {
-    display: none;
-    margin-top: 18px;
-    padding: 14px 18px;
-    border-radius: 10px;
-
-    background: rgba(0,255,120,0.08);
-    border: 1px solid rgba(0,255,120,0.35);
-
-    color: #00ff88 !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-
-    animation: gcPageLoad 0.5s ease;
-}
-/* =========================================================
-   LEGAL PAGES — TERMS + PRIVACY PREMIUM THEME
-========================================================= */
-
-.legal-page {
-    max-width: 950px;
-    margin: 0 auto;
-    padding: 160px 25px 90px;
-}
-
-/* Main Title */
-.legal-page h1 {
-    font-size: 2.4rem;
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.legal-page h1 .accent {
-    color: var(--primary-orange);
-}
-
-/* Section Headings */
-.legal-page h3 {
-    margin-top: 45px;
-    margin-bottom: 14px;
-    font-size: 1.15rem;
-    color: #fff;
-    letter-spacing: 1px;
-    position: relative;
-}
-
-/* Orange underline */
-.legal-page h3::after {
-    content: "";
-    display: block;
-    width: 55px;
-    height: 2px;
-    margin-top: 8px;
-    background: var(--primary-orange);
-    opacity: 0.7;
-}
-
-/* Paragraphs */
-.legal-page p {
-    font-size: 1rem;
-    color: var(--text-muted);
-    line-height: 1.85;
-    margin-bottom: 18px;
-}
-
-/* Contact Note */
-.legal-page .contact-note {
-    margin-top: 50px;
-    padding: 18px 20px;
-    border-left: 3px solid var(--primary-orange);
-    background: rgba(255,106,26,0.06);
-    border-radius: 10px;
-}
-
-/* Email Link */
-.legal-page .contact-note a {
-    color: #fff !important;
-    font-weight: 600;
-}
-
-.legal-page .contact-note a:hover {
-    color: var(--primary-orange) !important;
-}
-/* =========================================================
-   GLOBAL PREMIUM PAGE LOAD — ALL PAGES
-   Smooth Fade + Lift (Professional)
-   Header/Footer NOT affected
-========================================================= */
-
-@keyframes gcPageLoad {
-    from {
-        opacity: 0;
-        transform: translateY(14px);
-        filter: blur(6px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-/* Apply animation to ALL page main blocks */
-main,
-.container,
-.legal-page,
-.contact-page,
-.design-page,
-.apps-page,
-.about-page,
-.fashion-page,
-.careers-page {
-    animation: gcPageLoad 0.75s ease forwards;
-}
-
-/* Header/Footer never animate */
-header,
-footer {
-    animation: none !important;
-}
-/* =========================================================
-   CONTACT PAGE — CURSOR FIX (FINAL)
-   Restore proper mouse behavior
-========================================================= */
-
-/* Inputs should show typing cursor */
-.contact-page input,
-.contact-page textarea {
-    cursor: text !important;
-}
-
-/* Button + Links should show pointer */
-.contact-page button,
-.contact-page a {
-    cursor: pointer !important;
-}
-
-/* Disable custom cursor hiding on Contact inputs */
-.contact-page input:hover ~ .cursor-dot,
-.contact-page textarea:hover ~ .cursor-dot {
-    opacity: 0 !important;
 }
