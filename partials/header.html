@@ -1,10 +1,12 @@
 <header>
+  <!-- LOGO -->
   <a href="/">
     <img src="/assets/logos/gypsy-cartel-icon.webp"
          alt="Gypsy Cartel Logo"
          class="logo-icon">
   </a>
 
+  <!-- NAVIGATION -->
   <nav>
     <ul>
       <li><a href="/" data-nav="home">Home</a></li>
@@ -13,11 +15,37 @@
       <li><a href="/fashion/" data-nav="fashion">Fashion</a></li>
       <li><a href="/gallery/" data-nav="gallery">Gallery</a></li>
       <li><a href="/about/" data-nav="about">About</a></li>
-
-      <!-- ✅ CAREERS LINK ADDED -->
       <li><a href="/careers/" data-nav="careers">Careers</a></li>
-
       <li><a href="/contact/" data-nav="contact">Contact</a></li>
     </ul>
   </nav>
 </header>
+
+<!-- =========================================================
+     AUTO ACTIVE NAV HIGHLIGHT SCRIPT (STABLE)
+     Keeps underline on opened page always
+========================================================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Current URL path
+  let path = window.location.pathname;
+
+  // Homepage special case
+  if (path === "/") {
+    path = "home";
+  } 
+  else {
+    // Extract folder name (example: /apps/ → apps)
+    path = path.split("/")[1];
+  }
+
+  // Apply active class automatically
+  document.querySelectorAll("header nav a").forEach(link => {
+    if (link.dataset.nav === path) {
+      link.classList.add("active");
+    }
+  });
+
+});
+</script>
