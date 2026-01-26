@@ -910,39 +910,7 @@ body:not(.about-page):not(.design-page):not(.contact-page):not(.fashion-page):no
 .apps-modal-arrow.right {
     right: 24px;
 }
-/* ===============================
-   PREMIUM CAREER FOOTER ANIMATION
-================================ */
 
-/* Open Roles Link (FINAL ACTIVE) */
-.career-open-link {
-    display: inline-block;
-    color: var(--primary-orange);
-    font-weight: 600;
-    text-decoration: none;
-    position: relative;
-    transition: 0.3s ease;
-}
-
-.career-open-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0%;
-    height: 2px;
-    background: var(--primary-orange);
-    transition: 0.35s ease;
-}
-
-.career-open-link:hover {
-    color: #fff;
-    transform: translateX(4px);
-}
-
-.career-open-link:hover::after {
-    width: 100%;
-}
 /* =========================================================
    HOME PAGE — PREMIUM CONTENT SECTIONS (SAFE ADD)
    Only used in index.html • No theme conflicts
@@ -1227,49 +1195,35 @@ body.select-open option {
 .gc-dropdown.open .gc-dropdown-list {
     display: block;
 }
+
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ffffff !important;
+}
 /* =========================================================
-   CAREERS PAGE — PREMIUM LOAD + SPACING (FINAL)
-   Only content area animates (NOT header/footer)
+   CAREERS PAGE — FINAL FIX (NO FOOTER DIFFERENCE)
+   Footer will look SAME as all other pages
 ========================================================= */
 
-/* ✅ Footer always stays at bottom */
+/* ✅ Remove flex footer bug completely */
 .career-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    min-height: auto !important;
+    display: block !important;
 }
 
-/* Main content expands and pushes footer down */
-.career-page main {
-    flex: 1;
-}
-
-/* Content reveal animation */
+/* Container spacing same as all pages */
 .career-page .container {
-    opacity: 0;
-    transform: translateY(18px);
-    animation: careerReveal 0.85s ease forwards;
-    animation-delay: 0.12s;
+    padding-top: 140px;
+    padding-bottom: 80px;
 }
 
-@keyframes careerReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================================================
-   TYPOGRAPHY + SPACING (PREMIUM READABILITY)
-========================================================= */
-
-/* Main Page Title */
+/* Title spacing */
 .career-page h1 {
     margin-bottom: 22px;
     line-height: 1.25;
 }
 
-/* Paragraphs stay grey */
+/* Paragraph readability */
 .career-page p {
     line-height: 1.7;
     margin-bottom: 14px;
@@ -1278,7 +1232,7 @@ body.select-open option {
     color: var(--text-muted);
 }
 
-/* Section Headings in Orange */
+/* Section headings */
 .career-page h4 {
     margin-top: 22px;
     margin-bottom: 10px;
@@ -1288,10 +1242,7 @@ body.select-open option {
     text-transform: uppercase;
 }
 
-/* =========================================================
-   ROLES LIST — FULL WHITE (PREMIUM)
-========================================================= */
-
+/* Roles list — always white */
 .career-page .career-roles {
     margin-top: 12px;
     margin-bottom: 18px;
@@ -1299,10 +1250,19 @@ body.select-open option {
     list-style: none;
 }
 
-/* All roles always white */
 .career-page .career-roles li {
     margin-bottom: 10px;
     font-size: 1rem;
     line-height: 1.6;
     color: #ffffff !important;
+}
+
+/* Buttons spacing */
+.career-page a.btn {
+    margin-top: 6px;
+}
+
+/* ✅ Footer always normal (no override) */
+.career-page footer {
+    margin-top: 0 !important;
 }
