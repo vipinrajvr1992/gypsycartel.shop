@@ -3,6 +3,7 @@
    ✅ Fixed: Zero-Lag Cursor (Old Physics)
    ✅ Fixed: No Input Flicker
    ✅ Fixed: Global Page Animation
+   ✅ Fixed: Dynamic Header/Footer Hover Safe
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,28 +26,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       3. PREMIUM CURSOR ENGINE (CLEAN PHYSICS RESTORED)
+       3. PREMIUM CURSOR ENGINE (OLD PHYSICS RESTORED)
     ========================================================= */
     const dot = document.querySelector(".cursor-dot");
     const outline = document.querySelector(".cursor-outline");
 
+    // Safe check
     if (!isTouchDevice && dot && outline) {
-        
-        // Variables for position
+
         let mouseX = 0, mouseY = 0;
         let outlineX = 0, outlineY = 0;
 
-        // 1. Instant Dot Movement (No lag)
+        /* --- Dot Instant Movement --- */
         window.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            
-            // Dot follows instantly
+
             dot.style.left = mouseX + "px";
             dot.style.top = mouseY + "px";
         });
 
-        // 2. Smooth Outline Physics Loop (Friction 0.15)
+        /* --- Outline Smooth Physics Follow --- */
         function animateCursor() {
             outlineX += (mouseX - outlineX) * 0.15;
             outlineY += (mouseY - outlineY) * 0.15;
@@ -58,19 +58,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         animateCursor();
 
-        // 3. Hover Zoom Logic (ADD CLASS ONLY - NO INLINE STYLES)
-        const interactives = document.querySelectorAll('a, button, .btn, .apps-gallery-img, .gc-dropdown-selected, .gc-dropdown-list li, .apps-gallery-arrow, .apps-modal-arrow, .apps-modal-close');
+        /* --- Hover Zoom Class Only (Premium) --- */
+        function attachCursorHover(selector) {
+            document.querySelectorAll(selector).forEach(el => {
+                el.addEventListener("mouseenter", () => {
+                    outline.classList.add("active");
+                });
+                el.addEventListener("mouseleave", () => {
+                    outline.classList.remove("active");
+                });
+            });
+        }
 
-        interactives.forEach(el => {
-            el.addEventListener("mouseenter", () => {
-                outline.classList.add("active");
-            });
-            el.addEventListener("mouseleave", () => {
-                outline.classList.remove("active");
-            });
-        });
-        
-        // NOTE: Input hiding removed to prevent flicker.
+        // Attach hover to all clickable elements
+        attachCursorHover(`
+            a,
+            button,
+            .btn,
+            .apps-gallery-img,
+            .gc-dropdown-selected,
+            .gc-dropdown-list li,
+            .apps-gallery-arrow,
+            .apps-modal-arrow,
+            .apps-modal-close
+        `);
+
+        // NOTE: Input hiding removed completely (no flicker)
     }
 
 
@@ -112,26 +125,40 @@ document.addEventListener("DOMContentLoaded", () => {
             modalImg.src = galleryImages[currentIndex].src;
         }
 
-        // Open
+        // Open modal
         galleryImages.forEach((img, index) => {
             img.addEventListener("click", () => showImage(index));
         });
 
-        // Close
+        // Close modal
         if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
         modal.addEventListener("click", (e) => {
             if (e.target === modal) closeModal();
         });
 
-        // Arrows
-        const leftArrow = document.querySelector('.apps-modal-arrow.left');
-        const rightArrow = document.querySelector('.apps-modal-arrow.right');
-        if (leftArrow) leftArrow.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
-        if (rightArrow) rightArrow.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+        // Modal arrows
+        const leftArrow = document.querySelector(".apps-modal-arrow.left");
+        const rightArrow = document.querySelector(".apps-modal-arrow.right");
 
-        // Keys
+        if (leftArrow) {
+            leftArrow.addEventListener("click", (e) => {
+                e.stopPropagation();
+                prevImage();
+            });
+        }
+
+        if (rightArrow) {
+            rightArrow.addEventListener("click", (e) => {
+                e.stopPropagation();
+                nextImage();
+            });
+        }
+
+        // Keyboard navigation
         document.addEventListener("keydown", (e) => {
             if (modal.style.display !== "flex") return;
+
             if (e.key === "Escape") closeModal();
             if (e.key === "ArrowRight") nextImage();
             if (e.key === "ArrowLeft") prevImage();
@@ -140,9 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       5. STUDIO DROPDOWN
+       5. STUDIO DROPDOWN (Locked Clean)
     ========================================================= */
     document.querySelectorAll(".gc-dropdown").forEach(dropdown => {
+
         const selectedBox = dropdown.querySelector(".gc-dropdown-selected");
         const items = dropdown.querySelectorAll("li");
         const hiddenInput = dropdown.querySelector("input[type='hidden']");
@@ -158,59 +186,65 @@ document.addEventListener("DOMContentLoaded", () => {
             item.addEventListener("click", () => {
                 selectedBox.textContent = item.textContent;
                 hiddenInput.value = item.dataset.value;
+
                 items.forEach(li => li.classList.remove("active"));
                 item.classList.add("active");
+
                 dropdown.classList.remove("open");
             });
         });
 
+        // Close dropdown on outside click
         document.addEventListener("click", (e) => {
-            if (!dropdown.contains(e.target)) dropdown.classList.remove("open");
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove("open");
+            }
         });
     });
 
 
     /* =========================================================
-       6. HEADER + FOOTER LOADER
+       6. HEADER + FOOTER LOADER (Dynamic Safe)
     ========================================================= */
     const partialsPath = "/partials/";
 
-    // Header
+    // HEADER LOAD
     fetch(partialsPath + "header.html")
         .then(res => res.text())
         .then(html => {
+
             const mount = document.getElementById("site-header");
             if (mount) mount.innerHTML = html;
 
-            let currentPath = window.location.pathname.replace(/\/$/, "").split("/").pop();
-            if (currentPath === "" || currentPath === "index") currentPath = "home";
+            let currentPath = window.location.pathname
+                .replace(/\/$/, "")
+                .split("/")
+                .pop();
+
+            if (currentPath === "" || currentPath === "index") {
+                currentPath = "home";
+            }
 
             document.querySelectorAll("header nav a").forEach(link => {
-                // Re-attach hover listeners to dynamic header links
-                if (!isTouchDevice && outline) {
-                    link.addEventListener("mouseenter", () => outline.classList.add("active"));
-                    link.addEventListener("mouseleave", () => outline.classList.remove("active"));
+                if (link.dataset.nav === currentPath) {
+                    link.classList.add("active");
                 }
-                if (link.dataset.nav === currentPath) link.classList.add("active");
             });
+
         });
 
-    // Footer
+
+    // FOOTER LOAD
     fetch(partialsPath + "footer.html")
         .then(res => res.text())
         .then(html => {
+
             const mount = document.getElementById("site-footer");
             if (mount) mount.innerHTML = html;
+
             const year = document.getElementById("year");
             if (year) year.textContent = new Date().getFullYear();
-            
-            // Re-attach hover listeners to dynamic footer links
-            if (!isTouchDevice && outline) {
-                document.querySelectorAll("footer a").forEach(link => {
-                    link.addEventListener("mouseenter", () => outline.classList.add("active"));
-                    link.addEventListener("mouseleave", () => outline.classList.remove("active"));
-                });
-            }
+
         });
 
 
@@ -218,11 +252,17 @@ document.addEventListener("DOMContentLoaded", () => {
        7. DESIGN FORM AJAX SUBMIT
     ========================================================= */
     const designForm = document.getElementById("designForm");
+
     if (designForm) {
         designForm.addEventListener("submit", async (e) => {
+
             e.preventDefault();
+
             const successMsg = document.getElementById("design-success");
             const submitBtn = designForm.querySelector("button");
+
+            if (!submitBtn) return;
+
             const originalText = submitBtn.innerText;
             const formData = new FormData(designForm);
 
@@ -234,18 +274,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: formData,
                     headers: { Accept: "application/json" }
                 });
+
                 if (response.ok) {
                     designForm.reset();
                     submitBtn.innerText = "SENT ✅";
+
                     if (successMsg) successMsg.style.display = "block";
+
                     setTimeout(() => {
                         submitBtn.innerText = originalText;
                         if (successMsg) successMsg.style.display = "none";
                     }, 4000);
+
                 } else {
                     alert("Submission failed.");
                     submitBtn.innerText = originalText;
                 }
+
             } catch {
                 alert("Network error.");
                 submitBtn.innerText = originalText;
