@@ -499,24 +499,41 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* =========================================================
-   ✅ CAREER PAGE FIX (NEW)
-   Solves the header overlap and spacing issue
+   ✅ CAREER PAGE — FINAL "ABOUT STYLE" FIX
+   - Forces exact 1200px width (matches About/Home)
+   - Removes extra margins that caused misalignment
+   - Stops Header Jumping
 ========================================================= */
+
+/* 1. Global Scroll Fix: Prevents Header Jump between pages */
+html {
+    overflow-y: scroll; 
+}
+
+/* 2. Disable Body Fade (Keeps Header Solid) */
 .career-page {
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+/* 3. Container Alignment (EXACT MATCH TO ABOUT PAGE) */
+.career-page .container {
+    padding-top: 140px;      /* Standard Global Spacing */
+    max-width: 1200px;       /* 1200px = Matches About Page Width */
+    margin: 0 auto;          /* Centers the box, but text stays left */
+    text-align: left;        /* Forces text to start at the line */
+    
+    /* Content Fade In */
+    opacity: 0;
     animation: pageFade 0.6s ease forwards;
 }
 
-/* Creates space below header and centers content */
-.career-page .container {
-    padding-top: 180px; 
-    max-width: 900px;
-    margin: 0 auto;
-}
-
+/* 4. Typography Alignment */
 .career-page h1 {
     font-size: 2.8rem;
     margin-bottom: 30px;
     color: var(--text-main);
+    margin-top: 0;           /* IMPORTANT: Align vertical start with About */
 }
 
 .career-page h4 {
@@ -530,26 +547,38 @@ input:focus, textarea:focus, select:focus {
 .career-page p {
     margin-bottom: 20px;
     line-height: 1.7;
-    max-width: 100%;
+    max-width: 800px;        /* Readability width, but aligned left */
     color: var(--text-muted);
 }
 
-/* Fixes the list format and spacing */
-.career-page ul {
+.career-page ul { 
     margin-bottom: 20px;
+    padding-left: 0;         /* Removes indent to align with Title */
+    list-style-position: inside; /* Keeps bullets aligned */
 }
 
 .career-page ul li {
     margin-bottom: 10px;
     color: var(--text-muted);
-    padding-left: 0;
 }
 
-.career-page strong {
-    color: #fff;
-    font-weight: 600;
+.career-page strong { color: #fff; font-weight: 600; }
+
+/* 5. Text Reveal Animation */
+.career-page h1, 
+.career-page p, 
+.career-page h4, 
+.career-page li {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: textReveal 0.7s ease forwards;
 }
 
+/* Animation Timing */
+.career-page h1 { animation-delay: 0.1s; }
+.career-page h4 { animation-delay: 0.25s; }
+.career-page p  { animation-delay: 0.4s; }
+.career-page li { animation-delay: 0.55s; }
 /* =========================================================
    OTHER PAGES (CONTACT, ABOUT, ETC)
 ========================================================= */
@@ -1131,71 +1160,3 @@ input:focus, textarea:focus, select:focus {
 
 .gc-dropdown-list li:hover { background: rgba(255,106,26,0.12); color: var(--primary-orange); }
 .gc-dropdown.open .gc-dropdown-list { display: block; }
-
-/* =========================================================
-   ✅ STUDIO TAB ALIGNMENT
-========================================================= */
-.design-page { animation: pageFade 0.6s ease forwards; }
-.design-page .grid-2 { align-items: center; }
-
-.design-page .grid-2 > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 1.5rem;
-    padding-top: 0;
-}
-
-.design-page .mg-logo-wrap {
-    margin: 0 !important;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.design-page .mg-logo-wrap img {
-    animation: logoFloat 6s ease-in-out infinite;
-    max-width: 260px;
-    width: 100%;
-}
-
-@keyframes logoFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-.design-page h1 {
-    white-space: nowrap;
-    margin: 0 !important;
-    width: auto;
-    line-height: 1.2;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: textReveal 0.7s ease forwards;
-    animation-delay: 0.15s;
-}
-
-.design-page p {
-    max-width: 580px;
-    margin: 0 auto !important;
-    width: 100%;
-    display: block;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: textReveal 0.7s ease forwards;
-    animation-delay: 0.3s;
-}
-
-@media (max-width: 768px) {
-    .design-page h1 { white-space: normal; }
-}
-
-.design-page .grid-2 > div:last-child {
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-.design-page .grid-2 > div:last-child:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-}
