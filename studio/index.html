@@ -15,6 +15,15 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="/style.css">
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-92193J0YS6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-92193J0YS6');
+    </script>
+
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -25,7 +34,7 @@
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<!-- HEADER -->
+<!-- HEADER (DO NOT TOUCH) -->
 <div id="site-header"></div>
 
 <!-- ======================
@@ -42,13 +51,14 @@
             <div class="mg-logo-wrap">
                 <img
                     src="/assets/logos/mg-creations.webp"
-                    alt="MG Creations Logo">
+                    alt="MG Creations Logo"
+                    style="max-width:260px;width:100%;height:auto;">
             </div>
 
             <!-- Heading -->
             <h1>
-                <span class="studio-orange">HYPER-REALISTIC</span><br>
-                <span class="studio-title">
+                <span class="studio-highlight">HYPER-REALISTIC</span><br>
+                <span style="color:var(--primary-orange); white-space:nowrap;">
                     ARCHITECTURE & GRAPHICS
                 </span>
             </h1>
@@ -63,22 +73,49 @@
         </div>
 
         <!-- RIGHT FORM -->
-        <div class="studio-form">
+        <div style="background:var(--bg-surface); padding:40px; border-radius:12px;">
 
-            <h3>START A PROJECT</h3>
+            <h3 style="color:var(--primary-orange); margin-bottom:25px;">
+                START A PROJECT
+            </h3>
 
             <form
                 id="designForm"
                 action="https://formspree.io/f/xjgkezzp"
-                method="POST">
+                method="POST"
+                autocomplete="on">
 
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="tel" name="tel" placeholder="Phone Number" required>
+                <!-- Name -->
+                <input
+                    class="cursor-fix"
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    autocomplete="name"
+                    required>
 
-                <!-- Dropdown -->
+                <!-- Email -->
+                <input
+                    class="cursor-fix"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    autocomplete="email"
+                    required>
+
+                <!-- Phone -->
+                <input
+                    class="cursor-fix"
+                    type="tel"
+                    name="tel"
+                    placeholder="Phone Number"
+                    autocomplete="tel"
+                    required>
+
+                <!-- ✅ PREMIUM CUSTOM DROPDOWN -->
                 <div class="gc-dropdown" data-name="service">
-                    <div class="gc-dropdown-selected">
+
+                    <div class="gc-dropdown-selected cursor-fix">
                         Select Service
                     </div>
 
@@ -91,22 +128,34 @@
                         <li data-value="other">Other / Custom Project</li>
                     </ul>
 
+                    <!-- Hidden Input -->
                     <input type="hidden" name="service" required>
                 </div>
 
-                <textarea name="message" rows="5" placeholder="I have a project" required></textarea>
+                <!-- Message -->
+                <textarea
+                    class="cursor-fix"
+                    name="message"
+                    rows="5"
+                    placeholder="I have a project"
+                    required></textarea>
 
                 <!-- Turnstile -->
                 <div class="cf-turnstile"
                      data-sitekey="0x4AAAAAACK2g8v3gHryb9Aq"
-                     data-theme="dark">
+                     data-theme="dark"
+                     style="margin:18px 0;">
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width:100%;">
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="btn btn-primary cursor-fix"
+                    style="width:100%; margin-top:10px;">
                     INITIALIZE REQUEST
                 </button>
 
-                <!-- Success Message -->
+                <!-- ✅ Success Message (Hidden Until Submit) -->
                 <p id="design-success">
                     ✓ Message sent successfully. We’ll contact you shortly.
                 </p>
@@ -119,17 +168,11 @@
 
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER (DO NOT TOUCH) -->
 <div id="site-footer"></div>
 
+<!-- GLOBAL SCRIPT -->
 <script src="/script.js"></script>
-
-<!-- ✅ Success Message Show Only After Submit -->
-<script>
-document.getElementById("designForm").addEventListener("submit", function () {
-    document.getElementById("design-success").style.display = "block";
-});
-</script>
 
 </body>
 </html>
