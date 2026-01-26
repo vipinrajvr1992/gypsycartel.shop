@@ -1027,10 +1027,23 @@ footer a:hover {
 }
 
 /* =========================================================
-   NAV ACTIVE TEXT + HOVER UNDERLINE — FINAL PERFECT
+   NAV ACTIVE = ORANGE TEXT ONLY
+   NAV HOVER  = UNDERLINE ONLY (NO COLOR CHANGE)
 ========================================================= */
 
-/* Underline hidden by default */
+/* Default nav link text = WHITE */
+header nav a {
+    color: #ffffff !important;
+    position: relative;
+    transition: none !important; /* 🚫 No color animation */
+}
+
+/* ACTIVE PAGE = ORANGE TEXT */
+header nav a.active {
+    color: var(--primary-orange) !important;
+}
+
+/* Underline base hidden */
 header nav a::after {
     content: "";
     position: absolute;
@@ -1043,17 +1056,12 @@ header nav a::after {
     transition: width 0.3s ease;
 }
 
-/* Hover underline only */
+/* HOVER = UNDERLINE ONLY */
 header nav a:hover::after {
     width: 100%;
 }
 
-/* Active page = ORANGE TEXT ONLY (NO underline by default) */
-header nav a.active {
-    color: var(--primary-orange) !important;
-}
-
-/* Active underline removed unless hovered */
+/* ACTIVE underline hidden unless hovered */
 header nav a.active::after {
     width: 0% !important;
 }
