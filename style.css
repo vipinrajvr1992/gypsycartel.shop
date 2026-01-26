@@ -1,11 +1,11 @@
 /* =========================================================
    GYPSY CARTEL — FUTURISTIC MINIMAL THEME
-   VERSION: PRODUCTION MASTER v1.2 (OLD CURSOR RESTORED)
+   VERSION: PRODUCTION MASTER v1.0
    STATUS: LOCKED + CLEAN
    
    INCLUDES:
    - Cinematic Global Page Load (Fade + Lift)
-   - ORIGINAL CUSTOM CURSOR (From your uploaded file)
+   - Physics Cursor (Safe Mode + Class-based Zoom)
    - Premium Apps Slider (Glow Arrows + Smooth Scroll)
    - Modal Lightbox (With Navigation Arrows)
    - Studio Dropdown Locked
@@ -114,30 +114,18 @@ p {
 a {
     text-decoration: none;
     color: inherit;
-    cursor: none !important;
+    cursor: pointer !important;
 }
 
 ul {
     list-style: none;
 }
 
-/* --- CURSOR VISIBILITY RULES --- */
-
-/* 1. Text Inputs: Show 'I-beam' (Native Cursor) */
-input, textarea {
-    cursor: text !important;
-}
-
-/* 2. Interactables: Force 'none' so Custom Cursor takes over */
-select, label, button, .btn, .apps-gallery-img {
-    cursor: none !important;
-}
-
 
 /* =========================================================
-   5. CUSTOM CURSOR (RESTORED FROM YOUR FILE)
+   5. CUSTOM CURSOR (PHYSICS + CLASS ZOOM)
 ========================================================= */
-
+/* High Z-Index to sit above everything */
 .cursor-dot,
 .cursor-outline {
     position: fixed;
@@ -145,32 +133,50 @@ select, label, button, .btn, .apps-gallery-img {
     left: 0;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
+    pointer-events: none !important;
+    z-index: 999999;
+    will-change: transform;
 }
 
 .cursor-dot {
     width: 8px;
     height: 8px;
     background: var(--primary-orange);
-    transition: opacity 0.2s ease; /* Added for Smart Hide smooth fade */
 }
 
 .cursor-outline {
     width: 40px;
     height: 40px;
     border: 1px solid rgba(255,255,255,0.6);
-    /* KEPT EXACTLY AS YOU HAD IT */
-    transition: transform 0.15s ease, opacity 0.2s ease; 
+    
+    /* ✅ FIX 2: Transition ONLY transform/colors. 
+       NEVER transition left/top (Physics handles that) */
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-/* ✅ SMART HIDE: Hides custom cursor when user is typing (Modern CSS) */
-/* This works with your Old Cursor Style */
-body:has(input:focus) .cursor-dot,
-body:has(textarea:focus) .cursor-dot,
-body:has(input:focus) .cursor-outline,
-body:has(textarea:focus) .cursor-outline {
-    opacity: 0;
+/* ✅ FIX 2: Premium Active State (Toggled by JS) */
+.cursor-outline.active {
+    transform: translate(-50%, -50%) scale(1.6);
+    border-color: rgba(255,106,26,0.9);
+    background-color: rgba(255,106,26,0.05);
+}
+
+/* --- CURSOR VISIBILITY RULES --- */
+
+/* 1. Text Inputs: Show 'I-beam' */
+input, textarea {
+    cursor: text !important;
+}
+
+/* 2. Interactables: Show 'Pointer' */
+select, label, button, .btn, .apps-gallery-img {
+    cursor: pointer !important;
+}
+
+/* 3. Hide Custom Cursor Inside Modal Only */
+.apps-modal .cursor-dot,
+.apps-modal .cursor-outline {
+    opacity: 0 !important;
 }
 
 
@@ -318,7 +324,7 @@ header nav a.active:hover::after {
     z-index: 2;
 }
 
-/* ✅ Safe Section Reveal (Only targets specific content) */
+/* ✅ FIX 3: Safe Section Reveal (Only targets specific content) */
 .container > section,
 .container > div:not(.gc-dropdown),
 .container > article {
@@ -402,7 +408,7 @@ input, textarea, select, button {
     padding: 14px;
     border-radius: 10px;
     color: #fff;
-    cursor: none !important;
+    cursor: pointer !important;
     user-select: none;
     transition: 0.25s ease;
 }
@@ -436,7 +442,7 @@ input, textarea, select, button {
 .gc-dropdown-list li {
     padding: 14px 16px;
     color: #fff;
-    cursor: none !important;
+    cursor: pointer !important;
     transition: 0.2s ease;
 }
 
@@ -508,7 +514,7 @@ input, textarea, select, button {
     flex-shrink: 0;
     border-radius: 16px;
     scroll-snap-align: start;
-    cursor: none !important;
+    cursor: pointer !important;
     box-shadow: 0 18px 45px rgba(0,0,0,0.55);
     border: 1px solid rgba(255,255,255,0.08);
     transition: 0.35s ease;
@@ -535,7 +541,7 @@ input, textarea, select, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: none !important;
+    cursor: pointer !important;
     z-index: 20;
     transition: 0.3s ease;
 }
@@ -561,7 +567,7 @@ input, textarea, select, button {
     z-index: 9999;
 }
 .apps-modal-img { max-width: 90%; max-height: 85vh; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,0.8); }
-.apps-modal-close { position: absolute; top: 24px; right: 32px; font-size: 2rem; cursor: none !important; color: #fff; }
+.apps-modal-close { position: absolute; top: 24px; right: 32px; font-size: 2rem; cursor: pointer !important; color: #fff; }
 .apps-modal-close:hover { color: var(--primary-orange); }
 
 /* Modal Navigation Arrows */
@@ -579,7 +585,7 @@ input, textarea, select, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: none;
+    cursor: pointer;
     z-index: 99999;
     transition: 0.3s ease;
 }
@@ -594,7 +600,7 @@ input, textarea, select, button {
 
 
 /* =========================================================
-   13. LEGAL PAGES (TERMS & PRIVACY)
+   13. LEGAL PAGES (TERMS & PRIVACY) - ✅ FIX 4
 ========================================================= */
 .legal-page {
     max-width: 900px;
@@ -690,6 +696,6 @@ footer p a:hover,
 
     /* Ensure Nav is touchable */
     header nav a {
-        cursor: none !important;
+        cursor: pointer !important;
     }
 }
