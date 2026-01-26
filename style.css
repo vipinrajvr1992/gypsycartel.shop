@@ -1030,7 +1030,6 @@ footer a:hover {
    NAV HOVER + ACTIVE UNDERLINE — STABLE ORANGE
 ========================================================= */
 
-/* Base underline hidden */
 header nav a::after {
     content: "";
     position: absolute;
@@ -1043,17 +1042,14 @@ header nav a::after {
     transition: width 0.3s ease;
 }
 
-/* Hover underline */
 header nav a:hover::after {
     width: 100%;
 }
 
-/* Active page underline ALWAYS visible */
 header nav a.active::after {
     width: 100% !important;
 }
 
-/* Active page text color locked */
 header nav a.active {
     color: var(--primary-orange) !important;
 }
