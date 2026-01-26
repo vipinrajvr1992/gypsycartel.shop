@@ -201,3 +201,19 @@ if (designForm) {
         }
     });
 }
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  let path = window.location.pathname;
+
+  if (path === "/") path = "home";
+  else path = path.split("/")[1];
+
+  document.querySelectorAll("header nav a").forEach(link => {
+    if (link.dataset.nav === path) {
+      link.classList.add("active");
+    }
+  });
+
+});
+</script>
