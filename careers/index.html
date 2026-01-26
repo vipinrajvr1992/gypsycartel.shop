@@ -14,137 +14,114 @@
   <!-- MAIN THEME -->
   <link rel="stylesheet" href="/style.css">
 
-  <!-- CAREERS PAGE FIXED STYLE -->
   <style>
-
     /* ===============================
-       PAGE WRAP (NO BIG BOX)
+       CAREERS PAGE — CLEAN LIST STYLE
     =============================== */
+
+    body {
+      background: #000;
+    }
+
     .careers-wrap {
-      padding: 160px 20px 90px;
-      max-width: 1100px;
+      max-width: 950px;
       margin: auto;
+      padding: 160px 20px 100px;
     }
 
-    /* ===============================
-       HERO SECTION
-    =============================== */
-    .careers-hero {
-      text-align: center;
-      margin-bottom: 65px;
-
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 0.8s ease forwards;
+    /* Page Heading */
+    .careers-title {
+      text-align: left;
+      margin-bottom: 55px;
     }
 
-    .careers-hero h1 {
-      font-size: 3.8rem;
-      margin-bottom: 14px;
+    .careers-title h1 {
+      font-size: 3.2rem;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
     }
 
-    .careers-hero h1 span {
+    .careers-title h1 span {
       color: var(--primary-orange);
     }
 
-    .careers-hero p {
-      max-width: 760px;
-      margin: auto;
-      font-size: 1rem;
-      line-height: 1.7;
+    .careers-title p {
+      max-width: 720px;
       color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
     }
 
     /* ===============================
-       GRID
+       ROLE LIST SECTION
     =============================== */
-    .career-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
 
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 0.8s ease forwards;
-      animation-delay: 0.2s;
+    .roles-heading {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-orange);
+      margin-bottom: 25px;
     }
 
-    /* ===============================
-       CARD (COMPACT + PRO)
-    =============================== */
-    .career-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border-soft);
-      border-radius: 16px;
-
-      padding: 22px;
-      text-align: center;
-
+    .roles-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-
-      transition: 0.35s ease;
-    }
-
-    .career-card:hover {
-      border-color: var(--primary-orange);
-      transform: translateY(-6px);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.55);
-    }
-
-    .career-card h3 {
-      font-size: 1.05rem;
+      gap: 22px;
+      padding-left: 0;
       margin: 0;
+    }
+
+    .role-item {
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .role-item h3 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 6px;
+      font-weight: 600;
       letter-spacing: 1px;
     }
 
-    .career-card p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin: 0 auto;
-      max-width: 240px;
+    .role-item p {
+      margin: 0;
       color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
-    .career-tag {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 1.4px;
+    .role-item .skills {
+      margin-top: 6px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
       text-transform: uppercase;
-      color: var(--primary-orange);
-      margin-top: 4px;
+      letter-spacing: 1.4px;
     }
 
     /* ===============================
-       APPLY SECTION (SEPARATE BLOCK)
+       APPLY SECTION — CENTERED
     =============================== */
-    .apply-box {
-      margin-top: 85px;
-      padding: 55px 35px;
-      border-radius: 18px;
 
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border-soft);
-
+    .apply-section {
+      margin-top: 75px;
       text-align: center;
-
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 0.8s ease forwards;
-      animation-delay: 0.4s;
     }
 
-    .apply-box h2 {
-      font-size: 2rem;
-      margin-bottom: 12px;
+    .apply-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
     }
 
-    .apply-box p {
-      margin: 0 auto 28px;
-      font-size: 1rem;
+    .apply-section h2 span {
+      color: var(--primary-orange);
+    }
+
+    .apply-section p {
       color: var(--text-muted);
-      max-width: 600px;
+      margin-bottom: 28px;
+      font-size: 1rem;
     }
 
     .apply-buttons {
@@ -157,30 +134,19 @@
     .apply-note {
       margin-top: 18px;
       font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* ===============================
-       ANIMATION
-    =============================== */
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      color: rgba(255,255,255,0.4);
     }
 
     /* ===============================
        RESPONSIVE
     =============================== */
     @media(max-width:768px) {
-
-      .careers-hero h1 {
-        font-size: 2.7rem;
+      .careers-title h1 {
+        font-size: 2.4rem;
       }
 
-      .apply-box {
-        padding: 45px 20px;
+      .role-item h3 {
+        font-size: 1.05rem;
       }
     }
 
@@ -196,71 +162,76 @@
 <!-- HEADER -->
 <div id="site-header"></div>
 
-<!-- CAREERS PAGE -->
+<!-- CAREERS WRAP -->
 <section class="careers-wrap">
 
-  <!-- HERO -->
-  <div class="careers-hero">
-    <h1>WE ARE <span>HIRING</span></h1>
+  <!-- TITLE -->
+  <div class="careers-title">
+    <h1>CAREERS <span>&</span> COLLABORATION</h1>
 
     <p>
       Gypsy Cartel is expanding our premium freelance network.
-      We collaborate with skilled designers, developers, and creators
-      for high-impact remote projects across India & UAE.
+      We collaborate with verified designers, developers, and creators
+      across India & UAE for high-impact remote projects.
     </p>
   </div>
 
-  <!-- POSITIONS -->
-  <div class="career-grid">
+  <!-- ROLES -->
+  <div class="roles-heading">
+    Open Collaboration Roles
+  </div>
 
-    <div class="career-card">
+  <div class="roles-list">
+
+    <div class="role-item">
       <h3>Floor Plan Designer</h3>
-      <p>Architectural planning, clean layouts, precision drafting.</p>
-      <div class="career-tag">AUTOCAD • SPACE DESIGN</div>
+      <p>Architectural drafting, clean planning layouts, precision detailing.</p>
+      <div class="skills">AutoCAD • Space Design</div>
     </div>
 
-    <div class="career-card">
+    <div class="role-item">
       <h3>3D Visualization Artist</h3>
       <p>Hyper-realistic interiors, exteriors, walkthrough renders.</p>
-      <div class="career-tag">SKETCHUP • 3DS MAX</div>
+      <div class="skills">SketchUp • 3DS Max • Lumion</div>
     </div>
 
-    <div class="career-card">
+    <div class="role-item">
       <h3>Graphic Designer</h3>
       <p>Posters, branding systems, premium digital creatives.</p>
-      <div class="career-tag">PHOTOSHOP • CANVA</div>
+      <div class="skills">Photoshop • Canva • Illustrator</div>
     </div>
 
-    <div class="career-card">
+    <div class="role-item">
       <h3>UI / UX Designer</h3>
       <p>Modern user interfaces for apps, dashboards, websites.</p>
-      <div class="career-tag">FIGMA • DESIGN SYSTEMS</div>
+      <div class="skills">Figma • Design Systems</div>
     </div>
 
-    <div class="career-card">
+    <div class="role-item">
       <h3>Website Developer</h3>
       <p>Production-ready websites with premium performance builds.</p>
-      <div class="career-tag">WORDPRESS • CUSTOM CODE</div>
+      <div class="skills">WordPress • Custom Code</div>
     </div>
 
-    <div class="career-card">
+    <div class="role-item">
       <h3>Support & Maintenance</h3>
-      <p>Bug fixes, optimization, updates & technical assistance.</p>
-      <div class="career-tag">FIXES • UPGRADES</div>
+      <p>Bug fixes, optimization, upgrades, and technical assistance.</p>
+      <div class="skills">Fixes • Updates • Performance</div>
     </div>
 
   </div>
 
-  <!-- APPLY -->
-  <div class="apply-box">
+  <!-- APPLY SECTION -->
+  <div class="apply-section">
 
-    <h2>Apply for Collaboration</h2>
+    <h2>Apply for <span>Collaboration</span></h2>
 
     <p>
       Send your portfolio directly through WhatsApp or Instagram DM.
     </p>
 
     <div class="apply-buttons">
+
       <a href="https://wa.me/918086604808"
          target="_blank"
          class="btn btn-primary">
@@ -272,6 +243,7 @@
          class="btn btn-outline">
         APPLY VIA INSTAGRAM
       </a>
+
     </div>
 
     <div class="apply-note">
