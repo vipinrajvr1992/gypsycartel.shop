@@ -1096,3 +1096,31 @@ header,
 footer {
     animation: none !important;
 }
+/* =========================================================
+   CURSOR FIX — STABLE + NO LAG + INPUT SAFE
+========================================================= */
+
+/* Cursor must never block hover/click */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none !important;
+}
+
+/* Smooth outline motion */
+.cursor-outline {
+    transition: none !important;
+}
+
+/* Allow typing cursor inside form fields */
+input,
+textarea,
+select {
+    cursor: text !important;
+}
+
+/* Buttons and links clickable */
+a,
+button,
+.btn {
+    cursor: pointer !important;
+}
