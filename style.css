@@ -1,19 +1,14 @@
 /* =========================================================
    GYPSY CARTEL — FUTURISTIC MINIMAL THEME
-   VERSION: FINAL MASTER CSS (FULL PRODUCTION)
-   STATUS: LOCKED + CLEAN + NO CONFLICTS
-
+   VERSION: FINAL MASTER (FULL PRODUCTION)
+   STATUS: LOCKED + CLEAN + NO DUPLICATES
+   
    INCLUDES:
-   - Cursor Engine Safe CSS
-   - Inputs Fixed
-   - Active Nav Highlight Fix
-   - Hover Underline Only
-   - Global Page Load Animation
-   - Header/Footer Animation Disabled
-   - Apps Modal + Gallery Premium
+   - Physics Cursor (Safe Mode)
+   - Premium Apps Slider (Glow Arrows + Smooth Scroll)
+   - Modal Lightbox (With Navigation Arrows)
    - Studio Dropdown Locked
-   - Contact + Careers + Footer Complete
-   - Mobile Safe Cursor Disable
+   - Mobile Optimization (Cursor Disabled)
 ========================================================= */
 
 
@@ -27,7 +22,6 @@
    2. ROOT VARIABLES — BRAND CONTROL
 ========================================================= */
 :root {
-
     --bg-deep: #050505;
     --bg-surface: #0f0f0f;
     --bg-elevated: #161616;
@@ -46,12 +40,13 @@
 
 
 /* =========================================================
-   3. RESET & BASE STYLES (SAFE)
+   3. RESET & BASE STYLES
 ========================================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* ✅ Safe: Cursor defined on Body only */
 }
 
 html {
@@ -71,10 +66,9 @@ body {
     overflow-x: hidden;
     position: relative;
 
-    /* ✅ Custom Cursor Only Here */
+    /* ✅ Custom Cursor Active */
     cursor: none;
 }
-
 
 /* Grid Overlay */
 body::before {
@@ -108,6 +102,7 @@ p {
 a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer !important;
 }
 
 ul {
@@ -116,7 +111,7 @@ ul {
 
 
 /* =========================================================
-   5. CUSTOM CURSOR (CSS SUPPORT ONLY)
+   5. CUSTOM CURSOR (PHYSICS READY)
 ========================================================= */
 .cursor-dot,
 .cursor-outline {
@@ -139,32 +134,26 @@ ul {
     width: 40px;
     height: 40px;
     border: 1px solid rgba(255,255,255,0.6);
-
-    /* ✅ Physics Cursor = No Transition */
+    /* ✅ No Transition = Smooth Physics */
     transition: none !important;
 }
 
+/* --- CURSOR CRITICAL FIXES --- */
 
-/* =========================================================
-   CURSOR OVERRIDES (USABILITY FIX)
-========================================================= */
-
-/* Inputs show typing cursor */
-input,
-textarea {
+/* 1. Text Inputs: Show 'I-beam' */
+input, textarea {
     cursor: text !important;
 }
 
-/* Buttons + Links show pointer */
-a,
-button,
-.btn {
+/* 2. Interactables: Show 'Pointer' */
+select, label, button, .btn, .apps-gallery-img {
     cursor: pointer !important;
 }
 
-/* Select dropdown safe */
-select {
-    cursor: pointer !important;
+/* 3. Hide Custom Cursor Inside Modal */
+.apps-modal .cursor-dot,
+.apps-modal .cursor-outline {
+    opacity: 0 !important;
 }
 
 
@@ -176,18 +165,14 @@ header {
     top: 0;
     width: 100%;
     height: var(--header-height);
-
     padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: rgba(5,5,5,0.88);
     backdrop-filter: blur(16px);
-
     border-bottom: 1px solid var(--border-soft);
     z-index: 1000;
-
     animation: none !important;
 }
 
@@ -201,10 +186,7 @@ header nav ul {
     gap: 28px;
 }
 
-
-/* =========================================================
-   NAV ACTIVE ORANGE ONLY + HOVER UNDERLINE ONLY
-========================================================= */
+/* --- NAV HIGHLIGHT LOGIC --- */
 header nav a {
     font-size: 0.85rem;
     font-weight: 600;
@@ -213,12 +195,12 @@ header nav a {
     transition: none !important;
 }
 
-/* ACTIVE PAGE */
+/* Active Page = Orange */
 header nav a.active {
     color: var(--primary-orange) !important;
 }
 
-/* Underline hidden default */
+/* Underline Default Hidden */
 header nav a::after {
     content: "";
     position: absolute;
@@ -230,12 +212,12 @@ header nav a::after {
     transition: width 0.3s ease;
 }
 
-/* Hover underline only */
+/* Hover = Show Underline */
 header nav a:hover::after {
     width: 100%;
 }
 
-/* Active underline only on hover */
+/* Active Link: No underline unless hovered */
 header nav a.active::after {
     width: 0% !important;
 }
@@ -315,7 +297,7 @@ header nav a.active:hover::after {
     position: relative;
     z-index: 2;
 
-    /* ✅ Main Content Fade Only */
+    /* Global Page Fade In */
     animation: pageFade 0.65s ease forwards;
 }
 
@@ -333,22 +315,15 @@ header nav a.active:hover::after {
 
 
 /* =========================================================
-   9. GLOBAL PAGE LOAD ANIMATION (ONLY ON CONTAINER)
+   9. GLOBAL PAGE LOAD ANIMATION
 ========================================================= */
 @keyframes pageFade {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Header/Footer Never Animate */
-header,
-footer {
+header, footer {
     animation: none !important;
 }
 
@@ -356,9 +331,7 @@ footer {
 /* =========================================================
    10. FORMS & INPUTS
 ========================================================= */
-input,
-textarea,
-select {
+input, textarea, select {
     width: 100%;
     padding: 14px;
     background: var(--bg-elevated);
@@ -368,9 +341,7 @@ select {
     border-radius: 6px;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: var(--primary-orange);
     box-shadow: 0 0 0 2px var(--orange-glow);
@@ -378,55 +349,215 @@ select:focus {
 
 
 /* =========================================================
-   11. APPS MODAL + GALLERY
+   11. PREMIUM CUSTOM DROPDOWN
 ========================================================= */
-.apps-gallery-track {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 12px;
+.gc-dropdown {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: inherit;
 }
 
+.gc-dropdown-selected {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-soft);
+    padding: 14px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer !important;
+    user-select: none;
+    transition: 0.25s ease;
+}
+
+.gc-dropdown-selected:hover {
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 2px rgba(255,106,26,0.15);
+}
+
+.gc-dropdown-list {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: #0f0f0f;
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+    max-height: 240px;
+    overflow-y: auto;
+    display: none;
+    z-index: 9999;
+    overscroll-behavior: contain;
+}
+
+/* Custom Scrollbar for Dropdown */
+.gc-dropdown-list::-webkit-scrollbar { width: 6px; }
+.gc-dropdown-list::-webkit-scrollbar-thumb { background: rgba(255,106,26,0.35); border-radius: 10px; }
+
+.gc-dropdown-list li {
+    padding: 14px 16px;
+    color: #fff;
+    cursor: pointer !important;
+    transition: 0.2s ease;
+}
+
+.gc-dropdown-list li:hover,
+.gc-dropdown-list li.active {
+    background: rgba(255,106,26,0.12);
+    color: var(--primary-orange);
+}
+
+.gc-dropdown.open .gc-dropdown-list {
+    display: block;
+}
+
+
+/* =========================================================
+   12. HOME PAGE & DESIGN PAGE
+========================================================= */
+/* Hero */
+.hero {
+    min-height: 100vh;
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at 30% 20%, rgba(255,106,26,0.12), transparent 55%), #000;
+}
+.hero-center { display: flex; flex-direction: column; align-items: center; }
+.hero-lottie-wrap { width: 420px; max-width: 90vw; aspect-ratio: 1/1; margin-bottom: 1.6rem; }
+.hero-tagline { font-size: 1.25rem; color: var(--text-muted); max-width: 720px; margin-bottom: 1.8rem; }
+.hero-actions { display: flex; gap: 16px; justify-content: center; }
+
+/* Design Page Fixes */
+.design-page .grid-2 { align-items: center; }
+.design-page .grid-2 > div:first-child { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0 !important; }
+.design-page .mg-logo-wrap { margin-bottom: 1.2rem !important; }
+.design-page .mg-logo-wrap img { width: 100%; max-width: 260px; animation: logoFloat 6s ease-in-out infinite; }
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+
+/* =========================================================
+   13. APPS PAGE (PREMIUM SLIDER + ARROWS + MODAL)
+========================================================= */
+
+/* Premium Horizontal Track */
+.apps-gallery-wrapper {
+    position: relative;
+    margin-top: 60px;
+}
+
+.apps-gallery-track {
+    display: flex;
+    gap: 26px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 18px 8px 18px;
+    border-radius: 18px;
+}
+
+/* Premium Scrollbar */
+.apps-gallery-track::-webkit-scrollbar { height: 6px; }
+.apps-gallery-track::-webkit-scrollbar-thumb { background: rgba(255,106,26,0.35); border-radius: 10px; }
+.apps-gallery-track::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+
+/* Premium Cards */
 .apps-gallery-img {
     width: 320px;
-    border-radius: 12px;
+    flex-shrink: 0;
+    border-radius: 16px;
     scroll-snap-align: start;
-    cursor: pointer;
-    transition: transform 0.35s ease;
+    cursor: pointer !important;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.35s ease;
 }
 
 .apps-gallery-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
+    border-color: rgba(255,106,26,0.55);
+    box-shadow: 0 25px 65px rgba(0,0,0,0.7), 0 0 30px rgba(255,106,26,0.18);
 }
 
+/* Premium Slider Arrows */
+.apps-gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(15,15,15,0.92);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--primary-orange);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+    z-index: 20;
+    transition: 0.3s ease;
+}
+
+.apps-gallery-arrow:hover {
+    background: rgba(255,106,26,0.12);
+    box-shadow: 0 0 18px rgba(255,106,26,0.35);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.apps-gallery-arrow.left { left: -18px; }
+.apps-gallery-arrow.right { right: -18px; }
+
+/* Modal Main Container */
 .apps-modal {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.88);
+    backdrop-filter: blur(8px);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 9999;
 }
+.apps-modal-img { max-width: 90%; max-height: 85vh; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,0.8); }
+.apps-modal-close { position: absolute; top: 24px; right: 32px; font-size: 2rem; cursor: pointer !important; color: #fff; }
+.apps-modal-close:hover { color: var(--primary-orange); }
 
-.apps-modal-img {
-    max-width: 90%;
-    max-height: 85vh;
-    border-radius: 14px;
-}
-
-.apps-modal-close {
+/* Modal Navigation Arrows */
+.apps-modal-arrow {
     position: absolute;
-    top: 24px;
-    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: rgba(15,15,15,0.92);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: var(--primary-orange);
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    z-index: 99999;
+    transition: 0.3s ease;
 }
+
+.apps-modal-arrow:hover {
+    background: rgba(255,106,26,0.14);
+    box-shadow: 0 0 25px rgba(255,106,26,0.35);
+}
+
+.apps-modal-arrow.left { left: 28px; }
+.apps-modal-arrow.right { right: 28px; }
 
 
 /* =========================================================
-   12. FOOTER (FULL)
+   14. FOOTER
 ========================================================= */
 footer {
     background: linear-gradient(180deg, #0a0a0a, #050505);
@@ -450,16 +581,32 @@ footer {
     color: var(--text-muted);
 }
 
-footer a:hover {
-    color: var(--primary-orange);
+/* Footer Link Color Fixes */
+footer a, 
+footer p a, 
+.career-open-link {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+footer a:hover, 
+footer p a:hover, 
+.career-open-link:hover {
+    color: var(--primary-orange) !important;
 }
 
 
 /* =========================================================
-   13. MOBILE CURSOR DISABLE (FINAL PATCH)
+   15. MOBILE ADJUSTMENTS & CURSOR DISABLE
 ========================================================= */
-@media (hover: none) {
+@media (max-width: 900px) {
+    .grid-2, .footer-content { grid-template-columns: 1fr; }
+    .hero-lottie-wrap { max-width: 300px; }
+    .apps-gallery-arrow { display: none; }
+}
 
+/* ✅ CRITICAL: Full Mobile Cursor Disable */
+@media (hover: none) {
     body {
         cursor: auto !important;
     }
@@ -469,166 +616,8 @@ footer a:hover {
         display: none !important;
     }
 
+    /* Ensure Nav is touchable */
     header nav a {
         cursor: pointer !important;
-    }
-}
-
-
-/* =========================================================
-   14. RESPONSIVE GRID FIX
-========================================================= */
-@media (max-width: 900px) {
-
-    .grid-2,
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-lottie-wrap {
-        max-width: 300px;
-    }
-}
-
-/* =========================================================
-   FOOTER LINK COLOR FIX — FORCE WHITE
-   Support Email + Instagram + Careers Link
-========================================================= */
-
-/* Support Email + Creator Instagram */
-footer .footer-content a,
-footer .footer-content p a {
-    color: #ffffff !important;
-    opacity: 1 !important;
-}
-
-/* Careers: View Open Roles → */
-footer .career-open-link {
-    color: #ffffff !important;
-}
-
-/* Hover stays orange */
-footer .career-open-link:hover,
-footer .footer-content a:hover {
-    color: var(--primary-orange) !important;
-}
-/* =========================================================
-   APPS PAGE — PREMIUM SLIDER + ARROWS (FINAL MASTER)
-   Paste at BOTTOM of CSS
-   Cinematic Style • Orange Glow • Smooth Scroll
-========================================================= */
-
-/* ===== Premium Horizontal Track ===== */
-.apps-gallery-wrapper {
-    position: relative;
-    margin-top: 60px;
-}
-
-.apps-gallery-track {
-    display: flex;
-    gap: 26px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding: 18px 8px 18px;
-
-    /* Premium feel */
-    border-radius: 18px;
-}
-
-/* ===== Premium Thin Scrollbar (Not Ugly Bar) ===== */
-.apps-gallery-track::-webkit-scrollbar {
-    height: 6px;
-}
-
-.apps-gallery-track::-webkit-scrollbar-thumb {
-    background: rgba(255,106,26,0.35);
-    border-radius: 10px;
-}
-
-.apps-gallery-track::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.04);
-}
-
-/* ===== Gallery Images Premium Cards ===== */
-.apps-gallery-img {
-    width: 320px;
-    flex-shrink: 0;
-    border-radius: 16px;
-    scroll-snap-align: start;
-    cursor: pointer !important;
-
-    box-shadow: 0 18px 45px rgba(0,0,0,0.55);
-    border: 1px solid rgba(255,255,255,0.08);
-
-    transition: transform 0.35s ease,
-                box-shadow 0.35s ease,
-                border-color 0.35s ease;
-}
-
-.apps-gallery-img:hover {
-    transform: scale(1.06);
-    border-color: rgba(255,106,26,0.55);
-
-    box-shadow:
-        0 25px 65px rgba(0,0,0,0.7),
-        0 0 30px rgba(255,106,26,0.18);
-}
-
-/* =========================================================
-   PREMIUM ARROWS — Gypsy Cartel Style
-========================================================= */
-
-.apps-gallery-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-
-    background: rgba(15,15,15,0.92);
-    border: 1px solid rgba(255,255,255,0.12);
-
-    color: var(--primary-orange);
-    font-size: 1.8rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer !important;
-    user-select: none;
-
-    z-index: 20;
-
-    transition: 0.3s ease;
-}
-
-/* Hover Glow */
-.apps-gallery-arrow:hover {
-    background: rgba(255,106,26,0.12);
-
-    box-shadow:
-        0 0 18px rgba(255,106,26,0.35),
-        0 0 35px rgba(255,106,26,0.18);
-
-    transform: translateY(-50%) scale(1.08);
-}
-
-/* Left + Right Placement */
-.apps-gallery-arrow.left {
-    left: -18px;
-}
-
-.apps-gallery-arrow.right {
-    right: -18px;
-}
-
-/* Hide arrows on mobile (Swipe instead) */
-@media (max-width: 900px) {
-    .apps-gallery-arrow {
-        display: none;
     }
 }
