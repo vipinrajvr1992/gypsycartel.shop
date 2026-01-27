@@ -70,7 +70,7 @@ body {
     position: relative;
 
     /* ✅ Custom Cursor Active */
-    cursor: auto;
+    cursor: none;
 
     /* ✅ PREMIUM PAGE LOAD: Initial Invisible State */
     opacity: 0;
