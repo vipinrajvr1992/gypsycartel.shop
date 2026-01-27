@@ -65,7 +65,7 @@ https://thegypsycartel.com
 ## DOWNLOAD / PURCHASE
 
 Product page:  
-https://gypsycartel.shop/gypsy-optimizer/
+https://thegypsycartel.com/gypsy-optimizer/
 
 Payment options will be added soon.
 
