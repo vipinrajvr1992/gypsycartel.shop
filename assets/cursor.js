@@ -1,48 +1,47 @@
-/* ===========================================
-   GYPSY CARTEL — INSTANT PREMIUM CURSOR
-=========================================== */
+/* =========================================
+   GYPSY CARTEL — CURSOR ENGINE (FINAL)
+========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Create Dot + Circle
-  const dot = document.createElement("div");
-  dot.classList.add("cursor-dot");
+  // Stop cursor on touch devices
+  const isTouch =
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    window.matchMedia("(hover: none)").matches;
 
-  const circle = document.createElement("div");
-  circle.classList.add("cursor-circle");
+  if (isTouch) return;
+
+  // Create cursor elements
+  const dot = document.createElement("div");
+  dot.className = "cursor-dot";
+
+  const outline = document.createElement("div");
+  outline.className = "cursor-outline";
 
   document.body.appendChild(dot);
-  document.body.appendChild(circle);
+  document.body.appendChild(outline);
 
-  // Move instantly (No smooth follow)
+  // Mouse Move Tracking
   window.addEventListener("mousemove", (e) => {
-    dot.style.left = `${e.clientX}px`;
-    dot.style.top = `${e.clientY}px`;
+    dot.style.left = e.clientX + "px";
+    dot.style.top = e.clientY + "px";
 
-    circle.style.left = `${e.clientX}px`;
-    circle.style.top = `${e.clientY}px`;
+    outline.style.left = e.clientX + "px";
+    outline.style.top = e.clientY + "px";
   });
 
-  // Hover zoom for clickable elements
-  const clickables = document.querySelectorAll(
-    "a, button, .btn, .card, .clickable"
-  );
+  // Hover Zoom on Clickable Elements
+  document.querySelectorAll("a, button, .btn, input, textarea").forEach(el => {
 
-  clickables.forEach((el) => {
     el.addEventListener("mouseenter", () => {
-      circle.classList.add("active");
+      outline.classList.add("hover");
     });
 
     el.addEventListener("mouseleave", () => {
-      circle.classList.remove("active");
+      outline.classList.remove("hover");
     });
-  });
 
-  // Disable cursor on mobile
-  if (window.innerWidth < 768) {
-    dot.remove();
-    circle.remove();
-    document.body.style.cursor = "auto";
-  }
+  });
 
 });
