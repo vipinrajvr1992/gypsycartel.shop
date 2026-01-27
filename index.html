@@ -1,347 +1,306 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Gypsy Cartel | Premium Digital Design & Software Studio</title>
+/* =========================================================
+   GYPSY CARTEL — GLOBAL SCRIPT (FINAL MASTER)
+   ✅ Cinematic Page Load Trigger
+   ✅ Cursor Engine (Physics + CSS Class Zoom + Input Fix)
+   ✅ Apps Modal + Scroll Lock
+   ✅ Studio Dropdown (Active Grey)
+   ✅ Header/Footer Loader (Absolute Path Fix)
+   ✅ Auto Nav Highlight (Folder Safe)
+   ✅ Design Form AJAX Submit
+========================================================= */
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-          content="Gypsy Cartel is a premium digital design and software studio delivering high-performance applications, hyper-realistic design, and modern UI/UX solutions.">
+document.addEventListener("DOMContentLoaded", () => {
 
-    <!-- ✅ FAVICON FIXED -->
-    <link rel="icon" href="/assets/logos/gypsy-cartel-icon.webp" sizes="32x32">
-    <link rel="apple-touch-icon" href="/assets/logos/gypsy-cartel-icon.webp">
+    /* =========================================================
+       1. PREMIUM PAGE LOAD TRIGGER
+    ========================================================= */
+    // Add class after short delay to trigger CSS fade-in
+    setTimeout(() => {
+        document.body.classList.add("page-loaded");
+    }, 50);
 
-    <!-- ORGANIZATION SCHEMA -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Gypsy Cartel",
-      "url": "https://www.gypsycartel.shop",
-      "logo": "https://www.gypsycartel.shop/assets/logos/gypsy-cartel-icon.webp"
+
+    /* =========================================================
+       2. DEVICE DETECTION (Cursor Safe)
+    ========================================================= */
+    const isTouchDevice =
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia("(hover: none)").matches;
+
+
+    /* =========================================================
+       3. CUSTOM CURSOR ENGINE (Desktop Only)
+    ========================================================= */
+    const cursorDot = document.querySelector(".cursor-dot");
+    const cursorOutline = document.querySelector(".cursor-outline");
+
+    if (!isTouchDevice && cursorDot && cursorOutline) {
+
+        let mouseX = 0, mouseY = 0;
+        let outlineX = 0, outlineY = 0;
+
+        // Instant Dot Movement
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+
+            // ✅ Make cursor visible on first movement (Fixes top-left bug)
+            cursorDot.style.opacity = "1";
+            cursorOutline.style.opacity = "1";
+        });
+
+        // Smooth Physics Loop
+        function animateCursor() {
+            outlineX += (mouseX - outlineX) * 0.15;
+            outlineY += (mouseY - outlineY) * 0.15;
+
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        /* ✅ FIX 1: Smart Input Handling (Hides Custom, Shows System Text Cursor) */
+        document.querySelectorAll("input, textarea, select").forEach(el => {
+            el.addEventListener("mouseenter", () => {
+                cursorDot.style.opacity = "0";
+                cursorOutline.style.opacity = "0";
+                document.body.style.cursor = "text"; // Show system 'I-beam'
+            });
+            el.addEventListener("mouseleave", () => {
+                cursorDot.style.opacity = "1";
+                cursorOutline.style.opacity = "1";
+                document.body.style.cursor = "none"; // Hide system cursor
+            });
+        });
+
+        /* ✅ FIX 2: Premium CSS Class Zoom (Links, Buttons, Images) */
+        document.querySelectorAll("a, button, .btn, .apps-gallery-img").forEach(el => {
+            el.addEventListener("mouseenter", () => {
+                cursorOutline.classList.add("active"); // Triggers CSS transition
+            });
+            el.addEventListener("mouseleave", () => {
+                cursorOutline.classList.remove("active");
+            });
+        });
+
+        /* ✅ FIX 3: Safety Fallback (Hide when leaving window) */
+        document.addEventListener("mouseleave", () => {
+            cursorDot.style.opacity = "0";
+            cursorOutline.style.opacity = "0";
+        });
+        
+        document.addEventListener("mouseenter", () => {
+            // It will reappear on 'mousemove', but this helps wake it up
+            cursorDot.style.opacity = "1";
+            cursorOutline.style.opacity = "1";
+        });
+
+    } else {
+        /* Mobile: Disable custom cursor */
+        if (cursorDot) cursorDot.style.display = "none";
+        if (cursorOutline) cursorOutline.style.display = "none";
+        document.body.style.cursor = "auto";
     }
-    </script>
 
-    <!-- LOTTIE PLAYER -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="/style.css">
+    /* =========================================================
+       4. APPS GALLERY MODAL + SCROLL LOCK
+    ========================================================= */
+    const modal = document.getElementById("appsModal");
+    const modalImg = document.getElementById("appsModalImg");
+    const closeBtn = document.querySelector(".apps-modal-close");
+    const galleryImages = document.querySelectorAll(".apps-gallery-img");
 
-    <!-- HERO OVERRIDES -->
-    <style>
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
+    let currentIndex = 0;
+
+    if (modal && modalImg && galleryImages.length) {
+
+        function toggleScroll(lock) {
+            document.body.style.overflow = lock ? "hidden" : "";
         }
 
-        .hero-lottie {
-            width: min(700px, 85vw);
-            height: auto;
-            margin-bottom: 3rem;
+        function showImage(index) {
+            currentIndex = index;
+            modalImg.src = galleryImages[currentIndex].src;
+            modal.style.display = "flex";
+            toggleScroll(true);
         }
 
-        @media (max-width: 768px) {
-            .hero-lottie {
-                width: min(520px, 90vw);
-                margin-bottom: 2rem;
+        function closeModal() {
+            modal.style.display = "none";
+            toggleScroll(false);
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            modalImg.src = galleryImages[currentIndex].src;
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            modalImg.src = galleryImages[currentIndex].src;
+        }
+
+        // Open
+        galleryImages.forEach((img, index) => {
+            img.addEventListener("click", () => showImage(index));
+        });
+
+        // Close Button
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+        // Background Click
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Arrow Buttons (Desktop)
+        const leftArrow = document.querySelector('.apps-modal-arrow.left');
+        const rightArrow = document.querySelector('.apps-modal-arrow.right');
+        
+        if (leftArrow) leftArrow.addEventListener('click', (e) => {
+            e.stopPropagation(); prevImage();
+        });
+        if (rightArrow) rightArrow.addEventListener('click', (e) => {
+            e.stopPropagation(); nextImage();
+        });
+
+        // Keyboard Nav
+        document.addEventListener("keydown", (e) => {
+            if (modal.style.display !== "flex") return;
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+        });
+    }
+
+
+    /* =========================================================
+       5. STUDIO CUSTOM DROPDOWN (Grey Active)
+    ========================================================= */
+    document.querySelectorAll(".gc-dropdown").forEach(dropdown => {
+        const selectedBox = dropdown.querySelector(".gc-dropdown-selected");
+        const items = dropdown.querySelectorAll("li");
+        const hiddenInput = dropdown.querySelector("input[type='hidden']");
+
+        if (!selectedBox || !hiddenInput) return;
+
+        selectedBox.addEventListener("click", (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle("open");
+        });
+
+        items.forEach(item => {
+            item.addEventListener("click", () => {
+                selectedBox.textContent = item.textContent;
+                hiddenInput.value = item.dataset.value;
+                items.forEach(li => li.classList.remove("active"));
+                item.classList.add("active");
+                dropdown.classList.remove("open");
+            });
+        });
+
+        // Close on click outside
+        document.addEventListener("click", (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove("open");
             }
-        }
+        });
+    });
 
-        .hero-tagline {
-            color: #aaa;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            max-width: 900px;
-            margin-bottom: 1.2rem;
-        }
 
-        .hero-services {
-            margin-bottom: 2.4rem;
-            font-size: 0.9rem;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            text-align: center;
-        }
+    /* =========================================================
+       6. HEADER + FOOTER LOADER (ABSOLUTE PATH FIX)
+    ========================================================= */
+    
+    /* ✅ FIX 4: Use Absolute Path for Production Domain */
+    const partialsPath = "/partials/";
 
-        .hero-actions {
-            display: flex;
-            gap: 18px;
-            justify-content: center;
-            flex-wrap: wrap;
+    /* LOAD HEADER */
+    fetch(partialsPath + "header.html")
+        .then(res => res.text())
+        .then(html => {
+            const mount = document.getElementById("site-header");
+            if (mount) mount.innerHTML = html;
 
-            /* ✅ EXTRA 2REM GAP ADDED (TOTAL = 6REM LOOK) */
-            margin-bottom: 2rem;
-        }
+            /* ✅ FIX 3: Folder Safe Nav Highlight */
+            let currentPath = window.location.pathname
+                .replace(/\/$/, "") // remove trailing slash
+                .split("/")
+                .pop();
+            
+            if (currentPath === "" || currentPath === "index") currentPath = "home";
 
-        /* HOME SECTION */
-        .home-section {
-            padding: 90px 20px;
-            background: #000;
-            text-align: center;
-        }
+            document.querySelectorAll("header nav a").forEach(link => {
+                if (link.dataset.nav === currentPath) {
+                    link.classList.add("active");
+                }
+            });
+        });
 
-        .home-section h2 {
-            font-size: 2.4rem;
-            margin-bottom: 25px;
-        }
+    /* LOAD FOOTER */
+    fetch(partialsPath + "footer.html")
+        .then(res => res.text())
+        .then(html => {
+            const mount = document.getElementById("site-footer");
+            if (mount) mount.innerHTML = html;
+            const year = document.getElementById("year");
+            if (year) year.textContent = new Date().getFullYear();
+        });
 
-        .home-section p {
-            max-width: 900px;
-            margin: auto;
-            color: #ccc;
-            line-height: 1.8;
-            font-size: 1.05rem;
-            margin-bottom: 22px;
-        }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 22px;
-            margin-top: 50px;
-        }
+    /* =========================================================
+       7. DESIGN FORM AJAX SUBMIT
+    ========================================================= */
+    const designForm = document.getElementById("designForm");
 
-        .service-card {
-            background: var(--bg-surface);
-            padding: 28px;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.08);
-            text-align: left;
-            transition: 0.25s ease;
-        }
+    if (designForm) {
+        designForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-        .service-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary-orange);
-        }
+            const successMsg = document.getElementById("design-success");
+            const submitBtn = designForm.querySelector("button");
+            const originalText = submitBtn.innerText;
+            const formData = new FormData(designForm);
 
-        .service-card h3 {
-            color: var(--primary-orange);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-        }
+            submitBtn.innerText = "SENDING...";
 
-        .service-card p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #bbb;
-            line-height: 1.6;
-        }
+            try {
+                const response = await fetch(designForm.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: { Accept: "application/json" }
+                });
 
-        .guideline-list {
-            max-width: 700px;
-            margin: 40px auto 0;
-            text-align: left;
-            color: #ccc;
-            line-height: 1.9;
-        }
+                if (response.ok) {
+                    designForm.reset();
+                    submitBtn.innerText = "SENT ✅";
+                    
+                    /* Show Success Message */
+                    if (successMsg) {
+                        successMsg.style.display = "block";
+                        successMsg.style.color = "#00ff88";
+                    }
 
-        .guideline-list li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 10px;
-        }
+                    setTimeout(() => {
+                        submitBtn.innerText = originalText;
+                        if (successMsg) successMsg.style.display = "none";
+                    }, 4000);
+                } else {
+                    alert("Submission failed. Try again.");
+                    submitBtn.innerText = originalText;
+                }
+            } catch {
+                alert("Network error. Please try again.");
+                submitBtn.innerText = originalText;
+            }
+        });
+    }
 
-        .guideline-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--primary-orange);
-            font-size: 1.4rem;
-            line-height: 1;
-        }
-
-        .home-cta {
-            padding: 90px 20px;
-            background: var(--bg-surface);
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .home-cta h2 {
-            font-size: 2.3rem;
-            margin-bottom: 20px;
-        }
-
-        .home-cta p {
-            max-width: 750px;
-            margin: auto;
-            color: #bbb;
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
-    </style>
-</head>
-
-<body>
-
-<!-- CURSOR -->
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
-<!-- HEADER -->
-<div id="site-header"></div>
-
-<!-- HERO -->
-<section class="hero">
-
-    <lottie-player
-        class="hero-lottie"
-        src="/assets/animations/hero-dots.json"
-        background="transparent"
-        speed="1"
-        loop
-        autoplay>
-    </lottie-player>
-
-    <h1 class="hero-tagline">
-        HIGH-PERFORMANCE SOFTWARE & VISUAL DESIGN STUDIO.
-    </h1>
-
-    <p class="hero-services">
-        Software Development &nbsp; • &nbsp;
-        Architecture &amp; Interiors &nbsp; • &nbsp;
-        3D Visualization &nbsp; • &nbsp;
-        Graphic &amp; Digital Design
-    </p>
-
-    <div class="hero-actions">
-        <a href="/gallery/" class="btn btn-primary">VIEW WORK</a>
-        <a href="/contact/" class="btn btn-outline contact-btn">START A PROJECT</a>
-    </div>
-
-</section>
-
-<!-- ===============================
-     PREMIUM HOMEPAGE CONTENT
-================================ -->
-
-<section class="home-section">
-    <h2>Creativity Backed by <span class="accent">Execution.</span></h2>
-
-    <p>
-        Gypsy Cartel is a multidisciplinary creative studio working across
-        technology, design, architecture, and fashion. We focus on building
-        modern solutions that help brands present themselves better, function
-        smarter, and grow with clarity.
-    </p>
-
-    <p>
-        Operating as a creative direction and execution hub, Gypsy Cartel manages
-        projects, strategy, and delivery through a flexible studio model that
-        combines in-house planning with trusted professionals.
-    </p>
-
-    <p>
-        Our mission is simple: clean design, reliable execution, and long-term
-        premium value — built for individuals, startups, and businesses that
-        expect more than generic work.
-    </p>
-</section>
-
-<section class="home-section">
-    <h2>Our <span class="accent">Services</span></h2>
-
-    <p>
-        Digital and creative solutions delivered with luxury-level clarity,
-        performance, and professional execution.
-    </p>
-
-    <div class="services-grid">
-
-        <div class="service-card">
-            <h3>Software & App Development</h3>
-            <p>
-                High-performance Windows applications, licensed tools, business systems,
-                and premium digital products built for real-world productivity.
-            </p>
-        </div>
-
-        <div class="service-card">
-            <h3>Web Design & Brand Identity</h3>
-            <p>
-                Premium websites, UI/UX layouts, brochures, posters, and complete
-                brand identity systems that feel global and professional.
-            </p>
-        </div>
-
-        <div class="service-card">
-            <h3>Architecture & Visualization</h3>
-            <p>
-                Interior and exterior design concepts, floor plans, layout development,
-                and cinematic-level 3D visualization for studios and real estate.
-            </p>
-        </div>
-
-        <div class="service-card">
-            <h3>Fashion & Creative Direction</h3>
-            <p>
-                Supporting fashion and lifestyle brands with visual styling,
-                campaign design, and premium creative assistance.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-<section class="home-section">
-    <h2>Operating Across <span class="accent">India & UAE</span></h2>
-
-    <p>
-        Gypsy Cartel is growing as a next-generation studio connecting creative
-        professionals and clients across India, UAE, and beyond.
-    </p>
-
-    <p>
-        Our workflow is built on structured collaboration, transparent coordination,
-        and execution through verified creative specialists.
-    </p>
-</section>
-
-<section class="home-section">
-    <h2>Studio <span class="accent">Guidelines</span></h2>
-
-    <p>
-        We maintain a premium standard through clear workflow, confidentiality,
-        and quality-focused delivery.
-    </p>
-
-    <ul class="guideline-list">
-        <li>Clear project scope and defined timelines</li>
-        <li>Structured workflow with transparent coordination</li>
-        <li>Confidential handling of all project materials</li>
-        <li>Execution through verified creative professionals</li>
-        <li>Designs refined through agreed stages</li>
-        <li>Focus on quality, clarity, and practical delivery</li>
-    </ul>
-</section>
-
-<section class="home-cta">
-    <h2>Ready to Build Something Premium?</h2>
-
-    <p>
-        Explore our work, start your next project, or collaborate with Gypsy Cartel
-        through our creative studio network.
-    </p>
-
-    <a href="/contact/" class="btn btn-primary">Start a Project</a>
-</section>
-
-<!-- FOOTER -->
-<div id="site-footer"></div>
-
-<script src="/script.js"></script>
-
-</body>
-</html>
+});
