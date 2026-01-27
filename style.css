@@ -835,3 +835,121 @@ footer h4,
 .studio-orange {
     color: var(--primary-orange) !important;
 }
+/* =========================================================
+   ✅ GLOBAL MOBILE PROFESSIONAL FIX (GYPSY CARTEL)
+   Works on ALL pages
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Prevent Side Scroll */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  /* Container Fit */
+  .container {
+    width: 100%;
+    padding: 18px !important;
+  }
+
+  /* Grid System → Stack */
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  /* Headings Resize */
+  h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  p, li {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+  }
+
+  /* Buttons Touch Friendly */
+  .btn,
+  button {
+    width: 100% !important;
+    padding: 14px !important;
+    font-size: 1rem !important;
+    border-radius: 12px !important;
+    text-align: center;
+  }
+
+  /* Images Always Fit */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Sections Spacing */
+  section {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+
+  /* Navbar Fix */
+  nav {
+    padding: 15px 18px !important;
+  }
+
+  nav ul {
+    flex-direction: column !important;
+    gap: 18px !important;
+    text-align: center;
+  }
+
+  /* Hide Heavy Desktop Effects */
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+
+  /* Gallery Swipe Support */
+  .apps-gallery-track,
+  .slider-track {
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .apps-gallery-img,
+  .slide {
+    scroll-snap-align: center;
+    min-width: 85%;
+  }
+
+  /* Remove Gallery Arrows */
+  .apps-gallery-arrow {
+    display: none !important;
+  }
+
+  /* Footer Stack */
+  footer {
+    text-align: center;
+    padding: 40px 20px !important;
+  }
+
+  footer .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 25px !important;
+  }
+
+}
