@@ -231,16 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================================
-       1. PREMIUM PAGE LOAD FADE (Already Exists)
-    ========================================= */
-
-    setTimeout(() => {
-        document.body.classList.add("page-loaded");
-    }, 60);
-
-
-    /* =========================================
+/* =========================================
        2. GLOBAL SCROLL REVEAL SYSTEM
        Works for Text, Cards, Sections, Forms, Images
     ========================================= */
