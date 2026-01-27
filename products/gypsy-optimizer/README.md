@@ -58,7 +58,7 @@ Instagram:
 https://instagram.com/mallugypsy.creations
 
 Website:  
-https://gypsycartel.shop
+https://thegypsycartel.com
 
 ---
 
