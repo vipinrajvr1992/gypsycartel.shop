@@ -640,3 +640,162 @@ footer p a:hover,
         cursor: pointer !important;
     }
 }
+/* =========================================================
+   GYPSY CARTEL — GLOBAL PREMIUM HOVER ANIMATIONS
+   Paste this at the BOTTOM of style.css
+========================================================= */
+
+
+/* =========================================
+   1. GLOBAL SMOOTH TRANSITIONS
+========================================= */
+
+* {
+    transition: background-color 0.35s ease,
+                border-color 0.35s ease,
+                color 0.35s ease;
+}
+
+
+/* =========================================
+   2. PREMIUM IMAGE HOVER (ALL IMAGES)
+========================================= */
+
+img {
+    transition: transform 0.65s ease,
+                filter 0.65s ease,
+                box-shadow 0.65s ease;
+}
+
+img:hover {
+    transform: scale(1.045);
+    filter: brightness(1.08);
+}
+
+
+/* =========================================
+   3. PREMIUM GALLERY + APP SCREEN ZOOM
+========================================= */
+
+.apps-gallery-img,
+.gallery-item img {
+    transition: transform 0.6s ease,
+                box-shadow 0.6s ease;
+}
+
+.apps-gallery-img:hover,
+.gallery-item:hover img {
+    transform: scale(1.12);
+    box-shadow: 0 28px 75px rgba(0,0,0,0.7);
+}
+
+
+/* =========================================
+   4. PREMIUM FORM FIELD INTERACTION
+========================================= */
+
+input,
+textarea,
+select {
+    transition: transform 0.25s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+/* Hover */
+input:hover,
+textarea:hover,
+select:hover {
+    border-color: rgba(255,106,26,0.55);
+    transform: scale(1.01);
+}
+
+/* Focus */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 3px rgba(255,106,26,0.22);
+}
+
+
+/* =========================================
+   5. FORM CONTAINER LIFT (PREMIUM)
+========================================= */
+
+form {
+    transition: transform 0.55s ease,
+                box-shadow 0.55s ease;
+}
+
+form:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 85px rgba(0,0,0,0.6);
+}
+
+
+/* =========================================
+   6. PREMIUM BUTTON HOVER MOTION
+========================================= */
+
+.btn {
+    transition: transform 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 45px rgba(255,106,26,0.25);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   7. PREMIUM CARD FLOAT EFFECT
+   (Services, Careers Roles, Blocks)
+========================================= */
+
+.service-card,
+.role-item,
+.gallery-card {
+    transition: transform 0.45s ease,
+                border-color 0.45s ease,
+                box-shadow 0.45s ease;
+}
+
+.service-card:hover,
+.role-item:hover,
+.gallery-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255,106,26,0.55);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+}
+
+
+/* =========================================
+   8. PREMIUM LINK GLOW HOVER
+========================================= */
+
+a {
+    transition: color 0.25s ease;
+}
+
+a:hover {
+    color: var(--primary-orange);
+}
+
+
+/* =========================================
+   9. ULTRA PREMIUM SMOOTH FEEL (OPTIONAL)
+========================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
