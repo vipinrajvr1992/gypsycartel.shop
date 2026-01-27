@@ -14,50 +14,9 @@
 
     <!-- MAIN STYLES -->
     <link rel="stylesheet" href="/style.css">
-
-    <!-- APPS PAGE ANIMATIONS -->
-    <style>
-        .apps-page {
-            opacity: 0;
-            animation: pageFade 0.8s ease forwards;
-        }
-
-        @keyframes pageFade {
-            to { opacity: 1; }
-        }
-
-        .apps-reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            animation: textReveal 0.8s ease forwards;
-        }
-
-        .apps-reveal.delay-1 { animation-delay: 0.15s; }
-        .apps-reveal.delay-2 { animation-delay: 0.3s; }
-        .apps-reveal.delay-3 { animation-delay: 0.45s; }
-
-        @keyframes textReveal {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .apps-image {
-            opacity: 0;
-            transform: translateY(20px) scale(0.97);
-            animation: imageReveal 0.9s ease forwards;
-            animation-delay: 0.4s;
-        }
-
-        @keyframes imageReveal {
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-    </style>
 </head>
 
 <body>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
 
 <!-- HEADER -->
 <div id="site-header"></div>
@@ -69,22 +28,22 @@
 
         <!-- LEFT CONTENT -->
         <div>
-            <h3 class="apps-reveal delay-1"
+            <h3 class="reveal delay-1"
                 style="color: var(--primary-orange); margin-bottom: 10px; font-size: 1rem;">
                 WINDOWS OPTIMIZATION
             </h3>
 
-            <h1 class="apps-reveal delay-2" style="font-size: 2rem; margin-bottom: 25px;">
+            <h1 class="reveal delay-2" style="font-size: 2rem; margin-bottom: 25px;">
                 GYPSY OPTIMIZER: PC BEAST <br>V3.1 PRO+
             </h1>
 
-            <p class="apps-reveal delay-3" style="color: #ccc; margin-bottom: 25px;">
+            <p class="reveal delay-3" style="color: #ccc; margin-bottom: 25px;">
                 GYPSY OPTIMIZER V3.1 PRO+ is a professional Windows optimization and system
                 maintenance tool designed to improve speed, stability, and overall PC
                 performance.
             </p>
 
-            <ul class="apps-reveal delay-3"
+            <ul class="reveal delay-3"
                 style="margin-left: 20px; margin-bottom: 25px; list-style-type:'⚡ '; ">
                 <li>One-Click Full System Optimization</li>
                 <li>Junk, Cache & Temporary File Cleanup</li>
@@ -92,18 +51,24 @@
                 <li>Windows System Repair Tools</li>
             </ul>
 
-            <p class="apps-reveal delay-3"
+            <p class="reveal delay-3"
                style="font-size:0.9rem; color:var(--text-muted); margin-bottom:18px;">
                 ✔ One-time purchase<br>
                 ✔ No subscriptions<br>
                 ✔ Instant download after payment
             </p>
 
-       <div class="apps-reveal delay-3" style="margin-bottom:18px; display: flex; align-items: center; gap: 15px;">
-                <span style="color:#777; text-decoration:line-through; font-size: 1.2rem;">₹1999</span>
-                
-                <span style="color:var(--primary-orange); font-size:1.4rem; font-weight:700;">₹999</span>
-                
+            <div class="reveal delay-3"
+                 style="margin-bottom:18px; display:flex; align-items:center; gap:15px;">
+
+                <span style="color:#777; text-decoration:line-through; font-size: 1.2rem;">
+                    ₹1999
+                </span>
+
+                <span style="color:var(--primary-orange); font-size:1.4rem; font-weight:700;">
+                    ₹999
+                </span>
+
                 <span style="border:1px solid var(--primary-orange);
                     padding:4px 12px; border-radius:20px; font-size:0.75rem;
                     color:var(--primary-orange); background:rgba(255,106,26,0.15);">
@@ -111,7 +76,7 @@
                 </span>
             </div>
 
-            <a class="btn btn-primary apps-reveal delay-3"
+            <a class="btn btn-primary reveal delay-3"
                href="https://gypsycartel.gumroad.com/l/gypsy-optimizer-pc-beast-v3-1-pro"
                target="_blank" rel="noopener">
                 BUY NOW
@@ -119,16 +84,17 @@
         </div>
 
         <!-- RIGHT IMAGE -->
-        <div>
+        <div class="reveal-img delay-2">
             <img src="/assets/logos/gypsy-app.webp"
                  alt="PC Beast Pro+ Software Icon"
                  class="apps-image"
-                 style="width:100%; border-radius:8px;">
+                 style="width:100%; border-radius:12px;">
         </div>
+
     </div>
 
     <!-- APP GALLERY -->
-    <section class="apps-gallery apps-reveal delay-3">
+    <section class="apps-gallery reveal delay-3">
 
         <h3 class="apps-gallery-title">APPLICATION PREVIEW</h3>
 
@@ -151,6 +117,7 @@
 
         </div>
     </section>
+
 </div>
 
 <!-- IMAGE MODAL -->
