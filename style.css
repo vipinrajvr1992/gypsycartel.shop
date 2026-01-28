@@ -1402,3 +1402,26 @@ img:hover {
     display: none;
   }
 }
+/* Chat With Us Label */
+.whatsapp-float::after {
+  content: "Chat with us";
+  position: absolute;
+  right: 70px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: 0.25s ease;
+  pointer-events: none;
+}
+
+/* Show Label on Hover */
+.whatsapp-float:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
