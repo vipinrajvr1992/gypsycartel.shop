@@ -319,3 +319,113 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+/* =========================================================
+   ✅ GYPSY CARTEL — FINAL MOBILE NAVBAR ENGINE (CLEAN)
+   Auto Center + Indicator + Hamburger Drawer
+   Works After Header Inject
+========================================================= */
+
+function initMobileNavbar() {
+
+  const headerNav = document.querySelector("header nav");
+  const menu = document.querySelector("header nav ul");
+  const links = document.querySelectorAll("header nav a");
+  const indicator = document.querySelector(".nav-indicator");
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+
+  if (!headerNav || !menu || !links.length) return;
+
+  /* =========================================
+     ✅ MOVE INDICATOR
+  ========================================= */
+  function moveIndicator(activeLink) {
+    if (!indicator || !activeLink) return;
+
+    const rect = activeLink.getBoundingClientRect();
+    const navRect = headerNav.getBoundingClientRect();
+
+    indicator.style.width = rect.width + "px";
+    indicator.style.left = rect.left - navRect.left + "px";
+  }
+
+  /* =========================================
+     ✅ AUTO CENTER ACTIVE TAB
+  ========================================= */
+  function centerActive(activeLink) {
+    if (!activeLink) return;
+
+    activeLink.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
+  }
+
+  /* =========================================
+     ✅ INITIAL ACTIVE LINK
+  ========================================= */
+  const active = document.querySelector("header nav a.active");
+  if (active) {
+    moveIndicator(active);
+    centerActive(active);
+  }
+
+  /* =========================================
+     ✅ CLICK UPDATE
+  ========================================= */
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+
+      links.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+
+      moveIndicator(link);
+      centerActive(link);
+
+      menu.classList.remove("open");
+    });
+  });
+
+  /* =========================================
+     ✅ HAMBURGER TOGGLE
+  ========================================= */
+  if (menuBtn) {
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("open");
+    });
+  }
+
+  /* Close Drawer Outside Click */
+  document.addEventListener("click", (e) => {
+    if (!headerNav.contains(e.target)) {
+      menu.classList.remove("open");
+    }
+  });
+
+  /* Update Indicator on Resize */
+  window.addEventListener("resize", () => {
+    const activeNow = document.querySelector("header nav a.active");
+    if (activeNow) moveIndicator(activeNow);
+  });
+}
+
+
+/* =========================================================
+   ✅ RUN NAVBAR AFTER HEADER LOADS
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const headerMount = document.getElementById("site-header");
+  if (!headerMount) return;
+
+  const observer = new MutationObserver(() => {
+    if (headerMount.querySelector("nav")) {
+      initMobileNavbar();
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(headerMount, { childList: true, subtree: true });
+
+});
