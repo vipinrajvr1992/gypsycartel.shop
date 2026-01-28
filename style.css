@@ -1119,3 +1119,12 @@ footer h4,
   }
 
 }
+/* =========================================
+   ✅ DESKTOP SAFETY FIX
+   Hide Mobile Elements Completely
+========================================= */
+
+.mobile-menu-btn,
+.nav-indicator {
+  display: none !important;
+}
