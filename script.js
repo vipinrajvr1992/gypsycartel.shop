@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =========================================================
    ✅ FINAL MOBILE NAVBAR ENGINE (GYPSY CARTEL)
    Auto Center + Indicator + Hamburger Drawer
-   Paste at BOTTOM of script.js
+   PRODUCTION SAFE (No Timeout)
 ========================================================= */
 
 function initMobileNavbar() {
@@ -336,7 +336,7 @@ function initMobileNavbar() {
     if (!headerNav || !menu || !links.length) return;
 
     /* =========================================
-       ✅ INDICATOR MOVE FUNCTION
+       ✅ MOVE INDICATOR
     ========================================= */
     function moveIndicator(activeLink) {
         if (!indicator || !activeLink) return;
@@ -362,7 +362,7 @@ function initMobileNavbar() {
     }
 
     /* =========================================
-       ✅ ON PAGE LOAD (ACTIVE LINK)
+       ✅ INITIAL ACTIVE LINK
     ========================================= */
     const active = document.querySelector("header nav a.active");
     if (active) {
@@ -371,7 +371,7 @@ function initMobileNavbar() {
     }
 
     /* =========================================
-       ✅ CLICK EVENTS (Update Active)
+       ✅ CLICK EVENTS
     ========================================= */
     links.forEach(link => {
         link.addEventListener("click", () => {
@@ -382,10 +382,8 @@ function initMobileNavbar() {
             moveIndicator(link);
             centerActive(link);
 
-            /* Close Hamburger After Click */
-            if (menu.classList.contains("open")) {
-                menu.classList.remove("open");
-            }
+            /* Close Drawer After Click */
+            menu.classList.remove("open");
         });
     });
 
@@ -393,13 +391,14 @@ function initMobileNavbar() {
        ✅ HAMBURGER TOGGLE
     ========================================= */
     if (menuBtn) {
-        menuBtn.addEventListener("click", () => {
+        menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // prevent outside click close
             menu.classList.toggle("open");
         });
     }
 
     /* =========================================
-       ✅ CLOSE MENU IF USER CLICKS OUTSIDE
+       ✅ CLOSE DRAWER ON OUTSIDE CLICK
     ========================================= */
     document.addEventListener("click", (e) => {
         if (!headerNav.contains(e.target)) {
@@ -416,15 +415,25 @@ function initMobileNavbar() {
     });
 }
 
+
 /* =========================================================
-   ✅ RUN NAV INIT AFTER HEADER LOADS
+   ✅ RUN AFTER HEADER LOADS (Correct Method)
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* Wait for header fetch injection */
-    setTimeout(() => {
-        initMobileNavbar();
-    }, 300);
+    /* Detect when header is injected */
+    const headerMount = document.getElementById("site-header");
+
+    if (!headerMount) return;
+
+    const observer = new MutationObserver(() => {
+        if (headerMount.querySelector("nav")) {
+            initMobileNavbar();
+            observer.disconnect(); // run only once
+        }
+    });
+
+    observer.observe(headerMount, { childList: true, subtree: true });
 
 });
