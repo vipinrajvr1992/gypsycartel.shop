@@ -835,199 +835,100 @@ footer h4,
 .studio-orange {
     color: var(--primary-orange) !important;
 }
-/* =========================================================
-   ✅ GLOBAL MOBILE PROFESSIONAL FIX (GYPSY CARTEL)
-   FINAL VERSION — Works on ALL pages
-========================================================= */
+/* =========================================
+   ✅ FINAL MOBILE NAVBAR FIX — NO OVERLAP ANYWHERE
+========================================= */
 
 @media (max-width: 768px) {
 
-  /* =========================================
-     ✅ Prevent Side Scroll (Global Fix)
-  ========================================= */
-  html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-  }
-
-  /* =========================================
-     ✅ Container Fit
-  ========================================= */
-  .container {
-    width: 100% !important;
-    padding: 18px !important;
-    margin: 0 auto !important;
-  }
-
-  /* =========================================
-     ✅ Grid System → Stack Cleanly
-  ========================================= */
-  .grid-2,
-  .grid-3,
-  .grid-4 {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 30px !important;
-  }
-
-  /* =========================================
-     ✅ Headings Resize (Mobile Typography)
-  ========================================= */
-  h1 {
-    font-size: 1.8rem !important;
-    line-height: 1.3 !important;
-  }
-
-  h2 {
-    font-size: 1.5rem !important;
-    line-height: 1.35 !important;
-  }
-
-  h3 {
-    font-size: 1.1rem !important;
-    line-height: 1.4 !important;
-  }
-
-  p, li {
-    font-size: 0.95rem !important;
-    line-height: 1.6 !important;
-  }
-
-  /* =========================================
-     ✅ Buttons Touch Friendly
-  ========================================= */
-  .btn,
-  button {
-    width: 100% !important;
-    padding: 14px !important;
-    font-size: 1rem !important;
-    border-radius: 12px !important;
-    text-align: center !important;
-  }
-
-  /* =========================================
-     ✅ Images Always Fit
-  ========================================= */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-
-  /* =========================================
-     ✅ Section Spacing Fix
-  ========================================= */
-  section {
-    padding-top: 50px !important;
-    padding-bottom: 50px !important;
-  }
-
-  /* =========================================
-     ✅ MOBILE NAVBAR FIX (Horizontal No Overlap)
-  ========================================= */
+  /* Navbar Wrapper */
   nav {
     width: 100% !important;
-    padding: 14px 16px !important;
+    padding: 14px 12px !important;
     display: flex !important;
-    justify-content: space-between !important;
     align-items: center !important;
-    flex-wrap: wrap !important;
-    position: relative !important;
-    z-index: 9999 !important;
+    justify-content: center !important;
+    position: sticky !important;
+    top: 0 !important;
+    background: rgba(0,0,0,0.92) !important;
+    backdrop-filter: blur(14px) !important;
+    z-index: 99999 !important;
   }
 
-  nav ul {
+  /* Force ALL Menus Horizontal */
+  nav ul,
+  nav .menu,
+  nav .nav-links {
     display: flex !important;
     flex-direction: row !important;
-    gap: 14px !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    width: 100% !important;
-    padding: 10px 0 !important;
-    margin: 0 auto !important;
+    align-items: center !important;
     justify-content: flex-start !important;
+
+    width: 100% !important;
+    gap: 16px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    white-space: nowrap !important;
+    padding: 8px 10px !important;
+
     scrollbar-width: none !important;
   }
 
-  nav ul::-webkit-scrollbar {
+  /* Hide Scrollbar */
+  nav ul::-webkit-scrollbar,
+  nav .menu::-webkit-scrollbar,
+  nav .nav-links::-webkit-scrollbar {
     display: none !important;
   }
 
+  /* Remove Vertical Overlay Menu Completely */
+  nav ul.open,
+  nav .menu.open,
+  nav .nav-links.open {
+    flex-direction: row !important;
+    position: relative !important;
+    height: auto !important;
+    background: none !important;
+  }
+
+  /* Nav Items */
   nav ul li {
     flex: 0 0 auto !important;
+    list-style: none !important;
   }
 
-  nav ul li a {
+  /* Nav Links */
+  nav ul li a,
+  nav a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
     font-size: 0.95rem !important;
-    padding: 10px 14px !important;
-    border-radius: 10px !important;
-    display: inline-block !important;
-    text-align: center !important;
+    font-weight: 500 !important;
+
+    padding: 10px 16px !important;
+    border-radius: 14px !important;
+
+    color: white !important;
+    text-decoration: none !important;
+
+    transition: all 0.25s ease !important;
   }
 
+  /* Active Page Highlight */
+  nav a.active,
   nav ul li a.active {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.08) !important;
     color: var(--primary-orange) !important;
   }
 
-  /* =========================================
-     ✅ Hide Heavy Desktop Cursor Effects
-  ========================================= */
-  .cursor-dot,
-  .cursor-outline {
-    display: none !important;
-  }
-
-  /* =========================================
-     ✅ Gallery + Slider Swipe Support
-  ========================================= */
-  .apps-gallery-track,
-  .slider-track {
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch !important;
-    gap: 20px !important;
-  }
-
-  .apps-gallery-img,
-  .slide {
-    scroll-snap-align: center !important;
-    min-width: 85% !important;
-    border-radius: 16px !important;
-  }
-
-  /* Remove Slider Arrows */
-  .apps-gallery-arrow {
-    display: none !important;
-  }
-
-  /* =========================================
-     ✅ Forms Perfect Fit
-  ========================================= */
-  form input,
-  form textarea {
-    width: 100% !important;
-    font-size: 1rem !important;
-    padding: 14px !important;
-    border-radius: 12px !important;
-  }
-
-  textarea {
-    min-height: 140px !important;
-  }
-
-  /* =========================================
-     ✅ Footer Stack Professional
-  ========================================= */
-  footer {
-    text-align: center !important;
-    padding: 40px 20px !important;
-  }
-
-  footer .footer-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 25px !important;
+  /* Prevent Menu Text Overlap */
+  nav * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
 }
