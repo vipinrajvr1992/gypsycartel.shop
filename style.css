@@ -1259,3 +1259,45 @@ img:hover {
   transform: scale(1.035);
   filter: brightness(1.04);
 }
+/* =========================================
+   FLOATING WHATSAPP WIDGET — GLOBAL
+   Gypsy Cartel Premium Button
+========================================= */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  box-shadow: 0 0 18px rgba(37, 211, 102, 0.35);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  opacity: 0.95;
+}
+
+/* WhatsApp Icon (Pure CSS SVG inside) */
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+/* Mobile Safe */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 18px;
+    right: 18px;
+    width: 54px;
+    height: 54px;
+  }
+}
