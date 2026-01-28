@@ -1285,7 +1285,7 @@ img:hover {
 
   cursor: pointer;
 
-  /* Premium Motion */
+  /* Premium Floating Motion */
   animation: wa-float 3s ease-in-out infinite;
 
   transition: transform 0.25s ease, opacity 0.25s ease;
