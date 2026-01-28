@@ -836,63 +836,249 @@ footer h4,
     color: var(--primary-orange) !important;
 }
 /* =========================================================
-   ✅ ULTRA PREMIUM MOBILE NAV SYSTEM
+   ✅ GYPSY CARTEL — FINAL MOBILE MASTER FIX (BOTTOM)
+   PREMIUM iPHONE NAVBAR + NO OVERLAP + HAMBURGER
+   Works on ALL Pages
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+@media (max-width: 768px) {
 
-  const nav = document.querySelector("nav");
-  const links = document.querySelectorAll("nav a");
-  const indicator = document.querySelector(".nav-indicator");
-  const menuBtn = document.querySelector(".mobile-menu-btn");
-  const menu = document.querySelector("nav ul");
-
-  /* ✅ Move Indicator */
-  function moveIndicator(activeLink) {
-    if (!activeLink) return;
-
-    const rect = activeLink.getBoundingClientRect();
-    const navRect = nav.getBoundingClientRect();
-
-    indicator.style.width = rect.width + "px";
-    indicator.style.left = rect.left - navRect.left + "px";
+  /* =========================================
+     ✅ GLOBAL MOBILE RESET
+  ========================================= */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
   }
 
-  /* ✅ Auto Center Active Tab */
-  function centerActive(activeLink) {
-    if (!activeLink) return;
-
-    activeLink.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest"
-    });
+  .container {
+    width: 100% !important;
+    padding: 18px !important;
+    margin: 0 auto !important;
   }
 
-  /* On Load */
-  const active = document.querySelector("nav a.active");
-  moveIndicator(active);
-  centerActive(active);
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
 
-  /* Click Events */
-  links.forEach(link => {
-    link.addEventListener("click", () => {
-      links.forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
+  section {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
 
-      moveIndicator(link);
-      centerActive(link);
+  /* =========================================
+     ✅ GRID STACK FIX
+  ========================================= */
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .footer-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
 
-      /* Close Hamburger Menu After Click */
-      if (menu.classList.contains("open")) {
-        menu.classList.remove("open");
-      }
-    });
-  });
+  /* =========================================
+     ✅ MOBILE TYPOGRAPHY
+  ========================================= */
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.1rem !important; }
 
-  /* Hamburger Toggle */
-  menuBtn.addEventListener("click", () => {
-    menu.classList.toggle("open");
-  });
+  p, li {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
 
-});
+  /* =========================================
+     ✅ BUTTONS TOUCH FRIENDLY
+  ========================================= */
+  button,
+  .btn {
+    width: 100% !important;
+    padding: 14px !important;
+    font-size: 1rem !important;
+    border-radius: 14px !important;
+    text-align: center !important;
+  }
+
+  /* =========================================
+     ✅ FORM PERFECT FIT
+  ========================================= */
+  form input,
+  form textarea {
+    width: 100% !important;
+    padding: 14px !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+  }
+
+  textarea {
+    min-height: 140px !important;
+  }
+
+  /* =========================================
+     ✅ CURSOR DISABLE ON MOBILE
+  ========================================= */
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+
+  /* =========================================
+     ✅ FINAL PREMIUM MOBILE HEADER FIX (NO OVERLAP)
+  ========================================= */
+  header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99999 !important;
+
+    width: 100% !important;
+    height: auto !important;
+
+    padding: 12px 14px !important;
+
+    background: rgba(0,0,0,0.92) !important;
+    backdrop-filter: blur(18px) !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  header nav {
+    width: 100% !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* =========================================
+     ✅ HORIZONTAL SWIPE MENU (ALL PAGES)
+  ========================================= */
+  header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+
+    gap: 14px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    white-space: nowrap !important;
+    width: 100% !important;
+
+    padding: 8px 0 !important;
+    margin: 0 !important;
+
+    scrollbar-width: none !important;
+    scroll-behavior: smooth !important;
+  }
+
+  header nav ul::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  header nav ul li {
+    flex: 0 0 auto !important;
+    list-style: none !important;
+  }
+
+  header nav ul li a {
+    padding: 10px 16px !important;
+    border-radius: 16px !important;
+
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  /* Active Tab */
+  header nav ul li a.active {
+    background: rgba(255,255,255,0.08) !important;
+    color: var(--primary-orange) !important;
+  }
+
+  /* =========================================
+     ✅ SWIPE INDICATOR LINE
+  ========================================= */
+  .nav-indicator {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+
+    height: 2px !important;
+    width: 40px !important;
+
+    background: var(--primary-orange) !important;
+    border-radius: 20px !important;
+
+    transition: 0.35s ease !important;
+    pointer-events: none !important;
+  }
+
+  /* =========================================
+     ✅ FOOTER STACK CLEAN
+  ========================================= */
+  footer {
+    text-align: center !important;
+    padding: 40px 20px !important;
+  }
+
+}
+
+/* =========================================================
+   ✅ HAMBURGER MENU MODE (SMALL PHONES ONLY)
+========================================================= */
+
+@media (max-width: 480px) {
+
+  /* Hamburger Button */
+  .mobile-menu-btn {
+    display: block !important;
+    font-size: 1.7rem !important;
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    margin-right: 10px !important;
+    cursor: pointer !important;
+  }
+
+  /* Hide Horizontal Menu */
+  header nav ul {
+    display: none !important;
+  }
+
+  /* Drawer Open */
+  header nav ul.open {
+    display: flex !important;
+    flex-direction: column !important;
+
+    position: absolute !important;
+    top: 60px !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    padding: 18px !important;
+
+    background: rgba(0,0,0,0.97) !important;
+    backdrop-filter: blur(20px) !important;
+
+    border-radius: 0 0 20px 20px !important;
+    gap: 14px !important;
+  }
+
+  header nav ul.open a {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding: 14px 18px !important;
+  }
+
+}
