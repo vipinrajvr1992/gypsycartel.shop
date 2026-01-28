@@ -1402,3 +1402,47 @@ img:hover {
     display: none;
   }
 }
+/* =========================================
+   Premium Tooltip Text — Gypsy Cartel Style
+========================================= */
+
+.whatsapp-float::before {
+  content: "Connect Now";
+  position: absolute;
+
+  right: 74px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* Premium Glass Tooltip */
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(12px);
+
+  /* Premium Font Look */
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.95);
+
+  padding: 10px 16px;
+  border-radius: 14px;
+
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  /* Soft Premium Shadow */
+  box-shadow: 0 0 20px rgba(0,0,0,0.55);
+
+  transition: all 0.25s ease;
+}
+
+/* Tooltip Smooth Reveal */
+.whatsapp-float:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-6px);
+}
