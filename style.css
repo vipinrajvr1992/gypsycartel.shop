@@ -821,7 +821,6 @@ body {
 
 /* =========================================
    GLOBAL FOOTER — ORANGE SECTION HEADINGS
-   Services | Company | Careers | Connect
 ========================================= */
 
 footer h3,
@@ -840,17 +839,13 @@ footer h4,
 
 
 /* =========================================================
-   ✅ GYPSY CARTEL — FINAL MOBILE NAVBAR MASTER (FINAL)
-   Swipe Menu + Indicator + Hamburger Drawer
-   Logo Left + Hamburger Right Perfect
-   Drawer Full Fit + Premium Animation
-   Desktop Safe — Works on ALL Pages
+   ✅ GYPSY CARTEL — FINAL MOBILE NAVBAR MASTER (PERFECT)
+   Gap Fixed + Studio Fixed + Premium Drawer
 ========================================================= */
 
 
 /* =========================================
-   ✅ DESKTOP SAFETY (ONLY ONCE)
-   Hide Mobile Button + Indicator on Desktop
+   ✅ DESKTOP SAFETY
 ========================================= */
 .mobile-menu-btn,
 .nav-indicator {
@@ -859,7 +854,7 @@ footer h4,
 
 
 /* =========================================================
-   ✅ MOBILE NAVBAR SYSTEM (TABLETS + PHONES)
+   ✅ MOBILE SYSTEM (TABLETS + PHONES)
 ========================================================= */
 @media (max-width: 768px) {
 
@@ -869,13 +864,21 @@ footer h4,
     width: 100% !important;
   }
 
-  /* Push Content Below Fixed Header */
+  /* ✅ FIX HEADER GAP (REAL FIX) */
   body {
-    padding-top: 85px !important;
+    padding-top: 65px !important;
+    margin: 0 !important;
+  }
+
+  /* Remove Extra Top Space From Sections */
+  section,
+  .container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   /* =========================================
-     ✅ FIXED PREMIUM HEADER (Always Visible)
+     ✅ FIXED HEADER (Slim Premium)
   ========================================= */
   header {
     position: fixed !important;
@@ -883,7 +886,7 @@ footer h4,
     left: 0 !important;
 
     width: 100% !important;
-    height: 75px !important;
+    height: 60px !important;
 
     padding: 0 14px !important;
 
@@ -897,9 +900,7 @@ footer h4,
     z-index: 999999 !important;
   }
 
-  /* =========================================
-     ✅ LOGO LEFT PERFECT ALIGNMENT
-  ========================================= */
+  /* Logo Left */
   header a {
     flex: 0 0 auto !important;
     display: flex !important;
@@ -907,17 +908,13 @@ footer h4,
   }
 
   .logo-icon {
-    width: 38px !important;
+    width: 34px !important;
     height: auto !important;
   }
 
-  /* =========================================
-     ✅ NAV FLEX FIX (Hamburger Right)
-  ========================================= */
+  /* Nav Right */
   header nav {
     flex: 1 !important;
-    width: auto !important;
-
     position: relative !important;
 
     display: flex !important;
@@ -927,33 +924,26 @@ footer h4,
     gap: 12px !important;
   }
 
-  /* =========================================
-     ✅ SHOW INDICATOR ONLY ON MOBILE
-  ========================================= */
+  /* Indicator Visible */
   .nav-indicator {
     display: block !important;
   }
 
-  /* =========================================
-     ✅ HORIZONTAL SWIPE MENU (APPLE/Nike Style)
-  ========================================= */
+  /* Swipe Menu */
   header nav ul {
     display: flex !important;
     flex-direction: row !important;
 
     gap: 14px !important;
-
     overflow-x: auto !important;
-    overflow-y: hidden !important;
-
     white-space: nowrap !important;
+
     width: 100% !important;
 
-    padding: 10px 0 !important;
+    padding: 6px 0 !important;
     margin: 0 !important;
 
     scrollbar-width: none !important;
-    scroll-behavior: smooth !important;
   }
 
   header nav ul::-webkit-scrollbar {
@@ -966,32 +956,25 @@ footer h4,
   }
 
   header nav ul li a {
-    padding: 10px 16px !important;
-    border-radius: 16px !important;
+    padding: 8px 14px !important;
+    border-radius: 14px !important;
 
-    font-size: 0.92rem !important;
+    font-size: 0.9rem !important;
     font-weight: 600 !important;
-
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
 
     color: white !important;
     text-decoration: none !important;
   }
 
-  /* Active Tab Highlight */
   header nav ul li a.active {
     background: rgba(255,255,255,0.08) !important;
     color: var(--primary-orange) !important;
   }
 
-  /* =========================================
-     ✅ ORANGE INDICATOR LINE
-  ========================================= */
+  /* Indicator Line */
   .nav-indicator {
     position: absolute !important;
-    bottom: 4px !important;
+    bottom: 2px !important;
     left: 0 !important;
 
     height: 2px !important;
@@ -1001,101 +984,75 @@ footer h4,
     border-radius: 20px !important;
 
     transition: 0.35s ease !important;
-    pointer-events: none !important;
-  }
-
-  /* =========================================
-     ✅ MOBILE PAGE FIT FIX (Studio + All Pages)
-  ========================================= */
-  .container,
-  section {
-    width: 100% !important;
-    padding-left: 18px !important;
-    padding-right: 18px !important;
   }
 }
 
 
 /* =========================================================
-   ✅ HAMBURGER DRAWER MODE (SMALL PHONES ONLY)
+   ✅ HAMBURGER DRAWER (SMALL PHONES)
 ========================================================= */
 @media (max-width: 480px) {
 
-  /* Show Hamburger Button Right Side */
+  /* Hamburger Button */
   .mobile-menu-btn {
     display: block !important;
     font-size: 1.7rem !important;
-
-    margin-left: auto !important;
 
     background: none !important;
     border: none !important;
     color: white !important;
 
     cursor: pointer !important;
-    flex-shrink: 0 !important;
   }
 
-  /* Hide Swipe Menu Default */
+  /* Hide Swipe Menu */
   header nav ul {
     display: none !important;
   }
 
-  /* =========================================
-     ✅ PREMIUM DRAWER OPEN (FULL FIT NO CUT)
-  ========================================= */
+  /* Drawer Open */
   header nav ul.open {
     display: flex !important;
     flex-direction: column !important;
 
     position: fixed !important;
-    top: 75px !important;
+    top: 60px !important;
     left: 0 !important;
 
     width: 100% !important;
-    max-height: calc(100vh - 75px) !important;
+    max-height: calc(100vh - 60px) !important;
 
-    padding: 22px 18px !important;
+    padding: 20px !important;
 
     background: rgba(0,0,0,0.98) !important;
     backdrop-filter: blur(25px) !important;
 
-    border-radius: 0 0 24px 24px !important;
-
     overflow-y: auto !important;
     gap: 14px !important;
+
+    border-radius: 0 0 22px 22px !important;
 
     animation: drawerDrop 0.35s ease forwards !important;
   }
 
-  /* Premium Drawer Links */
   header nav ul.open a {
     width: 100% !important;
-    padding: 16px 18px !important;
+    padding: 15px 18px !important;
 
     border-radius: 14px !important;
     font-size: 1.05rem !important;
 
-    background: rgba(255,255,255,0.04) !important;
-    transition: 0.25s ease !important;
-
-    justify-content: flex-start !important;
+    background: rgba(255,255,255,0.05) !important;
   }
 
-  header nav ul.open a:hover {
-    background: rgba(255,255,255,0.08) !important;
-  }
-
-  /* Hide Indicator in Drawer Mode */
+  /* Indicator Hidden */
   .nav-indicator {
     display: none !important;
   }
 }
 
 
-/* =========================================
-   ✅ PREMIUM DRAWER ANIMATION
-========================================= */
+/* Drawer Animation */
 @keyframes drawerDrop {
   from {
     opacity: 0;
@@ -1106,114 +1063,55 @@ footer h4,
     transform: translateY(0);
   }
 }
+
+
 /* =========================================================
-   ✅ STUDIO PAGE MOBILE FIX (ONLY)
-   Fix Overflow + Perfect Fit + Form Full Width
-   No HTML Change Needed
+   ✅ STUDIO PAGE MOBILE FIX (PERFECT FIT)
 ========================================================= */
 
 @media (max-width: 768px) {
 
-  /* ✅ Studio Grid Stack Properly */
   .design-page .grid-2 {
     display: flex !important;
     flex-direction: column !important;
-    gap: 35px !important;
+    gap: 25px !important;
     align-items: center !important;
   }
 
-  /* ✅ Left Content Full Width */
   .design-page .studio-left {
     width: 100% !important;
     text-align: center !important;
   }
 
-  /* ✅ MG Logo Perfect Center */
   .design-page .mg-logo-wrap img {
-    max-width: 180px !important;
+    max-width: 170px !important;
     margin: 0 auto !important;
-    display: block !important;
   }
 
-  /* ✅ Fix Heading Wrap Issue */
   .design-page h1 span.studio-orange {
-    white-space: normal !important; /* REMOVE nowrap */
+    white-space: normal !important;
     display: block !important;
-    text-align: center !important;
   }
 
-  /* ✅ Description Fit Without Breaking Screen */
   .design-page .studio-desc {
     max-width: 100% !important;
-    padding: 0 10px !important;
+    padding: 0 12px !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
   }
 
-  /* ✅ Remove Forced <br> Overflow Effect */
   .design-page .studio-desc br {
     display: none !important;
   }
 
-  /* ✅ Form Box Full Mobile Fit */
   .design-page form,
-  .design-page form input,
-  .design-page form textarea,
+  .design-page input,
+  .design-page textarea,
   .design-page .gc-dropdown {
     width: 100% !important;
   }
 
-  /* ✅ Reduce Form Padding on Mobile */
   .design-page .grid-2 > div:last-child {
-    padding: 22px !important;
-  }
-
-  /* ✅ Button Full Width Premium */
-  .design-page button.btn {
-    width: 100% !important;
-    font-size: 1rem !important;
-    padding: 15px !important;
-    border-radius: 14px !important;
-  }
-}
-/* =========================================================
-   ✅ MOBILE HEADER GAP REDUCTION (FINAL FIX)
-   Reduce Header Height + Content Top Space
-   Premium Tight Layout (All Pages)
-========================================================= */
-
-@media (max-width: 768px) {
-
-  /* Smaller Header Height */
-  header {
-    height: 60px !important;
-  }
-
-  /* Reduce Page Push Gap */
-  body {
-    padding-top: 65px !important;
-  }
-
-  /* Drawer Opens Correctly After New Header Height */
-  header nav ul.open {
-    top: 60px !important;
-    max-height: calc(100vh - 60px) !important;
-  }
-}
-
-@media (max-width: 480px) {
-
-  /* Extra Tight on Small Phones */
-  header {
-    height: 58px !important;
-  }
-
-  body {
-    padding-top: 62px !important;
-  }
-
-  header nav ul.open {
-    top: 58px !important;
-    max-height: calc(100vh - 58px) !important;
+    padding: 20px !important;
   }
 }
