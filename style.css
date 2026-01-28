@@ -818,6 +818,7 @@ body {
 .apps-image:hover {
     transform: scale(1.06);
 }
+
 /* =========================================
    GLOBAL FOOTER — ORANGE SECTION HEADINGS
    Services | Company | Careers | Connect
@@ -827,14 +828,17 @@ footer h3,
 footer h4,
 .footer-column h3,
 .footer-column h4 {
-    color: var(--primary-orange) !important;
-    letter-spacing: 1px;
-    font-weight: 600;
+  color: var(--primary-orange) !important;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
+
 /* STUDIO ORANGE HEADING */
 .studio-orange {
-    color: var(--primary-orange) !important;
+  color: var(--primary-orange) !important;
 }
+
+
 /* =========================================================
    ✅ GYPSY CARTEL — FINAL MOBILE NAVBAR MASTER (FINAL)
    Swipe Menu + Indicator + Hamburger Drawer
