@@ -136,12 +136,13 @@
             line-height: 1.6;
         }
 
-        /* ✅ ONLY GUIDELINE ALIGNMENT FIX */
+        /* ✅ ONLY GUIDELINE BULLET ALIGNMENT FIX (Professional) */
         .guideline-list {
             max-width: 720px;
             margin: 45px auto 0;
             text-align: left;
             line-height: 1.9;
+            padding-left: 0;
         }
 
         .guideline-list li {
@@ -153,11 +154,13 @@
             color: #ccc;
         }
 
-        .guideline-list li span.dot {
+        .guideline-list li::before {
+            content: "•";
             color: var(--primary-orange);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             line-height: 1;
             margin-top: 2px;
+            flex-shrink: 0;
         }
 
         .home-cta {
@@ -221,7 +224,91 @@
 
 </section>
 
-<!-- PREMIUM HOMEPAGE CONTENT -->
+<!-- ===============================
+     PREMIUM HOMEPAGE CONTENT
+================================ -->
+
+<section class="home-section">
+    <h2>Creativity Backed by <span class="accent">Execution.</span></h2>
+
+    <p>
+        Gypsy Cartel is a multidisciplinary creative studio working across
+        technology, design, architecture, and fashion. We focus on building
+        modern solutions that help brands present themselves better, function
+        smarter, and grow with clarity.
+    </p>
+
+    <p>
+        Operating as a creative direction and execution hub, Gypsy Cartel manages
+        projects, strategy, and delivery through a flexible studio model that
+        combines in-house planning with trusted professionals.
+    </p>
+
+    <p>
+        Our mission is simple: clean design, reliable execution, and long-term
+        premium value — built for individuals, startups, and businesses that
+        expect more than generic work.
+    </p>
+</section>
+
+<section class="home-section">
+    <h2>Our <span class="accent">Services</span></h2>
+
+    <p>
+        Digital and creative solutions delivered with luxury-level clarity,
+        performance, and professional execution.
+    </p>
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <h3>Software & App Development</h3>
+            <p>
+                High-performance Windows applications, licensed tools, business systems,
+                and premium digital products built for real-world productivity.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Web Design & Brand Identity</h3>
+            <p>
+                Premium websites, UI/UX layouts, brochures, posters, and complete
+                brand identity systems that feel global and professional.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Architecture & Visualization</h3>
+            <p>
+                Interior and exterior design concepts, floor plans, layout development,
+                and cinematic-level 3D visualization for studios and real estate.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Fashion & Creative Direction</h3>
+            <p>
+                Supporting fashion and lifestyle brands with visual styling,
+                campaign design, and premium creative assistance.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="home-section">
+    <h2>Operating Across <span class="accent">India & UAE</span></h2>
+
+    <p>
+        Gypsy Cartel is growing as a next-generation studio connecting creative
+        professionals and clients across India, UAE, and beyond.
+    </p>
+
+    <p>
+        Our workflow is built on structured collaboration, transparent coordination,
+        and execution through verified creative specialists.
+    </p>
+</section>
 
 <section class="home-section">
     <h2>Studio <span class="accent">Guidelines</span></h2>
@@ -231,14 +318,13 @@
         and quality-focused delivery.
     </p>
 
-    <!-- ✅ ONLY BULLET ALIGNMENT FIXED -->
     <ul class="guideline-list">
-        <li><span class="dot">•</span> Clear project scope and defined timelines</li>
-        <li><span class="dot">•</span> Structured workflow with transparent coordination</li>
-        <li><span class="dot">•</span> Confidential handling of all project materials</li>
-        <li><span class="dot">•</span> Execution through verified creative professionals</li>
-        <li><span class="dot">•</span> Designs refined through agreed stages</li>
-        <li><span class="dot">•</span> Focus on quality, clarity, and practical delivery</li>
+        <li>Clear project scope and defined timelines</li>
+        <li>Structured workflow with transparent coordination</li>
+        <li>Confidential handling of all project materials</li>
+        <li>Execution through verified creative professionals</li>
+        <li>Designs refined through agreed stages</li>
+        <li>Focus on quality, clarity, and practical delivery</li>
     </ul>
 </section>
 
