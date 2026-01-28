@@ -836,8 +836,10 @@ footer h4,
     color: var(--primary-orange) !important;
 }
 /* =========================================================
-   ✅ GYPSY CARTEL — FINAL MOBILE NAVBAR MASTER (CLEAN)
+   ✅ GYPSY CARTEL — FINAL MOBILE NAVBAR MASTER (FINAL)
    Swipe Menu + Indicator + Hamburger Drawer
+   Logo Left + Hamburger Right Perfect
+   Drawer Full Fit + Premium Animation
    Desktop Safe — Works on ALL Pages
 ========================================================= */
 
@@ -868,7 +870,9 @@ footer h4,
     padding-top: 85px !important;
   }
 
-  /* Fixed Premium Header */
+  /* =========================================
+     ✅ FIXED PREMIUM HEADER (Always Visible)
+  ========================================= */
   header {
     position: fixed !important;
     top: 0 !important;
@@ -889,17 +893,39 @@ footer h4,
     z-index: 999999 !important;
   }
 
-  /* Nav Wrapper */
+  /* =========================================
+     ✅ LOGO LEFT PERFECT ALIGNMENT
+  ========================================= */
+  header a {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .logo-icon {
+    width: 38px !important;
+    height: auto !important;
+  }
+
+  /* =========================================
+     ✅ NAV FLEX FIX (Hamburger Right)
+  ========================================= */
   header nav {
-    width: 100% !important;
+    flex: 1 !important;
+    width: auto !important;
+
     position: relative !important;
 
     display: flex !important;
+    justify-content: flex-end !important;
     align-items: center !important;
+
     gap: 12px !important;
   }
 
-  /* ✅ SHOW INDICATOR ON MOBILE */
+  /* =========================================
+     ✅ SHOW INDICATOR ONLY ON MOBILE
+  ========================================= */
   .nav-indicator {
     display: block !important;
   }
@@ -973,6 +999,16 @@ footer h4,
     transition: 0.35s ease !important;
     pointer-events: none !important;
   }
+
+  /* =========================================
+     ✅ MOBILE PAGE FIT FIX (Studio + All Pages)
+  ========================================= */
+  .container,
+  section {
+    width: 100% !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
 }
 
 
@@ -981,16 +1017,19 @@ footer h4,
 ========================================================= */
 @media (max-width: 480px) {
 
-  /* Show Hamburger Button */
+  /* Show Hamburger Button Right Side */
   .mobile-menu-btn {
     display: block !important;
     font-size: 1.7rem !important;
+
+    margin-left: auto !important;
 
     background: none !important;
     border: none !important;
     color: white !important;
 
     cursor: pointer !important;
+    flex-shrink: 0 !important;
   }
 
   /* Hide Swipe Menu Default */
@@ -998,33 +1037,68 @@ footer h4,
     display: none !important;
   }
 
-  /* Drawer Open Mode */
+  /* =========================================
+     ✅ PREMIUM DRAWER OPEN (FULL FIT NO CUT)
+  ========================================= */
   header nav ul.open {
     display: flex !important;
     flex-direction: column !important;
 
-    position: absolute !important;
+    position: fixed !important;
     top: 75px !important;
     left: 0 !important;
 
     width: 100% !important;
-    padding: 18px !important;
+    max-height: calc(100vh - 75px) !important;
 
-    background: rgba(0,0,0,0.97) !important;
-    backdrop-filter: blur(20px) !important;
+    padding: 22px 18px !important;
 
-    border-radius: 0 0 20px 20px !important;
+    background: rgba(0,0,0,0.98) !important;
+    backdrop-filter: blur(25px) !important;
+
+    border-radius: 0 0 24px 24px !important;
+
+    overflow-y: auto !important;
     gap: 14px !important;
+
+    animation: drawerDrop 0.35s ease forwards !important;
   }
 
+  /* Premium Drawer Links */
   header nav ul.open a {
     width: 100% !important;
+    padding: 16px 18px !important;
+
+    border-radius: 14px !important;
+    font-size: 1.05rem !important;
+
+    background: rgba(255,255,255,0.04) !important;
+    transition: 0.25s ease !important;
+
     justify-content: flex-start !important;
-    padding: 14px 18px !important;
+  }
+
+  header nav ul.open a:hover {
+    background: rgba(255,255,255,0.08) !important;
   }
 
   /* Hide Indicator in Drawer Mode */
   .nav-indicator {
     display: none !important;
+  }
+}
+
+
+/* =========================================
+   ✅ PREMIUM DRAWER ANIMATION
+========================================= */
+@keyframes drawerDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
