@@ -120,10 +120,21 @@
 
 </div>
 
-<!-- IMAGE MODAL -->
+<!-- ✅ PREMIUM IMAGE MODAL -->
 <div class="apps-modal" id="appsModal">
+
+    <!-- Close Button -->
     <span class="apps-modal-close" onclick="closeModal()">×</span>
+
+    <!-- Prev Button -->
+    <div class="apps-modal-nav left" onclick="prevImage()">‹</div>
+
+    <!-- Image -->
     <img class="apps-modal-img" id="appsModalImg">
+
+    <!-- Next Button -->
+    <div class="apps-modal-nav right" onclick="nextImage()">›</div>
+
 </div>
 
 <!-- FOOTER -->
@@ -132,7 +143,7 @@
 <!-- GLOBAL SCRIPT -->
 <script src="/script.js"></script>
 
-<!-- GALLERY SCRIPT (UPDATED PREMIUM CONTROLS) -->
+<!-- ✅ PREMIUM MODAL ENGINE -->
 <script>
 const gallery = document.getElementById("appsGallery");
 const modal = document.getElementById("appsModal");
@@ -141,45 +152,44 @@ const modalImg = document.getElementById("appsModalImg");
 let currentIndex = 0;
 const images = Array.from(document.querySelectorAll(".apps-gallery-img"));
 
-/* Arrow scrolling */
+/* Scroll Gallery */
 function scrollGallery(dir) {
     gallery.scrollBy({ left: dir * 360, behavior: "smooth" });
 }
 
-/* Open modal */
+/* Open Modal */
 function openModal(index) {
     currentIndex = index;
     modal.style.display = "flex";
     modalImg.src = images[currentIndex].src;
 
-    /* Lock background scroll */
     document.body.style.overflow = "hidden";
 }
 
-/* Close modal */
+/* Close Modal */
 function closeModal() {
     modal.style.display = "none";
     document.body.style.overflow = "auto";
 }
 
-/* Next image */
+/* Next */
 function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
     modalImg.src = images[currentIndex].src;
 }
 
-/* Previous image */
+/* Prev */
 function prevImage() {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     modalImg.src = images[currentIndex].src;
 }
 
-/* Click image → open modal */
+/* Click image → Open */
 images.forEach((img, index) => {
     img.addEventListener("click", () => openModal(index));
 });
 
-/* Click outside → close */
+/* Click outside → Close */
 modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
 });
@@ -193,12 +203,33 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
 });
 
-/* Disable Mouse Wheel Scroll Inside Modal */
+/* ✅ Mouse Wheel = Next/Prev */
 modal.addEventListener("wheel", (e) => {
-    if (modal.style.display === "flex") {
-        e.preventDefault();
+    if (modal.style.display !== "flex") return;
+
+    e.preventDefault();
+
+    if (e.deltaY > 0) {
+        nextImage();
+    } else {
+        prevImage();
     }
 }, { passive: false });
+
+/* ✅ Touch Swipe Support */
+let startX = 0;
+
+modal.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+
+modal.addEventListener("touchend", (e) => {
+    let endX = e.changedTouches[0].clientX;
+    let diff = startX - endX;
+
+    if (diff > 60) nextImage();   // swipe left
+    if (diff < -60) prevImage();  // swipe right
+});
 </script>
 
 </body>
