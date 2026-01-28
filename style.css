@@ -1176,3 +1176,44 @@ footer h4,
     border-radius: 14px !important;
   }
 }
+/* =========================================================
+   ✅ MOBILE HEADER GAP REDUCTION (FINAL FIX)
+   Reduce Header Height + Content Top Space
+   Premium Tight Layout (All Pages)
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Smaller Header Height */
+  header {
+    height: 60px !important;
+  }
+
+  /* Reduce Page Push Gap */
+  body {
+    padding-top: 65px !important;
+  }
+
+  /* Drawer Opens Correctly After New Header Height */
+  header nav ul.open {
+    top: 60px !important;
+    max-height: calc(100vh - 60px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Extra Tight on Small Phones */
+  header {
+    height: 58px !important;
+  }
+
+  body {
+    padding-top: 62px !important;
+  }
+
+  header nav ul.open {
+    top: 58px !important;
+    max-height: calc(100vh - 58px) !important;
+  }
+}
